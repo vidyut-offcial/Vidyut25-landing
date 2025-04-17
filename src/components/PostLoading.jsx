@@ -120,11 +120,6 @@ export default function PostLoading() {
       ref={hudRef}
       className="relative w-full h-screen bg-transparent text-blue-neon font-mono overflow-hidden flex items-center justify-center"
     >
-
-      <div className="absolute z-0">
-        <SpaceShipModel stars={true} />
-      </div>
-
       <div 
         ref={scanLineRef}
         className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-neon to-transparent opacity-5 z-10 pointer-events-none"

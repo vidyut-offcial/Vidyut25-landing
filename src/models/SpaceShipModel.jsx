@@ -4,7 +4,7 @@ import { useGLTF, useAnimations, OrbitControls, Environment } from '@react-three
 import * as THREE from 'three';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 
-function Model({ url }) {
+function Model({ url, scale }) {
   const group = useRef();
   const { scene, animations } = useGLTF(url);
   const { actions, names } = useAnimations(animations, group);
@@ -69,8 +69,8 @@ function Model({ url }) {
   return (
     <group 
       ref={group} 
-      scale={0.8} 
-      position={[2.5, 0, 0]} 
+      scale={scale} 
+      position={[2.5, -1, 0]} 
       rotation={[0, Math.PI / 2, 0]}
     >
       <primitive object={scene} />
@@ -78,7 +78,7 @@ function Model({ url }) {
   );
 }
 
-function Scene({ stars = false }) {
+function Scene({ stars = false, scale }) {
   return (
     <>
       <color attach="background" args={['#0d0d0d']} />
@@ -98,7 +98,7 @@ function Scene({ stars = false }) {
       />
       
       <Suspense fallback={null}>
-        <Model url="/models/spaceship.glb" />
+        <Model scale={scale} url="/models/spaceship.glb" />
         <Environment preset="night" />
         { stars && <Stars />}
       </Suspense>
@@ -112,7 +112,7 @@ function Scene({ stars = false }) {
         />
       </EffectComposer>
       
-      <OrbitControls />
+      <OrbitControls enableZoom={false} />
     </>
   );
 }
@@ -143,14 +143,14 @@ function Stars() {
   );
 }
 
-export default function SpaceShipModel({ stars = false }) {
+export default function SpaceShipModel({ stars = false, height = "100vh", scale = 0.6 }) {
   return (
     <Canvas
-      style={{ width: '100vw', minHeight: '100vh', height: "100vh" }}
+      style={{ width: '100vw', height: height }}
       camera={{ position: [0, 2, 10], fov: 60 }}
       shadows
     >
-      <Scene stars={stars} />
+      <Scene scale={scale} stars={stars} />
     </Canvas>
   );
 }
