@@ -1,12 +1,14 @@
 "use client";
 
 import AboutSection from "@/components/AboutSection";
+import CarShowSection from "@/components/CarShowSection";
 import EventsSection from "@/components/EventsSection";
 import HeroSection from "@/components/HeroSection";
 import IdeaSection from "@/components/IdeaSection";
 import NavBar from "@/components/NavBar";
 import { PastSection } from "@/components/PastSection";
 import PostLoading from "@/components/PostLoading";
+import ProShowSection from "@/components/ProShowSection";
 import WorkshopSection from "@/components/WorkshopSection";
 import SpaceShipModel from "@/models/SpaceShipModel";
 
@@ -25,12 +27,14 @@ export default function Home() {
         <SpaceShipModel stars={true} />
       </div>
       <PostLoading />
-      <HeroSection />
+      {/* <HeroSection />
       <IdeaSection />
       <AboutSection />
       <PastSection products={products} />
       <EventsSection />
       <WorkshopSection />
+      <ProShowSection />
+      <CarShowSection /> */}
     </main>
   );
 }
