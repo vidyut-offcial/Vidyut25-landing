@@ -184,7 +184,7 @@ export default function PostLoading() {
       
       <div 
         ref={centerHudRef}
-        className="relative w-2/3 h-2/3 flex items-center justify-center"
+        className="relative w-2/3 h-2/3 flex items-center justify-center pointer-events-none"
       >
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="relative w-64 h-64">
@@ -220,11 +220,11 @@ export default function PostLoading() {
             <div className="absolute left-1/2 bottom-0 w-px h-8 bg-blue-neon transform -translate-x-1/2"></div>
             <div className="absolute top-1/2 left-0 h-px w-8 bg-blue-neon transform -translate-y-1/2"></div>
             <div className="absolute top-1/2 right-0 h-px w-8 bg-blue-neon transform -translate-y-1/2"></div>
-            <div className="absolute left-1/2 top-1/2 w-4 h-4 border-2 border-blue-neon rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute left-1/2 top-1/2 w-4 h-4 border-2 border-blue-neon rounded-full transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
           </div>
         </div>
         
-        <div className="absolute left-16 top-1/2 transform -translate-y-1/2 flex flex-col items-end">
+        <div className="absolute left-16 top-1/2 transform -translate-y-1/2 flex flex-col items-end pointer-events-none">
           <div className="text-xs">240</div>
           <div className="text-xs my-2">220</div>
           <div className="text-xs">200</div>
@@ -235,7 +235,7 @@ export default function PostLoading() {
           <div className="text-xs">160</div>
         </div>
         
-        <div className="absolute top-6 left-1/2 transform -translate-x-1/2">
+        <div className="absolute top-6 left-1/2 transform -translate-x-1/2 pointer-events-none">
           <div className="text-xs mb-1 text-center">SPEED</div>
           <div className="flex items-center justify-center gap-4">
             <div className="text-xs">5</div>
@@ -246,7 +246,7 @@ export default function PostLoading() {
           </div>
         </div>
         
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center pointer-events-none">
           <div className="text-xs mr-4">08</div>
           <div className="w-16 h-1 bg-blue-neon"></div>
           <div className="mx-2 flex items-center">
@@ -256,7 +256,7 @@ export default function PostLoading() {
           <div className="text-xs ml-4">09</div>
         </div>
         
-        <div className="absolute right-16 top-1/2 transform -translate-y-1/2 flex flex-col items-start">
+        <div className="absolute right-16 top-1/2 transform -translate-y-1/2 flex flex-col items-start pointer-events-none">
           <div className="text-xs">045</div>
           <div className="h-16 w-2 bg-blue-neon bg-opacity-20 relative mt-2">
             <div className="absolute bottom-0 w-full bg-blue-neon" style={{height: '40%'}}></div>
@@ -264,24 +264,24 @@ export default function PostLoading() {
           <div className="text-xs mt-2">035</div>
         </div>
         
-        <div className="absolute top-6 right-16">
+        <div className="absolute top-6 right-16 pointer-events-none">
           <div className="text-xs mb-1">A/THR</div>
           <div className="text-xs">40 ON</div>
           <div className="text-xs blink-slow">100</div>
         </div>
         
-        <div className="absolute bottom-0 left-0 text-xs">
+        <div className="absolute bottom-0 left-0 text-xs pointer-events-none">
           <div>VOR1</div>
           <div>CRL</div>
           <div>5.4 NM</div>
         </div>
         
-        <div className="absolute bottom-0 right-0 text-xs">
+        <div className="absolute bottom-0 right-0 text-xs pointer-events-none">
           <div className="blink-slow">QNH 1002</div>
         </div>
         
         {targetLocked && (
-          <div className="absolute flex items-center justify-center">
+          <div className="absolute flex items-center justify-center pointer-events-none">
             <div className="w-32 h-32 border border-red-500 rounded-full animate-pulse"></div>
             <div className="absolute text-red-500 text-xs">TARGET LOCKED</div>
           </div>
