@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 export default function AboutSection() {
   return (
-    <main className="h-screen w-screen relative flex items-center gap-20 py-36 justify-center">
+    <section id="about-section" className="h-screen w-screen bg-transparent relative flex items-center gap-20 py-36 justify-center">
       <div className="flex items-center rounded-3xl h-1/2 w-1/4 border border-dashed border-foreground justify-center relative">
         <Image 
           className="h-full w-full p-8"
@@ -20,6 +20,6 @@ export default function AboutSection() {
           Vidyut, a national multi-fest by Amrita Vishwa Vidyapeetham, fosters creativity with its 2025 theme, Echos of the future
         </p>
       </div>
-    </main>
+    </section>
   );
 }

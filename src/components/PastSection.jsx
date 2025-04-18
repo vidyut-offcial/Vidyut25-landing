@@ -25,7 +25,8 @@ export const PastSection = ({
   const rotateZ = useSpring(useTransform(scrollYProgress, [0, 0.2], [20, 0]), springConfig);
   const translateY = useSpring(useTransform(scrollYProgress, [0, 0.2], [-700, 500]), springConfig);
   return (
-    <div
+    <section
+      id="past-section"
       ref={ref}
       className="h-[300vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]">
       <Header />
@@ -53,7 +54,7 @@ export const PastSection = ({
           ))}
         </motion.div>
       </motion.div>
-    </div>
+    </section>
   );
 };
 

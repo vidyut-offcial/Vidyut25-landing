@@ -7,7 +7,7 @@ import Image from "next/image"
 
 export default function CarShowSection() {
   return (
-    <section className="h-screen w-full relative bg-black overflow-hidden">
+    <section id="carshow-section" className="h-screen w-full relative bg-transparent overflow-hidden">
       {/* Background with car schematic overlay */}
       <div className="absolute inset-0 opacity-20">
         <div className="w-full h-full relative">

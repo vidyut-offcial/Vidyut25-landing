@@ -144,7 +144,6 @@ function DiamondStars() {
         }
         colors.push(color.r, color.g, color.b);
         
-        // Twinkle effect data
         const twinkleSpeed = 0.3 + Math.random() * 3.0;
         const twinklePhase = Math.random() * Math.PI * 2;
         const twinkleIntensity = 0.3 + Math.random() * 0.7;
@@ -152,11 +151,10 @@ function DiamondStars() {
       }
     };
     
-    // Further reduced star counts for performance
-    createStarLayer(700, 200, 500, 1.2);  // Close stars
-    createStarLayer(1000, 500, 1500, 1.0); // Mid-distance stars
-    createStarLayer(800, 1500, 2500, 0.8); // Far stars
-    createStarLayer(400, 2500, 5000, 1.5);  // Very distant stars
+    createStarLayer(700, 200, 500, 1.2);
+    createStarLayer(1000, 500, 1500, 1.0);
+    createStarLayer(800, 1500, 2500, 0.8);
+    createStarLayer(400, 2500, 5000, 1.5);
     
     starsGeometry.current.setAttribute(
       'position',
@@ -211,15 +209,12 @@ function DiamondStars() {
         fragmentShader={`
           varying vec3 vColor;
           void main() {
-            // Create circular shape by checking point coords
             vec2 center = vec2(0.5, 0.5);
             vec2 pt = gl_PointCoord - center;
             
-            // Calculate distance from center (circular)
             float dist = length(pt) * 2.0;
             if (dist > 1.0) discard;
             
-            // Soften the edges for a nicer circle
             float intensity = 1.0 - smoothstep(0.5, 1.0, dist);
             vec3 glowColor = vColor * intensity;
             gl_FragColor = vec4(glowColor, intensity);
@@ -329,7 +324,6 @@ function SpaceDust() {
         fragmentShader={`
           varying vec3 vColor;
           void main() {
-            // Circular shape instead of square
             float d = length(gl_PointCoord - vec2(0.5));
             if (d > 0.5) discard;
             float alpha = 0.5 * pow(1.0 - d * 2.0, 1.5);

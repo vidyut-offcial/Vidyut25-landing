@@ -6,7 +6,7 @@ import anton from "../../public/images/anton.png"
 
 export default function EventsSection() {
   return (
-    <main className="h-screen w-screen relative flex flex-col items-center gap-20 py-36 justify-center -translate-y-full">
+    <section id="events-section" className="h-screen bg-transparent w-screen relative flex flex-col items-center gap-20 py-36 justify-center -translate-y-full">
       <div className="flex items-center justify-center border-b border-foreground pb-18 h-1/2">
         <Image
           className="w-sm"
@@ -36,6 +36,6 @@ export default function EventsSection() {
           className="rounded-3xl w-fit h-[90%]"
         />
       </div>
-    </main>
+    </section>
   );
 }
