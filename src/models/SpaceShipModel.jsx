@@ -478,19 +478,22 @@ function Scene({ scale, modelRef }) {
       if (isAnimating) return;
 
       switch (event.code) {
-        case 'Space':
+        case 'ShiftLeft':
           animateRotation();
           break;
-        case 'ArrowUp':
+        case 'ShiftRight':
+          animateRotation();
+          break;
+        case 'KeyW':
           animateMove('up');
           break;
-        case 'ArrowDown':
+        case 'KeyS':
           animateMove('down');
           break;
-        case 'ArrowLeft':
+        case 'KeyA':
           animateMove('left');
           break;
-        case 'ArrowRight':
+        case 'KeyD':
           animateMove('right');
           break;
         default:
