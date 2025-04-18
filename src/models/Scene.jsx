@@ -1,4 +1,4 @@
-import React, { useRef, Suspense, useEffect, useState } from 'react';
+import React, { useRef, Suspense, useEffect, useState, forwardRef } from 'react';
 import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
 import { useGLTF, useAnimations, Html } from '@react-three/drei';
 import * as THREE from 'three';
@@ -14,24 +14,20 @@ const Model = React.forwardRef(({ url, scale }, ref) => {
       if (obj.isMesh && obj.material) {
         const processColor = (material) => {
           const newMat = material.clone();
-
           if (material.color) {
             const { r, g, b } = material.color;
             if (g > r && g > b) {
               newMat.color = new THREE.Color(0x1F51FF);
             }
           }
-
           if (material.emissive) {
             const { r, g, b } = material.emissive;
             if (g > r && g > b && g > 0.2) {
               newMat.emissive = new THREE.Color(0x1F51FF);
             }
           }
-
           return newMat;
         };
-
         if (Array.isArray(obj.material)) {
           obj.material = obj.material.map((mat) => processColor(mat));
         } else {
@@ -403,30 +399,27 @@ function DistantStars() {
   );
 }
 
-function Scene({ scale, modelRef }) {
+const Scene = forwardRef(({ scale }, ref) => {
+  const modelRef = useRef();
   const initialPosition = useRef([2.5, -1, 0]);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { camera } = useThree();
-  
   const [starSpeed, setStarSpeed] = useState(0.1);
-  
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-    
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
     return () => {
       window.removeEventListener('resize', checkMobile);
     };
   }, []);
-  
+
   const animateRotation = () => {
     if (isAnimating || !modelRef.current) return;
-    
     setIsAnimating(true);
     gsap.to(modelRef.current.rotation, {
       duration: 1,
@@ -434,13 +427,11 @@ function Scene({ scale, modelRef }) {
       onComplete: () => setIsAnimating(false),
     });
   };
-  
+
   const animateMove = (direction) => {
     if (isAnimating || !modelRef.current) return;
-    
     const currentModel = modelRef.current;
     setIsAnimating(true);
-    
     let targetPosition = { ...currentModel.position };
     switch (direction) {
       case 'up':
@@ -458,7 +449,6 @@ function Scene({ scale, modelRef }) {
       default:
         break;
     }
-    
     gsap.to(currentModel.position, {
       duration: 1,
       ...targetPosition,
@@ -472,11 +462,10 @@ function Scene({ scale, modelRef }) {
         }),
     });
   };
-  
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (isAnimating) return;
-
       switch (event.code) {
         case 'Space':
           animateRotation();
@@ -497,9 +486,7 @@ function Scene({ scale, modelRef }) {
           break;
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
-    
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
@@ -508,24 +495,19 @@ function Scene({ scale, modelRef }) {
   return (
     <>
       <color attach="background" args={['#000005']} />
-
       <ambientLight intensity={0.1} />
       <pointLight position={[10, 5, 5]} intensity={0.5} color="#a2d2ff" />
       <pointLight position={[-5, 0, -5]} color={0x1F51FF} intensity={0.8} />
-
       <Suspense fallback={null}>
         <Model 
           scale={scale} 
           url="/models/spaceship.glb" 
           ref={modelRef} 
         />
-        
         <DiamondStars />
         <SpaceDust />
         <DistantStars />
-        
       </Suspense>
-
       <EffectComposer>
         <Bloom
           intensity={1}
@@ -537,25 +519,6 @@ function Scene({ scale, modelRef }) {
       </EffectComposer>
     </>
   );
-}
-
-const SpaceShipModel = React.forwardRef(({ height = '100vh', scale = 0.6, }, ref) => {
-  return (
-    <div style={{ position: 'relative' }}>
-      <Canvas
-        style={{ width: '100vw', height }}
-        camera={{ position: [0, 2, 10], fov: 60 }}
-        shadows
-        performance={{ min: 0.5 }}
-      >
-        <ambientLight intensity={0.3} />
-        <pointLight position={[5, 5, 5]} intensity={1.5} color="#a2d2ff" />
-        <pointLight position={[-5, 2, -5]} intensity={1.2} color={0x1F51FF} />
-        <directionalLight position={[10, 10, 5]} intensity={0.8} color="white" />
-        <Scene scale={scale} modelRef={ref} />
-      </Canvas>
-    </div>
-  );
 });
 
-export default SpaceShipModel;
+export default Scene;

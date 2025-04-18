@@ -40,7 +40,7 @@ const Countdown = ({ targetDate }) => {
 
 export default function HeroSection() {
   return (
-    <main className="h-screen w-screen relative flex flex-col items-center gap-20 justify-between py-18 pointer-events-none">
+    <section id="hero-section" className="h-screen opacity-0 w-screen relative flex flex-col items-center gap-20 justify-between py-18 pointer-events-none">
       <div className="flex flex-col items-center justify-center">
         <h2 className="text-[200px] h-fit font-frontage-bold z-10">
           VIDYUT
@@ -57,6 +57,6 @@ export default function HeroSection() {
         </p>
         <Countdown targetDate={new Date([2025, 5, 23])} />
       </div>
-    </main>
+    </section>
   );
 }

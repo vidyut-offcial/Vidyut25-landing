@@ -3,20 +3,18 @@ import { Volume2, VolumeX, Power, Shield, Wifi, Activity, Zap } from 'lucide-rea
 import gsap from 'gsap';
 import SpaceShipModel from '@/models/SpaceShipModel';
 
-export default function PostLoading() {
+export default function PostLoading({ onComplete }) {
   const [muted, setMuted] = useState(false);
   const [volume, setVolume] = useState(80);
   const [shields, setShields] = useState(85);
   const [power, setPower] = useState(92);
   const [systemStatus, setSystemStatus] = useState("STANDBY");
-  const [targetLocked, setTargetLocked] = useState(false);
   
   const hudRef = useRef(null);
   const centerHudRef = useRef(null);
   const leftPanelRef = useRef(null);
   const rightPanelRef = useRef(null);
   const bottomPanelRef = useRef(null);
-  const scanLineRef = useRef(null);
   
   useEffect(() => {
     const tl = gsap.timeline();
@@ -40,14 +38,6 @@ export default function PostLoading() {
       { y: 50, opacity: 0 }, 
       { y: 0, opacity: 1, duration: 0.6, ease: "back.out" }
     );
-    
-    gsap.to(scanLineRef.current, {
-      y: "100%", 
-      duration: 4, 
-      repeat: -1, 
-      ease: "none",
-      yoyo: true
-    });
     
     const elements = document.querySelectorAll('.blink-slow');
     elements.forEach(el => {
@@ -111,20 +101,21 @@ export default function PostLoading() {
     tl.call(() => setSystemStatus("ACTIVATED"));
     
     setTimeout(() => {
-      setTargetLocked(true);
-    }, 3000);
+      gsap.to(hudRef.current, {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power2.out",
+        onComplete: () => onComplete()
+      })
+    }, 1500);
   };
 
   return (
-    <div 
+    <section
+      id="post-loading" 
       ref={hudRef}
-      className="relative w-full h-screen bg-transparent text-blue-neon font-mono overflow-hidden flex items-center justify-center"
+      className="fixed top-0 z-[95] w-full h-screen bg-transparent text-blue-neon font-mono overflow-hidden flex items-center justify-center"
     >
-      <div 
-        ref={scanLineRef}
-        className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-neon to-transparent opacity-5 z-10 pointer-events-none"
-        style={{ transform: 'translateY(-100%)' }}
-      ></div>
       
       <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(0,200,100,0.05)_1px,_transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
       
@@ -181,44 +172,6 @@ export default function PostLoading() {
         ref={centerHudRef}
         className="relative w-2/3 h-2/3 flex items-center justify-center pointer-events-none"
       >
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="relative w-64 h-64">
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 flex items-center">
-              <div className="w-8 h-px bg-blue-neon"></div>
-              <div className="rotate-45 text-xl mx-2">∧</div>
-              <div className="w-8 h-px bg-blue-neon"></div>
-            </div>
-            
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex items-center">
-              <div className="w-8 h-px bg-blue-neon"></div>
-              <div className="rotate-225 text-xl mx-2">∧</div>
-              <div className="w-8 h-px bg-blue-neon"></div>
-            </div>
-            
-            <div className="absolute left-0 top-1/2 transform -translate-y-1/2 flex flex-col items-center">
-              <div className="h-8 w-px bg-blue-neon"></div>
-              <div className="rotate-90 text-xl my-2">&lt;</div>
-              <div className="h-8 w-px bg-blue-neon"></div>
-            </div>
-            
-            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 flex flex-col items-center">
-              <div className="h-8 w-px bg-blue-neon"></div>
-              <div className="rotate-270 text-xl my-2">&gt;</div>
-              <div className="h-8 w-px bg-blue-neon"></div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="absolute flex items-center justify-center pointer-events-none">
-          <div className="relative w-24 h-24">
-            <div className="absolute left-1/2 top-0 w-px h-8 bg-blue-neon transform -translate-x-1/2"></div>
-            <div className="absolute left-1/2 bottom-0 w-px h-8 bg-blue-neon transform -translate-x-1/2"></div>
-            <div className="absolute top-1/2 left-0 h-px w-8 bg-blue-neon transform -translate-y-1/2"></div>
-            <div className="absolute top-1/2 right-0 h-px w-8 bg-blue-neon transform -translate-y-1/2"></div>
-            <div className="absolute left-1/2 top-1/2 w-4 h-4 border-2 border-blue-neon rounded-full transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-          </div>
-        </div>
-        
         <div className="absolute left-16 top-1/2 transform -translate-y-1/2 flex flex-col items-end pointer-events-none">
           <div className="text-xs">240</div>
           <div className="text-xs my-2">220</div>
@@ -239,16 +192,6 @@ export default function PostLoading() {
             <div className="w-16 h-1 bg-blue-neon"></div>
             <div className="text-xs">10</div>
           </div>
-        </div>
-        
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center pointer-events-none">
-          <div className="text-xs mr-4">08</div>
-          <div className="w-16 h-1 bg-blue-neon"></div>
-          <div className="mx-2 flex items-center">
-            <div>&gt;=O=&lt;</div>
-          </div>
-          <div className="w-16 h-1 bg-blue-neon"></div>
-          <div className="text-xs ml-4">09</div>
         </div>
         
         <div className="absolute right-16 top-1/2 transform -translate-y-1/2 flex flex-col items-start pointer-events-none">
@@ -274,13 +217,6 @@ export default function PostLoading() {
         <div className="absolute bottom-0 right-0 text-xs pointer-events-none">
           <div className="blink-slow">QNH 1002</div>
         </div>
-        
-        {targetLocked && (
-          <div className="absolute flex items-center justify-center pointer-events-none">
-            <div className="w-32 h-32 border border-red-500 rounded-full animate-pulse"></div>
-            <div className="absolute text-red-500 text-xs">TARGET LOCKED</div>
-          </div>
-        )}
       </div>
       
       <div 
@@ -335,11 +271,10 @@ export default function PostLoading() {
           onClick={enterWebsite}
           className="enter-button flex items-center justify-center bg-surface-alt border border-blue-neon px-8 py-2 hover:bg-surface-alt transition-all"
         >
-          <span className="text-sm mr-2">INITIALIZE SEQUENCE</span>
-          <div className="w-4 h-4 bg-blue-neon animate-pulse rounded-full"></div>
+          <span className="text-sm">ENTER A DIFFERENT DIMENSION</span>
         </button>
         <div className="text-xs mt-2 blink-slow">{"<"} PRESS TO ENTER {">"}</div>
       </div>
-    </div>
+    </section>
   );
 }
