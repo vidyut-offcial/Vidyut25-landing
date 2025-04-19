@@ -504,8 +504,6 @@ function Scene({ scale, modelRef }) {
 
   return (
     <>
-      <color attach="background" args={['#000005']} />
-
       <ambientLight intensity={0.1} />
       <pointLight position={[10, 5, 5]} intensity={0.5} color="#a2d2ff" />
       <pointLight position={[-5, 0, -5]} color={0x1F51FF} intensity={0.8} />
@@ -516,10 +514,10 @@ function Scene({ scale, modelRef }) {
           url="/models/spaceship.glb" 
           ref={modelRef} 
         />
-        
+{/*         
         <DiamondStars />
         <SpaceDust />
-        <DistantStars />
+        <DistantStars /> */}
         
       </Suspense>
 

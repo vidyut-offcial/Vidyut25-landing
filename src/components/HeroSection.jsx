@@ -1,7 +1,7 @@
 "use client";
 
-import SpaceShipModel from "@/models/SpaceShipModel";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 
 const Countdown = ({ targetDate }) => {
   const [timeLeft, setTimeLeft] = useState({ days: "--", hours: "--", minutes: "--", seconds: "--" });
@@ -39,23 +39,51 @@ const Countdown = ({ targetDate }) => {
 };
 
 export default function HeroSection() {
-  return (
-    <section id="hero-section" className="h-screen opacity-0 w-screen relative flex flex-col items-center gap-20 justify-between py-18 pointer-events-none">
-      <div className="flex flex-col items-center justify-center">
-        <h2 className="text-[200px] h-fit font-frontage-bold z-10">
-          VIDYUT
-        </h2>
 
-        <h3 className="text-4xl font-frontage-regular uppercase z-10">
+  return (
+    <section
+      id="hero-section"
+      className="h-screen w-screen opacity-0 relative flex flex-col items-center gap-20 justify-center py-18 pointer-events-none"
+    >
+      <div className="flex flex-col items-center justify-center">
+        <div 
+          className="flex items-center justify-center"
+          id="hero-title"
+        >
+          <h2
+            data-text="VIDYUT"
+            className="glitch-off text-[120px] xs:text-[160px] md:text-[200px] h-fit font-frontage-bold z-10"
+          >
+            VIDYUT
+          </h2>
+          <h2
+            id="hero-title-glitch"
+            data-text="VIDYUT"
+            className="glitch absolute text-[120px] xs:text-[160px] md:text-[200px] h-fit font-frontage-bold z-10"
+          >
+            VIDYUT
+          </h2>
+        </div>
+
+        <h3
+          id="hero-subtitle"
+          className="text-2xl xs:text-3xl md:text-4xl font-frontage-regular uppercase z-10"
+        >
           National Level Multifest
         </h3>
       </div>
 
       <div className="flex flex-col gap-10 xs:gap-12 z-10">
-        <p className="text-3xl xs:text-4xl lg:text-5xl 2xl:text-6xl font-frontage-regular text-foreground">
+        <p
+          id="hero-comingsoon"
+          className="text-2xl xs:text-4xl lg:text-5xl 2xl:text-6xl font-frontage-regular text-foreground"
+        >
           COMING SOON
         </p>
-        <Countdown targetDate={new Date([2025, 5, 23])} />
+
+        <div id="hero-countdown">
+          <Countdown targetDate={new Date([2025, 5, 23])} />
+        </div>
       </div>
     </section>
   );
