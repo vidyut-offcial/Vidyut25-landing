@@ -58,11 +58,10 @@ export default function PostLoading({ isPlaying, togglePlayPause, onComplete }) 
   const dotRef = useRef(null);
   const promptRef = useRef(null);
 
-  // Assets to preload — add your own here
   const assets = [
-    "/models/spaceship.glb",
-    "/audio/woof.mp3",
-    "/audio/reveal.mp3",
+    { type: "other", src: "/models/spaceship.glb" },
+    { type: "audio", src: "/audio/woof.mp3" },
+    { type: "audio", src: "/audio/reveal.mp3" },
   ];
 
   useEffect(() => {
