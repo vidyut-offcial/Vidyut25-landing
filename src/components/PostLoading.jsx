@@ -73,8 +73,8 @@ export default function PostLoading({ isPlaying, togglePlayPause, onComplete }) 
       duration: 0.6,
       ease: "power1.inOut",
     });
-
-    // Start preload
+  
+    // Preload assets
     preloadAssets(assets, setProgress).then(() => {
       pulse.kill();
       gsap.to(dotRef.current, {
@@ -93,24 +93,47 @@ export default function PostLoading({ isPlaying, togglePlayPause, onComplete }) 
         },
       });
     });
-
+  
     const handleKeyDown = (e) => {
-      if (e.code === "Space" && isReady) {
-        gsap.to(containerRef.current, {
-          opacity: 0,
-          duration: 0.6,
-          ease: "power2.inOut",
-          onComplete: () => {
-            gsap.set(containerRef.current, { display: "none" });
-            if (onComplete) onComplete();
-          },
-        });
+      if (e.code === "Space" && isReady) completeEntry();
+    };
+  
+    let touchStartY = 0;
+  
+    const handleTouchStart = (e) => {
+      touchStartY = e.touches[0].clientY;
+    };
+  
+    const handleTouchEnd = (e) => {
+      const touchEndY = e.changedTouches[0].clientY;
+      if (touchStartY - touchEndY > 50 && isReady) {
+        // swipe up
+        completeEntry();
       }
     };
-
+  
+    const completeEntry = () => {
+      gsap.to(containerRef.current, {
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.inOut",
+        onComplete: () => {
+          gsap.set(containerRef.current, { display: "none" });
+          if (onComplete) onComplete();
+        },
+      });
+    };
+  
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isReady, onComplete]);
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchend", handleTouchEnd);
+  
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [isReady, onComplete]);  
 
   return (
     <div
@@ -125,11 +148,12 @@ export default function PostLoading({ isPlaying, togglePlayPause, onComplete }) 
             isReady ? "opacity-100" : "opacity-0"
           } transition-opacity duration-500`}
         >
-          Press Spacebar to Enter
+          {typeof window !== "undefined" && /Mobi|Android/i.test(navigator.userAgent)
+            ? "Swipe up to Enter"
+            : "Press Spacebar to Enter"}
         </p>
       </div>
 
-      {/* Progress bottom-right */}
       {!isReady && (
         <div className="absolute bottom-6 right-6 text-sm text-white/60 font-mono tracking-widest">
           {progress}%
