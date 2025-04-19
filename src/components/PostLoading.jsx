@@ -1,26 +1,83 @@
 import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 
+function preloadAssets(assets, onProgress) {
+  let loaded = 0;
+
+  const updateProgress = () => {
+    loaded++;
+    onProgress(Math.floor((loaded / assets.length) * 100));
+  };
+
+  return Promise.all(
+    assets.map((asset) => {
+      if (asset.type === "image") {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.src = asset.src;
+          img.onload = img.onerror = () => {
+            updateProgress();
+            resolve();
+          };
+        });
+      } else if (asset.type === "audio") {
+        return new Promise((resolve) => {
+          const audio = new Audio();
+          audio.src = asset.src;
+          audio.onloadeddata = () => {
+            updateProgress();
+            resolve();
+          };
+          audio.onerror = () => {
+            updateProgress();
+            resolve();
+          };
+        });
+      } else if (asset.type === "json" || asset.type === "other") {
+        return fetch(asset.src)
+          .then((res) => res.ok ? res.json() : {})
+          .catch(() => {})
+          .finally(() => {
+            updateProgress();
+          });
+      } else {
+        // fallback
+        updateProgress();
+        return Promise.resolve();
+      }
+    })
+  );
+}
+
+
 export default function PostLoading({ isPlaying, togglePlayPause, onComplete }) {
+  const [progress, setProgress] = useState(0);
   const [isReady, setIsReady] = useState(false);
+
   const containerRef = useRef(null);
   const dotRef = useRef(null);
-  const audioButtonRef = useRef(null);
-  const crossRef = useRef(null);
   const promptRef = useRef(null);
 
-  useEffect(() => {
-    gsap.set(containerRef.current, { opacity: 1 });
+  // Assets to preload — add your own here
+  const assets = [
+    "/models/spaceship.glb",
+    "/audio/woof.mp3",
+    "/audio/reveal.mp3",
+  ];
 
-    const tl = gsap.timeline({ repeat: -1, yoyo: true });
-    tl.to(dotRef.current, {
+  useEffect(() => {
+    // Initial dot pulse
+    const pulse = gsap.to(dotRef.current, {
       scale: 1.4,
+      repeat: -1,
+      yoyo: true,
       duration: 0.6,
       ease: "power1.inOut",
     });
 
-    const timer = setTimeout(() => {
-      tl.kill();
+    // Start preload
+    preloadAssets(assets, setProgress).then(() => {
+      pulse.kill();
       gsap.to(dotRef.current, {
         opacity: 0,
         scale: 0.8,
@@ -28,13 +85,15 @@ export default function PostLoading({ isPlaying, togglePlayPause, onComplete }) 
         ease: "power2.inOut",
         onComplete: () => {
           setIsReady(true);
-          gsap.to(
-            promptRef.current,
-            { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
-          );
+          gsap.to(promptRef.current, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out",
+          });
         },
       });
-    }, 2200);
+    });
 
     const handleKeyDown = (e) => {
       if (e.code === "Space" && isReady) {
@@ -51,12 +110,7 @@ export default function PostLoading({ isPlaying, togglePlayPause, onComplete }) 
     };
 
     window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      tl.kill();
-      clearTimeout(timer);
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isReady, onComplete]);
 
   return (
@@ -66,7 +120,6 @@ export default function PostLoading({ isPlaying, togglePlayPause, onComplete }) 
     >
       <div className="flex flex-col items-center gap-10">
         <div ref={dotRef} className="w-4 h-4 bg-white rounded-full" />
-
         <p
           ref={promptRef}
           className={`text-xl tracking-widest uppercase ${
@@ -76,6 +129,13 @@ export default function PostLoading({ isPlaying, togglePlayPause, onComplete }) 
           Press Spacebar to Enter
         </p>
       </div>
+
+      {/* Progress bottom-right */}
+      {!isReady && (
+        <div className="absolute bottom-6 right-6 text-sm text-white/60 font-mono tracking-widest">
+          {progress}%
+        </div>
+      )}
     </div>
   );
 }
