@@ -312,6 +312,10 @@ export default function AboutSection() {
       className="relative top-0 left-0 h-screen w-screen"
       style={{ height: '100vh', width: '100vw' }}
     >
+      <div 
+        className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(to_top,black,transparent_40%),linear-gradient(to_bottom,black,transparent_40%),linear-gradient(to_left,black,transparent_20%),linear-gradient(to_right,black,transparent_20%)]"
+        style={{ mixBlendMode: 'multiply' }}
+      />
       <Canvas
         camera={{ position: [0, 0, 5], fov: 45 }}
         style={{ 
