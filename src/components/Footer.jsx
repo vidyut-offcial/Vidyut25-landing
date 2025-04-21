@@ -63,10 +63,7 @@ export default function Footer() {
     >
       <div className="h-24 md:h-36 w-full" />
       <div
-        className="grid h-[calc(100%-6rem)] md:h-[calc(100%-9rem)] w-full relative"
-        style={{
-          gridTemplateColumns: "26% 26% 36% 12%",
-        }}
+        className="grid grid-cols-[50%_50%] md:grid-cols-[32%_32%_36%] h-[calc(100%-6rem)] md:h-[calc(100%-9rem)] w-full relative"
       >
         <div className="row-start-1 h-full col-start-1 border-border border-r border-t border-b flex flex-col justify-between">
           <div className="logo-container w-full h-[14%] flex items-center justify-center border-border box border-b">
@@ -77,17 +74,17 @@ export default function Footer() {
             <Image
               alt="Logo"
               src={logo}
-              className="mix-blend-difference h-48 w-48"
+              className="mix-blend-difference w-36 h-36 md:h-48 md:w-48"
             />
           </div>
           
-          <div className="copyright h-[10%] flex items-center border-border border-t justify-center text-center flex-col text-lg box">
+          <div className="copyright h-[10%] flex items-center border-border border-t justify-center text-center flex-col text-sm md:text-lg box">
             <p>&copy; 20xx - 2025. Vidyut</p>
             <p>All Rights Reserved.</p>
           </div>
         </div>
         
-        <div className="row-start-1 col-start-2 h-full w-full border-border border-r border-t flex flex-col">
+        <div className="row-start-1 col-start-2 h-full w-full border-border border-r border-t hidden md:flex flex-col justify-end items-center">
 
           <div className="h-[30%] w-full flex flex-col">
             <div className="register-link h-1/2 border-border px-8 pb-2 border-t w-full flex items-end justify-between box require-pointer">
@@ -101,27 +98,21 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="row-start-1 relative z-50 col-start-3 border-border border-r border-t flex flex-col justify-between">
+        <div className="row-start-1 relative z-50 col-start-2 md:col-start-3 border-border border-r border-t flex flex-col justify-between">
           <div className="nav-links h-full w-full grid grid-cols-1 grid-row-[1fr_1fr_1fr_1fr] gap-4">
-            <Link href="/echo" className="text-7xl text-center flex h-full w-full items-center justify-center font-sf font-bold underline box">
+            <Link href="/echo" className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-center flex h-full w-full items-center justify-center font-sf font-bold underline box">
               <span>Ask Echo</span>
             </Link>
-            <Link href="#events" className="text-7xl text-center flex h-full w-full items-center justify-center font-sf font-bold underline box">
+            <Link href="#events" className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-center flex h-full w-full items-center justify-center font-sf font-bold underline box">
               <span>Events</span>
             </Link>
-            <Link href="/theme" className="text-7xl text-center flex h-full w-full items-center justify-center font-sf font-bold underline box">
+            <Link href="/theme" className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-center flex h-full w-full items-center justify-center font-sf font-bold underline box">
               <span>Theme</span>
             </Link>
-            <Link href="/recap" className="text-7xl text-center flex h-full w-full items-center justify-center font-sf font-bold underline box">
+            <Link href="/recap" className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-center flex h-full w-full items-center justify-center font-sf font-bold underline box">
               <span>Recap</span>
             </Link>
           </div>
-        </div>
-        
-        <div className="box col-start-4 flex w-full h-full items-center justify-center require-pointer">
-          <p className="uppercase h-full w-full flex items-center justify-center -rotate-90 text-2xl xs:text-4xl lg:text-5xl 2xl:text-6xl text-foreground font-frontage-bulb whitespace-nowrap">
-            See You Soon
-          </p>
         </div>
       </div>
     </footer>

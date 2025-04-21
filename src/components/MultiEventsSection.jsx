@@ -30,14 +30,14 @@ export default function MultiEventsSection({ onSectionChange }) {
   return (
     <section
       id="multi-events-section"
-      className="min-h-screen w-screen select-none bg-black relative overflow-hidden flex flex-col lg:flex-row gap-6 md:gap-10 lg:gap-16 items-center justify-center p-4 sm:p-6 md:p-10"
+      className="min-h-screen w-screen select-none bg-black relative overflow-hidden flex flex-col lg:flex-row gap-6 md:gap-10 lg:gap-16 items-center justify-center p-0 sm:p-6 md:p-10"
     >
       {cards.map((card, index) => (
         <a
           key={index}
           href={card.ctaLink}
           target="__blank"
-          className="w-full sm:w-[80%] md:w-[60%] lg:w-auto"
+          className="w-[90%] sm:w-[80%] md:w-[60%] lg:w-sm"
         >
           <GIFCard {...card} />
         </a>
