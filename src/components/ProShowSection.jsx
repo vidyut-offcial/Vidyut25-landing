@@ -8,7 +8,7 @@ import singer5 from "../../public/images/singer-5.png"
 
 export default function ProShowSection() {
   return (
-    <section id="proshow-section" className="h-screen overflow-x-hidden flex items-center justify-center w-full select-none relative -translate-y-full">
+    <section id="proshow-section" className="h-screen overflow-x-hidden flex items-center justify-center w-full select-none relative">
       <div 
         className="flex flex-col items-center justify-evenly h-screen w-full relative"
       >

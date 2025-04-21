@@ -1,0 +1,115 @@
+'use client';
+
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import { a } from "@react-spring/three";
+import BgVideoSection from "./BgVideoSection";
+
+const FullCard = ({
+  title,
+  description,
+  imageUrl,
+  ctaLink,
+  ctaText,
+  buttonText,
+}) => {
+  return (
+    <CardContainer className="inter-var">
+      <CardBody
+        className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border"
+      >
+        <img
+          src="/images/stars-gif.webp"
+          alt="stars"
+          className="absolute h-full w-full bg-cover object-cover z-0 top-0 left-0"
+        />
+        <CardItem
+          translateZ="50"
+          className="text-3xl font-bold text-neutral-600 dark:text-white"
+        >
+          {title}
+        </CardItem>
+        <CardItem
+          as="p"
+          translateZ="60"
+          className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+        >
+          {description}
+        </CardItem>
+        <CardItem translateZ="100" className="w-full mt-4">
+          <img
+            src={imageUrl}
+            height="1000"
+            width="1000"
+            className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+            alt="thumbnail"
+          />
+        </CardItem>
+        <div className="flex justify-between items-center mt-20">
+          <CardItem
+            translateZ={20}
+            as="span"
+            href={ctaLink}
+            target="__blank"
+            className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-lg font-bold"
+          >
+            {buttonText}
+          </CardItem>
+        </div>
+      </CardBody>
+    </CardContainer>
+  );
+};
+
+export default function MultiEventsSection({ onSectionChange }) {
+  const cards = [
+    {
+      title: "Pro Show",
+      description: "Description",
+      imageUrl:
+        "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      ctaLink: "/proshow",
+      ctaText: "View now",
+      buttonText: "View Pro Show",
+    },
+    {
+      title: "Events",
+      description: "Description",
+      imageUrl: "https://images.unsplash.com/photo-1556740749-887f6717d7e4",
+      ctaLink: "/events",
+      ctaText: "View Now",
+      buttonText: "View Events",
+    },
+    {
+      title: "Car Show",
+      description: "Description",
+      imageUrl: "https://images.unsplash.com/photo-1556740749-887f6717d7e4",
+      ctaLink: "/carshow",
+      ctaText: "View",
+      buttonText: "View Car Show",
+    },
+  ];
+
+  return (
+    <section
+      id="multi-events-section"
+      className="h-screen w-screen select-none bg-black relative flex gap-16 items-center justify-center overflow-hidden"
+    >
+      <BgVideoSection 
+        videoSrc={"/videos/asteroid-planet.webm"} 
+        nextSectionId={"past-section"}
+        sectionIndex={5}
+        onSectionChange={onSectionChange}   
+      />
+      <BgVideoSection videoSrc={"/videos/asteroid-planet.webm"} nextSectionId={"past-section"} />
+      {cards.map((card, index) => (
+        <a 
+          key={index}
+          href={card.ctaLink}
+          target="__blank"
+        >
+          <FullCard {...card} />
+        </a>
+      ))}
+    </section>
+  );
+}

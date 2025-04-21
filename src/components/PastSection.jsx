@@ -1,107 +1,82 @@
 "use client";
-import React from "react";
-import { motion, useScroll, useTransform, useSpring } from "motion/react";
+import { Code2, ShieldCheck, Users, Trophy, Mic } from "lucide-react";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
+import BgVideoSection from "./BgVideoSection";
 
-
-
-export const PastSection = ({
-  products
-}) => {
-  const firstRow = products.slice(0, 5);
-  const secondRow = products.slice(5, 10);
-  const thirdRow = products.slice(10, 15);
-  const ref = React.useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
-
-  const translateX = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1000]), springConfig);
-  const translateXReverse = useSpring(useTransform(scrollYProgress, [0, 1], [0, -1000]), springConfig);
-  const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.2], [15, 0]), springConfig);
-  const opacity = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.2, 1]), springConfig);
-  const rotateZ = useSpring(useTransform(scrollYProgress, [0, 0.2], [20, 0]), springConfig);
-  const translateY = useSpring(useTransform(scrollYProgress, [0, 0.2], [-700, 500]), springConfig);
+export default function PastSection({ onSectionChange }) {
   return (
     <section
       id="past-section"
-      ref={ref}
-      className="h-[300vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]">
-      <Header />
-      <motion.div
-        style={{
-          rotateX,
-          rotateZ,
-          translateY,
-          opacity,
-        }}
-        className="">
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
-          {firstRow.map((product) => (
-            <ProductCard product={product} translate={translateX} key={product.title} />
-          ))}
-        </motion.div>
-        <motion.div className="flex flex-row  mb-20 space-x-20 ">
-          {secondRow.map((product) => (
-            <ProductCard product={product} translate={translateXReverse} key={product.title} />
-          ))}
-        </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
-          {thirdRow.map((product) => (
-            <ProductCard product={product} translate={translateX} key={product.title} />
-          ))}
-        </motion.div>
-      </motion.div>
+      className="min-h-screen w-screen relative flex flex-col items-center gap-20 justify-center p-18 pointer-events-none"
+    >
+      <BgVideoSection 
+        videoSrc={"/videos/asteroid-dust.webm"} 
+        nextSectionId={"faq-section"}
+        sectionIndex={8}
+        onSectionChange={onSectionChange}   
+      />
+      <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-[34rem] xl:grid-rows-2">
+        <GridItem
+          area="md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]"
+          icon={<Code2 className="h-4 w-4 text-black dark:text-neutral-400" />}
+          title="Hackathon Showdown"
+          description="24-hour development marathon where techies built solutions overnight and pitched to industry experts." />
+        <GridItem
+          area="md:[grid-area:1/7/2/13] xl:[grid-area:2/1/3/5]"
+          icon={<ShieldCheck className="h-4 w-4 text-black dark:text-neutral-400" />}
+          title="CTF Championship"
+          description="Teambi0s hosted one of India's most challenging Capture The Flag hacking contests." />
+        <GridItem
+          area="md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]"
+          icon={<Users className="h-4 w-4 text-black dark:text-neutral-400" />}
+          title="Workshops Galore"
+          description="Interactive sessions on AI, Blockchain, Cybersecurity, and Drone Tech packed the halls." />
+        <GridItem
+          area="md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]"
+          icon={<Trophy className="h-4 w-4 text-black dark:text-neutral-400" />}
+          title="Tech & Talent Competitions"
+          description="From coding duels to design battles, students showcased brilliance in multiple domains." />
+        <GridItem
+          area="md:[grid-area:3/1/4/13] xl:[grid-area:2/8/3/13]"
+          icon={<Mic className="h-4 w-4 text-black dark:text-neutral-400" />}
+          title="Pro Shows & Celeb Nights"
+          description="The evenings lit up with live performances by top artists and energetic crowd moments." />
+      </ul>
     </section>
   );
-};
+}
 
-export const Header = () => {
-  return (
-    <div
-      className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
-      <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
-        The Ultimate <br /> development studio
-      </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
-        We build beautiful products with the latest technologies and frameworks.
-        We are a team of passionate developers and designers that love to build
-        amazing products.
-      </p>
-    </div>
-  );
-};
-
-export const ProductCard = ({
-  product,
-  translate
+const GridItem = ({
+  area,
+  icon,
+  title,
+  description
 }) => {
   return (
-    <motion.div
-      style={{
-        x: translate,
-      }}
-      whileHover={{
-        y: -20,
-      }}
-      key={product.title}
-      className="group/product h-96 w-[30rem] relative shrink-0">
-      <a href={product.link} className="block group-hover/product:shadow-2xl ">
-        <img
-          src={product.thumbnail}
-          height="600"
-          width="600"
-          className="object-cover object-left-top absolute h-full w-full inset-0"
-          alt={product.title} />
-      </a>
-      <div
-        className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
-      <h2
-        className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
-        {product.title}
-      </h2>
-    </motion.div>
+    <li className={`min-h-[14rem] list-none ${area}`}>
+      <div className="relative h-full rounded-2xl bg-[rgba(0,0,0,0.65)] border p-2 md:rounded-3xl md:p-3">
+        <GlowingEffect
+          spread={40}
+          glow={true}
+          disabled={false}
+          proximity={64}
+          inactiveZone={0.01} />
+        <div className="border-0.75 relative flex h-full flex-col justify-between gap-6 overflow-hidden rounded-xl p-6 md:p-6 dark:shadow-[0px_0px_27px_0px_#2D2D2D]">
+          <div className="relative flex flex-1 flex-col justify-between gap-3">
+            <div className="w-fit rounded-lg border border-gray-600 p-2">
+              {icon}
+            </div>
+            <div className="space-y-3">
+              <h3 className="-tracking-4 pt-0.5 font-sans text-xl/[1.375rem] font-semibold text-balance text-black md:text-2xl/[1.875rem] dark:text-white">
+                {title}
+              </h3>
+              <h2 className="font-sans text-sm/[1.125rem] text-black md:text-base/[1.375rem] dark:text-neutral-400 [&_b]:md:font-semibold [&_strong]:md:font-semibold">
+                {description}
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
   );
 };

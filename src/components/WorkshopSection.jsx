@@ -7,7 +7,7 @@ export default function WorkshopSection() {
   const sectionRef = useRef(null);
 
   return (
-    <section ref={sectionRef} className="h-screen overflow-x-hidden flex items-center justify-center w-full select-none relative -translate-y-full">
+    <section ref={sectionRef} className="h-screen overflow-x-hidden flex items-center justify-center w-full select-none relative">
       <div 
         className="flex flex-col items-center justify-evenly h-screen w-full relative"
       >
