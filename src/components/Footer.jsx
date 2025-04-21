@@ -1,130 +1,46 @@
-"use client";
-import { useRef, useState } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ExternalLink } from "lucide-react";
-import Image from "next/image";
-import logo from "../../public/images/logo.svg";
-import Link from "next/link";
+import React from 'react';
+import { FAQSection } from './FAQSection';
+import { AskEcho } from './AskEcho';
+import { SocialLinks } from './SocialLinks';
+import { VidyutLogo } from './VidyutLogo';
 
-export default function Footer() {
-  const sectionRef = useRef(null);
-  
-  useGSAP(() => {
-    const boxes = gsap.utils.selector(sectionRef);
-  
-    boxes(".box").forEach((el) => {
-      const textElements = el.querySelectorAll("p, svg, span, input, a, h1, img, h2, h3");
-      const underlinedElements = el.querySelectorAll("a.underline span, span.underline");
-    
-      el.addEventListener("mouseenter", () => {
-        gsap.to(el, { backgroundColor: "var(--color-hover)", duration: 0.4, ease: "power2.out" });
-        gsap.to(textElements, {
-          color: "var(--color-background)",
-          stroke: "var(--color-background)",
-          duration: 0.4,
-          ease: "power2.out",
-        });
-        
-        if (underlinedElements.length > 0) {
-          gsap.to(underlinedElements, {
-            textDecoration: "underline var(--color-background)",
-            duration: 0.4,
-            ease: "power2.out",
-          });
-        }
-      });
-    
-      el.addEventListener("mouseleave", () => {
-        gsap.to(el, { backgroundColor: "transparent", duration: 0.4, ease: "power2.out" });
-        gsap.to(textElements, {
-          color: "var(--color-foreground)",
-          stroke: "var(--color-foreground)",
-          duration: 0.4,
-          ease: "power2.out",
-        });
-        
-        if (underlinedElements.length > 0) {
-          gsap.to(underlinedElements, {
-            textDecoration: "underline var(--color-foreground)",
-            duration: 0.4,
-            ease: "power2.out",
-          });
-        }
-      });
-    });    
-  }, []);
-
+const Footer = () => {
   return (
-    <footer
-      ref={sectionRef}
-      id="footer-section"
-      className="h-screen overflow-x-hidden w-full relative select-none"
-    >
-      <div className="h-24 md:h-36 w-full" />
-      <div className="h-full w-full bg-[url(/images/stars-sky.jpg)] opacity-70 bg-cover object-cover absolute top-0 left-0 -z-10"></div>
-      <div
-        className="grid h-[calc(100%-6rem)] md:h-[calc(100%-9rem)] w-full relative"
-        style={{
-          gridTemplateColumns: "26% 26% 36% 12%",
-        }}
-      >
-        <div className="row-start-1 h-full col-start-1 border-border border-r border-t border-b flex flex-col justify-between">
-          <div className="logo-container w-full h-[14%] flex items-center justify-center border-border box border-b">
-            <h1 className="text-4xl md:text-5xl font-proxima">VIDYUT</h1>
-          </div>
-          
-          <div className="logo-image box h-full w-full flex items-center justify-center">
-            <Image
-              alt="Logo"
-              src={logo}
-              className="mix-blend-difference h-48 w-48"
-            />
-          </div>
-          
-          <div className="copyright h-[10%] flex items-center border-border border-t justify-center text-center flex-col text-lg box">
-            <p>&copy; 20xx - 2025. Vidyut</p>
-            <p>All Rights Reserved.</p>
-          </div>
+    <footer className="bg-[#0A0A0A] text-white">
+      <div className="w-full mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mb-12">
+          <VidyutLogo />
         </div>
         
-        <div className="row-start-1 col-start-2 h-full w-full border-border border-r border-t flex flex-col">
-
-          <div className="h-[30%] w-full flex flex-col">
-            <div className="register-link h-1/2 border-border px-8 pb-2 border-t w-full flex items-end justify-between box require-pointer">
-              <span className="text-4xl text-left font-proxima">Register</span>
-              <ExternalLink className="text-3xl stroke-1 mb-2" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="space-y-8">
+            <h3 className="text-2xl font-semibold mb-6">Frequently Asked Questions</h3>
+            <FAQSection />
+          </div>
+          
+          <div className="space-y-8">
+            <div className="mb-12">
+              <h3 className="text-2xl font-semibold mb-6">Ask Echo</h3>
+              <AskEcho />
             </div>
-            <div className="tickets-link h-1/2 border-border px-8 pb-2 border-t w-full flex items-end justify-between box require-pointer">
-              <span className="text-4xl text-left font-proxima">Get Tickets</span>
-              <ExternalLink className="text-3xl stroke-1 mb-2" />
+            
+            <div>
+              <h3 className="text-2xl font-semibold mb-6">Connect With Us</h3>
+              <SocialLinks />
             </div>
           </div>
         </div>
         
-        <div className="row-start-1 relative z-50 col-start-3 border-border border-r border-t flex flex-col justify-between">
-          <div className="nav-links h-full w-full grid grid-cols-1 grid-row-[1fr_1fr_1fr_1fr] gap-4">
-            <Link href="/echo" className="text-7xl text-center flex h-full w-full items-center justify-center font-sf font-bold underline box">
-              <span>Ask Echo</span>
-            </Link>
-            <Link href="#events" className="text-7xl text-center flex h-full w-full items-center justify-center font-sf font-bold underline box">
-              <span>Events</span>
-            </Link>
-            <Link href="/theme" className="text-7xl text-center flex h-full w-full items-center justify-center font-sf font-bold underline box">
-              <span>Theme</span>
-            </Link>
-            <Link href="/recap" className="text-7xl text-center flex h-full w-full items-center justify-center font-sf font-bold underline box">
-              <span>Recap</span>
-            </Link>
+        <div className="mt-16 pt-8 border-t border-gray-800 text-gray-400 text-sm flex flex-col sm:flex-row justify-between items-center">
+          <p>© {new Date().getFullYear()} Vidyut2025. All rights reserved.</p>
+          <div className="mt-4 sm:mt-0 flex space-x-6">
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
           </div>
-        </div>
-        
-        <div className="box col-start-4 flex w-full h-full items-center justify-center require-pointer">
-          <p className="uppercase h-full w-full flex items-center justify-center -rotate-90 text-2xl xs:text-4xl lg:text-5xl 2xl:text-6xl text-foreground font-frontage-bulb whitespace-nowrap">
-            See You Soon
-          </p>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

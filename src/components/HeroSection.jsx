@@ -75,56 +75,55 @@ const Countdown = ({ targetDate }) => {
 };
 
 export default function HeroSection({ onSectionChange }) {
-
   return (
     <section
       id="hero-section"
-      className="h-screen w-screen opacity-0 relative flex flex-col items-center gap-20 justify-center py-18 pointer-events-none"
+      className="relative h-screen w-screen overflow-hidden flex flex-col items-center justify-center py-18"
     >
-      <BgVideoSection 
-        videoSrc={"/videos/asteroid.webm"} 
-        nextSectionId={"idea-section"}
-        sectionIndex={0}
-        onSectionChange={onSectionChange}   
-      />
-      <div className="flex flex-col items-center justify-center">
-        <div 
-          className="flex items-center justify-center"
-          id="hero-title"
-        >
-          <h2
-            data-text="VIDYUT"
-            className="glitch-off text-[120px] xs:text-[160px] md:text-[200px] h-fit font-frontage-bold z-10"
-          >
-            VIDYUT
-          </h2>
-          <h2
-            id="hero-title-glitch"
-            data-text="VIDYUT"
-            className="glitch absolute text-[120px] xs:text-[160px] md:text-[200px] h-fit font-frontage-bold z-10"
-          >
-            VIDYUT
-          </h2>
-        </div>
+      {/* 🔥 Marquee as background */}
+      <div className="absolute inset-0 z-0 ">
+        <ThreeDMarquee
+          images={images}
+          sectionIndex={0}
+          onSectionChange={onSectionChange}
+          nextSectionId={"idea-section"}
+          className="absolute inset-0 opacity-40 z-0"
+        />
 
-        <h3
-          id="hero-subtitle"
-          className="text-2xl xs:text-3xl md:text-4xl font-frontage-regular uppercase z-10"
-        >
-          National Level Multifest
-        </h3>
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none z-10" />
       </div>
 
-      <div className="flex flex-col gap-10 xs:gap-12 z-10">
-        <p
-          id="hero-comingsoon"
-          className="text-2xl xs:text-4xl lg:text-5xl 2xl:text-6xl font-frontage-regular text-foreground"
-        >
-          COMING SOON
-        </p>
+      {/* 🔼 Foreground Content */}
+      <div className="z-10 flex flex-col items-center justify-center gap-10 xs:gap-12">
+        <div className="flex flex-col items-center justify-center">
+          <div className="relative flex items-center justify-center" id="hero-title">
+            <h2
+              data-text="VIDYUT"
+              className="glitch-off text-[120px] xs:text-[160px] md:text-[200px] font-frontage-bold"
+            >
+              VIDYUT
+            </h2>
+            <h2
+              id="hero-title-glitch"
+              data-text="VIDYUT"
+              className="glitch absolute top-0 left-0 text-[120px] xs:text-[160px] md:text-[200px] font-frontage-bold"
+            >
+              VIDYUT
+            </h2>
+          </div>
 
-        <div id="hero-countdown">
-          <Countdown targetDate={new Date([2025, 5, 23])} />
+          <h3 className="text-2xl xs:text-3xl md:text-4xl font-frontage-regular uppercase">
+            National Level Multifest
+          </h3>
+        </div>
+
+        <div className="flex flex-col items-center gap-10 xs:gap-12">
+          <p className="text-2xl xs:text-4xl lg:text-5xl 2xl:text-6xl font-frontage-regular text-foreground">
+            COMING SOON
+          </p>
+          <div id="hero-countdown">
+            <Countdown targetDate={new Date([2025, 5, 23])} />
+          </div>
         </div>
       </div>
     </section>

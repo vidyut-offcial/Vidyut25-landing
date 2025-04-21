@@ -14,7 +14,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SpaceshipContext } from "@/contexts/SpaceShipContext";
 import ReactHowler from "react-howler";
 import MultiEventsSection from "@/components/MultiEventsSection";
-import FAQSection from "@/components/FAQSectoin";
 import Footer from "@/components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -206,12 +205,11 @@ export default function Home() {
         <HeroSection />
         <div id="section-container" className="h-full w-full hidden opacity-0">
           <NavBar />
-          <IdeaSection />
           <AboutSection />
-          <EventsSection />
+          <IdeaSection />  
           <MultiEventsSection />
+          <EventsSection />
           <PastSection />
-          <FAQSection />
           <Footer />
         </div>
       </main>

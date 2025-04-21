@@ -144,6 +144,7 @@ export default function IdeaSection() {
   
   return (
     <section id="idea-section" className="relative h-screen w-screen flex items-center justify-center overflow-hidden">
+      <div className="-z-1">
       <canvas 
         ref={canvasRef} 
         className="absolute top-0 left-0 w-full h-full -z-10"
@@ -168,6 +169,9 @@ export default function IdeaSection() {
         >
           Creating <Cover>Tomorrow.</Cover>
         </motion.h1>
+      </div>
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-[1px] w-1/2 bg-gradient-to-r from-transparent via-red-500 to-transparent hidden md:block animate-pulse z-20" />
+
       </div>
     </section>
   );

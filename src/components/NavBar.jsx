@@ -57,7 +57,7 @@ export default function NavBar() {
     { name: "Home", href: "/" },
     { name: "Events", href: "/events" },
     { name: "Proshow", href: "/proshow" },
-    { name: "Car Show", href: "/carshow" },
+    { name: "Auto Show", href: "/autoshow" },
     { name: "Echo", href: "/echo" },
   ];
 
@@ -71,116 +71,99 @@ export default function NavBar() {
     
     router.push(href);
   };
+  const leftLinks = navLinks.slice(0, 3);
+  const rightLinks = navLinks.slice(3);
 
   return (
     <nav 
-      ref={navRef}
-      className={`fixed top-0 w-full flex items-center justify-between px-6 md:px-12 z-[1000] transition-all duration-500 ${
-        scrolled ? "h-16 backdrop-blur-lg bg-black/50" : "h-20"
-      }`}
-    >
-      <div className="h-[1px] w-1/4 bg-gradient-to-r from-transparent via-red-500 to-transparent hidden md:block animate-pulse" />
-      
-      <div className="relative hover:opacity-80 transition-all">
+    ref={navRef}
+    className={`fixed top-0 w-full flex items-center justify-between px-6 md:px-12 z-[1000] transition-all duration-500 ${
+      scrolled ? "h-16 backdrop-blur-lg bg-black/50" : "h-20"
+    }`}
+  >
+    <div className="h-[1px] w-1/4 bg-gradient-to-r from-transparent via-red-500 to-transparent hidden md:block animate-pulse" />
+  
+    {/* LEFT LINKS */}
+    <div className="hidden md:flex items-center space-x-6">
+      {leftLinks.map((link, index) => (
         <a 
-          href="/"
-          className="block relative z-10"
-          onClick={(e) => handleLinkClick("/", e)}
+          key={index}
+          href={link.href}
+          onClick={(e) => handleLinkClick(link.href, e)}
+          className={`text-white relative group text-sm uppercase tracking-wider transition-all duration-300 py-2 px-4 cursor-pointer ${
+            router.pathname === link.href 
+              ? "text-red-400 font-medium" 
+              : "opacity-70 hover:opacity-100 hover:text-red-400"
+          }`}
         >
-          <div className="p-2">
-            <Image
-              ref={logoRef}
-              className="w-10 sm:w-12 object-contain cursor-pointer"
-              src={Logo}
-              alt="Vidyut Logo"
-              width={48}
-              height={48}
-              priority
-            />
-          </div>
-        </a>
-      </div>
-      
-      <div className="hidden md:flex items-center space-x-8">
-        {navLinks.map((link, index) => (
-          <a 
-            key={index}
-            ref={(el) => {
-              if (el) linksRef.current[index] = el;
-            }}
-            href={link.href}
-            onClick={(e) => handleLinkClick(link.href, e)}
-            className={`text-white relative group text-sm uppercase tracking-wider transition-all duration-300 py-2 px-3 cursor-pointer ${
+          {link.name}
+          <span 
+            className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-red-500 to-transparent transition-all duration-300 ${
               router.pathname === link.href 
-                ? "text-red-400 font-medium" 
-                : "opacity-70 hover:opacity-100 hover:text-red-400"
+                ? "w-full" 
+                : "w-0 group-hover:w-full"
             }`}
-          >
-            {link.name}
-            <span 
-              className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-red-500 to-transparent transition-all duration-300 ${
-                router.pathname === link.href 
-                  ? "w-full" 
-                  : "w-0 group-hover:w-full"
-              }`}
-            />
-          </a>
-        ))}
-      </div>
-      
+          />
+        </a>
+      ))}
+    </div>
+  
+    {/* LOGO CENTERED */}
+    <div className="absolute left-1/2 transform -translate-x-1/2 z-20">
+      <a 
+        href="/"
+        onClick={(e) => handleLinkClick("/", e)}
+        className="block relative z-10"
+      >
+        <div className="p-2">
+          <Image
+            ref={logoRef}
+            className="w-10 sm:w-12 object-contain cursor-pointer"
+            src={Logo}
+            alt="Vidyut Logo"
+            width={48}
+            height={48}
+            priority
+          />
+        </div>
+      </a>
+    </div>
+  
+    {/* RIGHT LINKS */}
+    <div className="hidden md:flex items-center space-x-6">
+      {rightLinks.map((link, index) => (
+        <a 
+          key={index}
+          href={link.href}
+          onClick={(e) => handleLinkClick(link.href, e)}
+          className={`text-white relative group text-sm uppercase tracking-wider transition-all duration-300 py-2 px-3 cursor-pointer ${
+            router.pathname === link.href 
+              ? "text-red-400 font-medium" 
+              : "opacity-70 hover:opacity-100 hover:text-red-400"
+          }`}
+        >
+          {link.name}
+          <span 
+            className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-red-500 to-transparent transition-all duration-300 ${
+              router.pathname === link.href 
+                ? "w-full" 
+                : "w-0 group-hover:w-full"
+            }`}
+          />
+        </a>
+      ))}
+  
+      {/* Optional register button here */}
       <button 
-        className="hidden md:flex items-center space-x-2 bg-black/30 backdrop-blur-sm border border-red-500/30 px-4 py-2 rounded-full text-white text-sm hover:bg-black/50 hover:border-red-500 hover:shadow-lg hover:shadow-red-500/20 transform hover:-translate-y-1 active:translate-y-0 transition-all duration-300 cursor-pointer"
-        onClick={() => console.log("Countdown button clicked")}
+        className="ml-4 bg-black/30 backdrop-blur-sm border border-red-500/30 px-4 py-2 rounded-full text-white text-sm hover:bg-black/50 hover:border-red-500 hover:shadow-lg hover:shadow-red-500/20 transform hover:-translate-y-1 active:translate-y-0 transition-all duration-300 cursor-pointer"
+        onClick={() => router.push("/register")}
       >
         <span className="text-red-400">REGISTER</span>
       </button>
-      
-      <div className="md:hidden flex items-center">
-        <button
-          onClick={() => {
-            console.log("Mobile menu toggle clicked");
-            setMenuOpen(!menuOpen);
-          }}
-          className="text-white focus:outline-none p-2 cursor-pointer"
-        >
-          <div className="relative w-6 h-5">
-            <span className={`absolute h-0.5 w-full bg-red-400 transform transition-all duration-300 ${menuOpen ? 'rotate-45 top-2' : 'top-0'}`}></span>
-            <span className={`absolute h-0.5 w-full bg-red-400 top-2 transition-all duration-300 ${menuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-            <span className={`absolute h-0.5 w-full bg-red-400 transform transition-all duration-300 ${menuOpen ? '-rotate-45 top-2' : 'top-4'}`}></span>
-          </div>
-        </button>
-      </div>
-      
-      <div className="h-[1px] w-1/4 bg-gradient-to-l from-transparent via-red-500 to-transparent hidden md:block animate-pulse" />
-      
-      <div 
-        className={`absolute top-full left-0 w-full bg-black/90 backdrop-blur-lg transform ${
-          menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
-        } transition-all duration-500 z-50`}
-      >
-        <div className="flex flex-col space-y-4 p-6">
-          {navLinks.map((link, index) => (
-            <a 
-              key={index} 
-              href={link.href}
-              onClick={(e) => handleLinkClick(link.href, e)}
-              className={`text-white py-4 px-2 border-b border-red-500/20 transition-all duration-300 block cursor-pointer ${
-                router.pathname === link.href 
-                  ? "text-red-400 border-red-500" 
-                  : "hover:border-red-500 hover:text-red-400 hover:pl-4"
-              }`}
-            >
-              {link.name}
-            </a>
-          ))}
-          <button 
-            className="bg-gradient-to-r from-red-800/50 to-red-600/50 border border-red-500/30 px-6 py-3 rounded text-white mt-4 hover:from-red-700/70 hover:to-red-500/70 active:scale-95 transform transition-all duration-300 cursor-pointer"
-            onClick={() => router.push("/register")}
-          >
-            REGISTER NOW
-          </button>
-        </div>
-      </div>
-    </nav>
+    </div>
+  
+    <div className="h-[1px] w-1/4 bg-gradient-to-l from-transparent via-red-500 to-transparent hidden md:block animate-pulse" />
+  </nav>
+  
   );
 }
