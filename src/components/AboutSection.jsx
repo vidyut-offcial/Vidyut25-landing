@@ -94,15 +94,6 @@ function TerrainVectorBackground() {
     }
   }, [texture]);
   
-  // useFrame((state) => {
-  //   if (meshRef.current && meshRef.current.material && meshRef.current.material.uniforms) {
-  //     // Update shader uniforms
-  //     meshRef.current.material.uniforms.time.value = state.clock.getElapsedTime();
-  //     meshRef.current.material.uniforms.mouse.value.x = mouse.current.x;
-  //     meshRef.current.material.uniforms.mouse.value.y = mouse.current.y;
-  //   }
-  // });
-  
   return (
     <mesh ref={meshRef} position={[0, 0, -10]}>
       <planeGeometry args={[30, 15, 1, 1]} />
@@ -113,7 +104,6 @@ function TerrainVectorBackground() {
   );
 }
 
-// 3D Logo Model Component with Pure Silver
 function LogoModel({ inView }) {
   const gltf = useLoader(GLTFLoader, "/models/logo.gltf");
   const modelRef = useRef();
@@ -124,10 +114,8 @@ function LogoModel({ inView }) {
   const rotationTimeline = useRef(null);
   const isRotating = useRef(false);
   
-  // Setup GSAP animation and materials
   useEffect(() => {
     if (gltf) {
-      // Create a pure silver material
       const silverMaterial = new THREE.MeshPhysicalMaterial({
         color: 0xE0E0E0,
         metalness: 0.9,
@@ -138,7 +126,6 @@ function LogoModel({ inView }) {
         envMapIntensity: 1.2,
       });
       
-      // Apply the material to all mesh children
       gltf.scene.traverse((child) => {
         if (child.isMesh) {
           child.userData.originalMaterial = child.material;
@@ -146,7 +133,6 @@ function LogoModel({ inView }) {
         }
       });
       
-      // Store the original rotation
       if (modelRef.current) {
         originalRotation.current = {
           x: modelRef.current.rotation.x,
@@ -155,24 +141,19 @@ function LogoModel({ inView }) {
         };
       }
       
-      // Initialize GSAP timeline for rotation animation
       rotationTimeline.current = gsap.timeline({ paused: true });
       
-      // Set up mouse move listener for x-axis rotation
       const handleMouseMove = (event) => {
         if (modelRef.current && !isRotating.current) {
-          // Calculate normalized x position (-1 to 1)
           const normalizedX = (event.clientX / window.innerWidth) * 2 - 1;
           mouseRef.current.x = normalizedX;
           
-          // Update hover state
           const canvas = document.querySelector('canvas');
           if (canvas) {
             const rect = canvas.getBoundingClientRect();
             const x = event.clientX - rect.left;
             const y = event.clientY - rect.top;
             
-            // Check if mouse is over the canvas
             const isHovered = 
               x >= 0 && 
               x <= rect.width && 
@@ -189,13 +170,10 @@ function LogoModel({ inView }) {
     }
   }, [gltf]);
   
-  // Handle intersection observer changes
   useEffect(() => {
     if (inView && !isRotating.current && modelRef.current) {
-      // Trigger rotation animation when coming into view
       isRotating.current = true;
       
-      // Reset to original position first if needed
       gsap.to(modelRef.current.rotation, {
         x: originalRotation.current.x,
         y: originalRotation.current.y,
@@ -203,7 +181,6 @@ function LogoModel({ inView }) {
         duration: 0.5,
         ease: "power2.out",
         onComplete: () => {
-          // Then do one full rotation
           gsap.to(modelRef.current.rotation, {
             y: originalRotation.current.y + Math.PI * 2,
             duration: 2,
@@ -218,9 +195,7 @@ function LogoModel({ inView }) {
   }, [inView]);
   
   useFrame((state, delta) => {
-    // Apply x-axis rotation based on mouse position
     if (modelRef.current && !isRotating.current) {
-      // Rotate smoothly along x-axis only based on mouseX
       modelRef.current.rotation.y = THREE.MathUtils.lerp(
         modelRef.current.rotation.y,
         originalRotation.current.y + mouseRef.current.x * 0.5, 
@@ -228,11 +203,9 @@ function LogoModel({ inView }) {
       );
     }
     
-    // Apply hover effects to materials
     if (modelRef.current && gltf) {
       gltf.scene.traverse((child) => {
         if (child.isMesh && child.material) {
-          // Smooth transition to hovered state
           if (hovered) {
             child.material.envMapIntensity = THREE.MathUtils.lerp(
               child.material.envMapIntensity,
@@ -260,14 +233,12 @@ function LogoModel({ inView }) {
       });
     }
     
-    // Update spotlight position
     if (spotlightRef.current) {
       const time = state.clock.getElapsedTime();
       spotlightRef.current.position.x = Math.sin(time * 0.5) * 3;
       spotlightRef.current.position.z = Math.cos(time * 0.5) * 3;
       spotlightRef.current.position.y = 5 + Math.sin(time) * 0.5;
       
-      // Make spotlight brighter when hovered
       spotlightRef.current.intensity = hovered ? 15 : 8;
     }
   });
@@ -296,7 +267,6 @@ function LogoModel({ inView }) {
   );
 }
 
-// Adjust camera to keep logo centered
 function CenterCamera() {
   const { camera } = useThree();
   
@@ -310,19 +280,17 @@ function CenterCamera() {
 
 export default function AboutSection() {
   const sectionRef = useRef(null);
-  const [isInView, setIsInView] = useState(true); // Set to true by default to show animation immediately
+  const [isInView, setIsInView] = useState(true);
   
-  // Set up intersection observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Update state when intersection status changes
         setIsInView(entry.isIntersecting);
       },
       {
         root: null,
         rootMargin: '0px',
-        threshold: 0.1 // Trigger when at least 10% visible
+        threshold: 0.1
       }
     );
     
@@ -362,7 +330,6 @@ export default function AboutSection() {
           color="#ffffff" 
         />
         
-        {/* Terrain background with vector shader effect */}
         <Suspense fallback={null}>
           <TerrainVectorBackground />
         </Suspense>
