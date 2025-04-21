@@ -94,12 +94,6 @@ export default function MultiEventsSection({ onSectionChange }) {
       id="multi-events-section"
       className="h-screen w-screen select-none bg-black relative flex gap-16 items-center justify-center overflow-hidden"
     >
-      <BgVideoSection 
-        videoSrc={"/videos/asteroid-planet.webm"} 
-        nextSectionId={"past-section"}
-        sectionIndex={5}
-        onSectionChange={onSectionChange}   
-      />
       <BgVideoSection videoSrc={"/videos/asteroid-planet.webm"} nextSectionId={"past-section"} />
       {cards.map((card, index) => (
         <a 

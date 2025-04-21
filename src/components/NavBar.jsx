@@ -145,7 +145,7 @@ export default function NavBar() {
         className="hidden md:flex items-center space-x-2 bg-black/30 backdrop-blur-sm border border-red-500/30 px-4 py-2 rounded-full text-white text-sm hover:bg-black/50 hover:border-red-500 hover:shadow-lg hover:shadow-red-500/20 transform hover:-translate-y-1 active:translate-y-0 transition-all duration-300 cursor-pointer"
         onClick={() => console.log("Countdown button clicked")}
       >
-        <span className="text-red-400">COMING SOON</span>
+        <span className="text-red-400">REGISTER</span>
       </button>
       
       {/* Mobile Menu Button */}

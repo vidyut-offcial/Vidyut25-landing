@@ -21,6 +21,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const [showSpaceship, setShowSpaceship] = useState(true);
+  const [isSpaceshipMounted, setIsSpaceshipMounted] = useState(true);
   const spaceshipRef = useRef(null);
   const mainRef = useRef(null);
   const [playOne, setPlayOne] = useState(false);
@@ -42,23 +43,22 @@ export default function Home() {
         y: 0,
         ease: "power2.out",
         onComplete: () => {
-          gsap.set("#model", {translateY: "100vh", position: "absolute", top: 0, left: 0, zIndex: "-10"});
-          gsap.set(spaceshipRef.current.position, {x: 2.5, y: 2, z: 0});
-          gsap.set(spaceshipRef.current.scale, {x: "+=0.25", y: "+=0.25", z: "+=0.25"});
-        }
+          gsap.set("#model", { translateY: "100vh", position: "absolute", top: 0, left: 0, zIndex: "-10" });
+          setIsSpaceshipMounted(false);
+        },
       })
       .to("#hero-title", {
         duration: 2,
         y: 0,
-        ease: "power2.inOut"
+        ease: "power2.inOut",
       })
       .to("#hero-subtitle", {
         x: 0,
         opacity: 2,
         duration: 1.2,
-        ease: "power3.out"
+        ease: "power3.out",
       }, "-=0.5")
-      .set("#section-container", {display: "block"})
+      .set("#section-container", { display: "block" })
       .to("#hero-comingsoon", {
         y: 0,
         opacity: 1,
@@ -69,15 +69,15 @@ export default function Home() {
             opacity: 1,
             duration: 0.5,
             ease: "power2.out",
-          })
-        }
+          });
+        },
       }, "-=0.8")
       .to("#hero-countdown", {
         scale: 1,
         opacity: 1,
         duration: 2,
-        ease: "back.out(1.7)"
-      }, "-=0.8")
+        ease: "back.out(1.7)",
+      }, "-=0.8");
   };
 
   function transitHero() {
@@ -88,76 +88,76 @@ export default function Home() {
         const tl = gsap.timeline();
 
         tl
-        .call(() => {
-          setPlayOne(true);
-        })
-        .to(spaceshipRef.current.position, {
-          x: 2.5,
-          y: 2.5,
-          z: 2.5,
-          duration: 1.5,
-          ease: "power2.out",
-          onComplete: () => {
-            setPlayTwo(true);
-          }
-        })
-        .to(spaceshipRef.current.rotation, {
-          y: -Math.PI / 8,
-          x: 0,
-          z: 0,
-          duration: 1.5,
-          ease: "power2.out",
-        }, "<")
-        .to(spaceshipRef.current.scale, {
-          x: initialScale.x * 0.5,
-          y: initialScale.y * 0.5,
-          z: initialScale.z * 0.5,
-          duration: 1.5,
-          ease: "power2.out",
-        }, "<")
-        .to(spaceshipRef.current.scale, {
-          x: initialScale.x * 2.5,
-          y: initialScale.y * 2.5,
-          z: initialScale.z * 2.5,
-          duration: 1.5,
-          ease: "power2.out",
-          onComplete: () => {
-            setPlayOne(false);
-            startReveal();
-          }
-        })
-        .to(spaceshipRef.current.position, {
-          x: 0,
-          y: 0,
-          z: 1,
-          duration: 1.5,
-          ease: "power2.out",
-        }, "<")
-        .to(spaceshipRef.current.rotation, {
-          y: Math.PI / 2,
-          x: -Math.PI / 2,
-          z: 0,
-          duration: 1.5,
-          ease: "power2.out",
-        }, "<")
-        .to(spaceshipRef.current.scale, {
-          x: initialScale.x,
-          y: initialScale.y,
-          z: initialScale.z,
-          duration: 1.5,
-          ease: "power2.out",
-        })
-        .to(spaceshipRef.current.position, {
-          x: 35,
-          y: 0,
-          z: 0,
-          duration: 1.5,
-          ease: "power2.out",
-        }, "<");
+          .call(() => {
+            setPlayOne(true);
+          })
+          .to(spaceshipRef.current.position, {
+            x: 2.5,
+            y: 2.5,
+            z: 2.5,
+            duration: 1.5,
+            ease: "power2.out",
+            onComplete: () => {
+              setPlayTwo(true);
+            },
+          })
+          .to(spaceshipRef.current.rotation, {
+            y: -Math.PI / 8,
+            x: 0,
+            z: 0,
+            duration: 1.5,
+            ease: "power2.out",
+          }, "<")
+          .to(spaceshipRef.current.scale, {
+            x: initialScale.x * 0.5,
+            y: initialScale.y * 0.5,
+            z: initialScale.z * 0.5,
+            duration: 1.5,
+            ease: "power2.out",
+          }, "<")
+          .to(spaceshipRef.current.scale, {
+            x: initialScale.x * 2.5,
+            y: initialScale.y * 2.5,
+            z: initialScale.z * 2.5,
+            duration: 1.5,
+            ease: "power2.out",
+            onComplete: () => {
+              setPlayOne(false);
+              startReveal();
+            },
+          })
+          .to(spaceshipRef.current.position, {
+            x: 0,
+            y: 0,
+            z: 1,
+            duration: 1.5,
+            ease: "power2.out",
+          }, "<")
+          .to(spaceshipRef.current.rotation, {
+            y: Math.PI / 2,
+            x: -Math.PI / 2,
+            z: 0,
+            duration: 1.5,
+            ease: "power2.out",
+          }, "<")
+          .to(spaceshipRef.current.scale, {
+            x: initialScale.x,
+            y: initialScale.y,
+            z: initialScale.z,
+            duration: 1.5,
+            ease: "power2.out",
+          })
+          .to(spaceshipRef.current.position, {
+            x: 35,
+            y: 0,
+            z: 0,
+            duration: 1.5,
+            ease: "power2.out",
+          }, "<");
       }
     }, 100);
-  
-      return () => clearInterval(interval);
+
+    return () => clearInterval(interval);
   }
 
   useEffect(() => {
@@ -180,7 +180,7 @@ export default function Home() {
         <div id="model" className="fixed flex items-center justify-center top-0 left-0 z-[100] pointer-events-none">
           <ReactHowler
             src="/sounds/woof.mp3"
-            playing={false} 
+            playing={false}
             html5={true}
             ref={howlerOneRef}
             volume={1}
@@ -200,7 +200,7 @@ export default function Home() {
               });
             }}
           />
-          {showSpaceship && <SpaceShipModel ref={spaceshipRef} />}
+          {isSpaceshipMounted && showSpaceship && <SpaceShipModel ref={spaceshipRef} />}
         </div>
         <PostLoading onComplete={transitHero} />
         <HeroSection />
