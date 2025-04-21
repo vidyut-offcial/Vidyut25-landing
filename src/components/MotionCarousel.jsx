@@ -62,14 +62,11 @@ const MotionCarousel = ({ images, contentItems, onActiveImageChange, initialInde
   const handleExternalIndexChange = (e) => {
     const { index } = e.detail;
     if (index >= 0 && index < contentItems.length) {
-      // Calculate where this index should be positioned
       const targetX = -(index * (itemWidth.current + gap));
       scrollY.current = targetX;
       
-      // Update the last active index
       lastActiveIndex.current = index;
       
-      // Immediately apply the change
       y.current = targetX;
       safeDispose(y.current);
 
@@ -121,7 +118,6 @@ const MotionCarousel = ({ images, contentItems, onActiveImageChange, initialInde
 
       if (closestIndex !== lastActiveIndex.current) {
         lastActiveIndex.current = closestIndex;
-        // Pass the full content object along with the image URL and index
         const imageUrl = contentItems[closestIndex].image;
         const content = contentItems[closestIndex];
         onActiveImageChange?.(imageUrl, closestIndex, content);
@@ -143,7 +139,6 @@ const MotionCarousel = ({ images, contentItems, onActiveImageChange, initialInde
 
       safeDispose(0);
       
-      // Trigger initial active content
       if (initialIndex >= 0 && initialIndex < contentItems.length) {
         const imageUrl = contentItems[initialIndex].image;
         const content = contentItems[initialIndex];

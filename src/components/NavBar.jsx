@@ -13,7 +13,6 @@ export default function NavBar() {
   const logoRef = useRef(null);
   const linksRef = useRef([]);
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -22,11 +21,9 @@ export default function NavBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // GSAP animations setup for logo
   useEffect(() => {
     if (!logoRef.current) return;
     
-    // Create the animation but don't play it yet
     const logoAnimation = gsap.timeline({ paused: true })
       .to(logoRef.current, { 
         opacity: 0.7,
@@ -34,7 +31,6 @@ export default function NavBar() {
         ease: "power2.out" 
       });
     
-    // Add the event listeners to the logo's parent element
     const logoWrapper = logoRef.current.parentElement;
     
     const handleMouseEnter = () => {
@@ -56,9 +52,7 @@ export default function NavBar() {
     }
   }, [logoRef]);
 
-  // Initialize navbar animation on mount
 
-  // Navigation links with full page routes
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Events", href: "/events" },
@@ -67,17 +61,14 @@ export default function NavBar() {
     { name: "Echo", href: "/echo" },
   ];
 
-  // Handle link click with routing
   const handleLinkClick = (href, e) => {
     e.preventDefault();
     console.log(`Navigating to ${href}`);
     
-    // Close mobile menu if open
     if (menuOpen) {
       setMenuOpen(false);
     }
     
-    // Use Next.js router for navigation
     router.push(href);
   };
 
@@ -88,10 +79,8 @@ export default function NavBar() {
         scrolled ? "h-16 backdrop-blur-lg bg-black/50" : "h-20"
       }`}
     >
-      {/* Left line with pulse animation */}
       <div className="h-[1px] w-1/4 bg-gradient-to-r from-transparent via-red-500 to-transparent hidden md:block animate-pulse" />
       
-      {/* Logo with GSAP hover animation */}
       <div className="relative hover:opacity-80 transition-all">
         <a 
           href="/"
@@ -112,7 +101,6 @@ export default function NavBar() {
         </a>
       </div>
       
-      {/* Desktop Menu Links */}
       <div className="hidden md:flex items-center space-x-8">
         {navLinks.map((link, index) => (
           <a 
@@ -140,7 +128,6 @@ export default function NavBar() {
         ))}
       </div>
       
-      {/* Countdown Button with hover effects */}
       <button 
         className="hidden md:flex items-center space-x-2 bg-black/30 backdrop-blur-sm border border-red-500/30 px-4 py-2 rounded-full text-white text-sm hover:bg-black/50 hover:border-red-500 hover:shadow-lg hover:shadow-red-500/20 transform hover:-translate-y-1 active:translate-y-0 transition-all duration-300 cursor-pointer"
         onClick={() => console.log("Countdown button clicked")}
@@ -148,7 +135,6 @@ export default function NavBar() {
         <span className="text-red-400">REGISTER</span>
       </button>
       
-      {/* Mobile Menu Button */}
       <div className="md:hidden flex items-center">
         <button
           onClick={() => {
@@ -165,10 +151,8 @@ export default function NavBar() {
         </button>
       </div>
       
-      {/* Right line with pulse animation */}
       <div className="h-[1px] w-1/4 bg-gradient-to-l from-transparent via-red-500 to-transparent hidden md:block animate-pulse" />
       
-      {/* Mobile Menu */}
       <div 
         className={`absolute top-full left-0 w-full bg-black/90 backdrop-blur-lg transform ${
           menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'

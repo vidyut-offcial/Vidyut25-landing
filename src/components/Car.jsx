@@ -8,8 +8,6 @@ import { useWheels } from "./useWheels";
 import { WheelDebug } from "./WheelDebug";
 
 export function Car({ thirdPerson }) {
-  // thanks to the_86_guy!
-  // https://sketchfab.com/3d-models/low-poly-car-muscle-car-2-ac23acdb0bd54ab38ea72008f3312861
   let result = useLoader(
     GLTFLoader,
     "/models/car.glb"

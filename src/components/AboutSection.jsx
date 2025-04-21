@@ -1,13 +1,117 @@
 "use client";
 
-import { Suspense } from "react";
-import { useEffect, useState, useRef } from "react";
-import { FlipWords } from "./ui/flip-words";
+import { Suspense, useEffect, useState, useRef } from "react";
 import { Canvas, useLoader, useFrame, useThree } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { OrbitControls, Environment, SpotLight } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
+
+// Terrain Background with Vector Shader Effect
+function TerrainVectorBackground() {
+  const meshRef = useRef();
+  const mouse = useRef({ x: 0, y: 0 });
+  const [texture, setTexture] = useState(null);
+  
+  // Load terrain texture
+  useEffect(() => {
+    const textureLoader = new THREE.TextureLoader();
+    textureLoader.load('/images/terrain.png', (loadedTexture) => {
+      loadedTexture.wrapS = THREE.RepeatWrapping;
+      loadedTexture.wrapT = THREE.RepeatWrapping;
+      setTexture(loadedTexture);
+    });
+  }, []);
+  
+  // Track mouse position for shader effect
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      mouse.current = {
+        x: (event.clientX / window.innerWidth) * 2 - 1,
+        y: -(event.clientY / window.innerHeight) * 2 + 1
+      };
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+  
+  // Create shader material once texture is loaded
+  useEffect(() => {
+    if (texture && meshRef.current) {
+      const material = new THREE.ShaderMaterial({
+        uniforms: {
+          time: { value: 0 },
+          mouse: { value: new THREE.Vector2(0, 0) },
+          terrainTexture: { value: texture },
+          resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) }
+        },
+        vertexShader: `
+          varying vec2 vUv;
+          
+          void main() {
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }
+        `,
+        fragmentShader: `
+          uniform float time;
+          uniform vec2 mouse;
+          uniform sampler2D terrainTexture;
+          uniform vec2 resolution;
+          varying vec2 vUv;
+          
+          void main() {
+            // Calculate distance from mouse
+            vec2 st = vUv;
+            vec2 mousePos = mouse * 0.5 + 0.5;
+            float dist = distance(st, mousePos);
+            
+            // Create subtle vector effect with ripples
+            float ripple = sin(dist * 20.0 - time * 1.5) * 0.003;
+            
+            // Apply distortion based on mouse distance (stronger near mouse)
+            float strength = smoothstep(0.3, 0.0, dist) * 0.01;
+            vec2 distortedUV = st;
+            
+            // Apply directional distortion
+            vec2 direction = normalize(st - mousePos);
+            distortedUV += direction * sin(time + dist * 5.0) * strength;
+            
+            // Apply ripple effect
+            distortedUV += direction * ripple * smoothstep(0.5, 0.0, dist);
+            
+            // Sample texture with distorted UVs
+            vec4 color = texture2D(terrainTexture, distortedUV);
+            
+            gl_FragColor = color;
+          }
+        `,
+        transparent: true
+      });
+      
+      meshRef.current.material = material;
+    }
+  }, [texture]);
+  
+  // useFrame((state) => {
+  //   if (meshRef.current && meshRef.current.material && meshRef.current.material.uniforms) {
+  //     // Update shader uniforms
+  //     meshRef.current.material.uniforms.time.value = state.clock.getElapsedTime();
+  //     meshRef.current.material.uniforms.mouse.value.x = mouse.current.x;
+  //     meshRef.current.material.uniforms.mouse.value.y = mouse.current.y;
+  //   }
+  // });
+  
+  return (
+    <mesh ref={meshRef} position={[0, 0, -10]}>
+      <planeGeometry args={[30, 15, 1, 1]} />
+      <meshBasicMaterial>
+        {texture && <primitive attach="map" object={texture} />}
+      </meshBasicMaterial>
+    </mesh>
+  );
+}
 
 // 3D Logo Model Component with Pure Silver
 function LogoModel({ inView }) {
@@ -15,8 +119,7 @@ function LogoModel({ inView }) {
   const modelRef = useRef();
   const spotlightRef = useRef();
   const [hovered, setHovered] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const dragStartPosition = useRef({ x: 0, y: 0 });
+  const mouseRef = useRef({ x: 0 });
   const originalRotation = useRef({ x: 0, y: 0, z: 0 });
   const rotationTimeline = useRef(null);
   const isRotating = useRef(false);
@@ -55,14 +158,34 @@ function LogoModel({ inView }) {
       // Initialize GSAP timeline for rotation animation
       rotationTimeline.current = gsap.timeline({ paused: true });
       
-      // Set up hover detection for the model
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
-      
-      return () => {
-        document.removeEventListener('mousemove', handleMouseMove);
-        document.removeEventListener('mouseup', handleMouseUp);
+      // Set up mouse move listener for x-axis rotation
+      const handleMouseMove = (event) => {
+        if (modelRef.current && !isRotating.current) {
+          // Calculate normalized x position (-1 to 1)
+          const normalizedX = (event.clientX / window.innerWidth) * 2 - 1;
+          mouseRef.current.x = normalizedX;
+          
+          // Update hover state
+          const canvas = document.querySelector('canvas');
+          if (canvas) {
+            const rect = canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            
+            // Check if mouse is over the canvas
+            const isHovered = 
+              x >= 0 && 
+              x <= rect.width && 
+              y >= 0 && 
+              y <= rect.height;
+              
+            setHovered(isHovered);
+          }
+        }
       };
+      
+      document.addEventListener('mousemove', handleMouseMove);
+      return () => document.removeEventListener('mousemove', handleMouseMove);
     }
   }, [gltf]);
   
@@ -94,81 +217,19 @@ function LogoModel({ inView }) {
     }
   }, [inView]);
   
-  // Handle mouse move to detect hover
-  const handleMouseMove = (event) => {
-    if (modelRef.current) {
-      const canvas = document.querySelector('canvas');
-      if (canvas) {
-        const rect = canvas.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-        
-        // Check if mouse is over the canvas
-        const isHovered = 
-          x >= 0 && 
-          x <= rect.width && 
-          y >= 0 && 
-          y <= rect.height;
-          
-        setHovered(isHovered);
-        
-        // Handle dragging
-        if (isDragging) {
-          const deltaX = event.clientX - dragStartPosition.current.x;
-          const deltaY = event.clientY - dragStartPosition.current.y;
-          
-          // Update model rotation based on drag
-          modelRef.current.rotation.y = originalRotation.current.y + deltaX * 0.01;
-          modelRef.current.rotation.x = originalRotation.current.x + deltaY * 0.01;
-          
-          // Update drag start position
-          dragStartPosition.current = {
-            x: event.clientX,
-            y: event.clientY
-          };
-        }
-      }
-    }
-  };
-  
-  // Handle mouse down for drag start
-  const handleMouseDown = (event) => {
-    if (!isRotating.current) {
-      setIsDragging(true);
-      dragStartPosition.current = {
-        x: event.clientX,
-        y: event.clientY
-      };
-      
-      // Store current rotation as starting point
-      originalRotation.current = {
-        x: modelRef.current.rotation.x,
-        y: modelRef.current.rotation.y,
-        z: modelRef.current.rotation.z
-      };
-    }
-  };
-  
-  // Handle mouse up to end dragging
-  const handleMouseUp = () => {
-    if (isDragging) {
-      setIsDragging(false);
-      
-      // Return to original position with GSAP animation
-      gsap.to(modelRef.current.rotation, {
-        x: originalRotation.current.x,
-        y: originalRotation.current.y,
-        z: originalRotation.current.z,
-        duration: 1,
-        ease: "elastic.out(1, 0.5)"
-      });
-    }
-  };
-  
   useFrame((state, delta) => {
-    // Only apply hover effects, no rotation here (GSAP handles rotation)
+    // Apply x-axis rotation based on mouse position
+    if (modelRef.current && !isRotating.current) {
+      // Rotate smoothly along x-axis only based on mouseX
+      modelRef.current.rotation.y = THREE.MathUtils.lerp(
+        modelRef.current.rotation.y,
+        originalRotation.current.y + mouseRef.current.x * 0.5, 
+        0.05
+      );
+    }
+    
+    // Apply hover effects to materials
     if (modelRef.current && gltf) {
-      // Hover effect - enhance shine when hovered
       gltf.scene.traverse((child) => {
         if (child.isMesh && child.material) {
           // Smooth transition to hovered state
@@ -216,12 +277,9 @@ function LogoModel({ inView }) {
       <primitive 
         ref={modelRef}
         object={gltf.scene} 
-        scale={0.5} 
-        position={[0, 0, 0]}
-        onClick={handleMouseDown}
-        onPointerDown={handleMouseDown}
-        onPointerMissed={() => setIsDragging(false)}
-        cursor={hovered ? 'grab' : 'auto'}
+        scale={0.2} 
+        position={[0, 0.2, 0]}
+        cursor={hovered ? 'pointer' : 'auto'}
       />
       <spotLight
         ref={spotlightRef}
@@ -238,9 +296,21 @@ function LogoModel({ inView }) {
   );
 }
 
+// Adjust camera to keep logo centered
+function CenterCamera() {
+  const { camera } = useThree();
+  
+  useEffect(() => {
+    camera.position.set(0, 0, 5);
+    camera.lookAt(0, 0, 0);
+  }, [camera]);
+  
+  return null;
+}
+
 export default function AboutSection() {
   const sectionRef = useRef(null);
-  const [isInView, setIsInView] = useState(false);
+  const [isInView, setIsInView] = useState(true); // Set to true by default to show animation immediately
   
   // Set up intersection observer
   useEffect(() => {
@@ -252,7 +322,7 @@ export default function AboutSection() {
       {
         root: null,
         rootMargin: '0px',
-        threshold: 0.5 // Trigger when at least 50% visible
+        threshold: 0.1 // Trigger when at least 10% visible
       }
     );
     
@@ -271,43 +341,37 @@ export default function AboutSection() {
     <section 
       id="about-section" 
       ref={sectionRef}
-      className="h-screen w-screen bg-transparent relative flex items-center gap-64 justify-center"
+      className="relative top-0 left-0 h-screen w-screen"
+      style={{ height: '100vh', width: '100vw' }}
     >
-      <div className="bg-[url(/images/terrain.png)] h-screen w-screen absolute top-0 left-0 bg-cover"></div>
-      <div className="flex flex-col items-start max-w-sm p-4 relative h-[30rem]">
-        <div className="h-[550px] w-[550px]">
-          <Canvas
-            camera={{ position: [0, 0, 5], fov: 45 }}
-            style={{ width: "100%", height: "100%" }}
-          >
-          <ambientLight intensity={0.3} />
-            <directionalLight 
-              position={[0, 5, 5]} 
-              intensity={0.8} 
-              color="#ffffff" 
-            />
-            
-            <Suspense fallback={null}>
-              <LogoModel inView={isInView} />
-              <Environment preset="warehouse" intensity={0.8} />
-            </Suspense>
-            
-            <OrbitControls 
-              enablePan={false}
-              enableZoom={false}
-              enableRotate={true}
-              enabled={true}
-            />
-          </Canvas>
-        </div>
-      </div>
-
-      <div className="relative z-50 md:row-span-2 w-[60%] flex items-center justify-center">
-        <div className="text-8xl font-bold !font-proxima text-neutral-600 dark:text-neutral-400 text-left leading-snug">
-          Experience <FlipWords words={["infinity", "possibility", "imagination", "tomorrow"]} /> <br />
-          in "<span className="text-foreground">Echoes of the Future</span>",<br />the theme of <span className="font-semibold text-black dark:text-white uppercase font-frontage-bold">Vidyut</span>.
-        </div>
-      </div>
+      <Canvas
+        camera={{ position: [0, 0, 5], fov: 45 }}
+        style={{ 
+          width: '100%', 
+          height: '100%',
+          position: 'absolute',
+          top: 0,
+          left: 0
+        }}
+      >
+        <CenterCamera />
+        <ambientLight intensity={0.3} />
+        <directionalLight 
+          position={[0, 5, 5]} 
+          intensity={0.8} 
+          color="#ffffff" 
+        />
+        
+        {/* Terrain background with vector shader effect */}
+        <Suspense fallback={null}>
+          <TerrainVectorBackground />
+        </Suspense>
+        
+        <Suspense fallback={null}>
+          <LogoModel inView={isInView} />
+          <Environment preset="warehouse" intensity={0.8} />
+        </Suspense>
+      </Canvas>
     </section>
   );
 }

@@ -5,7 +5,6 @@ import { motion } from "motion/react";
 import { HeroHighlight, Highlight } from "./HeroHighlight";
 import { Cover } from "./ui/cover";
 
-// Separate shader code for better organization
 const vertexShader = `
   varying vec2 vUv;
   
@@ -27,44 +26,34 @@ const fragmentShader = `
   void main() {
     vec2 uv = vUv;
     
-    // Sample the texture
     vec4 texColor = texture2D(uTexture, uv);
     
-    // Calculate distance from mouse position
     float dist = distance(uv, uMouse);
     
-    // Create smoother hover brightness effect with improved falloff
     float brightness = 1.0;
     if (dist < uRadius) {
-      // Smoother falloff with cubic easing
       float normDist = dist / uRadius;
       float falloff = 1.0 - normDist * normDist * (3.0 - 2.0 * normDist);
       brightness = 1.0 + (uIntensity * falloff);
     }
     
-    // Apply brightness with enhanced contrast
     texColor.rgb = texColor.rgb * brightness;
     
-    // Enhanced vignette effect with adjustable strength
     float vignette = smoothstep(0.9, 0.1, length((uv - 0.5) * vec2(1.0, 1.2)) * uVignetteStrength);
     texColor.rgb *= vignette;
     
-    // Overall exposure adjustment
-    texColor.rgb *= 1.3; // Increase base brightness
+    texColor.rgb *= 1.3;
     
     gl_FragColor = texColor;
   }
 `;
 
-// Separate Three.js setup into its own component
 function BackgroundCanvas({ canvasRef }) {
   useEffect(() => {
     if (!canvasRef.current) return;
     
-    // Set up scene
     const scene = new THREE.Scene();
     
-    // Set up camera
     const camera = new THREE.PerspectiveCamera(
       75, 
       window.innerWidth / window.innerHeight, 
@@ -73,7 +62,6 @@ function BackgroundCanvas({ canvasRef }) {
     );
     camera.position.z = 1;
     
-    // Set up renderer
     const renderer = new THREE.WebGLRenderer({
       canvas: canvasRef.current,
       alpha: true,
@@ -81,37 +69,31 @@ function BackgroundCanvas({ canvasRef }) {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     
-    // Load texture
     const textureLoader = new THREE.TextureLoader();
     const rockTexture = textureLoader.load('/images/rock.png', (texture) => {
-      // Set texture parameters for better quality
       texture.minFilter = THREE.LinearFilter;
       texture.magFilter = THREE.LinearFilter;
       texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
     });
     
-    // Create a plane geometry for the background
     const geometry = new THREE.PlaneGeometry(2, 2);
     
-    // Create a shader material with enhanced effects
     const material = new THREE.ShaderMaterial({
       uniforms: {
         uTexture: { value: rockTexture },
         uTime: { value: 0 },
         uMouse: { value: new THREE.Vector2(0.5, 0.5) },
-        uRadius: { value: 0.15 }, // Larger radius for more visible effect
-        uIntensity: { value: 1.2 }, // Higher intensity for brighter highlight
-        uVignetteStrength: { value: 1.8 } // Vignette strength
+        uRadius: { value: 0.15 },
+        uIntensity: { value: 1.2 },
+        uVignetteStrength: { value: 1.8 }
       },
       vertexShader,
       fragmentShader
     });
     
-    // Create mesh and add to scene
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
     
-    // Handle window resize
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -120,7 +102,6 @@ function BackgroundCanvas({ canvasRef }) {
     
     window.addEventListener('resize', handleResize);
     
-    // Handle mouse movement for the hover effect
     const handleMouseMove = (event) => {
       const rect = canvasRef.current.getBoundingClientRect();
       const mouseX = ((event.clientX - rect.left) / rect.width);
@@ -132,14 +113,12 @@ function BackgroundCanvas({ canvasRef }) {
     
     window.addEventListener('mousemove', handleMouseMove);
     
-    // Animation loop
     const clock = new THREE.Clock();
     
     const animate = () => {
       const elapsedTime = clock.getElapsedTime();
       material.uniforms.uTime.value = elapsedTime;
       
-      // Add subtle animation to vignette over time
       material.uniforms.uVignetteStrength.value = 1.8 + Math.sin(elapsedTime * 0.2) * 0.1;
       
       renderer.render(scene, camera);
@@ -148,7 +127,6 @@ function BackgroundCanvas({ canvasRef }) {
     
     animate();
     
-    // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);

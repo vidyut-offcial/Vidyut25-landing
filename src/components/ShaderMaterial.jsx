@@ -46,7 +46,6 @@ const CustomShaderMaterialComponent = ({ imageUrl }) => {
   const material = useMemo(() => new CustomShaderMaterial(), []);
   const { size, pointer } = useThree();
 
-  // Update uniforms directly in useFrame without triggering re-renders
   useFrame((state) => {
     material.uniforms.uTime.value = state.clock.getElapsedTime(); // Update time
     material.uniforms.uMouse.value.set(pointer.x * size.width, pointer.y * size.height); // Update mouse position

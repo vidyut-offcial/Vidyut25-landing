@@ -111,7 +111,6 @@ const GridLineVertical = ({
           "--width": "1px",
           "--fade-stop": "90%",
 
-          //-100px if you want to keep the line inside
           "--offset": offset || "150px",
 
           "--color-dark": "rgba(255, 255, 255, 0.2)",

@@ -5,7 +5,6 @@ import MotionCarousel from './MotionCarousel';
 import Image from 'next/image';
 import gsap from 'gsap';
 
-// Updated content items with complete information for each
 const contentItems = [
   {
     id: '01',
@@ -56,20 +55,17 @@ export default function EventsSection() {
   const contentRef = useRef(null);
   const indicatorsRef = useRef(null);
 
-  // Handle active content change from carousel
   const handleActiveContentChange = (imageUrl, index, content) => {
     if (content && !isTransitioning && index !== activeIndex) {
       console.log("Changing to index:", index);
       setActiveIndex(index);
       setIsTransitioning(true);
       
-      // Create GSAP timeline for smooth transitions
       const tl = gsap.timeline({
         onComplete: () => {
           setActiveContent(content);
           setIsTransitioning(false);
           
-          // Animate content back in
           gsap.fromTo(contentRef.current, 
             { opacity: 0, y: 20 },
             { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
@@ -77,7 +73,6 @@ export default function EventsSection() {
         }
       });
       
-      // Fade out content first
       tl.to(contentRef.current, { 
         opacity: 0, 
         y: -20, 
@@ -85,7 +80,6 @@ export default function EventsSection() {
         ease: "power2.in" 
       });
       
-      // Animate background image transition
       tl.to(bgImageRef.current, { 
         scale: 1.05, 
         opacity: 0,
@@ -94,7 +88,6 @@ export default function EventsSection() {
         ease: "power2.inOut" 
       }, "<");
       
-      // Wait a bit then reset background
       tl.to(bgImageRef.current, { 
         scale: 1, 
         opacity: 1,
@@ -103,7 +96,6 @@ export default function EventsSection() {
         ease: "power2.out" 
       }, "<");
       
-      // Update indicators (safely)
       if (indicatorsRef.current) {
         const indicators = [...indicatorsRef.current.children];
         indicators.forEach((indicator, i) => {
@@ -117,17 +109,13 @@ export default function EventsSection() {
     }
   };
 
-  // Manual index change (for indicator clicks)
   const handleManualIndexChange = (index) => {
     if (index !== activeIndex && !isTransitioning) {
       console.log("Manual change to index:", index);
       
-      // Update scroll position in carousel
-      // We'll create a custom event to communicate with the carousel component
       const content = contentItems[index];
       handleActiveContentChange(content.image, index, content);
       
-      // Force update scrollY in MotionCarousel - this will need to be implemented in MotionCarousel.js
       if (window) {
         const customEvent = new CustomEvent('setCarouselIndex', { 
           detail: { index }
@@ -138,10 +126,8 @@ export default function EventsSection() {
   };
 
   useEffect(() => {
-    // Initial animation on load
     setIsLoaded(true);
     
-    // Initial animations
     gsap.fromTo(
       bgImageRef.current,
       { scale: 1.1, filter: "blur(5px)" },
@@ -160,10 +146,8 @@ export default function EventsSection() {
       { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.3 }
     );
     
-    // Setup event listener for carousel index changes
     const handleSetCarouselIndex = (e) => {
       console.log("Custom event received", e.detail);
-      // You would implement this in MotionCarousel.js
     };
     
     window.addEventListener('setCarouselIndex', handleSetCarouselIndex);
@@ -197,7 +181,6 @@ export default function EventsSection() {
         className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(to_top,_black_10%,_transparent_40%),linear-gradient(to_bottom,_black_10%,_transparent_40%),linear-gradient(to_left,_black_1%,_transparent_40%),linear-gradient(to_right,_black_1%,_transparent_40%)]" 
       />
 
-      {/* Featured Content Info with GSAP animations */}
       <div 
         ref={contentRef}
         className="absolute left-16 top-1/3 z-20 max-w-2xl text-white"
@@ -222,7 +205,6 @@ export default function EventsSection() {
         </div>
       </div>
 
-      {/* Rating Indicators - Connected to current active content */}
       <div 
         ref={indicatorsRef}
         className="absolute bottom-36 left-16 z-20 flex space-x-3"
@@ -238,7 +220,6 @@ export default function EventsSection() {
         ))}
       </div>
 
-      {/* Carousel - positioned similar to the image */}
       <div className="absolute bottom-20 right-0 z-20 w-1/2">
         <MotionCarousel 
           ref={carouselRef}

@@ -8,7 +8,6 @@ export default function BgVideoSection({ videoSrc, nextSectionId, sectionIndex, 
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
-  // Observe when the current section is in view
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setIsInView(entry.isIntersecting),
@@ -22,36 +21,29 @@ export default function BgVideoSection({ videoSrc, nextSectionId, sectionIndex, 
     };
   }, []);
 
-  // Check if element and all its parents are visible
   useEffect(() => {
     const checkFullVisibility = () => {
       if (!sectionRef.current) return;
       
-      // Check the entire parent chain for visibility
       let element = sectionRef.current;
       let isFullyVisible = true;
       
       while (element && isFullyVisible) {
         const styles = window.getComputedStyle(element);
         
-        // Check opacity, display, and visibility properties
         isFullyVisible = isFullyVisible && 
           parseFloat(styles.opacity) > 0 && 
           styles.display !== 'none' &&
           styles.visibility !== 'hidden';
         
-        // Move up to parent
         element = element.parentElement;
       }
       
       setIsVisible(isFullyVisible);
     };
 
-    // Initial check
     checkFullVisibility();
 
-    // Set up mutation observer for the entire document body
-    // This way we catch style changes anywhere in the parent chain
     const observer = new MutationObserver(checkFullVisibility);
     observer.observe(document.body, {
       attributes: true,
@@ -59,7 +51,6 @@ export default function BgVideoSection({ videoSrc, nextSectionId, sectionIndex, 
       subtree: true
     });
 
-    // Periodic check as an additional fallback
     const interval = setInterval(checkFullVisibility, 500);
 
     return () => {
@@ -68,12 +59,10 @@ export default function BgVideoSection({ videoSrc, nextSectionId, sectionIndex, 
     };
   }, []);
 
-  // Play/Pause video based on visibility
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Only play when both in viewport AND fully visible
     if (isInView && isVisible) {
       video.play().catch(() => {});
     } else {
@@ -81,7 +70,6 @@ export default function BgVideoSection({ videoSrc, nextSectionId, sectionIndex, 
     }
   }, [isInView, isVisible]);
 
-  // Scroll to next section when video is near end
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
