@@ -52,7 +52,6 @@ export default function NavBar() {
     }
   }, [logoRef]);
 
-
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Events", href: "/events" },
@@ -64,11 +63,7 @@ export default function NavBar() {
   const handleLinkClick = (href, e) => {
     e.preventDefault();
     console.log(`Navigating to ${href}`);
-    
-    if (menuOpen) {
-      setMenuOpen(false);
-    }
-    
+    if (menuOpen) setMenuOpen(false);
     router.push(href);
   };
 
@@ -80,67 +75,98 @@ export default function NavBar() {
       }`}
     >
       <div className="h-[1px] w-1/4 bg-gradient-to-r from-transparent via-red-500 to-transparent hidden md:block animate-pulse" />
-      
-      <div className="relative hover:opacity-80 transition-all">
-        <a 
-          href="/"
-          className="block relative z-10"
-          onClick={(e) => handleLinkClick("/", e)}
-        >
-          <div className="p-2">
-            <Image
-              ref={logoRef}
-              className="w-10 sm:w-12 object-contain cursor-pointer"
-              src={Logo}
-              alt="Vidyut Logo"
-              width={48}
-              height={48}
-              priority
-            />
-          </div>
-        </a>
-      </div>
-      
-      <div className="hidden md:flex items-center space-x-8">
-        {navLinks.map((link, index) => (
-          <a 
-            key={index}
-            ref={(el) => {
-              if (el) linksRef.current[index] = el;
-            }}
-            href={link.href}
-            onClick={(e) => handleLinkClick(link.href, e)}
-            className={`text-white relative group text-sm uppercase tracking-wider transition-all duration-300 py-2 px-3 cursor-pointer ${
-              router.pathname === link.href 
-                ? "text-red-400 font-medium" 
-                : "opacity-70 hover:opacity-100 hover:text-red-400"
-            }`}
-          >
-            {link.name}
-            <span 
-              className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-red-500 to-transparent transition-all duration-300 ${
+
+      {/* Desktop Nav */}
+      <div className="hidden md:flex items-center justify-between w-full">
+        {/* Left links */}
+        <div className="flex items-center space-x-8">
+          {navLinks.slice(0, 3).map((link, index) => (
+            <a 
+              key={index}
+              ref={(el) => {
+                if (el) linksRef.current[index] = el;
+              }}
+              href={link.href}
+              onClick={(e) => handleLinkClick(link.href, e)}
+              className={`text-white relative group text-sm uppercase tracking-wider transition-all duration-300 py-2 px-3 cursor-pointer ${
                 router.pathname === link.href 
-                  ? "w-full" 
-                  : "w-0 group-hover:w-full"
+                  ? "text-red-400 font-medium" 
+                  : "opacity-70 hover:opacity-100 hover:text-red-400"
               }`}
-            />
+            >
+              {link.name}
+              <span 
+                className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-red-500 to-transparent transition-all duration-300 ${
+                  router.pathname === link.href 
+                    ? "w-full" 
+                    : "w-0 group-hover:w-full"
+                }`}
+              />
+            </a>
+          ))}
+        </div>
+
+        {/* Logo center */}
+        <div className="relative hover:opacity-80 transition-all">
+          <a 
+            href="/"
+            className="block relative z-10"
+            onClick={(e) => handleLinkClick("/", e)}
+          >
+            <div className="p-2">
+              <Image
+                ref={logoRef}
+                className="w-10 sm:w-12 object-contain cursor-pointer"
+                src={Logo}
+                alt="Vidyut Logo"
+                width={48}
+                height={48}
+                priority
+              />
+            </div>
           </a>
-        ))}
+        </div>
+
+        {/* Right links + register */}
+        <div className="flex items-center space-x-8">
+          {navLinks.slice(3).map((link, index) => (
+            <a 
+              key={index + 3}
+              ref={(el) => {
+                if (el) linksRef.current[index + 3] = el;
+              }}
+              href={link.href}
+              onClick={(e) => handleLinkClick(link.href, e)}
+              className={`text-white relative group text-sm uppercase tracking-wider transition-all duration-300 py-2 px-3 cursor-pointer ${
+                router.pathname === link.href 
+                  ? "text-red-400 font-medium" 
+                  : "opacity-70 hover:opacity-100 hover:text-red-400"
+              }`}
+            >
+              {link.name}
+              <span 
+                className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-red-500 to-transparent transition-all duration-300 ${
+                  router.pathname === link.href 
+                    ? "w-full" 
+                    : "w-0 group-hover:w-full"
+                }`}
+              />
+            </a>
+          ))}
+
+          <button 
+            className="bg-black/30 backdrop-blur-sm border border-red-500/30 px-4 py-2 rounded-full text-white text-sm hover:bg-black/50 hover:border-red-500 hover:shadow-lg hover:shadow-red-500/20 transform hover:-translate-y-1 active:translate-y-0 transition-all duration-300 cursor-pointer"
+            onClick={() => router.push("/register")}
+          >
+            <span className="text-red-400">REGISTER</span>
+          </button>
+        </div>
       </div>
-      
-      <button 
-        className="hidden md:flex items-center space-x-2 bg-black/30 backdrop-blur-sm border border-red-500/30 px-4 py-2 rounded-full text-white text-sm hover:bg-black/50 hover:border-red-500 hover:shadow-lg hover:shadow-red-500/20 transform hover:-translate-y-1 active:translate-y-0 transition-all duration-300 cursor-pointer"
-        onClick={() => console.log("Countdown button clicked")}
-      >
-        <span className="text-red-400">REGISTER</span>
-      </button>
-      
+
+      {/* Mobile menu button */}
       <div className="md:hidden flex items-center">
         <button
-          onClick={() => {
-            console.log("Mobile menu toggle clicked");
-            setMenuOpen(!menuOpen);
-          }}
+          onClick={() => setMenuOpen(!menuOpen)}
           className="text-white focus:outline-none p-2 cursor-pointer"
         >
           <div className="relative w-6 h-5">
@@ -150,9 +176,10 @@ export default function NavBar() {
           </div>
         </button>
       </div>
-      
+
       <div className="h-[1px] w-1/4 bg-gradient-to-l from-transparent via-red-500 to-transparent hidden md:block animate-pulse" />
-      
+
+      {/* Mobile menu content */}
       <div 
         className={`absolute top-full left-0 w-full bg-black/90 backdrop-blur-lg transform ${
           menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'

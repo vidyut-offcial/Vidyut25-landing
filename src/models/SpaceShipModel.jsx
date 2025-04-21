@@ -67,26 +67,38 @@ const Model = React.forwardRef(({ url, scale }, ref) => {
 });
 
 function Scene({ scale, modelRef }) {
-  const [isMobile, setIsMobile] = useState(false);
+  const [deviceScale, setDeviceScale] = useState(scale);
   
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+    const updateScale = () => {
+      const width = window.innerWidth;
+      // Responsive scale breakpoints
+      if (width <= 480) {
+        setDeviceScale(scale * 0.4); // Mobile phones
+      } else if (width <= 768) {
+        setDeviceScale(scale * 0.6); // Tablets
+      } else if (width <= 1024) {
+        setDeviceScale(scale * 0.8); // Small laptops
+      } else if (width <= 1440) {
+        setDeviceScale(scale * 0.9); // Large laptops/desktops
+      } else {
+        setDeviceScale(scale); // Extra large screens
+      }
     };
     
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
+    updateScale();
+    window.addEventListener('resize', updateScale);
     
     return () => {
-      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener('resize', updateScale);
     };
-  }, []);
+  }, [scale]);
 
   return (
     <>
       <Suspense fallback={null}>
         <Model 
-          scale={scale} 
+          scale={deviceScale} 
           url="/models/spaceship.glb" 
           ref={modelRef} 
         />

@@ -14,8 +14,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SpaceshipContext } from "@/contexts/SpaceShipContext";
 import ReactHowler from "react-howler";
 import MultiEventsSection from "@/components/MultiEventsSection";
-import FAQSection from "@/components/FAQSectoin";
 import Footer from "@/components/Footer";
+import FAQSection from "@/components/FAQSection";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,7 +33,7 @@ export default function Home() {
     const tl = gsap.timeline();
     gsap.set("#hero-section", { opacity: 1 });
     gsap.set("#hero-title", { y: 100 });
-    gsap.set("#hero-subtitle", { x: -100, opacity: 0, y: -50 });
+    gsap.set("#hero-subtitle", { x: -100, opacity: 0, y: 0 });
     gsap.set("#hero-comingsoon", { y: 30, opacity: 0 });
     gsap.set("#hero-countdown", { scale: 0.95, opacity: 0 });
 
@@ -44,7 +44,6 @@ export default function Home() {
         ease: "power2.out",
         onComplete: () => {
           gsap.set("#model", { translateY: "100vh", position: "absolute", top: 0, left: 0, zIndex: "-10" });
-          setIsSpaceshipMounted(false);
         },
       })
       .to("#hero-title", {
@@ -176,38 +175,39 @@ export default function Home() {
 
   return (
     <SpaceshipContext.Provider value={spaceshipRef}>
+      <ReactHowler
+        src="/sounds/woof.mp3"
+        playing={false}
+        html5={true}
+        ref={howlerOneRef}
+        volume={1}
+      />
+
+      <ReactHowler
+        src="/sounds/reveal.mp3"
+        playing={false}
+        html5={true}
+        ref={howlerTwoRef}
+        volume={1}
+        onEnd={() => {
+          setIsSpaceshipMounted(false);
+          gsap.to("#hero-title-glitch", {
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.out",
+          });
+        }}
+      />
       <main ref={mainRef} className="min-h-screen w-screen flex flex-col items-center justify-center overflow-x-hidden">
         <div id="model" className="fixed flex items-center justify-center top-0 left-0 z-[100] pointer-events-none">
-          <ReactHowler
-            src="/sounds/woof.mp3"
-            playing={false}
-            html5={true}
-            ref={howlerOneRef}
-            volume={1}
-          />
-
-          <ReactHowler
-            src="/sounds/reveal.mp3"
-            playing={false}
-            html5={true}
-            ref={howlerTwoRef}
-            volume={1}
-            onEnd={() => {
-              gsap.to("#hero-title-glitch", {
-                opacity: 0,
-                duration: 0.5,
-                ease: "power2.out",
-              });
-            }}
-          />
           {isSpaceshipMounted && showSpaceship && <SpaceShipModel ref={spaceshipRef} />}
         </div>
         <PostLoading onComplete={transitHero} />
         <HeroSection />
         <div id="section-container" className="h-full w-full hidden opacity-0">
           <NavBar />
-          <IdeaSection />
           <AboutSection />
+          <IdeaSection />
           <EventsSection />
           <MultiEventsSection />
           <PastSection />

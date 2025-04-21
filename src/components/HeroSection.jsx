@@ -2,42 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { ThreeDMarquee } from "./ThreeDMarquee";
 import BgVideoSection from "./BgVideoSection";
-
-const images = [
-  "https://assets.aceternity.com/cloudinary_bkp/3d-card.png",
-  "https://assets.aceternity.com/animated-modal.png",
-  "https://assets.aceternity.com/animated-testimonials.webp",
-  "https://assets.aceternity.com/cloudinary_bkp/Tooltip_luwy44.png",
-  "https://assets.aceternity.com/github-globe.png",
-  "https://assets.aceternity.com/glare-card.png",
-  "https://assets.aceternity.com/layout-grid.png",
-  "https://assets.aceternity.com/flip-text.png",
-  "https://assets.aceternity.com/hero-highlight.png",
-  "https://assets.aceternity.com/carousel.webp",
-  "https://assets.aceternity.com/placeholders-and-vanish-input.png",
-  "https://assets.aceternity.com/shooting-stars-and-stars-background.png",
-  "https://assets.aceternity.com/signup-form.png",
-  "https://assets.aceternity.com/cloudinary_bkp/stars_sxle3d.png",
-  "https://assets.aceternity.com/spotlight-new.webp",
-  "https://assets.aceternity.com/cloudinary_bkp/Spotlight_ar5jpr.png",
-  "https://assets.aceternity.com/cloudinary_bkp/Parallax_Scroll_pzlatw_anfkh7.png",
-  "https://assets.aceternity.com/tabs.png",
-  "https://assets.aceternity.com/cloudinary_bkp/Tracing_Beam_npujte.png",
-  "https://assets.aceternity.com/cloudinary_bkp/typewriter-effect.png",
-  "https://assets.aceternity.com/glowing-effect.webp",
-  "https://assets.aceternity.com/hover-border-gradient.png",
-  "https://assets.aceternity.com/cloudinary_bkp/Infinite_Moving_Cards_evhzur.png",
-  "https://assets.aceternity.com/cloudinary_bkp/Lamp_hlq3ln.png",
-  "https://assets.aceternity.com/macbook-scroll.png",
-  "https://assets.aceternity.com/cloudinary_bkp/Meteors_fye3ys.png",
-  "https://assets.aceternity.com/cloudinary_bkp/Moving_Border_yn78lv.png",
-  "https://assets.aceternity.com/multi-step-loader.png",
-  "https://assets.aceternity.com/vortex.png",
-  "https://assets.aceternity.com/wobble-card.png",
-  "https://assets.aceternity.com/world-map.webp",
-];
 
 const Countdown = ({ targetDate }) => {
   const [timeLeft, setTimeLeft] = useState({ days: "--", hours: "--", minutes: "--", seconds: "--" });
@@ -63,11 +28,15 @@ const Countdown = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <div className="flex md:grid-cols-2 md:grid-rows-2 md:grid 2xl:flex justify-center items-center gap-3 xs:gap-5 md:gap-7">
+    <div className="grid grid-rows-2 grid-cols-2 md:flex flex-row justify-center items-center gap-6 xs:gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20 w-full">
       {Object.entries(timeLeft).map(([label, value]) => (
         <div key={label} className="flex flex-col items-center justify-center">
-          <span className="text-lg xs:text-4xl lg:text-5xl 2xl:text-6xl font-sf">{value}</span>
-          <span className="text-[0.5rem] xs:text-sm md:text-base lg:text-lg 2xl:text-lg uppercase font-frontage-regular">{label}</span>
+          <span className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-sf text-white">
+            {value}
+          </span>
+          <span className="text-xs xs:text-sm md:text-base lg:text-lg uppercase font-frontage-regular text-white opacity-90">
+            {label}
+          </span>
         </div>
       ))}
     </div>
@@ -75,33 +44,33 @@ const Countdown = ({ targetDate }) => {
 };
 
 export default function HeroSection({ onSectionChange }) {
-
   return (
     <section
       id="hero-section"
-      className="h-screen w-screen opacity-0 relative flex flex-col items-center gap-20 justify-center py-18 pointer-events-none"
-    >
+      className="h-screen w-screen opacity-0 relative flex flex-col items-center justify-center py-8 overflow-hidden pointer-events-none"
+    > 
       <BgVideoSection 
         videoSrc={"/videos/asteroid.webm"} 
-        nextSectionId={"idea-section"}
+        nextSectionId={"about-section"}
         sectionIndex={0}
         onSectionChange={onSectionChange}   
       />
-      <div className="flex flex-col items-center justify-center">
+      
+      <div className="flex flex-col items-center justify-center space-y-2 mb-16 sm:mb-24 md:mb-32">
         <div 
-          className="flex items-center justify-center"
+          className="flex items-center justify-center relative"
           id="hero-title"
         >
           <h2
             data-text="VIDYUT"
-            className="glitch-off text-[120px] xs:text-[160px] md:text-[200px] h-fit font-frontage-bold z-10"
+            className="glitch-off text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[160px] 2xl:text-[200px] tracking-widest font-frontage-bold z-10 text-white"
           >
             VIDYUT
           </h2>
           <h2
             id="hero-title-glitch"
             data-text="VIDYUT"
-            className="glitch absolute text-[120px] xs:text-[160px] md:text-[200px] h-fit font-frontage-bold z-10"
+            className="glitch absolute text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[160px] 2xl:text-[200px] tracking-widest font-frontage-bold z-10 text-white"
           >
             VIDYUT
           </h2>
@@ -109,22 +78,22 @@ export default function HeroSection({ onSectionChange }) {
 
         <h3
           id="hero-subtitle"
-          className="text-2xl xs:text-3xl md:text-4xl font-frontage-regular uppercase z-10"
+          className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-frontage-regular uppercase z-10 tracking-wider text-white"
         >
           National Level Multifest
         </h3>
       </div>
 
-      <div className="flex flex-col gap-10 xs:gap-12 z-10">
+      <div className="flex flex-col items-center space-y-10 sm:space-y-14 md:space-y-16 lg:space-y-20 z-10 px-4">
         <p
           id="hero-comingsoon"
-          className="text-2xl xs:text-4xl lg:text-5xl 2xl:text-6xl font-frontage-regular text-foreground"
+          className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-frontage-regular text-white tracking-widest"
         >
           COMING SOON
         </p>
 
-        <div id="hero-countdown">
-          <Countdown targetDate={new Date([2025, 5, 23])} />
+        <div id="hero-countdown" className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl">
+          <Countdown targetDate={new Date(2025, 4, 23)} />
         </div>
       </div>
     </section>

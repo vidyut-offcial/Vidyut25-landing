@@ -59,10 +59,9 @@ export default function Footer() {
     <footer
       ref={sectionRef}
       id="footer-section"
-      className="h-screen overflow-x-hidden w-full relative select-none"
+      className="h-screen overflow-x-hidden w-full select-none"
     >
       <div className="h-24 md:h-36 w-full" />
-      <div className="h-full w-full bg-[url(/images/stars-sky.jpg)] opacity-70 bg-cover object-cover absolute top-0 left-0 -z-10"></div>
       <div
         className="grid h-[calc(100%-6rem)] md:h-[calc(100%-9rem)] w-full relative"
         style={{
