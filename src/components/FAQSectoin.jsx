@@ -58,8 +58,9 @@ export default function FAQSection() {
     <section
       ref={sectionRef}
       id="faq-section"
-      className="h-screen overflow-x-hidden w-full select-none"
+      className="h-screen overflow-x-hidden w-full bg-transparent relative select-none"
     >
+      <div className="h-full w-full bg-[url(/images/stars-sky.jpg)] opacity-70 bg-cover object-cover absolute top-0 left-0 -z-10"></div>
       <div
         className="grid h-screen w-full relative border-border border-b"
         style={{

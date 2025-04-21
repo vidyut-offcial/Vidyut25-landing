@@ -6,6 +6,7 @@ import { Loader, SendHorizontal } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import remarkGfm from "remark-gfm";
+import NavBar from "@/components/NavBar";
 
 const mdxComponents = {
   h1: (props) => <h1 {...props} className="text-3xl font-bold my-4 text-primary" />,

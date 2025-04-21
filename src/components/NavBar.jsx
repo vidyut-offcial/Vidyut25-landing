@@ -29,8 +29,7 @@ export default function NavBar() {
     // Create the animation but don't play it yet
     const logoAnimation = gsap.timeline({ paused: true })
       .to(logoRef.current, { 
-        scale: 1.15, 
-        rotation: 5, 
+        opacity: 0.7,
         duration: 0.4, 
         ease: "power2.out" 
       });
@@ -58,28 +57,6 @@ export default function NavBar() {
   }, [logoRef]);
 
   // Initialize navbar animation on mount
-  useEffect(() => {
-    if (navRef.current) {
-      gsap.from(navRef.current, {
-        y: -100,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out"
-      });
-    }
-    
-    // Make sure linksRef.current is an array before animating
-    if (linksRef.current && linksRef.current.filter(Boolean).length > 0) {
-      gsap.from(linksRef.current.filter(Boolean), {
-        opacity: 0,
-        y: -20,
-        stagger: 0.1,
-        duration: 0.8,
-        delay: 0.5,
-        ease: "power2.out"
-      });
-    }
-  }, []);
 
   // Navigation links with full page routes
   const navLinks = [
