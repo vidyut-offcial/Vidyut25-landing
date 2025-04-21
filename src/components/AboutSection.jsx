@@ -7,13 +7,11 @@ import { Environment } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
 
-// Terrain Background with Vector Shader Effect
 function TerrainVectorBackground() {
   const meshRef = useRef();
   const mouse = useRef({ x: 0, y: 0 });
   const [texture, setTexture] = useState(null);
   
-  // Load terrain texture
   useEffect(() => {
     const textureLoader = new THREE.TextureLoader();
     textureLoader.load('/images/terrain.png', (loadedTexture) => {
@@ -23,7 +21,6 @@ function TerrainVectorBackground() {
     });
   }, []);
   
-  // Track mouse position for shader effect
   useEffect(() => {
     const handleMouseMove = (event) => {
       mouse.current = {
@@ -36,7 +33,6 @@ function TerrainVectorBackground() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
   
-  // Create shader material once texture is loaded
   useEffect(() => {
     if (texture && meshRef.current) {
       const material = new THREE.ShaderMaterial({
@@ -62,26 +58,20 @@ function TerrainVectorBackground() {
           varying vec2 vUv;
           
           void main() {
-            // Calculate distance from mouse
             vec2 st = vUv;
             vec2 mousePos = mouse * 0.5 + 0.5;
             float dist = distance(st, mousePos);
             
-            // Create subtle vector effect with ripples
             float ripple = sin(dist * 20.0 - time * 1.5) * 0.003;
             
-            // Apply distortion based on mouse distance (stronger near mouse)
             float strength = smoothstep(0.3, 0.0, dist) * 0.01;
             vec2 distortedUV = st;
             
-            // Apply directional distortion
             vec2 direction = normalize(st - mousePos);
             distortedUV += direction * sin(time + dist * 5.0) * strength;
             
-            // Apply ripple effect
             distortedUV += direction * ripple * smoothstep(0.5, 0.0, dist);
             
-            // Sample texture with distorted UVs
             vec4 color = texture2D(terrainTexture, distortedUV);
             
             gl_FragColor = color;
@@ -104,7 +94,7 @@ function TerrainVectorBackground() {
   );
 }
 
-function LogoModel({ inView }) {
+function LogoModel() {
   const gltf = useLoader(GLTFLoader, "/models/logo.gltf");
   const modelRef = useRef();
   const spotlightRef = useRef();
@@ -169,30 +159,6 @@ function LogoModel({ inView }) {
       return () => document.removeEventListener('mousemove', handleMouseMove);
     }
   }, [gltf]);
-  
-  useEffect(() => {
-    if (inView && !isRotating.current && modelRef.current) {
-      isRotating.current = true;
-      
-      gsap.to(modelRef.current.rotation, {
-        x: originalRotation.current.x,
-        y: originalRotation.current.y,
-        z: originalRotation.current.z,
-        duration: 0.5,
-        ease: "power2.out",
-        onComplete: () => {
-          gsap.to(modelRef.current.rotation, {
-            y: originalRotation.current.y + Math.PI * 2,
-            duration: 2,
-            ease: "power2.inOut",
-            onComplete: () => {
-              isRotating.current = false;
-            }
-          });
-        }
-      });
-    }
-  }, [inView]);
   
   useFrame((state, delta) => {
     if (modelRef.current && !isRotating.current) {
@@ -280,30 +246,6 @@ function CenterCamera() {
 
 export default function AboutSection() {
   const sectionRef = useRef(null);
-  const [isInView, setIsInView] = useState(true);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
-      },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      }
-    );
-    
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
 
   return (
     <section 
@@ -339,7 +281,7 @@ export default function AboutSection() {
         </Suspense>
         
         <Suspense fallback={null}>
-          <LogoModel inView={isInView} />
+          <LogoModel />
           <Environment preset="warehouse" intensity={0.8} />
         </Suspense>
       </Canvas>
