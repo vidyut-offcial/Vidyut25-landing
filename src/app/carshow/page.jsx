@@ -1,9 +1,7 @@
 'use client';
 
 import { useState, Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { Physics } from "@react-three/cannon";
-import { Scene } from "@/components/Scene";
+import { GameWrapper } from '@/components/GameWrapper';
 
 export default function Home() {
   const [selectedCar, setSelectedCar] = useState(null);
@@ -11,14 +9,7 @@ export default function Home() {
 
   return (
     <div style={{ height: '100vh', width: '100vw' }}>
-      <Canvas>
-        <Physics
-          broadphase="SAP"
-          gravity={[0, -2.6, 0]}
-        >
-          <Scene />
-        </Physics>
-      </Canvas>
+      <GameWrapper />
     </div>
   );
 }

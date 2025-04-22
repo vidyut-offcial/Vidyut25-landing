@@ -146,7 +146,7 @@ const contentItems = [
   {
     id: '01',
     title: 'Nebula Explorer',
-    image: 'https://images.unsplash.com/photo-1595265677860-9a3168007dc0?auto=format&fit=crop&w=800&q=60',
+    image: '/images/demo.png',
     description: 'Journey through cosmic dust clouds and witness the birth of new stars in this immersive space adventure.',
     icon: SpaceIcons.rocket
   },

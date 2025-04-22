@@ -1,13 +1,13 @@
 import { useBox, useRaycastVehicle } from "@react-three/cannon";
 import { useFrame, useLoader } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, forwardRef, useImperativeHandle } from "react";
 import { Quaternion, Vector3 } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useControls } from "./useControls";
 import { useWheels } from "./useWheels";
 import { WheelDebug } from "./WheelDebug";
 
-export function Car({ thirdPerson }) {
+export const Car = forwardRef(({ thirdPerson }, ref) => {
   let result = useLoader(
     GLTFLoader,
     "/models/car.glb"
@@ -19,6 +19,9 @@ export function Car({ thirdPerson }) {
   const front = 0.15;
   const wheelRadius = 0.05;
 
+  const chassisBodyRef = useRef(null);
+  const vehicleRef = useRef(null);
+
   const chassisBodyArgs = [width, height, front * 2];
   const [chassisBody, chassisApi] = useBox(
     () => ({
@@ -27,7 +30,7 @@ export function Car({ thirdPerson }) {
       mass: 150,
       position,
     }),
-    useRef(null),
+    chassisBodyRef,
   );
 
   const [wheels, wheelInfos] = useWheels(width, height, front, wheelRadius);
@@ -38,10 +41,24 @@ export function Car({ thirdPerson }) {
       wheelInfos,
       wheels,
     }),
-    useRef(null),
+    vehicleRef,
   );
 
-  useControls(vehicleApi, chassisApi);
+  // Expose methods to the parent via ref
+  useImperativeHandle(ref, () => ({
+    reset: () => {
+      if (chassisApi) {
+        chassisApi.position.set(-1.5, 0.5, 3);
+        chassisApi.velocity.set(0, 0, 0);
+        chassisApi.angularVelocity.set(0, 0, 0);
+        chassisApi.rotation.set(0, 0, 0);
+      }
+    },
+    // Add any other methods you want to expose
+  }));
+
+  // Use the existing controls
+  const controls = useControls(vehicleApi, chassisApi);
 
   useFrame((state) => {
     if(!thirdPerson) return;
@@ -73,7 +90,7 @@ export function Car({ thirdPerson }) {
   }, [result]);
 
   return (
-    <group ref={vehicle} name="vehicle">
+    <group ref={vehicleRef} name="vehicle">
       <group ref={chassisBody} name="chassisBody">
         <primitive object={result} rotation-y={Math.PI} position={[0, -0.09, 0]}/>
       </group>
@@ -89,4 +106,6 @@ export function Car({ thirdPerson }) {
       <WheelDebug wheelRef={wheels[3]} radius={wheelRadius} />
     </group>
   );
-}
+});
+
+Car.displayName = "Car";
