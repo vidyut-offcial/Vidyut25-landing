@@ -125,7 +125,7 @@ export default function LogoModel() {
         ref={modelRef}
         object={gltf.scene} 
         scale={0.2} 
-        position={[0, 0.2, 0]}
+        position={[0, 0.3, 0]}
         cursor={hovered ? 'pointer' : 'auto'}
       />
       <spotLight

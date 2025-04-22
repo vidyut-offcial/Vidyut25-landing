@@ -192,11 +192,19 @@ export default function EventsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [inView, setInView] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const carouselRef = useRef(null);
   const bgImageRef = useRef(null);
   const overlayRef = useRef(null);
   const contentRef = useRef(null);
   const indicatorsRef = useRef(null);
+  const sectionRef = useRef(null);
+  const mainTitleRef = useRef(null);
+  const descriptionRef = useRef(null);
+  const buttonsRef = useRef(null);
+  const indicatorsContainerRef = useRef(null);
+  const carouselContainerRef = useRef(null);
 
   const handleActiveContentChange = (imageUrl, index, content) => {
     if (content && !isTransitioning && index !== activeIndex) {
@@ -273,27 +281,93 @@ export default function EventsSection() {
     }
   };
 
+  const playEntryAnimation = () => {
+    const timeline = gsap.timeline();
+    
+    // Reset all elements before animation
+    gsap.set([mainTitleRef.current, descriptionRef.current, buttonsRef.current, indicatorsContainerRef.current], {
+      y: 50,
+      opacity: 0
+    });
+    
+    gsap.set(carouselContainerRef.current, {
+      y: 100,
+      opacity: 0
+    });
+    
+    gsap.set(bgImageRef.current, {
+      scale: 1.1,
+      opacity: 0,
+      filter: "blur(15px)"
+    });
+    
+    // Start the animation sequence
+    timeline
+      .to(bgImageRef.current, {
+        scale: 1,
+        opacity: 0.7,
+        filter: "blur(0px)",
+        duration: 1.4,
+        ease: "power2.out"
+      })
+      .to(mainTitleRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power3.out"
+      }, "-=0.8")
+      .to(descriptionRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power3.out"
+      }, "-=0.6")
+      .to(buttonsRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power3.out"
+      }, "-=0.6")
+      .to(indicatorsContainerRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power3.out"
+      }, "-=0.7")
+      .to(carouselContainerRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out"
+      }, "-=0.8");
+      
+    return timeline;
+  };
+
   useEffect(() => {
     setIsLoaded(true);
     
-    if (bgImageRef.current && overlayRef.current && contentRef.current) {
-      gsap.fromTo(
-        bgImageRef.current,
-        { scale: 1.1, filter: "blur(5px)" },
-        { scale: 1, filter: "blur(0px)", duration: 1.2, ease: "power2.out" }
-      );
-      
-      gsap.fromTo(
-        overlayRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 1, ease: "power2.out" }
-      );
-      
-      gsap.fromTo(
-        contentRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.3 }
-      );
+    // Initial animation setup
+    if (inView && !hasAnimated) {
+      playEntryAnimation();
+      setHasAnimated(true);
+    }
+    
+    // Setup intersection observer to detect when section enters viewport
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+        
+        // Play animation when element comes into view
+        if (entry.isIntersecting && hasAnimated) {
+          playEntryAnimation();
+        }
+      },
+      { threshold: 0.2 } // Trigger when 20% of the section is visible
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
     
     const handleSetCarouselIndex = (e) => {};
@@ -311,18 +385,22 @@ export default function EventsSection() {
       return () => {
         window.removeEventListener('setCarouselIndex', handleSetCarouselIndex);
         window.removeEventListener('resize', handleResize);
+        if (sectionRef.current) {
+          observer.unobserve(sectionRef.current);
+        }
       };
     }
-  }, []);
+  }, [inView, hasAnimated]);
 
   return (
     <section
       id="events-section"
+      ref={sectionRef}
       className="relative flex min-h-screen w-full flex-col items-center justify-center select-none overflow-hidden bg-black"
     >
       <div 
         ref={bgImageRef}
-        className={`absolute inset-0 z-0 transition-opacity duration-1000 ${isLoaded ? 'opacity-70' : 'opacity-0'}`}
+        className="absolute inset-0 z-0 opacity-0"
       >
         <Image
           src={activeContent.image}
@@ -345,14 +423,14 @@ export default function EventsSection() {
           ref={contentRef}
           className="mt-12 sm:mt-16 md:mt-0 flex h-fit md:h-full flex-col items-start justify-center md:max-w-lg lg:max-w-2xl text-foreground"
         >
-          <div className="flex items-center mb-1 sm:mb-2">
+          <div ref={mainTitleRef} className="flex items-center mb-1 sm:mb-2 opacity-0">
             <span className="mr-1 text-4xl font-bold text-indigo-500/50 sm:mr-2 sm:text-5xl md:text-4xl lg:text-6xl xl:text-8xl">{activeContent.id}</span>
             <h1 className="text-4xl font-bold text-foreground sm:text-5xl md:text-4xl lg:text-5xl xl:text-7xl">{activeContent.title}</h1>
           </div>
           
-          <p className="mb-4 max-w-full pr-0 text-sm text-indigo-200/80 sm:mb-6 sm:text-base md:pr-10 md:text-lg lg:text-xl">{activeContent.description}</p>
+          <p ref={descriptionRef} className="mb-4 max-w-full pr-0 text-sm text-indigo-200/80 sm:mb-6 sm:text-base md:pr-10 md:text-lg lg:text-xl opacity-0">{activeContent.description}</p>
           
-          <div className="flex flex-col w-full sm:flex-row sm:flex-wrap items-center space-y-2 sm:space-y-0 sm:space-x-3">
+          <div ref={buttonsRef} className="flex flex-col w-full sm:flex-row sm:flex-wrap items-center space-y-2 sm:space-y-0 sm:space-x-3 opacity-0">
             <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl py-2 px-4 sm:px-6 rounded-lg flex items-center justify-center transform hover:scale-105 transition-all cursor-pointer sm:w-auto">
               <svg className="mr-2 h-4 w-4 sm:h-5 sm:w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
@@ -365,22 +443,27 @@ export default function EventsSection() {
           </div>
           
           <div 
-            ref={indicatorsRef}
-            className="mt-6 sm:mt-8 flex relative space-x-2 sm:space-x-3"
+            ref={indicatorsContainerRef}
+            className="mt-6 sm:mt-8 flex relative space-x-2 sm:space-x-3 opacity-0"
           >
-            {contentItems.map((_, i) => (
-              <div 
-                key={i}
-                onClick={() => handleManualIndexChange(i)}
-                className={`h-1 w-6 sm:w-8 md:w-10 cursor-pointer rounded-full transition-all duration-300 ${
-                  i === activeIndex ? 'bg-indigo-400 scale-100' : 'bg-indigo-400/30 scale-75 hover:bg-indigo-400/50'
-                }`}
-              ></div>
-            ))}
+            <div ref={indicatorsRef} className="flex space-x-2 sm:space-x-3">
+              {contentItems.map((_, i) => (
+                <div 
+                  key={i}
+                  onClick={() => handleManualIndexChange(i)}
+                  className={`h-1 w-6 sm:w-8 md:w-10 cursor-pointer rounded-full transition-all duration-300 ${
+                    i === activeIndex ? 'bg-indigo-400 scale-100' : 'bg-indigo-400/30 scale-75 hover:bg-indigo-400/50'
+                  }`}
+                ></div>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="absolute bottom-0 right-0 -z-10 w-screen pb-12 h-full flex items-end justify-center md:items-center md:w-[50vw] md:pb-0">
+        <div 
+          ref={carouselContainerRef}
+          className="absolute bottom-0 right-0 -z-10 w-screen pb-12 h-full flex items-end justify-center md:items-center md:w-[50vw] md:pb-0 opacity-0"
+        >
           <MotionCarousel
             contentItems={contentItems}
             onActiveImageChange={handleActiveContentChange}

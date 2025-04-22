@@ -9,6 +9,9 @@ import { IoMdMail } from "react-icons/io";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Logo from "../../public/images/logo.svg";
+import { ScrollTrigger } from "gsap/all";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const faqs = [
   { question: "What is VIDYUT?", answer: "VIDYUT is India's largest national-level inter-collegiate Multifest. It is a Three - Day event hosted at Amrita Vishwa Vidyapeetham, Amritapuri Campus, offering a wide range of workshops, competitions and cultural events" },
@@ -84,35 +87,68 @@ export default function FAQSection() {
 
   useGSAP(() => {
     const boxes = gsap.utils.selector(sectionRef)(".box");
-    
+  
     const isMobile = /Mobi|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
-
-    if (isMobile) return;
-
-    boxes.forEach((el) => {
-      const textElements = el.querySelectorAll("p, svg, span, input, a, h2, h3, h4, h5, h6");
-    
-      el.addEventListener("mouseenter", () => {
-        gsap.to(el, { backgroundColor: "var(--color-hover)", duration: 0.4, ease: "power2.out" });
-        gsap.to(textElements, {
-          color: "var(--color-background)",
-          stroke: "var(--color-background)",
-          duration: 0.4,
-          ease: "power2.out",
+  
+    if (!isMobile) {
+      boxes.forEach((el) => {
+        const textElements = el.querySelectorAll("p, svg, span, input, a, h2, h3, h4, h5, h6");
+  
+        el.addEventListener("mouseenter", () => {
+          gsap.to(el, { backgroundColor: "var(--color-hover)", duration: 0.4, ease: "power2.out" });
+          gsap.to(textElements, {
+            color: "var(--color-background)",
+            stroke: "var(--color-background)",
+            duration: 0.4,
+            ease: "power2.out",
+          });
+        });
+  
+        el.addEventListener("mouseleave", () => {
+          gsap.to(el, { backgroundColor: "transparent", duration: 0.4, ease: "power2.out" });
+          gsap.to(textElements, {
+            color: "var(--color-foreground)",
+            stroke: "var(--color-foreground)",
+            duration: 0.4,
+            ease: "power2.out",
+          });
         });
       });
-    
-      el.addEventListener("mouseleave", () => {
-        gsap.to(el, { backgroundColor: "transparent", duration: 0.4, ease: "power2.out" });
-        gsap.to(textElements, {
-          color: "var(--color-foreground)",
-          stroke: "var(--color-foreground)",
-          duration: 0.4,
-          ease: "power2.out",
-        });
-      });
-    });
-  }, []);
+    }
+  
+    // Entry animation for FAQ cards (left column)
+    gsap.fromTo(
+      faqRefs.current.map(ref => ref.containerEl),
+      {
+        y: 50,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.1,
+      }
+    );
+  
+    // Entry animation for right side boxes
+    gsap.fromTo(
+      sectionRef.current.querySelectorAll(".md\\:col-start-2 .box"),
+      {
+        y: 50,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.2,
+        delay: 0.2,
+      }
+    );
+  }, []);  
 
   const toggleFaq = (index) => {
     if (index === openFaqIndex) return;

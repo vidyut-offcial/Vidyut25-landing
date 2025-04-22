@@ -1,4 +1,6 @@
 "use client";
+
+import gsap from "gsap";
 import { useRef, useEffect, useState } from "react";
 import * as THREE from "three";
 import { motion } from "motion/react";
@@ -142,33 +144,75 @@ function BackgroundCanvas({ canvasRef }) {
 
 export default function IdeaSection() {
   const canvasRef = useRef(null);
+  const sectionRef = useRef(null);
+  const heading1Ref = useRef(null);
+  const heading2Ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          gsap.to(heading1Ref.current, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power3.out",
+          });
+
+          gsap.to(heading2Ref.current, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            delay: 0.2,
+            ease: "power3.out",
+          });
+        } else {
+          // Reset styles so animation can replay on re-entry
+          gsap.set([heading1Ref.current, heading2Ref.current], {
+            opacity: 0,
+            y: 20,
+          });
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   return (
-    <section className="relative h-screen w-screen flex items-center justify-center overflow-hidden" id="idea-section">
+    <section
+      ref={sectionRef}
+      className="relative h-screen w-screen flex items-center justify-center overflow-hidden"
+      id="idea-section"
+    >
       <canvas
         ref={canvasRef}
         className="absolute top-0 left-0 w-full h-full -z-10"
       />
-
       <BackgroundCanvas canvasRef={canvasRef} />
 
       <div className="relative h-screen w-screen font-frontage-bold flex flex-col gap-4 items-center justify-center -translate-y-1/8 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl 2xl:text-6xl font-semibold text-center"
+        <h1
+          ref={heading1Ref}
+          className="opacity-0 translate-y-5 text-2xl sm:text-3xl md:text-4xl lg:text-6xl 2xl:text-6xl font-semibold text-center"
         >
           <Cover>Converging</Cover> Ideas
-        </motion.h1>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-7xl 2xl:text-7xl font-semibold text-center"
+        </h1>
+        <h1
+          ref={heading2Ref}
+          className="opacity-0 translate-y-5 text-2xl sm:text-3xl md:text-4xl lg:text-7xl 2xl:text-7xl font-semibold text-center"
         >
           Creating <Cover>Tomorrow.</Cover>
-        </motion.h1>
+        </h1>
       </div>
     </section>
   );

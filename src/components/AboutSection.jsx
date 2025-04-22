@@ -109,11 +109,45 @@ function CenterCamera() {
 export default function AboutSection() {
   const sectionRef = useRef(null);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && sectionRef.current) {
+          gsap.to(
+            sectionRef.current,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1.5,
+              ease: "power3.out"
+            }
+          );
+        } else if (!entry.isIntersecting && sectionRef.current) {
+          // Reset state so it can replay
+          gsap.set(sectionRef.current, { opacity: 0, y: 50, scale: 0.95 });
+        }
+      },
+      {
+        threshold: 0.4 // Adjust based on how visible the section should be to trigger
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
     <section 
       id="about-section" 
       ref={sectionRef}
-      className="relative top-0 left-0 h-screen w-screen"
+      className="relative top-0 opacity-0 translate-y-[100px] left-0 h-screen w-screen"
       style={{ height: '100vh', width: '100vw' }}
     >
       <div 

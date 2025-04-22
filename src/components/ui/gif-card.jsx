@@ -5,7 +5,7 @@ export function GIFCard({ title, description, bg, gif }) {
   return (
       <div
         className={cn(
-          "group w-full cursor-pointer overflow-hidden relative card h-150 shadow-xl mx-auto flex flex-col justify-end p-4 rounded-xl border-transparent dark:border-neutral-800",
+          "card group w-full cursor-pointer overflow-hidden relative card h-150 shadow-xl mx-auto flex flex-col justify-end p-4 rounded-xl border-transparent dark:border-neutral-800",
           "transition-all duration-500"
         )}
         style={{

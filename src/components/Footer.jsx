@@ -6,26 +6,48 @@ import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import logo from "../../public/images/logo.svg";
 import Link from "next/link";
+import { ScrollTrigger } from "gsap/all";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
   const sectionRef = useRef(null);
   
   useGSAP(() => {
     const boxes = gsap.utils.selector(sectionRef);
+    const elements = boxes(".box");
   
-    boxes(".box").forEach((el) => {
+    // Scroll-triggered entrance animation
+    gsap.from(elements, {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.15,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 90%", // when footer hits 90% of viewport
+        toggleActions: "play none none none",
+      },
+    });
+  
+    // Hover animation setup (existing)
+    elements.forEach((el) => {
       const textElements = el.querySelectorAll("p, svg, span, input, a, h1, img, h2, h3");
       const underlinedElements = el.querySelectorAll("a.underline span, span.underline");
-    
+  
       el.addEventListener("mouseenter", () => {
-        gsap.to(el, { backgroundColor: "var(--color-hover)", duration: 0.4, ease: "power2.out" });
+        gsap.to(el, {
+          backgroundColor: "var(--color-hover)",
+          duration: 0.4,
+          ease: "power2.out",
+        });
         gsap.to(textElements, {
           color: "var(--color-background)",
           stroke: "var(--color-background)",
           duration: 0.4,
           ease: "power2.out",
         });
-        
         if (underlinedElements.length > 0) {
           gsap.to(underlinedElements, {
             textDecoration: "underline var(--color-background)",
@@ -34,16 +56,19 @@ export default function Footer() {
           });
         }
       });
-    
+  
       el.addEventListener("mouseleave", () => {
-        gsap.to(el, { backgroundColor: "transparent", duration: 0.4, ease: "power2.out" });
+        gsap.to(el, {
+          backgroundColor: "transparent",
+          duration: 0.4,
+          ease: "power2.out",
+        });
         gsap.to(textElements, {
           color: "var(--color-foreground)",
           stroke: "var(--color-foreground)",
           duration: 0.4,
           ease: "power2.out",
         });
-        
         if (underlinedElements.length > 0) {
           gsap.to(underlinedElements, {
             textDecoration: "underline var(--color-foreground)",
@@ -52,8 +77,9 @@ export default function Footer() {
           });
         }
       });
-    });    
+    });
   }, []);
+  
 
   return (
     <footer
