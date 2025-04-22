@@ -5,6 +5,45 @@ import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { ColliderBox } from "./ColliderBox";
 import { Ramp } from "./Ramp";
 
+// Billboard component to handle loading and positioning of billboards
+const Billboard = ({ position, rotation = [0, 0, 0] }) => {
+  const billboardModel = useLoader(GLTFLoader, "/models/billboard.glb");
+  const billboardTexture = useLoader(TextureLoader, "/images/demo.png");
+
+  useEffect(() => {
+    // Apply texture to the correct material
+    billboardModel.scene.traverse((child) => {
+      if (child.isMesh) {
+        console.log(child.name, child.material);
+        
+        // Check if the child has the specific material we're looking for
+        if (child.material && child.material.name === "Cube005_Material004_0") {
+          child.material.map = billboardTexture;
+          child.material.needsUpdate = true;
+        }
+        // For materials that might be in an array
+        else if (Array.isArray(child.material)) {
+          child.material.forEach(mat => {
+            if (mat.name === "Cube005_Material004_0") {
+              mat.map = billboardTexture;
+              mat.needsUpdate = true;
+            }
+          });
+        }
+      }
+    });
+  }, [billboardModel, billboardTexture]);
+
+  return (
+    <primitive 
+      scale={0.01}
+      object={billboardModel.scene.clone()} 
+      position={position} 
+      rotation={rotation} 
+    />
+  );
+};
+
 export function Track() {
   const result = useLoader(
     GLTFLoader,
@@ -64,6 +103,12 @@ export function Track() {
       <ColliderBox position={[-4.15,0,-0.67]} scale={[0.1, 0.5, 0.1]}/>
       <ColliderBox position={[-4.9,0,-0.58]} scale={[0.1, 0.5, 0.1]}/>
       <ColliderBox position={[-0.3,0,1]} scale={[0.1, 0.5, 0.1]}/>
+      
+      {/* Add four billboards positioned around the track */}
+      <Billboard position={[4, 0, 2]} rotation={[0, -Math.PI / 4, 0]} />
+      <Billboard position={[-8, 0, -2]} rotation={[0, Math.PI / 3, 0]} />
+      <Billboard position={[-2, 0, -7]} rotation={[0, Math.PI / 2, 0]} />
+      <Billboard position={[-6, 0, 6]} rotation={[0, -Math.PI / 6, 0]} />
     </>
   );
 }

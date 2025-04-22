@@ -85,8 +85,6 @@ export const Car = forwardRef(({ thirdPerson }, ref) => {
 
     let mesh = result;
     mesh.scale.set(0.0012, 0.0012, 0.0012);
-
-    mesh.children[0].position.set(-365, -18, -67);
   }, [result]);
 
   return (
