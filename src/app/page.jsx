@@ -16,6 +16,9 @@ import ReactHowler from "react-howler";
 import MultiEventsSection from "@/components/MultiEventsSection";
 import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
+import SwiperCoverflow from "@/components/workshop";
+import Proshow from "@/components/Proshow";
+import Autoshow from "@/components/AutoShow";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -208,9 +211,10 @@ export default function Home() {
           <NavBar />
           <AboutSection />
           <IdeaSection />
+          <Proshow/>
+          <Autoshow/>
           <EventsSection />
-          <MultiEventsSection />
-          <PastSection />
+          <SwiperCoverflow/>
           <FAQSection />
           <Footer />
         </div>
