@@ -76,6 +76,14 @@ const Proshow = () => {
 
 
             {/* Render the marquee in the background */}
+            <div className="absolute inset-0 pointer-events-none z-50">
+                <div className="w-full h-full" style={{
+                    background: 'linear-gradient(to right, rgba(0,0,0) 0%, rgba(0,0,0,1) 0%,rgba(0,0,0,0.9) 50%, rgba(0,0,0,0) 100%)'
+                }} />
+            </div>
+
+
+                {/* Render the marquee in the background */}
             <motion.div
                 initial={{ opacity: 0, y: 80 }}
                 whileInView={{ opacity: 1, y: 0 }}

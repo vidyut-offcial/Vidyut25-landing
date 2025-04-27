@@ -19,6 +19,7 @@ import FAQSection from "@/components/FAQSection";
 import SwiperCoverflow from "@/components/workshop";
 import Autoshow from "@/components/AutoShow";
 import Proshow from "@/app/proshow/page";
+import AutoshowSection from "@/components/autoshow/AutoshowSection";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -215,6 +216,10 @@ export default function Home() {
           <Autoshow/>
           <EventsSection />
           <SwiperCoverflow/>
+
+          <MultiEventsSection />
+          <AutoshowSection />
+
           <FAQSection />
           <Footer />
         </div>
