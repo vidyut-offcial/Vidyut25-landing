@@ -13,11 +13,10 @@ import { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SpaceshipContext } from "@/contexts/SpaceShipContext";
 import ReactHowler from "react-howler";
-import MultiEventsSection from "@/components/MultiEventsSection";
 import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
 import SwiperCoverflow from "@/components/workshop";
-import Autoshow from "@/components/AutoShow";
+
 import Proshow from "@/app/proshow/page";
 import AutoshowSection from "@/components/autoshow/AutoshowSection";
 
@@ -213,13 +212,10 @@ export default function Home() {
           <AboutSection />
           <IdeaSection />
           <Proshow/>
-          <Autoshow/>
-          <EventsSection />
-          <SwiperCoverflow/>
-
-          <MultiEventsSection />
           <AutoshowSection />
 
+          <EventsSection />
+          <SwiperCoverflow/>
           <FAQSection />
           <Footer />
         </div>
