@@ -17,8 +17,8 @@ import MultiEventsSection from "@/components/MultiEventsSection";
 import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
 import SwiperCoverflow from "@/components/workshop";
-import Proshow from "@/components/Proshow";
 import Autoshow from "@/components/AutoShow";
+import Proshow from "@/app/proshow/page";
 
 gsap.registerPlugin(ScrollTrigger);
 
