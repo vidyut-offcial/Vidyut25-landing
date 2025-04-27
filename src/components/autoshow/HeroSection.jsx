@@ -95,8 +95,7 @@ const HeroSection = () => {
     };
 
     return (
-        <div ref={ref} className="relative w-full h-[1000px] bg-black overflow-hidden">
-
+        <div ref={ref} className="relative w-full h-[1300px] bg-black overflow-hidden">
             <motion.div
                 className="absolute inset-0 z-0"
                 style={{
@@ -111,53 +110,59 @@ const HeroSection = () => {
             >
 
             </motion.div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-30" />
 
             {/* Logo in the background */}
             <motion.div
-                className="absolute inset-0 flex items-center justify-center z-5 ml-[800px] mb-[300px]"
+                className="absolute inset-0 flex items-center justify-center z-5 bottom-[750px]"
+
                 initial="hidden"
                 animate={controls}
                 variants={{
-                    hidden: { opacity: 0, scale: 0.8 },
+                    hidden: { opacity: 0, scale: 1.2 },
                     visible: {
-                        opacity: 0.3,
+                        opacity: 0.1,
                         scale: 1,
                         transition: {
-                            duration: 1,
+                            duration: 2,
                             ease: [0.16, 0.77, 0.47, 0.97],
-                            delay: 1.5
+                            delay: 1
                         }
                     }
                 }}
             >
-                <img
-                    src="/images/logo.svg"
-                    alt="Logo"
-                    className="w-[800px] h-auto mix-blend-lighten opacity-30"
-                />
+                <span className="font-frontage-bold text-white text-[300px] leading-none pointer-events-none select-none mix-blend-lighten "
+
+                >
+                    Vidyut
+                </span>
             </motion.div>
 
             {/* Content container */}
-            <div className="relative z-20 h-full flex flex-col items-start justify-center px-8 md:px-16 lg:px-24 pt-[15%]">
+            <div className="relative z-20 h-full flex flex-col items-end justify-center  px-8 md:px-16 lg:px-24 pt-[30%] font-frontage-bold">
 
                 <motion.h1
-                    className="text-white font-bold text-5xl md:text-7xl lg:text-8xl tracking-tight mb-4 relative"
+                    className="text-[#8B0000] font-bold text-5xl md:text-7xl lg:text-8xl tracking-tight mb-2 relative group transition-all duration-500"
                     variants={itemVariants}
                     initial="hidden"
                     animate={controls}
+                    style={{
+                        WebkitTextStroke: '1px #8B0000', // Blood red stroke initially
+                        textStroke: '1px #8B0000',
+                    }}
                 >
-                    Auto<span className="text-blue-400">show</span>
+                    <span className="transition-all duration-500 group-hover:text-transparent">
+                        Auto
+                    </span>
+                    <span
+                        className="transition-all duration-500 group-hover:text-transparent"
+                        style={{
+                            WebkitTextStroke: '1px #8B0000',
+                            textStroke: '1px #8B0000',
+                        }}
+                    >
+                        show
+                     </span>
                 </motion.h1>
-
-                <motion.p
-                    className="text-gray-300 text-lg md:text-2xl lg:text-3xl max-w-2xl mb-8 relative"
-                    variants={itemVariants}
-                    initial="hidden"
-                    animate={controls}
-                >
-                    Experience the future of automotive excellence
-                </motion.p>
 
                 <motion.button
                     className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md text-lg font-medium transition-all relative z-30"
@@ -172,7 +177,7 @@ const HeroSection = () => {
             </div>
 
             {/* Car with separate vignette */}
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-11/12 md:w-full z-10">
+            <div className="absolute bottom-1/8 left-1/2 transform -translate-x-1/2 w-11/12 md:w-full z-10">
                 <motion.img
                     src="/images/CarBG.png"
                     alt="Car"
@@ -182,6 +187,10 @@ const HeroSection = () => {
                     variants={carVariants}
                 />
             </div>
+            <div className="absolute bottom-0 h-1/2 w-full z-10 pointer-events-none bg-[linear-gradient(0deg,rgba(0,0,0,1)_28%,rgba(141,196,204,0)_100%)]" />
+            <div className="absolute top-0 h-1/6 w-full z-10 pointer-events-none bg-[linear-gradient(180deg,rgba(0,0,0,0.5)_18%,rgba(141,196,204,0)_100%)]" />
+
+
         </div>
     );
 };
