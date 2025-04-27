@@ -70,6 +70,12 @@ const Proshow = () => {
                     </div>
                 </TextFade>
             </div>
+            <div className="absolute bottom-0 h-1/2 w-full z-10 pointer-events-none bg-[linear-gradient(0deg,rgba(0,0,0,1)_28%,rgba(141,196,204,0)_100%)]" />
+            <div className="absolute left-0 top-0 h-full w-[900px] z-10 pointer-events-none bg-[linear-gradient(90deg,rgba(0,0,0,1)_48%,rgba(141,196,204,0)_100%)]" />
+
+
+
+            {/* Render the marquee in the background */}
             <div className="absolute inset-0 pointer-events-none z-50">
                 <div className="w-full h-full" style={{
                     background: 'linear-gradient(to right, rgba(0,0,0) 0%, rgba(0,0,0,1) 0%,rgba(0,0,0,0.9) 50%, rgba(0,0,0,0) 100%)'
@@ -85,7 +91,7 @@ const Proshow = () => {
                 transition={{ duration: 1, ease: 'easeOut' }}
                 className="w-full h-full"
             >
-                <ThreeDMarquee images={images} />
+                <ThreeDMarquee images={images} className="opacity-50" />
             </motion.div>
 
         </div>
