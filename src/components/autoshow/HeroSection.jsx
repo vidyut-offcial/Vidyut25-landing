@@ -111,7 +111,7 @@ const HeroSection = () => {
 
             </motion.div>
 
-            {/* Logo in the background */}
+
             <motion.div
                 className="absolute inset-0 flex items-center justify-center z-5 bottom-[750px]"
 
@@ -130,53 +130,62 @@ const HeroSection = () => {
                     }
                 }}
             >
-                <span className="font-frontage-bold text-white text-[300px] leading-none pointer-events-none select-none mix-blend-lighten "
+<span
+  className="font-frontage-bold hover:text-transparent text-[300px] leading-none pointer-events-none select-none mix-blend-lighten transition-all duration-500 text-white"
+  style={{
+    WebkitTextStroke: '2px white',
+    textShadow: `
+      0 0 5px white,
+      0 0 10px white,
+      0 0 20px white,
+      0 0 40px white
+    `,
+  }}
+>
+  VIDYUT
+</span>
 
-                >
-                    Vidyut
-                </span>
+
             </motion.div>
 
             {/* Content container */}
-            <div className="relative z-20 h-full flex flex-col items-end justify-center  px-8 md:px-16 lg:px-24 pt-[30%] font-frontage-bold">
-
+            <div className="relative z-20 h-full flex flex-col items-end justify-center px-8 md:px-16 lg:px-24 pt-[20%]">
                 <motion.h1
-                    className="text-[#8B0000] font-bold text-5xl md:text-7xl lg:text-8xl tracking-tight mb-2 relative group transition-all duration-500"
+                    className="font-bold text-5xl md:text-7xl lg:text-8xl mb-8 relative group transition-all duration-500  text-right h-[80px]"
                     variants={itemVariants}
                     initial="hidden"
                     animate={controls}
-                    style={{
-                        WebkitTextStroke: '1px #8B0000', // Blood red stroke initially
-                        textStroke: '1px #8B0000',
-                    }}
                 >
-                    <span className="transition-all duration-500 group-hover:text-transparent">
+                    {/* AUTO part */}
+                    <span
+                        className="bg-gradient-to-r from-white via-gray-300 to-gray-400 bg-clip-text text-transparent transition-all duration-500"
+                    >
                         Auto
                     </span>
+
+                    {/* SHOW part */}
                     <span
-                        className="transition-all duration-500 group-hover:text-transparent"
-                        style={{
-                            WebkitTextStroke: '1px #8B0000',
-                            textStroke: '1px #8B0000',
-                        }}
+                        className="bg-gradient-to-r from-red-800 via-red-600 to-red-400 bg-clip-text text-transparent transition-all duration-500 ml-2"
                     >
-                        show
-                     </span>
+                        Show
+                    </span>
                 </motion.h1>
 
-                <motion.button
-                    className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md text-lg font-medium transition-all relative z-30"
+                <motion.div
+                    className="w-fit "
                     variants={buttonVariants}
                     initial="hidden"
                     animate={controls}
                     whileHover="hover"
                     whileTap="tap"
                 >
-                    Explore Vehicles
-                </motion.button>
+                    <button className="mt-4 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-8 py-4 rounded-[20px] text-lg font-semibold shadow-lg transition-all duration-300 mr-[10px]">
+                        Explore Vehicles
+                    </button>
+                </motion.div>
             </div>
 
-            {/* Car with separate vignette */}
+
             <div className="absolute bottom-1/8 left-1/2 transform -translate-x-1/2 w-11/12 md:w-full z-10">
                 <motion.img
                     src="/images/CarBG.png"
