@@ -59,10 +59,10 @@ const Proshow = () => {
     }, []);
 
     return (
-        <div className="w-screen h-screen relative overflow-hidden bg-black">
+        <div className="w-screen h-[screen] relative overflow-hidden bg-black">
 
             {/* Logo */}
-            <div className="absolute z-60   bottom-1/3 left-1/12 inset-0 flex flex-col items-start justify-center pointer-events-none space-y-4 ">
+            <div className="absolute z-60   bottom-1/3 left-1/12 inset-0 flex flex-col items-start justify-center pointer-events-none space-y-4 delay-100">
                 <GradualSpacing text={'REVEL 25'}></GradualSpacing>
                 <TextFade direction="up" className="pt-0 pb-5 flex flex-col justify-center items-center space-y-2">
                     <div className=" relative font-semibold top-3 left-2 tracking-widest prose-p:my-1 md:text-lg max-w-lg mx-auto text-balance dark:text-zinc-300 drop-shadow-2xl">
@@ -89,7 +89,7 @@ const Proshow = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.5 }}
                 transition={{ duration: 1, ease: 'easeOut' }}
-                className="w-full h-full"
+                className="w-full h-full delay-0"
             >
                 <ThreeDMarquee images={images} className="opacity-50" />
             </motion.div>

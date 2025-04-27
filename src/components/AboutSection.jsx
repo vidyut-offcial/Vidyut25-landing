@@ -3,7 +3,7 @@
 import { Suspense, useEffect, useState, useRef } from "react";
 import { Canvas, useLoader, useFrame, useThree } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { Environment } from "@react-three/drei";
+import { Environment,Text } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
 import LogoModel from "@/models/LogoModel";
@@ -12,7 +12,7 @@ function TerrainVectorBackground() {
   const meshRef = useRef();
   const mouse = useRef({ x: 0, y: 0 });
   const [texture, setTexture] = useState(null);
-  
+
   useEffect(() => {
     const textureLoader = new THREE.TextureLoader();
     textureLoader.load('/images/terrain.png', (loadedTexture) => {
@@ -21,7 +21,7 @@ function TerrainVectorBackground() {
       setTexture(loadedTexture);
     });
   }, []);
-  
+
   useEffect(() => {
     const handleMouseMove = (event) => {
       mouse.current = {
@@ -29,11 +29,11 @@ function TerrainVectorBackground() {
         y: -(event.clientY / window.innerHeight) * 2 + 1
       };
     };
-    
+
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
-  
+
   useEffect(() => {
     if (texture && meshRef.current) {
       const material = new THREE.ShaderMaterial({
@@ -80,11 +80,11 @@ function TerrainVectorBackground() {
         `,
         transparent: true
       });
-      
+
       meshRef.current.material = material;
     }
   }, [texture]);
-  
+
   return (
     <mesh ref={meshRef} position={[0, 0, -10]}>
       <planeGeometry args={[30, 15, 1, 1]} />
@@ -97,12 +97,12 @@ function TerrainVectorBackground() {
 
 function CenterCamera() {
   const { camera } = useThree();
-  
+
   useEffect(() => {
     camera.position.set(0, 0, 5);
     camera.lookAt(0, 0, 0);
   }, [camera]);
-  
+
   return null;
 }
 
@@ -144,20 +144,25 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <section 
-      id="about-section" 
-      ref={sectionRef}
-      className="relative top-0 opacity-0 translate-y-[100px] left-0 h-screen w-screen"
-      style={{ height: '100vh', width: '100vw' }}
-    >
-      <div 
-        className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(to_top,black,transparent_40%),linear-gradient(to_bottom,black,transparent_40%),linear-gradient(to_left,black,transparent_20%),linear-gradient(to_right,black,transparent_20%)]"
-        style={{ mixBlendMode: 'multiply' }}
-      />
+    <section
+    id="about-section"
+    ref={sectionRef}
+    className="relative top-0 opacity-0 translate-y-[100px] left-0 h-screen w-screen overflow-hidden"
+    style={{ height: '100vh', width: '100vw' }}
+  >
+    <div
+      className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(to_top,black,transparent_40%),linear-gradient(to_bottom,black,transparent_40%),linear-gradient(to_left,black,transparent_20%),linear-gradient(to_right,black,transparent_20%)]"
+      style={{ mixBlendMode: 'multiply' }}
+    />
+  
+    {/* The text */}
+    <div className="absolute w-full z-20 top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center  font-frontage-bold">
+      <h1 className="text-7xl font-bold ">Echoes of Tomorrow</h1>
+    </div>
       <Canvas
         camera={{ position: [0, 0, 5], fov: 45 }}
-        style={{ 
-          width: '100%', 
+        style={{
+          width: '100%',
           height: '100%',
           position: 'absolute',
           top: 0,
@@ -166,21 +171,27 @@ export default function AboutSection() {
       >
         <CenterCamera />
         <ambientLight intensity={0.3} />
-        <directionalLight 
-          position={[0, 5, 5]} 
-          intensity={0.8} 
-          color="#ffffff" 
+        <directionalLight
+          position={[0, 5, 5]}
+          intensity={0.8}
+          color="#ffffff"
         />
-        
+
         <Suspense fallback={null}>
           <TerrainVectorBackground />
         </Suspense>
-        
+        <Suspense fallback={null}>
+          <TerrainVectorBackground />
+        </Suspense>
+
         <Suspense fallback={null}>
           <LogoModel />
+
           <Environment preset="warehouse" intensity={0.8} />
         </Suspense>
+
       </Canvas>
+
     </section>
   );
 }
