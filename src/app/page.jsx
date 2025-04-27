@@ -16,6 +16,7 @@ import ReactHowler from "react-howler";
 import MultiEventsSection from "@/components/MultiEventsSection";
 import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
+import AutoshowSection from "@/components/autoshow/AutoshowSection";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -210,7 +211,7 @@ export default function Home() {
           <IdeaSection />
           <EventsSection />
           <MultiEventsSection />
-          <PastSection />
+          <AutoshowSection />
           <FAQSection />
           <Footer />
         </div>
