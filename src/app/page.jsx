@@ -5,7 +5,6 @@ import EventsSection from "@/components/EventsSection";
 import HeroSection from "@/components/HeroSection";
 import IdeaSection from "@/components/IdeaSection";
 import NavBar from "@/components/NavBar";
-import PastSection from "@/components/PastSection";
 import PostLoading from "@/components/PostLoading";
 import SpaceShipModel from "@/models/SpaceShipModel";
 import gsap from "gsap";
