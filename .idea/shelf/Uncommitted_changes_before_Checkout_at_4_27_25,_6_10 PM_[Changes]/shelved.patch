@@ -1,0 +1,247 @@
+Index: src/components/ThreeDMarquee.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>'use client';\n\nimport React from 'react';\nimport { motion } from \"motion/react\";\nimport {cn} from \"@/lib/utils\";\n\nexport const ThreeDMarquee = ({ images, className }) => {\n    const chunkSize = Math.ceil(images.length / 8);\n    const chunks = Array.from({ length: 8 }, (_, colIndex) => {\n        const start = colIndex * chunkSize;\n        return images.slice(start, start + chunkSize);\n    });\n\n    return (\n        <div className={cn(\"mx-auto block h-[800px]  overflow-hidden rounded-2xl max-sm:h-100\", className)}>\n            <div className=\"flex size-full items-center justify-center\">\n\n                <div className=\"size-[2220px] shrink-0 scale-80 sm:scale-75 lg:scale-100\">\n                    <div\n                        style={{\n                            transform: \"rotateX(35deg) rotateY(-19deg) rotateZ(20deg)\",\n                        }}\n                        className=\"relative top-1/6 right-20 grid size-full grid-cols-8 gap-8 transform-3d\"\n                    >\n                        {chunks.map((subarray, colIndex) => (\n                            <motion.div\n                                animate={{ y: colIndex % 2 === 0 ? 100 : -100 }}\n                                transition={{\n                                    duration: colIndex % 2 === 0 ? 10 : 15,\n                                    repeat: Infinity,\n                                    repeatType: \"reverse\",\n                                }}\n                                key={`${colIndex}-marquee`}\n                                className=\"flex flex-col items-start gap-8\"\n                            >\n                                {subarray.map((image, imageIndex) => (\n                                    <div className=\"relative\" key={`${imageIndex}-${image}`}>\n                                        <motion.img\n                                            whileHover={{\n                                                y: -20,\n                                                z: 100,\n                                                scale: 1.03,\n                                            }}\n                                            transition={{\n                                                duration: 0.3,\n                                                ease: \"easeInOut\",\n                                            }}\n                                            src={image}\n                                            alt={`Image ${imageIndex + 1}`}\n                                            className=\"aspect-[700/800] rounded-lg object-cover ring ring-gray-950/5 hover:shadow-2xl\"\n                                            width={770}\n                                            height={700}\n                                        />\n                                    </div>\n                                ))}\n                            </motion.div>\n                        ))}\n                    </div>\n                </div>\n            </div>\n        </div>\n    );\n};\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/ThreeDMarquee.jsx b/src/components/ThreeDMarquee.jsx
+--- a/src/components/ThreeDMarquee.jsx	(revision dee7f74eb41272de7f6ae3a12084ee5e31899351)
++++ b/src/components/ThreeDMarquee.jsx	(date 1745734770975)
+@@ -5,8 +5,8 @@
+ import {cn} from "@/lib/utils";
+ 
+ export const ThreeDMarquee = ({ images, className }) => {
+-    const chunkSize = Math.ceil(images.length / 8);
+-    const chunks = Array.from({ length: 8 }, (_, colIndex) => {
++    const chunkSize = Math.ceil(images.length / 4);
++    const chunks = Array.from({ length: 4 }, (_, colIndex) => {
+         const start = colIndex * chunkSize;
+         return images.slice(start, start + chunkSize);
+     });
+@@ -15,12 +15,12 @@
+         <div className={cn("mx-auto block h-[800px]  overflow-hidden rounded-2xl max-sm:h-100", className)}>
+             <div className="flex size-full items-center justify-center">
+ 
+-                <div className="size-[2220px] shrink-0 scale-80 sm:scale-75 lg:scale-100">
++                <div className="size-[2420px] shrink-0 scale-100 sm:scale-75 lg:scale-100">
+                     <div
+                         style={{
+                             transform: "rotateX(35deg) rotateY(-19deg) rotateZ(20deg)",
+                         }}
+-                        className="relative top-1/6 right-20 grid size-full grid-cols-8 gap-8 transform-3d"
++                        className="relative top-1/6 left-1/5 grid size-full grid-cols-6 gap-12 transform-3d"
+                     >
+                         {chunks.map((subarray, colIndex) => (
+                             <motion.div
+Index: src/app/page.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"use client\";\n\nimport AboutSection from \"@/components/AboutSection\";\nimport EventsSection from \"@/components/EventsSection\";\nimport HeroSection from \"@/components/HeroSection\";\nimport IdeaSection from \"@/components/IdeaSection\";\nimport NavBar from \"@/components/NavBar\";\nimport PastSection from \"@/components/PastSection\";\nimport PostLoading from \"@/components/PostLoading\";\nimport SpaceShipModel from \"@/models/SpaceShipModel\";\nimport gsap from \"gsap\";\nimport { useEffect, useRef, useState } from \"react\";\nimport { ScrollTrigger } from \"gsap/ScrollTrigger\";\nimport { SpaceshipContext } from \"@/contexts/SpaceShipContext\";\nimport ReactHowler from \"react-howler\";\nimport MultiEventsSection from \"@/components/MultiEventsSection\";\nimport Footer from \"@/components/Footer\";\nimport FAQSection from \"@/components/FAQSection\";\nimport SwiperCoverflow from \"@/components/workshop\";\nimport Proshow from \"@/components/Proshow\";\nimport Autoshow from \"@/components/AutoShow\";\n\ngsap.registerPlugin(ScrollTrigger);\n\nexport default function Home() {\n  const [showSpaceship, setShowSpaceship] = useState(true);\n  const [isSpaceshipMounted, setIsSpaceshipMounted] = useState(true);\n  const spaceshipRef = useRef(null);\n  const mainRef = useRef(null);\n  const [playOne, setPlayOne] = useState(false);\n  const [playTwo, setPlayTwo] = useState(false);\n  const howlerOneRef = useRef();\n  const howlerTwoRef = useRef();\n\n  const startReveal = () => {\n    const tl = gsap.timeline();\n    gsap.set(\"#hero-section\", { opacity: 1 });\n    gsap.set(\"#hero-title\", { y: 100 });\n    gsap.set(\"#hero-subtitle\", { x: -100, opacity: 0, y: 0 });\n    gsap.set(\"#hero-comingsoon\", { y: 30, opacity: 0 });\n    gsap.set(\"#hero-countdown\", { scale: 0.95, opacity: 0 });\n\n    tl\n      .to(\"#hero-title\", {\n        duration: 2,\n        y: 0,\n        ease: \"power2.out\",\n        onComplete: () => {\n          gsap.set(\"#model\", { translateY: \"100vh\", position: \"absolute\", top: 0, left: 0, zIndex: \"-10\" });\n        },\n      })\n      .to(\"#hero-title\", {\n        duration: 2,\n        y: 0,\n        ease: \"power2.inOut\",\n      })\n      .to(\"#hero-subtitle\", {\n        x: 0,\n        opacity: 2,\n        duration: 1.2,\n        ease: \"power3.out\",\n      }, \"-=0.5\")\n      .set(\"#section-container\", { display: \"block\" })\n      .to(\"#hero-comingsoon\", {\n        y: 0,\n        opacity: 1,\n        duration: 2,\n        ease: \"power2.out\",\n        onComplete: () => {\n          gsap.to(\"#section-container\", {\n            opacity: 1,\n            duration: 0.5,\n            ease: \"power2.out\",\n          });\n        },\n      }, \"-=0.8\")\n      .to(\"#hero-countdown\", {\n        scale: 1,\n        opacity: 1,\n        duration: 2,\n        ease: \"back.out(1.7)\",\n      }, \"-=0.8\");\n  };\n\n  function transitHero() {\n    const interval = setInterval(() => {\n      if (spaceshipRef.current) {\n        clearInterval(interval);\n        const initialScale = spaceshipRef.current.scale;\n        const tl = gsap.timeline();\n\n        tl\n          .call(() => {\n            setPlayOne(true);\n          })\n          .to(spaceshipRef.current.position, {\n            x: 2.5,\n            y: 2.5,\n            z: 2.5,\n            duration: 1.5,\n            ease: \"power2.out\",\n            onComplete: () => {\n              setPlayTwo(true);\n            },\n          })\n          .to(spaceshipRef.current.rotation, {\n            y: -Math.PI / 8,\n            x: 0,\n            z: 0,\n            duration: 1.5,\n            ease: \"power2.out\",\n          }, \"<\")\n          .to(spaceshipRef.current.scale, {\n            x: initialScale.x * 0.5,\n            y: initialScale.y * 0.5,\n            z: initialScale.z * 0.5,\n            duration: 1.5,\n            ease: \"power2.out\",\n          }, \"<\")\n          .to(spaceshipRef.current.scale, {\n            x: initialScale.x * 2.5,\n            y: initialScale.y * 2.5,\n            z: initialScale.z * 2.5,\n            duration: 1.5,\n            ease: \"power2.out\",\n            onComplete: () => {\n              setPlayOne(false);\n              startReveal();\n            },\n          })\n          .to(spaceshipRef.current.position, {\n            x: 0,\n            y: 0,\n            z: 1,\n            duration: 1.5,\n            ease: \"power2.out\",\n          }, \"<\")\n          .to(spaceshipRef.current.rotation, {\n            y: Math.PI / 2,\n            x: -Math.PI / 2,\n            z: 0,\n            duration: 1.5,\n            ease: \"power2.out\",\n          }, \"<\")\n          .to(spaceshipRef.current.scale, {\n            x: initialScale.x,\n            y: initialScale.y,\n            z: initialScale.z,\n            duration: 1.5,\n            ease: \"power2.out\",\n          })\n          .to(spaceshipRef.current.position, {\n            x: 35,\n            y: 0,\n            z: 0,\n            duration: 1.5,\n            ease: \"power2.out\",\n          }, \"<\");\n      }\n    }, 100);\n\n    return () => clearInterval(interval);\n  }\n\n  useEffect(() => {\n    if (playOne) {\n      howlerOneRef.current.play();\n    } else {\n      howlerOneRef.current.stop();\n    }\n\n    if (playTwo) {\n      howlerTwoRef.current.play();\n    } else {\n      howlerTwoRef.current.stop();\n    }\n  }, [playOne, playTwo]);\n\n  return (\n    <SpaceshipContext.Provider value={spaceshipRef}>\n      <ReactHowler\n        src=\"/sounds/woof.mp3\"\n        playing={false}\n        html5={true}\n        ref={howlerOneRef}\n        volume={1}\n      />\n\n      <ReactHowler\n        src=\"/sounds/reveal.mp3\"\n        playing={false}\n        html5={true}\n        ref={howlerTwoRef}\n        volume={1}\n        onEnd={() => {\n          setIsSpaceshipMounted(false);\n          gsap.to(\"#hero-title-glitch\", {\n            opacity: 0,\n            duration: 0.5,\n            ease: \"power2.out\",\n          });\n        }}\n      />\n      <main ref={mainRef} className=\"min-h-screen w-screen flex flex-col items-center justify-center overflow-x-hidden\">\n        <div id=\"model\" className=\"fixed flex items-center justify-center top-0 left-0 z-[100] pointer-events-none\">\n          {isSpaceshipMounted && showSpaceship && <SpaceShipModel ref={spaceshipRef} />}\n        </div>\n        <PostLoading onComplete={transitHero} />\n        <HeroSection />\n        <div id=\"section-container\" className=\"h-full w-full hidden opacity-0\">\n          <NavBar />\n          <AboutSection />\n          <IdeaSection />\n          <Proshow/>\n          <Autoshow/>\n          <EventsSection />\n          <SwiperCoverflow/>\n          <FAQSection />\n          <Footer />\n        </div>\n      </main>\n    </SpaceshipContext.Provider>\n  );\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/app/page.jsx b/src/app/page.jsx
+--- a/src/app/page.jsx	(revision dee7f74eb41272de7f6ae3a12084ee5e31899351)
++++ b/src/app/page.jsx	(date 1745732980794)
+@@ -17,8 +17,8 @@
+ import Footer from "@/components/Footer";
+ import FAQSection from "@/components/FAQSection";
+ import SwiperCoverflow from "@/components/workshop";
+-import Proshow from "@/components/Proshow";
+ import Autoshow from "@/components/AutoShow";
++import Proshow from "@/app/proshow/page";
+ 
+ gsap.registerPlugin(ScrollTrigger);
+ 
+Index: src/components/blur.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>'use client';\nimport { motion, useInView } from 'framer-motion';\nimport * as React from 'react';\n\nexport const BlurIn = ({ children }) => {\n    const ref = React.useRef(null);\n    const isInView = useInView(ref, { once: false });\n\n    return (\n        <motion.h2\n            ref={ref}\n            initial={{ filter: 'blur(20px)', opacity: 0 }}\n            animate={isInView ? { filter: 'blur(0px)', opacity: 1 } : {}}\n            transition={{ duration: 2.2 }}\n            className=\"text-4xl text-center sm:text-6xl md:text-8xl font-extrabold tracking-tight leading-tight\"\n        >\n            {children}\n        </motion.h2>\n    );\n};\n
+===================================================================
+diff --git a/src/components/blur.jsx b/src/components/blur.jsx
+--- a/src/components/blur.jsx	(revision dee7f74eb41272de7f6ae3a12084ee5e31899351)
++++ b/src/components/blur.jsx	(date 1745737996144)
+@@ -12,7 +12,7 @@
+             initial={{ filter: 'blur(20px)', opacity: 0 }}
+             animate={isInView ? { filter: 'blur(0px)', opacity: 1 } : {}}
+             transition={{ duration: 2.2 }}
+-            className="text-4xl text-center sm:text-6xl md:text-8xl font-extrabold tracking-tight leading-tight"
++            className="text-4xl text-center sm:text-6xl md:text-9xl font-extrabold tracking-tight leading-tight"
+         >
+             {children}
+         </motion.h2>
+Index: src/components/FadeUp.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>'use client';\nimport { motion, useInView } from 'framer-motion';\nimport * as React from 'react';\n\nexport function TextFade({\n                             direction,\n                             children,\n                             className = '',\n                             staggerChildren = 0.1,\n                         }) {\n    const FADE_DOWN = {\n        show: { opacity: 1, y: 0, transition: { type: 'spring', duration: 1, delay: 2 } },\n        hidden: { opacity: 0, y: direction === 'down' ? -18 : 18 },\n    };\n    const ref = React.useRef(null);\n    const isInView = useInView(ref, { once: false });\n\n    return (\n        <motion.div\n            ref={ref}\n            initial=\"hidden\"\n            animate={isInView ? 'show' : ''}\n            variants={{\n                hidden: {},\n                show: {\n                    transition: {\n                        staggerChildren: staggerChildren,\n                    },\n                },\n            }}\n            className={className}\n        >\n            {React.Children.map(children, (child) =>\n                React.isValidElement(child) ? (\n                    <motion.div variants={FADE_DOWN}>{child}</motion.div>\n                ) : (\n                    child\n                )\n            )}\n        </motion.div>\n    );\n}\n
+===================================================================
+diff --git a/src/components/FadeUp.jsx b/src/components/FadeUp.jsx
+--- a/src/components/FadeUp.jsx	(revision dee7f74eb41272de7f6ae3a12084ee5e31899351)
++++ b/src/components/FadeUp.jsx	(date 1745745476777)
+@@ -9,7 +9,7 @@
+                              staggerChildren = 0.1,
+                          }) {
+     const FADE_DOWN = {
+-        show: { opacity: 1, y: 0, transition: { type: 'spring', duration: 1, delay: 2 } },
++        show: { opacity: 1, y: 0, transition: { type: 'spring', duration: 1, delay: 1 } },
+         hidden: { opacity: 0, y: direction === 'down' ? -18 : 18 },
+     };
+     const ref = React.useRef(null);
+Index: src/components/Proshow.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>'use client';\n\nimport React, { useEffect, useState } from \"react\";\nimport { BlurIn } from \"@/components/blur\";\nimport { TextFade } from \"@/components/FadeUp\";\nimport { ThreeDMarquee } from \"@/components/ThreeDMarquee\";\n\nconst Test = () => {\n    const images = [\n        \"https://assets.aceternity.com/cloudinary_bkp/3d-card.png\",\n        \"https://assets.aceternity.com/animated-modal.png\",\n        \"https://assets.aceternity.com/animated-testimonials.webp\",\n        \"https://assets.aceternity.com/cloudinary_bkp/Tooltip_luwy44.png\",\n        \"https://assets.aceternity.com/github-globe.png\",\n        \"https://assets.aceternity.com/glare-card.png\",\n        \"https://assets.aceternity.com/layout-grid.png\",\n        \"https://assets.aceternity.com/flip-text.png\",\n        \"https://assets.aceternity.com/hero-highlight.png\",\n        \"https://assets.aceternity.com/carousel.webp\",\n        \"https://assets.aceternity.com/placeholders-and-vanish-input.png\",\n        \"https://assets.aceternity.com/shooting-stars-and-stars-background.png\",\n        \"https://assets.aceternity.com/signup-form.png\",\n        \"https://assets.aceternity.com/cloudinary_bkp/stars_sxle3d.png\",\n        \"https://assets.aceternity.com/spotlight-new.webp\",\n        \"https://assets.aceternity.com/cloudinary_bkp/Spotlight_ar5jpr.png\",\n        \"https://assets.aceternity.com/cloudinary_bkp/Parallax_Scroll_pzlatw_anfkh7.png\",\n        \"https://assets.aceternity.com/tabs.png\",\n        \"https://assets.aceternity.com/cloudinary_bkp/Tracing_Beam_npujte.png\",\n        \"https://assets.aceternity.com/cloudinary_bkp/typewriter-effect.png\",\n        \"https://assets.aceternity.com/glowing-effect.webp\",\n        \"https://assets.aceternity.com/hover-border-gradient.png\",\n        \"https://assets.aceternity.com/cloudinary_bkp/Infinite_Moving_Cards_evhzur.png\",\n        \"https://assets.aceternity.com/cloudinary_bkp/Lamp_hlq3ln.png\",\n        \"https://assets.aceternity.com/macbook-scroll.png\",\n        \"https://assets.aceternity.com/cloudinary_bkp/Meteors_fye3ys.png\",\n        \"https://assets.aceternity.com/cloudinary_bkp/Moving_Border_yn78lv.png\",\n        \"https://assets.aceternity.com/multi-step-loader.png\",\n        \"https://assets.aceternity.com/vortex.png\",\n        \"https://assets.aceternity.com/wobble-card.png\",\n        \"https://assets.aceternity.com/world-map.webp\",\n    ];\n\n    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });\n    const [isHovering, setIsHovering] = useState(false);\n\n    // Update mouse position\n    useEffect(() => {\n        const handleMouseMove = (e) => {\n            setMousePosition({ x: e.clientX, y: e.clientY });\n        };\n        document.addEventListener('mousemove', handleMouseMove);\n\n        return () => {\n            document.removeEventListener('mousemove', handleMouseMove);\n        };\n    }, []);\n\n    return (\n        <div className=\"w-screen h-screen relative overflow-hidden bg-black\">\n\n            {/* Logo */}\n            <div className=\"absolute bottom-1/7 inset-0 flex flex-col items-center justify-center z-30 pointer-events-none space-y-4 text-center\">\n                <BlurIn>Revel 25</BlurIn>\n                <TextFade direction=\"up\" className=\"pt-0 pb-5 flex flex-col justify-center items-center space-y-2\">\n                    <div className=\"font-semibold prose-p:my-1 md:text-lg max-w-lg mx-auto text-balance dark:text-zinc-300 drop-shadow-2xl\">\n                        coming soon...\n                    </div>\n                </TextFade>\n            </div>\n            <div className=\"absolute inset-0 z-0 pointer-events-none\">\n                <div className=\"w-full h-full bg-black opacity-50 mix-blend-multiply\" />\n                <div className=\"absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60\" />\n                <div className=\"absolute inset-0 bg-gradient-to-b from-black via-transparent to-transparent opacity-60\" />\n            </div>\n            {/* Dark Vignette with Mouse Hover Spotlight */}\n            <div className=\"absolute top-0 left-0 w-full h-full\">\n                {/* Render the marquee in the background */}\n                <ThreeDMarquee images={images}/>\n\n                {/* Overlay on top of marquee */}\n                <div\n                    className=\"absolute top-0 left-0 w-full h-full pointer-events-none\"\n                    style={{\n                        background: 'rgba(3, 3, 3, 0.90)', // Semi-transparent dark overlay\n                        zIndex: 10, // higher than the marquee\n                        WebkitMaskImage: isHovering\n                            ? `radial-gradient(circle 500px at ${mousePosition.x}px ${mousePosition.y}px, transparent 0%, black 100%)`\n                            : 'none',\n                        maskImage: isHovering\n                            ? `radial-gradient(circle 500px at ${mousePosition.x}px ${mousePosition.y}px, transparent 0%, black 100%)`\n                            : 'none',\n                        WebkitMaskRepeat: 'no-repeat',\n                        maskRepeat: 'no-repeat',\n                    }}\n                />\n\n                {/* Optional: Spotlight effect on hover */}\n                {isHovering && (\n                    <div\n                        style={{\n                            position: 'absolute',\n                            top: mousePosition.y - 50,\n                            left: mousePosition.x - 150,\n                            zIndex: 20, // above both the marquee and overlay\n                        }}\n                    >\n                        {/* You can add spotlight visuals here */}\n                    </div>\n                )}\n            </div>\n\n            {/* You can track mouse hovering with a listener */}\n            <div\n                onMouseEnter={() => setIsHovering(true)}\n                onMouseLeave={() => setIsHovering(false)}\n                className=\"absolute inset-0 z-20\"\n            ></div>\n        </div>\n    );\n};\n\nexport default Test;\n
+===================================================================
+diff --git a/src/components/Proshow.jsx b/src/components/Proshow.jsx
+--- a/src/components/Proshow.jsx	(revision dee7f74eb41272de7f6ae3a12084ee5e31899351)
++++ b/src/components/Proshow.jsx	(date 1745732875663)
+@@ -1,122 +1,0 @@
+-'use client';
+-
+-import React, { useEffect, useState } from "react";
+-import { BlurIn } from "@/components/blur";
+-import { TextFade } from "@/components/FadeUp";
+-import { ThreeDMarquee } from "@/components/ThreeDMarquee";
+-
+-const Test = () => {
+-    const images = [
+-        "https://assets.aceternity.com/cloudinary_bkp/3d-card.png",
+-        "https://assets.aceternity.com/animated-modal.png",
+-        "https://assets.aceternity.com/animated-testimonials.webp",
+-        "https://assets.aceternity.com/cloudinary_bkp/Tooltip_luwy44.png",
+-        "https://assets.aceternity.com/github-globe.png",
+-        "https://assets.aceternity.com/glare-card.png",
+-        "https://assets.aceternity.com/layout-grid.png",
+-        "https://assets.aceternity.com/flip-text.png",
+-        "https://assets.aceternity.com/hero-highlight.png",
+-        "https://assets.aceternity.com/carousel.webp",
+-        "https://assets.aceternity.com/placeholders-and-vanish-input.png",
+-        "https://assets.aceternity.com/shooting-stars-and-stars-background.png",
+-        "https://assets.aceternity.com/signup-form.png",
+-        "https://assets.aceternity.com/cloudinary_bkp/stars_sxle3d.png",
+-        "https://assets.aceternity.com/spotlight-new.webp",
+-        "https://assets.aceternity.com/cloudinary_bkp/Spotlight_ar5jpr.png",
+-        "https://assets.aceternity.com/cloudinary_bkp/Parallax_Scroll_pzlatw_anfkh7.png",
+-        "https://assets.aceternity.com/tabs.png",
+-        "https://assets.aceternity.com/cloudinary_bkp/Tracing_Beam_npujte.png",
+-        "https://assets.aceternity.com/cloudinary_bkp/typewriter-effect.png",
+-        "https://assets.aceternity.com/glowing-effect.webp",
+-        "https://assets.aceternity.com/hover-border-gradient.png",
+-        "https://assets.aceternity.com/cloudinary_bkp/Infinite_Moving_Cards_evhzur.png",
+-        "https://assets.aceternity.com/cloudinary_bkp/Lamp_hlq3ln.png",
+-        "https://assets.aceternity.com/macbook-scroll.png",
+-        "https://assets.aceternity.com/cloudinary_bkp/Meteors_fye3ys.png",
+-        "https://assets.aceternity.com/cloudinary_bkp/Moving_Border_yn78lv.png",
+-        "https://assets.aceternity.com/multi-step-loader.png",
+-        "https://assets.aceternity.com/vortex.png",
+-        "https://assets.aceternity.com/wobble-card.png",
+-        "https://assets.aceternity.com/world-map.webp",
+-    ];
+-
+-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+-    const [isHovering, setIsHovering] = useState(false);
+-
+-    // Update mouse position
+-    useEffect(() => {
+-        const handleMouseMove = (e) => {
+-            setMousePosition({ x: e.clientX, y: e.clientY });
+-        };
+-        document.addEventListener('mousemove', handleMouseMove);
+-
+-        return () => {
+-            document.removeEventListener('mousemove', handleMouseMove);
+-        };
+-    }, []);
+-
+-    return (
+-        <div className="w-screen h-screen relative overflow-hidden bg-black">
+-
+-            {/* Logo */}
+-            <div className="absolute bottom-1/7 inset-0 flex flex-col items-center justify-center z-30 pointer-events-none space-y-4 text-center">
+-                <BlurIn>Revel 25</BlurIn>
+-                <TextFade direction="up" className="pt-0 pb-5 flex flex-col justify-center items-center space-y-2">
+-                    <div className="font-semibold prose-p:my-1 md:text-lg max-w-lg mx-auto text-balance dark:text-zinc-300 drop-shadow-2xl">
+-                        coming soon...
+-                    </div>
+-                </TextFade>
+-            </div>
+-            <div className="absolute inset-0 z-0 pointer-events-none">
+-                <div className="w-full h-full bg-black opacity-50 mix-blend-multiply" />
+-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+-                <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-transparent opacity-60" />
+-            </div>
+-            {/* Dark Vignette with Mouse Hover Spotlight */}
+-            <div className="absolute top-0 left-0 w-full h-full">
+-                {/* Render the marquee in the background */}
+-                <ThreeDMarquee images={images}/>
+-
+-                {/* Overlay on top of marquee */}
+-                <div
+-                    className="absolute top-0 left-0 w-full h-full pointer-events-none"
+-                    style={{
+-                        background: 'rgba(3, 3, 3, 0.90)', // Semi-transparent dark overlay
+-                        zIndex: 10, // higher than the marquee
+-                        WebkitMaskImage: isHovering
+-                            ? `radial-gradient(circle 500px at ${mousePosition.x}px ${mousePosition.y}px, transparent 0%, black 100%)`
+-                            : 'none',
+-                        maskImage: isHovering
+-                            ? `radial-gradient(circle 500px at ${mousePosition.x}px ${mousePosition.y}px, transparent 0%, black 100%)`
+-                            : 'none',
+-                        WebkitMaskRepeat: 'no-repeat',
+-                        maskRepeat: 'no-repeat',
+-                    }}
+-                />
+-
+-                {/* Optional: Spotlight effect on hover */}
+-                {isHovering && (
+-                    <div
+-                        style={{
+-                            position: 'absolute',
+-                            top: mousePosition.y - 50,
+-                            left: mousePosition.x - 150,
+-                            zIndex: 20, // above both the marquee and overlay
+-                        }}
+-                    >
+-                        {/* You can add spotlight visuals here */}
+-                    </div>
+-                )}
+-            </div>
+-
+-            {/* You can track mouse hovering with a listener */}
+-            <div
+-                onMouseEnter={() => setIsHovering(true)}
+-                onMouseLeave={() => setIsHovering(false)}
+-                className="absolute inset-0 z-20"
+-            ></div>
+-        </div>
+-    );
+-};
+-
+-export default Test;
+Index: src/components/ui/gradual-spacing.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>'use client';\n\nimport { AnimatePresence, motion, useInView } from 'framer-motion';\nimport * as React from 'react';\n\nexport function GradualSpacing({ text = 'Gradual Spacing' }) {\n    const ref = React.useRef(null);\n    const isInView = useInView(ref, { once: false });\n    return (\n        <div className=\"flex space-x-1 justify-center\">\n            <AnimatePresence>\n                {text.split('').map((char, i) => (\n                    <motion.p\n                        ref={ref}\n                        key={i}\n                        initial={{ opacity: 0, x: -18 }}\n                        animate={isInView ? { opacity: 1, x: 0 } : {}}\n                        exit=\"hidden\"\n                        transition={{ duration: 0.5, delay: i * 0.1 }}\n                        className=\"text-xl text-center sm:text-4xl font-bold tracking-tighter md:text-6xl md:leading-[4rem]\"\n                    >\n                        {char === ' ' ? <span>&nbsp;</span> : char}\n                    </motion.p>\n                ))}\n            </AnimatePresence>\n        </div>\n    );\n}
+===================================================================
+diff --git a/src/components/ui/gradual-spacing.jsx b/src/components/ui/gradual-spacing.jsx
+--- a/src/components/ui/gradual-spacing.jsx	(revision dee7f74eb41272de7f6ae3a12084ee5e31899351)
++++ b/src/components/ui/gradual-spacing.jsx	(date 1745747089304)
+@@ -7,7 +7,7 @@
+     const ref = React.useRef(null);
+     const isInView = useInView(ref, { once: false });
+     return (
+-        <div className="flex space-x-1 justify-center">
++        <div className="flex space-x-1 justify-center ">
+             <AnimatePresence>
+                 {text.split('').map((char, i) => (
+                     <motion.p
+@@ -17,7 +17,7 @@
+                         animate={isInView ? { opacity: 1, x: 0 } : {}}
+                         exit="hidden"
+                         transition={{ duration: 0.5, delay: i * 0.1 }}
+-                        className="text-xl text-center sm:text-4xl font-bold tracking-tighter md:text-6xl md:leading-[4rem]"
++                        className="text-xl text-center sm:text-9xl font-bold tracking-tighter md:text-9xl md:leading-[4rem] tracking-wide "
+                     >
+                         {char === ' ' ? <span>&nbsp;</span> : char}
+                     </motion.p>
