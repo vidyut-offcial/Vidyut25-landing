@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d6ba885-46bc-46de-bbc4-ce9409226455" name="Changes" comment="rough">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AutoShow.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AutoShow.jsx" afterDir="false" />
+    <list default="true" id="8d6ba885-46bc-46de-bbc4-ce9409226455" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/src/components/workshop.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/workshop.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
