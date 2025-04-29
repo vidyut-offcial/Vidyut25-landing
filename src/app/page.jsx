@@ -208,15 +208,33 @@ export default function Home() {
         <HeroSection />
         <div id="section-container" className="h-full w-full hidden opacity-0">
           <NavBar />
-          <AboutSection />
-          <IdeaSection />
-          <Proshow/>
-          <AutoshowSection />
 
-          <EventsSection />
-          <SwiperCoverflow/>
-          <FAQSection />
+          <section id="about">
+            <AboutSection />
+          </section>
+
+          <section id="ideas">
+            <IdeaSection />
+          </section>
+
+          <section id="proshow">
+            <Proshow />
+          </section>
+
+          <section id="autoshow">
+            <AutoshowSection />
+          </section>
+
+          <section id="gallery">
+            <SwiperCoverflow />
+          </section>
+
+          <section id="faq">
+            <FAQSection />
+          </section>
+
           <Footer />
+
         </div>
       </main>
     </SpaceshipContext.Provider>
