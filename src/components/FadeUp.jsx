@@ -9,7 +9,7 @@ export function TextFade({
                              staggerChildren = 0.1,
                          }) {
     const FADE_DOWN = {
-        show: { opacity: 1, y: 0, transition: { type: 'spring', duration: 1, delay: 2 } },
+        show: { opacity: 1, y: 0, transition: { type: 'spring', duration: 1, } },
         hidden: { opacity: 0, y: direction === 'down' ? -18 : 18 },
     };
     const ref = React.useRef(null);
