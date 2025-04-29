@@ -1,7 +1,6 @@
 "use client";
 
 import AboutSection from "@/components/AboutSection";
-import EventsSection from "@/components/EventsSection";
 import HeroSection from "@/components/HeroSection";
 import IdeaSection from "@/components/IdeaSection";
 import NavBar from "@/components/NavBar";
@@ -14,10 +13,7 @@ import { SpaceshipContext } from "@/contexts/SpaceShipContext";
 import ReactHowler from "react-howler";
 import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
-import SwiperCoverflow from "@/components/workshop";
-
-import Proshow from "@/app/proshow/page";
-import AutoshowSection from "@/components/autoshow/AutoshowSection";
+import dynamic from 'next/dynamic';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,6 +26,21 @@ export default function Home() {
   const [playTwo, setPlayTwo] = useState(false);
   const howlerOneRef = useRef();
   const howlerTwoRef = useRef();
+
+  const LazyProshow = dynamic(() => import('@/app/proshow/page'), {
+    loading: () => <div className="text-center p-4">Loading Proshow...</div>,
+    ssr: false,
+  });
+
+  const LazyAutoshowSection = dynamic(() => import('@/components/autoshow/AutoshowSection'), {
+    loading: () => <div className="text-center p-4">Loading Autoshow...</div>,
+    ssr: false,
+  });
+
+  const LazySwiperCoverflow = dynamic(() => import('@/components/workshop'), {
+    loading: () => <div className="text-center p-4">Loading Workshops...</div>,
+    ssr: false,
+  });
 
   const startReveal = () => {
     const tl = gsap.timeline();
@@ -218,15 +229,15 @@ export default function Home() {
           </section>
 
           <section id="proshow">
-            <Proshow />
+            <LazyProshow />
           </section>
 
           <section id="autoshow">
-            <AutoshowSection />
+            <LazyAutoshowSection />
           </section>
 
           <section id="workshop">
-            <SwiperCoverflow />
+            <LazySwiperCoverflow />
           </section>
 
           <section id="faq">

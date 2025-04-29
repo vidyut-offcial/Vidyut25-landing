@@ -7,6 +7,7 @@ import { Environment,Text } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
 import LogoModel from "@/models/LogoModel";
+import {TextFade} from "@/components/FadeUp";
 
 function TerrainVectorBackground() {
   const meshRef = useRef();
@@ -156,8 +157,15 @@ export default function AboutSection() {
     />
   
     {/* The text */}
-    <div className="absolute w-full z-20 top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center  font-frontage-bold">
-      <h1 className="text-7xl font-bold ">Echoes of Tomorrow</h1>
+    <div className="absolute w-full z-10 top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center  font-frontage-bold">
+      <TextFade
+          direction="up"
+          className="pt-0 pb-5 flex-col flex justify-center items-center space-y-0"
+      >
+        <h2 className="text-xl text-center sm:text-4xl font-bold tracking-tighter md:text-7xl md:leading-[0rem] prose-h2:my-0">
+          Echos of tomorrow
+        </h2>
+      </TextFade>
     </div>
       <Canvas
         camera={{ position: [0, 0, 5], fov: 45 }}
@@ -170,10 +178,10 @@ export default function AboutSection() {
         }}
       >
         <CenterCamera />
-        <ambientLight intensity={0.3} />
+        <ambientLight intensity={1} />
         <directionalLight
           position={[0, 5, 5]}
-          intensity={0.8}
+          intensity={1}
           color="#ffffff"
         />
 
