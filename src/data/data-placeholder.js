@@ -6,7 +6,7 @@ const eventData = [
     title: "Innovative Vehicle Design Workshop by Mahindra-Campervan",
     description: "Explore next-gen vehicle design with Mahindra-Campervan through expert insights on modular vehicle architecture, off-road adaptability, and sustainable mobility.",
     slug: "/e/innovative-vehicle-design-workshop-by-mahindra-campervan",
-    image: "/images/tech-workshop.jpg",
+    image: "/images/mahindra-final.png",
     category: "Workshops Flagship"
   },
   {
@@ -27,7 +27,7 @@ const eventData = [
     title: "Game On! Unity Development Workshop",
     description: "Unlock the realm of game development! Explore game design, physics, scripting, and interactive environments while gaining expert insights into industry trends and workflows.",
     slug: "/e/game-on-unity-development-workshop",
-    image: "/images/flagship-conference.jpg",
+    image: "/images/unity.png",
     category: "Workshops Flagship"
   },
   {
@@ -48,28 +48,28 @@ const eventData = [
     title: "Hack the Future: Vidyut Hackathon by Amfoss",
     description: "A 36-hour national innovation marathon for B.Tech students across India, fostering creativity, collaboration, and tech-driven solutions to real-world challenges, ending with impactful project showcases.",
     slug: "/e/hack-the-future-vidyut-hackathon-amfoss",
-    image: "/images/vintage-cars.jpg",
+    image: "/images/HacktheFutureVidyut.png",
     category: "Flagship Competitions"
   },
   {
     title: "TechTurf RoboSoccer National Competition",
     description: "A national robotics competition where student teams design and operate autonomous or remote-controlled wheeled robots in a fast-paced, soccer-style arena, promoting engineering skills, teamwork, and industry–academia collaboration.",
     slug: "/e/techturf-robosoccer-national-competition",
-    image: "/images/tech-turf-robo-soccer.png",
+    image: "/images/TechTurfRoboSoccer.png",
     category: "Flagship Competitions"
   },
   {
     title: "War of the Bots",
     description: "Build and battle your custom robot in intense head-to-head combat. Test your bot's strength, strategy, and endurance in this ultimate showdown of engineering and innovation. Let the battle begin!",
     slug: "/e/war-of-the-bots",
-    image: "/images/anton.png",
+    image: "/images/WARR.jpg",
     category: "Flagship Competitions"
   },
   {
     title: "Mini Off-Road RC Challenge",
     description: "Gear up for the Mini Off-Road RC Challenge 2025! Design, build, and race your RC vehicle through rugged terrain packed with obstacles and sharp turns. Test your engineering skills and driving precision in this ultimate off-road showdown",
     slug: "/e/mini-off-road-rc-challenge",
-    image: "/images/anton.png",
+    image: "/images/rc.jpg",
     category: "Flagship Competitions"
   },
   {

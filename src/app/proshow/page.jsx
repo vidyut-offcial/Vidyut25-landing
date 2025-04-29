@@ -59,10 +59,10 @@ const Proshow = () => {
     }, []);
 
     return (
-        <div className="w-screen h-[screen] relative overflow-hidden bg-black">
+        <div className="w-screen h-[100vh] relative overflow-hidden bg-black x">
 
             {/* Logo */}
-            <div className="absolute z-60   bottom-1/3 left-1/12 inset-0 flex flex-col items-start justify-center pointer-events-none space-y-4 delay-100">
+            <div className="absolute z-60   bottom-1/10 left-1/12 inset-0 flex flex-col items-start justify-center pointer-events-none space-y-4 delay-100">
                 <GradualSpacing text={'REVEL 25'}></GradualSpacing>
                 <TextFade direction="up" className="pt-0 pb-5 flex flex-col justify-center items-center space-y-2">
                     <div className=" relative font-semibold top-3 left-2 tracking-widest prose-p:my-1 md:text-lg max-w-lg mx-auto text-balance dark:text-zinc-300 drop-shadow-2xl">
@@ -70,15 +70,15 @@ const Proshow = () => {
                     </div>
                 </TextFade>
             </div>
-            <div className="absolute bottom-0 h-1/2 w-full z-10 pointer-events-none bg-[linear-gradient(0deg,rgba(0,0,0,1)_28%,rgba(141,196,204,0)_100%)]" />
-            <div className="absolute left-0 top-0 h-full w-[900px] z-10 pointer-events-none bg-[linear-gradient(90deg,rgba(0,0,0,1)_48%,rgba(141,196,204,0)_100%)]" />
+            {/*<div className="absolute bottom-0 h-1/2 w-full z-10 pointer-events-none bg-[linear-gradient(0deg,rgba(0,0,0,1)_28%,rgba(141,196,204,0)_100%)]" />*/}
+            {/*<div className="absolute left-0 top-0 h-full w-[900px] z-10 pointer-events-none bg-[linear-gradient(90deg,rgba(0,0,0,1)_48%,rgba(141,196,204,0)_100%)]" />*/}
 
 
 
             {/* Render the marquee in the background */}
             <div className="absolute inset-0 pointer-events-none z-50">
                 <div className="w-full h-full" style={{
-                    background: 'linear-gradient(to right, rgba(0,0,0) 0%, rgba(0,0,0,1) 0%,rgba(0,0,0,0.9) 50%, rgba(0,0,0,0) 100%)'
+                    background: 'linear-gradient(to right, rgba(0,0,0) 0%, rgba(0,0,0,1) 0%,rgba(0,0,0,0.9) 10%, rgba(0,0,0,0) 80%)'
                 }} />
             </div>
 

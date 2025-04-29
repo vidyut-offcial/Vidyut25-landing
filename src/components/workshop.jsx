@@ -13,9 +13,11 @@ import { GradualSpacing } from "@/components/ui/gradual-spacing";
 import { getAllEvents } from '@/data/data-placeholder';
 
 const SwiperCoverflow = () => {
+
     const router = useRouter();
     const events = getAllEvents();
     const [backgroundImage, setBackgroundImage] = useState('/images/galaxy-space-textured-background.jpg');
+
     const [activeIndex, setActiveIndex] = useState(0);
     const swiperRef = useRef(null);
 
