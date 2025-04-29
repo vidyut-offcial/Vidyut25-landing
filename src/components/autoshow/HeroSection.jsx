@@ -95,7 +95,7 @@ const HeroSection = () => {
     };
 
     return (
-        <div ref={ref} className="relative w-full h-[1300px] bg-black overflow-hidden">
+        <div ref={ref} className="relative w-full h-[100vh] bg-black overflow-hidden">
             <motion.div
                 className="absolute inset-0 z-0"
                 style={{
@@ -113,7 +113,7 @@ const HeroSection = () => {
 
 
             <motion.div
-                className="absolute inset-0 flex items-center justify-center z-5 bottom-[750px]"
+                className="absolute inset-0 flex items-center justify-center z-5 bottom-[300px]"
 
                 initial="hidden"
                 animate={controls}
@@ -131,16 +131,7 @@ const HeroSection = () => {
                 }}
             >
 <span
-  className="font-frontage-bold hover:text-transparent text-[300px] leading-none pointer-events-none select-none mix-blend-lighten transition-all duration-500 text-white"
-  style={{
-    WebkitTextStroke: '2px white',
-    textShadow: `
-      0 0 5px white,
-      0 0 10px white,
-      0 0 20px white,
-      0 0 40px white
-    `,
-  }}
+  className="font-frontage-bold  hover:text-transparent text-[300px] leading-none pointer-events-none select-none mix-blend-lighten transition-all duration-500 text-white"
 >
   VIDYUT
 </span>
@@ -186,7 +177,7 @@ const HeroSection = () => {
             </div>
 
 
-            <div className="absolute bottom-1/8 left-1/2 transform -translate-x-1/2 w-11/12 md:w-full z-10">
+            <div className="absolute bottom-0 top-9 left-1/2 transform -translate-x-1/2 w-11/12 md:w-full z-10">
                 <motion.img
                     src="/images/CarBG.png"
                     alt="Car"
@@ -196,8 +187,8 @@ const HeroSection = () => {
                     variants={carVariants}
                 />
             </div>
-            <div className="absolute bottom-0 h-1/2 w-full z-10 pointer-events-none bg-[linear-gradient(0deg,rgba(0,0,0,1)_28%,rgba(141,196,204,0)_100%)]" />
-            <div className="absolute top-0 h-1/6 w-full z-10 pointer-events-none bg-[linear-gradient(180deg,rgba(0,0,0,0.5)_18%,rgba(141,196,204,0)_100%)]" />
+            <div className="absolute bottom-0 h-36 w-full z-10 pointer-events-none bg-[linear-gradient(0deg,rgba(0,0,0,1)_28%,rgba(141,196,204,0)_100%)]" />
+            <div className="absolute top-0 h-1/2 w-full z-10 pointer-events-none bg-[linear-gradient(180deg,rgba(0,0,0,0.5)_18%,rgba(141,196,204,0)_100%)]" />
 
 
         </div>
