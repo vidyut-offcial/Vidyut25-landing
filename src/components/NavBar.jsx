@@ -54,17 +54,25 @@ export default function NavBar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Events", href: "/events" },
-    { name: "Proshow", href: "/proshow" },
-    { name: "Car Show", href: "/carshow" },
+    { name: "Proshow", href: "#proshow" }, // In-page
+    { name: "autoexpo", href: "#autoshow" },
     { name: "Echo", href: "/echo" },
   ];
 
   const handleLinkClick = (href, e) => {
     e.preventDefault();
     console.log(`Navigating to ${href}`);
+
     if (menuOpen) setMenuOpen(false);
-    router.push(href);
+
+    if (href.startsWith("#")) {
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+        router.push(href);
+    }
   };
 
   return (
@@ -154,12 +162,14 @@ export default function NavBar() {
             </a>
           ))}
 
-          <button 
-            className="bg-black/30 backdrop-blur-sm border border-red-500/30 px-4 py-2 rounded-full text-white text-sm hover:bg-black/50 hover:border-red-500 hover:shadow-lg hover:shadow-red-500/20 transform hover:-translate-y-1 active:translate-y-0 transition-all duration-300 cursor-pointer"
-            onClick={() => router.push("/register")}
+          <a
+              href="https://vidyut.ulsav.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-black/30 backdrop-blur-sm border border-red-500/30 px-4 py-2 rounded-full text-white text-sm hover:bg-black/50 hover:border-red-500 hover:shadow-lg hover:shadow-red-500/20 transform hover:-translate-y-1 active:translate-y-0 transition-all duration-300 cursor-pointer inline-block text-center"
           >
             <span className="text-red-400">REGISTER</span>
-          </button>
+          </a>
         </div>
       </div>
 
