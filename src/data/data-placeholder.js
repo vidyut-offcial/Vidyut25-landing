@@ -1,5 +1,4 @@
-// event-data.js
-const domain = 'https://vidyut.ulsav.com';
+export const domain = 'https://vidyut.ulsav.com';
 
 const eventData = [
   {
@@ -85,16 +84,20 @@ const eventData = [
 export function getAllEvents() {
   return eventData.map(event => ({
     ...event,
-    slug: domain + event.slug
+    fullSlug: domain + event.slug
   }));
 }
 
 export function getEventBySlug(slug) {
-  return eventData.find(event => event.slug === slug || domain + event.slug === slug);
+  return eventData.find(
+    event => event.slug === slug || domain + event.slug === slug
+  );
 }
 
 export function getEventsByCategory(category) {
-  return eventData.filter(event => event.category.toLowerCase() === category.toLowerCase());
+  return eventData.filter(
+    event => event.category.toLowerCase() === category.toLowerCase()
+  );
 }
 
 export function getCategories() {
@@ -108,9 +111,9 @@ export function getRandomEvent() {
 export function generateSlug(title) {
   return title
     .toLowerCase()
-    .replace(/[^\w\s-]/g, '') // Remove special characters
-    .replace(/\s+/g, '-')     // Replace spaces with hyphens
-    .replace(/-+/g, '-')      // Replace multiple hyphens with single
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
     .trim();
 }
 
