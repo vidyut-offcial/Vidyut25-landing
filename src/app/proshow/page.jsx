@@ -71,7 +71,7 @@ const Proshow = () => {
                 </TextFade>
             </div>
             {/*<div className="absolute bottom-0 h-1/2 w-full z-10 pointer-events-none bg-[linear-gradient(0deg,rgba(0,0,0,1)_28%,rgba(141,196,204,0)_100%)]" />*/}
-            {/*<div className="absolute left-0 top-0 h-full w-[900px] z-10 pointer-events-none bg-[linear-gradient(90deg,rgba(0,0,0,1)_48%,rgba(141,196,204,0)_100%)]" />*/}
+            <div className="absolute left-0 top-0 h-full w-[900px] z-10 pointer-events-none bg-[linear-gradient(90deg,rgba(0,0,0,1)_28%,rgba(141,196,204,0)_100%)]" />
 
 
 

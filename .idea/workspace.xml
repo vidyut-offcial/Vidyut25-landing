@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="cmmit">
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="workshop">
+      <change afterPath="$PROJECT_DIR$/src/components/backgroundbeem.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/proshow/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/proshow/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ThreeDMarquee.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ThreeDMarquee.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/autoshow/HeroSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/autoshow/HeroSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/gradual-spacing.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/gradual-spacing.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/sparkles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/sparkles.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/workshop.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/workshop.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +73,7 @@
       <option name="presentableId" value="Default" />
       <updated>1745917124089</updated>
       <workItem from="1745917127147" duration="320000" />
+      <workItem from="1745947973549" duration="1830000" />
     </task>
     <task id="LOCAL-00001" summary="cmmit">
       <option name="closed" value="true" />
@@ -91,7 +91,63 @@
       <option name="project" value="LOCAL" />
       <updated>1745917937718</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="auto-show heading">
+      <option name="closed" value="true" />
+      <created>1745924421021</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1745924421021</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Navbar-done">
+      <option name="closed" value="true" />
+      <created>1745924444982</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1745924444982</updated>
+    </task>
+    <task id="LOCAL-00005" summary="autoshow height issue">
+      <option name="closed" value="true" />
+      <created>1745924476354</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1745924476354</updated>
+    </task>
+    <task id="LOCAL-00006" summary="proshow height issue">
+      <option name="closed" value="true" />
+      <created>1745924502125</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1745924502125</updated>
+    </task>
+    <task id="LOCAL-00007" summary="IDK">
+      <option name="closed" value="true" />
+      <created>1745924523035</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1745924523035</updated>
+    </task>
+    <task id="LOCAL-00008" summary="workshop">
+      <option name="closed" value="true" />
+      <created>1745924537989</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1745924537989</updated>
+    </task>
+    <task id="LOCAL-00009" summary="workshop">
+      <option name="closed" value="true" />
+      <created>1745924553250</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1745924553250</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,6 +155,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="cmmit" />
-    <option name="LAST_COMMIT_MESSAGE" value="cmmit" />
+    <MESSAGE value="auto-show heading" />
+    <MESSAGE value="Navbar-done" />
+    <MESSAGE value="autoshow height issue" />
+    <MESSAGE value="proshow height issue" />
+    <MESSAGE value="IDK" />
+    <MESSAGE value="workshop" />
+    <option name="LAST_COMMIT_MESSAGE" value="workshop" />
   </component>
 </project>

@@ -225,7 +225,7 @@ export default function Home() {
             <AutoshowSection />
           </section>
 
-          <section id="gallery">
+          <section id="workshop">
             <SwiperCoverflow />
           </section>
 

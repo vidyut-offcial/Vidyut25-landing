@@ -10,6 +10,7 @@ import 'swiper/css/effect-coverflow';
 import Image from 'next/image';
 import {GlareCard} from "@/components/ui/glare-card";
 import {GradualSpacing} from "@/components/ui/gradual-spacing";
+import {BackgroundBeams} from "@/components/backgroundbeem";
 
 const images = [
     '/images/fly-high-drone.png',
@@ -157,6 +158,11 @@ const SwiperCoverflow = () => {
                     </Swiper>
                 </div>
             </div>
+            {
+                (!backgroundImage)&&(
+                    <BackgroundBeams/>
+                )
+            }
         </div>
     );
 };

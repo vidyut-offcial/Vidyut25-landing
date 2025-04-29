@@ -56,6 +56,7 @@ export default function NavBar() {
     { name: "Home", href: "/" },
     { name: "Proshow", href: "#proshow" }, // In-page
     { name: "autoexpo", href: "#autoshow" },
+    { name: "workshop", href: "#workshop" },
     { name: "Echo", href: "/echo" },
   ];
 
