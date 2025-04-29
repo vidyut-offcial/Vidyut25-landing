@@ -84,7 +84,7 @@ const SwiperCoverflow = () => {
             </div>
 
             <div className="relative z-10 w-screen h-[600px] sm:h-screen">
-            <div className="absolute bottom-10  w-full  sm:px-6 md:px-8">
+            <div className="absolute bottom-10 sm:bottom-30 left-1/2 -translate-x-1/2 w-full max-w-7xl px-5 sm:px-6 md:px-8">
             <Swiper
                         effect="coverflow"
                         grabCursor

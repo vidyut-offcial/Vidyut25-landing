@@ -224,9 +224,9 @@ export default function AboutSection() {
     <section
     id="about-section"
     ref={sectionRef}
-    className="relative top-0 opacity-0 translate-y-[100px] left-0 h-screen w-screen overflow-hidden"
-    style={{ height: '100vh', width: '100vw' }}
+    className="relative top-0 opacity-0 translate-y-[100px] left-0 h-[50vh] sm:h-[100vh] xs:h-[60vh] w-screen overflow-hidden"
   >
+  
     <div
       className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(to_top,black,transparent_40%),linear-gradient(to_bottom,black,transparent_40%),linear-gradient(to_left,black,transparent_20%),linear-gradient(to_right,black,transparent_20%)]"
       style={{ mixBlendMode: 'multiply' }}
