@@ -213,7 +213,7 @@ export default function NavBar() {
           ))}
           <button 
             className="bg-gradient-to-r from-red-800/50 to-red-600/50 border border-red-500/30 px-6 py-3 rounded text-white mt-4 hover:from-red-700/70 hover:to-red-500/70 active:scale-95 transform transition-all duration-300 cursor-pointer"
-            onClick={() => router.push("/register")}
+            onClick={() => router.push("https://vidyut.ulsav.com")}
           >
             REGISTER NOW
           </button>
