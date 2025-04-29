@@ -91,8 +91,9 @@ const SwiperCoverflow = () => {
                         effect="coverflow"
                         grabCursor
                         centeredSlides
-                        slidesPerView={3}
                         loop
+                        slidesPerView={3}
+                        initialSlide={Math.floor(images.length / 2)} // ADD THIS LINE
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
                         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                         coverflowEffect={{
@@ -106,7 +107,8 @@ const SwiperCoverflow = () => {
                         modules={[EffectCoverflow, Pagination, Navigation]}
                         className="w-full"
                     >
-                        {images.map((src, i) => (
+
+                    {images.map((src, i) => (
                             <SwiperSlide key={i} className="flex items-center justify-center">
                                 <motion.div
                                     initial={{ opacity: 0, y: 80 }}

@@ -22,7 +22,7 @@ const Autoshow = ()=>{
 
                 <div className="absolute inset-0 bg-gradient-to-l from-black via-transparent to-transparent opacity-100" />
                 <div className="absolute inset-0 bg-gradient-to-l from-black via-transparent to-transparent opacity-100" />
-                <div className="absolute inset-0 bg-gradient-to-l from-black via-transparent to-transparent opacity-100" />
+                <div className="ab  solute inset-0 bg-gradient-to-l from-black via-transparent to-transparent opacity-100" />
             </div>
         </div>
     )
