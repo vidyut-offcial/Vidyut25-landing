@@ -11,7 +11,7 @@ import Image from 'next/image';
 import { GlareCard } from "@/components/ui/glare-card";
 import { GradualSpacing } from "@/components/ui/gradual-spacing";
 import { getAllEvents, domain } from '@/data/data-placeholder';
-import {BackgroundBeams} from "@/components/backgroundbeem";
+import { BackgroundBeams } from "@/components/backgroundbeem";
 
 const SwiperCoverflow = () => {
     const router = useRouter();
@@ -35,7 +35,7 @@ const SwiperCoverflow = () => {
 
     return (
         <div
-            className="relative w-screen h-screen transition-all duration-500 ease-in-out overflow-hidden"
+            className="relative w-screen h-screen transition-all duration-500 ease-in-out overflow-hidden py-20"
             style={{
                 backgroundImage: `url(${encodeURI(backgroundImage)})`,
                 backgroundSize: 'cover',
@@ -52,7 +52,7 @@ const SwiperCoverflow = () => {
                 <div className="absolute inset-0 bg-gradient-to-l from-black via-transparent to-transparent opacity-30" />
             </div>
 
-            <div className="absolute top-32 left-1/2 -translate-x-1/2 text-center z-20 space-y-10">
+            <div className="absolute top-32 left-1/2 -translate-x-1/2 text-center z-20 sm:space-y-10">
                 <GradualSpacing text="Flagship Events" />
                 <button
                     className="bg-slate-800 no-underline mt-10 mb-10 group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block"
@@ -61,7 +61,7 @@ const SwiperCoverflow = () => {
                     <span className="absolute inset-0 overflow-hidden rounded-full">
                         <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
                     </span>
-                    <div className="relative flex  space-x-2 items-center rounded-full bg-zinc-950 py-0.5 px-4 ring-1 ring-white/10">
+                    <div className="relative flex   items-center rounded-full bg-zinc-950 py-0.5 px-4 ring-1 ring-white/10">
                         <span>View More</span>
                         <svg
                             width="16"
@@ -79,21 +79,29 @@ const SwiperCoverflow = () => {
                             ></path>
                         </svg>
                     </div>
-                    <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40"></span>
+                    <span className="absolute -bottom-0 left-[1.125rem]  w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40"></span>
                 </button>
             </div>
 
-            <div className="relative z-10 w-screen h-screen">
-                <div className="absolute bottom-1/7 left-1/2 -translate-x-1/2 w-full max-w-7xl">
-
-
-
-                    <Swiper
+            <div className="relative z-10 w-screen h-[600px] sm:h-screen">
+            <div className="absolute bottom-10  w-full  sm:px-6 md:px-8">
+            <Swiper
                         effect="coverflow"
                         grabCursor
                         centeredSlides
                         loop
-                        slidesPerView={3}
+                        slidesPerView={2}
+                        breakpoints={{
+                            640: {
+                                slidesPerView: 1.5,
+                            },
+                            768: {
+                                slidesPerView: 2,
+                            },
+                            1024: {
+                                slidesPerView: 3,
+                            },
+                        }}
                         initialSlide={Math.floor(events.length / 2)}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
                         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
@@ -122,9 +130,9 @@ const SwiperCoverflow = () => {
                                     }}
                                 >
                                     <GlareCard
-                                        className={`relative w-[320px] h-[400px] overflow-hidden rounded-2xl transition-all duration-300 ${activeIndex === i ? 'grayscale-0' : 'grayscale opacity-90'}`}
+                                        className={`relative w-[240px] h-[320px] sm:w-[280px] sm:h-[360px] md:w-[320px] md:h-[400px] lg:w-[350px] lg:h-[420px] overflow-hidden rounded-2xl transition-all duration-300 ${activeIndex === i ? 'grayscale-0' : 'grayscale opacity-90'}`}
                                     >
-                                        <div className="relative w-full h-full ">
+                                        <div className="relative w-full h-full">
                                             <Image
                                                 src={event.image}
                                                 alt={event.title}
@@ -133,17 +141,15 @@ const SwiperCoverflow = () => {
                                                 sizes="(max-width: 768px) 100vw, 300px"
                                                 priority={i === Math.floor(events.length / 2)}
                                             />
-                                            {/* Title overlay */}
                                             <div className="absolute bottom-4 left-4 text-white font-bold text-lg z-10">{event.title}</div>
                                         </div>
                                     </GlareCard>
                                 </motion.div>
                             </SwiperSlide>
-
                         ))}
                     </Swiper>
 
-                    {/* Register button positioned below the cards */}
+                    {/* Register button */}
                     <motion.div
                         className="w-full flex justify-center mt-8"
                         initial={{ opacity: 0, y: 20 }}
@@ -151,7 +157,7 @@ const SwiperCoverflow = () => {
                         transition={{ duration: 0.5 }}
                     >
                         <button
-                            className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 mr-20"
+                            className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-6 sm:py-3 sm:px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
                             onClick={() => {
                                 router.push(`${domain}${events[activeIndex].slug}`);
                             }}
@@ -161,8 +167,9 @@ const SwiperCoverflow = () => {
                     </motion.div>
                 </div>
             </div>
+
             {!backgroundImage && (
-                <BackgroundBeams/>
+                <BackgroundBeams />
             )}
         </div>
     );
