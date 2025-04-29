@@ -35,7 +35,7 @@ const SwiperCoverflow = () => {
 
     return (
         <div
-            className="relative w-screen h-screen transition-all duration-500 ease-in-out overflow-hidden"
+            className="relative w-screen h-screen transition-all duration-500 ease-in-out overflow-hidden py-20"
             style={{
                 backgroundImage: `url(${encodeURI(backgroundImage)})`,
                 backgroundSize: 'cover',
@@ -52,7 +52,7 @@ const SwiperCoverflow = () => {
                 <div className="absolute inset-0 bg-gradient-to-l from-black via-transparent to-transparent opacity-30" />
             </div>
 
-            <div className="absolute top-32 left-1/2 -translate-x-1/2 text-center z-20 space-y-10">
+            <div className="absolute top-32 left-1/2 -translate-x-1/2 text-center z-20 sm:space-y-10  ">
                 <GradualSpacing text="Flagship Events" />
                 <button
                     className="bg-slate-800 no-underline mt-10 mb-10 group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block"
@@ -61,7 +61,7 @@ const SwiperCoverflow = () => {
                     <span className="absolute inset-0 overflow-hidden rounded-full">
                         <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
                     </span>
-                    <div className="relative flex  space-x-2 items-center rounded-full bg-zinc-950 py-0.5 px-4 ring-1 ring-white/10">
+                    <div className="relative flex   items-center rounded-full bg-zinc-950 py-0.5 px-4 ring-1 ring-white/10">
                         <span>View More</span>
                         <svg
                             width="16"
@@ -84,7 +84,7 @@ const SwiperCoverflow = () => {
             </div>
 
             <div className="relative z-10 w-screen h-screen">
-                <div className="absolute bottom-1/7 left-1/2 -translate-x-1/2 w-full max-w-7xl">
+                <div className="absolute bottom-1/7 left-1/2 -translate-x-1/2 w-full max-w-7xl px-5">
 
 
 
@@ -122,7 +122,7 @@ const SwiperCoverflow = () => {
                                     }}
                                 >
                                     <GlareCard
-                                        className={`relative w-[320px] h-[400px] overflow-hidden rounded-2xl transition-all duration-300 ${activeIndex === i ? 'grayscale-0' : 'grayscale opacity-90'}`}
+                                        className={`relative w-[320px] h-[400px] sm:w-[350px] sm:h-[400px] xs:w-[240px] xs:h-[320px] overflow-hidden rounded-2xl transition-all duration-300 ${activeIndex === i ? 'grayscale-0' : 'grayscale opacity-90'}`}
                                     >
                                         <div className="relative w-full h-full ">
                                             <Image
@@ -151,7 +151,7 @@ const SwiperCoverflow = () => {
                         transition={{ duration: 0.5 }}
                     >
                         <button
-                            className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 mr-20"
+                            className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 sm:px-8 px-5 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 sm:mr-20 mr-0"
                             onClick={() => {
                                 router.push(`${domain}${events[activeIndex].slug}`);
                             }}
