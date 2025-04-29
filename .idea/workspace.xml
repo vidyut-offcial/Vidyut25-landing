@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="wqw">
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="beam vannu guys">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/workshop.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/workshop.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/autoshow/HeroSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/autoshow/HeroSection.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745954255846</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="beam vannu guys">
+      <option name="closed" value="true" />
+      <created>1745957031500</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1745957031500</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,7 +209,8 @@
     <MESSAGE value="something" />
     <MESSAGE value="beamline" />
     <MESSAGE value="lazy reload" />
-    <option name="LAST_COMMIT_MESSAGE" value="lazy reload" />
+    <MESSAGE value="beam vannu guys" />
+    <option name="LAST_COMMIT_MESSAGE" value="beam vannu guys" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
