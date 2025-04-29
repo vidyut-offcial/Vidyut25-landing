@@ -410,10 +410,10 @@ export default function SpaceLoadingScreen({ onComplete }) {
       
       <div 
         ref={promptRef}
-        className="absolute bottom-12 text-center font-light tracking-wider text-blue-100 opacity-0"
+        className="absolute bottom-20 text-center font-light tracking-wider text-blue-100 opacity-0"
       >
         {typeof window !== "undefined" && /Mobi|Android/i.test(navigator.userAgent)
-          ? "SWIPE UP TO ENTER"
+          ? "SWIPE UP "
           : "PRESS SPACE TO LAUNCH"}
       </div>
     </div>
