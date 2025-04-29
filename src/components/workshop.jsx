@@ -51,8 +51,8 @@ const SwiperCoverflow = () => {
                 <div className="absolute inset-0 bg-gradient-to-l from-black via-transparent to-transparent opacity-30" />
             </div>
 
-            <div className="absolute top-32 left-1/2 -translate-x-1/2 text-center z-20">
-                <GradualSpacing text="Discover the Events" />
+            <div className="absolute top-32 left-1/2 -translate-x-1/2 text-center z-20 space-y-10">
+                <GradualSpacing text="Flagship Events" />
                 <button
                     className="bg-slate-800 no-underline mt-10 group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block"
                     onClick={() => router.push(domain)}
