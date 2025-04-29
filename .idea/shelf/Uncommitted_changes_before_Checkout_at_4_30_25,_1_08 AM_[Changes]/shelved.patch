@@ -1,0 +1,217 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"1750feae-3c3c-4a1f-a71c-60bfee5c1399\" name=\"Changes\" comment=\"lazy reload\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 2\n}</component>\n  <component name=\"ProjectId\" id=\"2wOebxwLUKHrKB2nyVRqYUPNttv\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;test&quot;,\n    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,\n    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RunManager\" selected=\"npm.Next.js: server-side\">\n    <configuration name=\"Next.js: debug client-side\" type=\"JavascriptDebugType\" uri=\"http://localhost:3000/\">\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"Next.js: server-side\" type=\"js.build_tools.npm\">\n      <package-json value=\"$PROJECT_DIR$/package.json\" />\n      <command value=\"run\" />\n      <scripts>\n        <script value=\"dev\" />\n      </scripts>\n      <node-interpreter value=\"project\" />\n      <envs />\n      <method v=\"2\" />\n    </configuration>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-WS-251.23774.424\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"1750feae-3c3c-4a1f-a71c-60bfee5c1399\" name=\"Changes\" comment=\"cmmit\" />\n      <created>1745917124089</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1745917124089</updated>\n      <workItem from=\"1745917127147\" duration=\"320000\" />\n      <workItem from=\"1745947973549\" duration=\"6344000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"cmmit\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745917214901</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745917214901</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"cmmit\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745917937718</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745917937718</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"auto-show heading\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745924421021</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745924421021</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Navbar-done\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745924444982</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745924444982</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"autoshow height issue\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745924476354</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745924476354</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"proshow height issue\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745924502125</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745924502125</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"IDK\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745924523035</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745924523035</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"workshop\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745924537989</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745924537989</updated>\n    </task>\n    <task id=\"LOCAL-00009\" summary=\"workshop\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745924553250</created>\n      <option name=\"number\" value=\"00009\" />\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745924553250</updated>\n    </task>\n    <task id=\"LOCAL-00010\" summary=\"something\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745949954328</created>\n      <option name=\"number\" value=\"00010\" />\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745949954329</updated>\n    </task>\n    <task id=\"LOCAL-00011\" summary=\"something\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745950320967</created>\n      <option name=\"number\" value=\"00011\" />\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745950320967</updated>\n    </task>\n    <task id=\"LOCAL-00012\" summary=\"beamline\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745950882199</created>\n      <option name=\"number\" value=\"00012\" />\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745950882199</updated>\n    </task>\n    <task id=\"LOCAL-00013\" summary=\"lazy reload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745953132589</created>\n      <option name=\"number\" value=\"00013\" />\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745953132589</updated>\n    </task>\n    <task id=\"LOCAL-00014\" summary=\"lazy reload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1745954255846</created>\n      <option name=\"number\" value=\"00014\" />\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1745954255846</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"15\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"cmmit\" />\n    <MESSAGE value=\"auto-show heading\" />\n    <MESSAGE value=\"Navbar-done\" />\n    <MESSAGE value=\"autoshow height issue\" />\n    <MESSAGE value=\"proshow height issue\" />\n    <MESSAGE value=\"IDK\" />\n    <MESSAGE value=\"workshop\" />\n    <MESSAGE value=\"something\" />\n    <MESSAGE value=\"beamline\" />\n    <MESSAGE value=\"lazy reload\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"lazy reload\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <line-breakpoint enabled=\"true\" type=\"javascript\">\n          <url>file://$PROJECT_DIR$/src/app/page.jsx</url>\n          <line>53</line>\n          <properties lambdaOrdinal=\"-1\" />\n          <option name=\"timeStamp\" value=\"1\" />\n        </line-breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n</project>
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 896ce47a22a5b729ef2e5bddc65b8ce3368a866e)
++++ b/.idea/workspace.xml	(date 1745955471113)
+@@ -4,7 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="lazy reload" />
++    <list default="true" id="e9a082ae-9cf5-4838-9192-f7241b9a9954" name="Changes" comment="lazy reload">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -12,28 +14,11 @@
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-  </component>
+-  <component name="ProjectColorInfo">{
+-  &quot;associatedIndex&quot;: 2
+-}</component>
+-  <component name="ProjectId" id="2wOebxwLUKHrKB2nyVRqYUPNttv" />
+-  <component name="ProjectViewState">
+-    <option name="hideEmptyMiddlePackages" value="true" />
+-    <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent">{
+   &quot;keyToString&quot;: {
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;test&quot;,
+-    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+-    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+   }
+ }</component>
+   <component name="RunManager" selected="npm.Next.js: server-side">
+@@ -50,165 +35,8 @@
+       <envs />
+       <method v="2" />
+     </configuration>
+-  </component>
+-  <component name="SharedIndexes">
+-    <attachedChunks>
+-      <set>
+-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-WS-251.23774.424" />
+-      </set>
+-    </attachedChunks>
+   </component>
+   <component name="TaskManager">
+-    <task active="true" id="Default" summary="Default task">
+-      <changelist id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="cmmit" />
+-      <created>1745917124089</created>
+-      <option name="number" value="Default" />
+-      <option name="presentableId" value="Default" />
+-      <updated>1745917124089</updated>
+-      <workItem from="1745917127147" duration="320000" />
+-      <workItem from="1745947973549" duration="6344000" />
+-    </task>
+-    <task id="LOCAL-00001" summary="cmmit">
+-      <option name="closed" value="true" />
+-      <created>1745917214901</created>
+-      <option name="number" value="00001" />
+-      <option name="presentableId" value="LOCAL-00001" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1745917214901</updated>
+-    </task>
+-    <task id="LOCAL-00002" summary="cmmit">
+-      <option name="closed" value="true" />
+-      <created>1745917937718</created>
+-      <option name="number" value="00002" />
+-      <option name="presentableId" value="LOCAL-00002" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1745917937718</updated>
+-    </task>
+-    <task id="LOCAL-00003" summary="auto-show heading">
+-      <option name="closed" value="true" />
+-      <created>1745924421021</created>
+-      <option name="number" value="00003" />
+-      <option name="presentableId" value="LOCAL-00003" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1745924421021</updated>
+-    </task>
+-    <task id="LOCAL-00004" summary="Navbar-done">
+-      <option name="closed" value="true" />
+-      <created>1745924444982</created>
+-      <option name="number" value="00004" />
+-      <option name="presentableId" value="LOCAL-00004" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1745924444982</updated>
+-    </task>
+-    <task id="LOCAL-00005" summary="autoshow height issue">
+-      <option name="closed" value="true" />
+-      <created>1745924476354</created>
+-      <option name="number" value="00005" />
+-      <option name="presentableId" value="LOCAL-00005" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1745924476354</updated>
+-    </task>
+-    <task id="LOCAL-00006" summary="proshow height issue">
+-      <option name="closed" value="true" />
+-      <created>1745924502125</created>
+-      <option name="number" value="00006" />
+-      <option name="presentableId" value="LOCAL-00006" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1745924502125</updated>
+-    </task>
+-    <task id="LOCAL-00007" summary="IDK">
+-      <option name="closed" value="true" />
+-      <created>1745924523035</created>
+-      <option name="number" value="00007" />
+-      <option name="presentableId" value="LOCAL-00007" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1745924523035</updated>
+-    </task>
+-    <task id="LOCAL-00008" summary="workshop">
+-      <option name="closed" value="true" />
+-      <created>1745924537989</created>
+-      <option name="number" value="00008" />
+-      <option name="presentableId" value="LOCAL-00008" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1745924537989</updated>
+-    </task>
+-    <task id="LOCAL-00009" summary="workshop">
+-      <option name="closed" value="true" />
+-      <created>1745924553250</created>
+-      <option name="number" value="00009" />
+-      <option name="presentableId" value="LOCAL-00009" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1745924553250</updated>
+-    </task>
+-    <task id="LOCAL-00010" summary="something">
+-      <option name="closed" value="true" />
+-      <created>1745949954328</created>
+-      <option name="number" value="00010" />
+-      <option name="presentableId" value="LOCAL-00010" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1745949954329</updated>
+-    </task>
+-    <task id="LOCAL-00011" summary="something">
+-      <option name="closed" value="true" />
+-      <created>1745950320967</created>
+-      <option name="number" value="00011" />
+-      <option name="presentableId" value="LOCAL-00011" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1745950320967</updated>
+-    </task>
+-    <task id="LOCAL-00012" summary="beamline">
+-      <option name="closed" value="true" />
+-      <created>1745950882199</created>
+-      <option name="number" value="00012" />
+-      <option name="presentableId" value="LOCAL-00012" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1745950882199</updated>
+-    </task>
+-    <task id="LOCAL-00013" summary="lazy reload">
+-      <option name="closed" value="true" />
+-      <created>1745953132589</created>
+-      <option name="number" value="00013" />
+-      <option name="presentableId" value="LOCAL-00013" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1745953132589</updated>
+-    </task>
+-    <task id="LOCAL-00014" summary="lazy reload">
+-      <option name="closed" value="true" />
+-      <created>1745954255846</created>
+-      <option name="number" value="00014" />
+-      <option name="presentableId" value="LOCAL-00014" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1745954255846</updated>
+-    </task>
+-    <option name="localTasksCounter" value="15" />
+     <servers />
+   </component>
+-  <component name="TypeScriptGeneratedFilesManager">
+-    <option name="version" value="3" />
+-  </component>
+-  <component name="VcsManagerConfiguration">
+-    <MESSAGE value="cmmit" />
+-    <MESSAGE value="auto-show heading" />
+-    <MESSAGE value="Navbar-done" />
+-    <MESSAGE value="autoshow height issue" />
+-    <MESSAGE value="proshow height issue" />
+-    <MESSAGE value="IDK" />
+-    <MESSAGE value="workshop" />
+-    <MESSAGE value="something" />
+-    <MESSAGE value="beamline" />
+-    <MESSAGE value="lazy reload" />
+-    <option name="LAST_COMMIT_MESSAGE" value="lazy reload" />
+-  </component>
+-  <component name="XDebuggerManager">
+-    <breakpoint-manager>
+-      <breakpoints>
+-        <line-breakpoint enabled="true" type="javascript">
+-          <url>file://$PROJECT_DIR$/src/app/page.jsx</url>
+-          <line>53</line>
+-          <properties lambdaOrdinal="-1" />
+-          <option name="timeStamp" value="1" />
+-        </line-breakpoint>
+-      </breakpoints>
+-    </breakpoint-manager>
+-  </component>
+ </project>
+\ No newline at end of file
