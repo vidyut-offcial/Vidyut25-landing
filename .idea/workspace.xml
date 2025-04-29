@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d6ba885-46bc-46de-bbc4-ce9409226455" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/workshop.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/workshop.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="8d6ba885-46bc-46de-bbc4-ce9409226455" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
