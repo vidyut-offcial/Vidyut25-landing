@@ -11,12 +11,13 @@ import Image from 'next/image';
 import { GlareCard } from "@/components/ui/glare-card";
 import { GradualSpacing } from "@/components/ui/gradual-spacing";
 import { getAllEvents } from '@/data/data-placeholder';
+import {BackgroundBeams} from "@/components/backgroundbeem";
 
 const SwiperCoverflow = () => {
 
     const router = useRouter();
     const events = getAllEvents();
-    const [backgroundImage, setBackgroundImage] = useState('/images/galaxy-space-textured-background.jpg');
+    const [backgroundImage, setBackgroundImage] = useState('');
 
     const [activeIndex, setActiveIndex] = useState(0);
     const swiperRef = useRef(null);
@@ -132,18 +133,16 @@ const SwiperCoverflow = () => {
                                         }`}
                                     >
                                         {activeIndex === i && (
-                                            <div className="absolute z-10 bottom-0 left-0 right-0">
+                                            <div className="absolute z-10 bottom-0 left-0 right-0 pointer-events-auto">
                                                 <div className="w-full h-100 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-1">
                                                     <span className="text-xl font-semibold p-3 mb-1 text-white">
                                                         {event.title}
                                                     </span>
                                                     <button
-                                                     style={{ zIndex: 50 }}
+                                                     style={{ zIndex: 70 }}
                                                         className="w-1/3 bg-yellow-300 m-3 mb-5 text-black px-4 py-2 rounded-md font-medium hover:bg-gray-200 transition"
                                                         onClick={(e) => {
-                                                            e.preventDefault();
-                                                            e.stopPropagation();
-                                                            handleRegisterClick(event.slug);
+                                                            console.log('hdgshgd')
                                                           }}
                                                     >
                                                         Register
