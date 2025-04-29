@@ -20,7 +20,7 @@ const images = [
 ];
 
 const SwiperCoverflow = () => {
-    const [backgroundImage, setBackgroundImage] = useState('/images/galaxy-space-textured-background.jpg');
+    const [backgroundImage, setBackgroundImage] = useState('');
     const [activeIndex, setActiveIndex] = useState(0);
     const swiperRef = useRef(null);
 
