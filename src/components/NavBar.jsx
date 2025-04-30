@@ -63,18 +63,23 @@ export default function NavBar() {
   const handleLinkClick = (href, e) => {
     e.preventDefault();
     console.log(`Navigating to ${href}`);
-
+  
     if (menuOpen) setMenuOpen(false);
-
+  
     if (href.startsWith("#")) {
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
+      if (router.pathname !== "/") {
+        router.push(`/${href}`);
+      } else {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
       }
     } else {
-        router.push(href);
+      router.push(href);
     }
   };
+  
 
   return (
     <nav 
