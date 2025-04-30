@@ -1,18 +1,27 @@
 import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 
-const CACHE_NAME = 'space-assets-cache';
+const CACHE_NAME = 'space-assets-cache-v2'; // Changed cache name to force refresh
 
 async function preloadAssetsWithCache(assets, onProgress) {
   let loaded = 0;
   const totalAssets = assets.length;
   
+  // Early exit if no assets
+  if (totalAssets === 0) {
+    onProgress(100);
+    return Promise.resolve();
+  }
+  
   let cache;
   let cachedUrls = [];
   
   try {
-    cache = await caches.open(CACHE_NAME);
-    cachedUrls = await cache.keys().then(keys => keys.map(k => k.url));
+    // Check if cache API is available (with Safari fallback)
+    if ('caches' in window) {
+      cache = await caches.open(CACHE_NAME);
+      cachedUrls = await cache.keys().then(keys => keys.map(k => k.url));
+    }
   } catch (error) {
     console.warn("Cache API not available or failed:", error);
   }
@@ -24,6 +33,7 @@ async function preloadAssetsWithCache(assets, onProgress) {
 
   if (cache) {
     const cachedCount = assets.filter(asset => cachedUrls.includes(asset.src)).length;
+    // Immediately report cached assets as loaded
     for (let i = 0; i < cachedCount; i++) {
       updateProgress();
     }
@@ -36,17 +46,22 @@ async function preloadAssetsWithCache(assets, onProgress) {
     
     return Promise.all(uncachedAssets.map(loadAsset));
   } else {
+    // Fallback without cache
     return Promise.all(assets.map(loadAsset));
   }
   
   function loadAsset(asset) {
-    if (asset.type === "image") {
-      return new Promise((resolve) => {
+    return new Promise((resolve) => {
+      if (asset.type === "image") {
         const img = new Image();
         img.src = asset.src;
         img.onload = () => {
-          if (cache) {
-            cache.add(asset.src).catch(() => {});
+          try {
+            if (cache) {
+              cache.add(asset.src).catch(() => {});
+            }
+          } catch (e) {
+            console.warn("Failed to cache image", e);
           }
           updateProgress();
           resolve();
@@ -55,14 +70,16 @@ async function preloadAssetsWithCache(assets, onProgress) {
           updateProgress();
           resolve();
         };
-      });
-    } else if (asset.type === "audio") {
-      return new Promise((resolve) => {
+      } else if (asset.type === "audio") {
         const audio = new Audio();
         audio.src = asset.src;
         audio.onloadeddata = () => {
-          if (cache) {
-            cache.add(asset.src).catch(() => {});
+          try {
+            if (cache) {
+              cache.add(asset.src).catch(() => {});
+            }
+          } catch (e) {
+            console.warn("Failed to cache audio", e);
           }
           updateProgress();
           resolve();
@@ -71,23 +88,20 @@ async function preloadAssetsWithCache(assets, onProgress) {
           updateProgress();
           resolve();
         };
-      });
-    } else if (asset.type === "json" || asset.type === "other") {
-      return fetch(asset.src, { method: 'GET', cache: 'force-cache' })
-        .then((res) => {
-          if (cache && res.ok) {
-            return cache.put(asset.src, res.clone()).then(() => res.json());
-          }
-          return res.ok ? res.json() : {};
+      } else {
+        // For other types, just fetch and don't worry about caching
+        fetch(asset.src, { 
+          method: 'GET', 
+          cache: 'force-cache',
+          credentials: 'same-origin'
         })
-        .catch(() => {})
-        .finally(() => {
-          updateProgress();
-        });
-    } else {
-      updateProgress();
-      return Promise.resolve();
-    }
+          .catch(() => {})
+          .finally(() => {
+            updateProgress();
+            resolve();
+          });
+      }
+    });
   }
 }
 
@@ -96,6 +110,7 @@ export default function SpaceLoadingScreen({ onComplete }) {
   const [isReady, setIsReady] = useState(false);
   const [userTriggeredExit, setUserTriggeredExit] = useState(false);
   const [loadingComplete, setLoadingComplete] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const containerRef = useRef(null);
   const starsRef = useRef(null);
@@ -121,6 +136,11 @@ export default function SpaceLoadingScreen({ onComplete }) {
     { type: "audio", src: "/sounds/woof.mp3" },
     { type: "audio", src: "/sounds/reveal.mp3" },
   ];
+
+  useEffect(() => {
+    // Check if mobile
+    setIsMobile(/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent));
+  }, []);
 
   const handleProgressUpdate = (value) => {
     setProgress(value);
@@ -278,29 +298,48 @@ export default function SpaceLoadingScreen({ onComplete }) {
       gsapAnimations.current.push(planetAnimation, orbitAnimation);
     }
     
+    // Add timeout fallback in case loading stalls
+    const loadingTimeout = setTimeout(() => {
+      if (progress < 100) {
+        console.warn("Loading timeout reached - forcing completion");
+        handleLoadingComplete();
+      }
+    }, 15000); // 15 second timeout
+    
     preloadAssetsWithCache(assets, handleProgressUpdate)
-      .then(handleLoadingComplete)
+      .then(() => {
+        clearTimeout(loadingTimeout);
+        handleLoadingComplete();
+      })
       .catch(error => {
+        clearTimeout(loadingTimeout);
         console.error("Error preloading assets:", error);
         handleLoadingComplete();
       });
     
     const handleKeyDown = (e) => {
-      if (e.code === "Space" && isReady && !userTriggeredExit) {
+      if ((e.code === "Space" || e.key === " ") && isReady && !userTriggeredExit) {
         e.preventDefault();
         handleUserExit();
       }
     };
     
     let touchStartY = 0;
+    let touchStartTime = 0;
     
     const handleTouchStart = (e) => {
       touchStartY = e.touches[0].clientY;
+      touchStartTime = Date.now();
     };
     
     const handleTouchEnd = (e) => {
       const touchEndY = e.changedTouches[0].clientY;
-      if (touchStartY - touchEndY > 50 && isReady && !userTriggeredExit) {
+      const touchEndTime = Date.now();
+      const distance = touchStartY - touchEndY;
+      const duration = touchEndTime - touchStartTime;
+      
+      // Check for significant upward swipe (more than 50px) that was quick (less than 500ms)
+      if (distance > 50 && duration < 500 && isReady && !userTriggeredExit) {
         handleUserExit();
       }
     };
@@ -312,8 +351,8 @@ export default function SpaceLoadingScreen({ onComplete }) {
     };
     
     window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("touchstart", handleTouchStart);
-    window.addEventListener("touchend", handleTouchEnd);
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
     
     if (containerRef.current) {
       containerRef.current.addEventListener("click", handleClick);
@@ -328,6 +367,7 @@ export default function SpaceLoadingScreen({ onComplete }) {
         containerRef.current.removeEventListener("click", handleClick);
       }
       
+      clearTimeout(loadingTimeout);
       gsapAnimations.current.forEach(animation => {
         if (animation && animation.kill) animation.kill();
       });
@@ -347,7 +387,7 @@ export default function SpaceLoadingScreen({ onComplete }) {
   return (
     <div
       ref={containerRef}
-      className="absolute top-0 left-0 w-full h-screen bg-black text-white flex flex-col items-center justify-center z-[999] select-none overflow-hidden"
+      className="absolute top-0 left-0 w-full h-screen bg-black text-white flex flex-col items-center justify-center z-[999] select-none overflow-hidden touch-none"
       style={{ pointerEvents: isReady ? "auto" : "none" }}
     >
       <div ref={starsRef} className="absolute inset-0" />
@@ -417,7 +457,9 @@ export default function SpaceLoadingScreen({ onComplete }) {
           ref={promptRef}
           className="absolute bottom-20 text-center font-light tracking-wider text-blue-100 opacity-0"
       >
-        {promptText}
+
+        {isMobile ? "SWIPE UP TO CONTINUE" : "PRESS SPACE TO LAUNCH"}
+
       </div>
     </div>
   );
