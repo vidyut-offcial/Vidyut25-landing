@@ -203,7 +203,6 @@ export default function Home() {
             ref={howlerTwoRef}
             volume={1}
             onEnd={() => {
-              setIsSpaceshipMounted(false);
               gsap.to("#hero-title-glitch", {
                 opacity: 0,
                 duration: 0.5,
@@ -215,7 +214,7 @@ export default function Home() {
           {/*<div id="model" className="fixed flex items-center justify-center top-0 left-0 z-[100] pointer-events-none">*/}
           {/*  {isSpaceshipMounted && showSpaceship && <SpaceShipModel ref={spaceshipRef} />}*/}
           {/*</div>*/}
-          {/*<PostLoading onComplete={transitHero} />*/}
+          <PostLoading onComplete={transitHero} />
           <HeroSection />
           <div id="section-container" className="h-full w-full hidden opacity-0">
             <NavBar />

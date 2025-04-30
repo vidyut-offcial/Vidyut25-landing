@@ -15,21 +15,7 @@ const subtitleLines = [
   "Building a sustainable future"
 ];
 
-const textVariants = {
-  hidden: { opacity: 0, filter: "blur(8px)", y: 20 },
-  visible: {
-    opacity: 1,
-    filter: "blur(0px)",
-    y: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
-  },
-  exit: {
-    opacity: 0,
-    filter: "blur(8px)",
-    y: -20,
-    transition: { duration: 0.8, ease: "easeIn" },
-  },
-};
+
 
 export const AnimatedSubtitle = () => {
   const subtitleLines = [

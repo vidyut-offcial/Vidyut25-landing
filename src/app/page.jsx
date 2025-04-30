@@ -10,31 +10,26 @@ import Footer from "@/components/Footer";
 import {useEffect, useRef, useState} from "react";
 import dynamic from "next/dynamic";
 import gsap from "gsap";
+import PostLoading from "@/components/PostLoading";
+import ReactHowler from "react-howler";
 
 const Home = () => {
-    const [showSpaceship, setShowSpaceship] = useState(true);
-    const [isSpaceshipMounted, setIsSpaceshipMounted] = useState(true);
-    const spaceshipRef = useRef(null);
-    const mainRef = useRef(null);
-    const [playOne, setPlayOne] = useState(false);
-    const [playTwo, setPlayTwo] = useState(false);
-    const howlerOneRef = useRef();
-    const howlerTwoRef = useRef();
 
-    const LazyProshow = dynamic(() => import('@/app/proshow/page'), {
-        loading: () => <div className="text-center p-4">Loading Proshow...</div>,
-        ssr: false,
-    });
+const [startRevel, setStartRevel] = useState(false);
+const howlerRevealRef = useRef();
 
-    const LazyAutoshowSection = dynamic(() => import('@/components/autoshow/AutoshowSection'), {
-        loading: () => <div className="text-center p-4">Loading Autoshow...</div>,
-        ssr: false,
-    });
-
-    const LazySwiperCoverflow = dynamic(() => import('@/components/workshop'), {
-        loading: () => <div className="text-center p-4">Loading Workshops...</div>,
-        ssr: false,
-    });
+const LazyProshow = dynamic(() => import('@/app/proshow/page'), {
+    loading: () => <div className="text-center p-4">Loading Proshow...</div>,
+    ssr: false,
+});
+const LazyAutoshowSection = dynamic(() => import('@/components/autoshow/AutoshowSection'), {
+    loading: () => <div className="text-center p-4">Loading Autoshow...</div>,
+    ssr: false,
+});
+const LazySwiperCoverflow = dynamic(() => import('@/components/workshop'), {
+    loading: () => <div className="text-center p-4">Loading Workshops...</div>,
+    ssr: false,
+});
 
     const startReveal = () => {
         const tl = gsap.timeline();
@@ -85,18 +80,44 @@ const Home = () => {
                 ease: "back.out(1.7)",
             }, "-=0.8");
     };
+    const playSound = (ref) => {
+        const sound = ref.current?.howler;
+        if (sound) {
+            const id = sound.play();
+            sound.fade(0, 1, 2000, id);
+            return { sound, id };
+        }
+        return null;
+    };
 
     useEffect(() => {
-        startReveal()
-    },[])
+        console.log(startRevel)
+        if (startRevel) {
+            playSound(howlerRevealRef)
+            startReveal()
+        }
+    },[startRevel]);
 
     return (
         <>
+            <ReactHowler
+                src="/sounds/reveal.mp3"
+                playing={false}
+                html5={true}
+                ref={howlerRevealRef}
+                volume={1}
+                onEnd={() => {
+                    gsap.to("#hero-title-glitch", {
+                        opacity: 0,
+                        duration: 0.5,
+                        ease: "power2.out",
+                    });
+                }}
+            />
             <main   className="min-h-screen w-screen flex flex-col items-center justify-center overflow-x-hidden">
-                {/*<div id="model" className="fixed flex items-center justify-center top-0 left-0 z-[100] pointer-events-none">*/}
-                {/*  {isSpaceshipMounted && showSpaceship && <SpaceShipModel ref={spaceshipRef} />}*/}
-                {/*</div>*/}
-                {/*<PostLoading onComplete={transitHero} />*/}
+                {!startRevel && (
+                    <PostLoading setRevel={setStartRevel} />
+                )}
                 <HeroSection />
                 <div id="section-container" className="h-full w-full hidden opacity-0">
                     <NavBar />
