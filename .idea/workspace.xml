@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="added text in about">
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="audio issue is still therer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PostLoading.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostLoading.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +70,8 @@
       <updated>1745917124089</updated>
       <workItem from="1745917127147" duration="320000" />
       <workItem from="1745947973549" duration="6344000" />
-      <workItem from="1745984694631" duration="3172000" />
+      <workItem from="1745984694631" duration="4449000" />
+      <workItem from="1745995471310" duration="702000" />
     </task>
     <task id="LOCAL-00001" summary="cmmit">
       <option name="closed" value="true" />
@@ -226,7 +225,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745962420396</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="audio issue is still therer">
+      <option name="closed" value="true" />
+      <created>1745988153503</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1745988153503</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,7 +255,8 @@
     <MESSAGE value="proshow responsive aki!!!" />
     <MESSAGE value="loading set" />
     <MESSAGE value="added text in about" />
-    <option name="LAST_COMMIT_MESSAGE" value="added text in about" />
+    <MESSAGE value="audio issue is still therer" />
+    <option name="LAST_COMMIT_MESSAGE" value="audio issue is still therer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
