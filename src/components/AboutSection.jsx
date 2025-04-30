@@ -219,12 +219,12 @@ export default function AboutSection() {
     />
   
     {/* The text */}
-    <div className="absolute w-full z-10 top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center  font-frontage-bold">
+    <div className="absolute w-full z-10 bottom-[50px] sm:top-2/3 sm:mt-20 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center font-frontage-bold ">
       <TextFade
           direction="up"
-          className="pt-0 pb-5 flex-col flex justify-center items-center space-y-0"
+          className="pt-0  flex-col flex justify-center items-center space-y-0"
       >
-        <h2 className="text-xl text-center sm:text-4xl font-bold tracking-tighter md:text-7xl md:leading-[0rem] prose-h2:my-0">
+        <h2 className="text-xl text-center sm:text-4xl font-bold  md:text-7xl md:leading-[0rem] prose-h2:my-0">
           Echos of tomorrow
         </h2>
         <AnimatedSubtitle/>

@@ -145,6 +145,9 @@ const LazySwiperCoverflow = dynamic(() => import('@/components/workshop'), {
                     <section id="faq">
                         <FAQSection />
                     </section>
+          {/* <section id="faq">
+            <FAQSection />
+          </section> */}
 
                     <Footer />
 
