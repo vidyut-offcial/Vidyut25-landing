@@ -24,6 +24,7 @@ export default function Home() {
   const mainRef = useRef(null);
   const [playOne, setPlayOne] = useState(false);
   const [playTwo, setPlayTwo] = useState(false);
+  const [audioReady, setAudioReady] = useState(false);
   const howlerOneRef = useRef();
   const howlerTwoRef = useRef();
 
@@ -173,6 +174,8 @@ export default function Home() {
   }
 
   useEffect(() => {
+    if (!audioReady) return;
+
     if (playOne) {
       howlerOneRef.current.play();
     } else {
@@ -184,11 +187,15 @@ export default function Home() {
     } else {
       howlerTwoRef.current.stop();
     }
-  }, [playOne, playTwo]);
+  }, [playOne, playTwo, audioReady]);
+
+  function isAudioBlocked() {
+    return typeof Howler !== "undefined" && Howler.ctx && Howler.ctx.state === "suspended";
+  }
 
   return (
     <SpaceshipContext.Provider value={spaceshipRef}>
-      <ReactHowler
+        <ReactHowler
         src="/sounds/woof.mp3"
         playing={false}
         html5={true}
@@ -215,7 +222,13 @@ export default function Home() {
         <div id="model" className="fixed flex items-center justify-center top-0 left-0 z-[100] pointer-events-none">
           {isSpaceshipMounted && showSpaceship && <SpaceShipModel ref={spaceshipRef} />}
         </div>
-        <PostLoading onComplete={transitHero} />
+        <PostLoading
+            onComplete={() => {
+              setAudioReady(true); // this guarantees audio unlock
+              transitHero();
+            }}
+        />
+
         <HeroSection />
         <div id="section-container" className="h-full w-full hidden opacity-0">
           <NavBar />

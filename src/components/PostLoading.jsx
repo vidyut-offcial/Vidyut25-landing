@@ -122,6 +122,7 @@ export default function SpaceLoadingScreen({ onComplete }) {
   const promptRef = useRef(null);
   const loadingTextRef = useRef(null);
   const gsapAnimations = useRef([]);
+  const [promptText, setPromptText] = useState("PRESS SPACE TO LAUNCH");
 
   const assets = [
     { type: "other", src: "/models/spaceship.glb" },
@@ -378,7 +379,11 @@ export default function SpaceLoadingScreen({ onComplete }) {
       }
     };
   }, [isReady, userTriggeredExit]);
-
+  useEffect(() => {
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+      setPromptText("SWIPE UP");
+    }
+  }, []);
   return (
     <div
       ref={containerRef}
@@ -447,12 +452,14 @@ export default function SpaceLoadingScreen({ onComplete }) {
           </div>
         </div>
       </div>
-      
-      <div 
-        ref={promptRef}
-        className="absolute bottom-20 text-center font-light tracking-wider text-blue-100 opacity-0"
+
+      <div
+          ref={promptRef}
+          className="absolute bottom-20 text-center font-light tracking-wider text-blue-100 opacity-0"
       >
+
         {isMobile ? "SWIPE UP TO CONTINUE" : "PRESS SPACE TO LAUNCH"}
+
       </div>
     </div>
   );
