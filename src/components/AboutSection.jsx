@@ -2,17 +2,93 @@
 
 import { Suspense, useEffect, useState, useRef } from "react";
 import { Canvas, useLoader, useFrame, useThree } from "@react-three/fiber";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Environment,Text } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
 import LogoModel from "@/models/LogoModel";
 import {TextFade} from "@/components/FadeUp";
+import { motion, AnimatePresence } from "framer-motion";
+
+const subtitleLines = [
+  "Manifest the future",
+  "Sparking innovation",
+  "Building a sustainable future"
+];
+
+const textVariants = {
+  hidden: { opacity: 0, filter: "blur(8px)", y: 20 },
+  visible: {
+    opacity: 1,
+    filter: "blur(0px)",
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+  exit: {
+    opacity: 0,
+    filter: "blur(8px)",
+    y: -20,
+    transition: { duration: 0.8, ease: "easeIn" },
+  },
+};
+
+export const AnimatedSubtitle = () => {
+  const subtitleLines = [
+    "Manifest the future",
+    "Sparking innovation",
+    "Building a sustainable future"
+  ];
+
+  const textVariants = {
+    hidden: { opacity: 0, filter: "blur(8px)", y: 20 },
+    visible: {
+      opacity: 1,
+      filter: "blur(0px)",
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+    exit: {
+      opacity: 0,
+      filter: "blur(8px)",
+      y: -20,
+      transition: { duration: 0.8, ease: "easeIn" },
+    },
+  };
+
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % subtitleLines.length);
+    }, 3000); // every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+      <div className="mt-6 min-h-[2rem] sm:min-h-[2.5rem] relative flex justify-center top-10 ">
+        <AnimatePresence mode="wait">
+          <motion.div
+              key={index}
+              variants={textVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="absolute text-zinc-300 text-[clamp(1rem,4vw,1.5rem)] font-medium tracking-wide text-center whitespace-nowrap"
+          >
+            {subtitleLines[index]}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+  );
+};
+
 
 function TerrainVectorBackground() {
   const meshRef = useRef();
   const mouse = useRef({ x: 0, y: 0 });
   const [texture, setTexture] = useState(null);
+
+
 
   useEffect(() => {
     const textureLoader = new THREE.TextureLoader();
@@ -148,9 +224,9 @@ export default function AboutSection() {
     <section
     id="about-section"
     ref={sectionRef}
-    className="relative top-0 opacity-0 translate-y-[100px] left-0 h-screen w-screen overflow-hidden"
-    style={{ height: '100vh', width: '100vw' }}
+    className="relative top-0 opacity-0 translate-y-[100px] left-0 h-[50vh] sm:h-[100vh] xs:h-[60vh] w-screen overflow-hidden"
   >
+  
     <div
       className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(to_top,black,transparent_40%),linear-gradient(to_bottom,black,transparent_40%),linear-gradient(to_left,black,transparent_20%),linear-gradient(to_right,black,transparent_20%)]"
       style={{ mixBlendMode: 'multiply' }}
@@ -165,6 +241,8 @@ export default function AboutSection() {
         <h2 className="text-xl text-center sm:text-4xl font-bold tracking-tighter md:text-7xl md:leading-[0rem] prose-h2:my-0">
           Echos of tomorrow
         </h2>
+        <AnimatedSubtitle/>
+
       </TextFade>
     </div>
       <Canvas

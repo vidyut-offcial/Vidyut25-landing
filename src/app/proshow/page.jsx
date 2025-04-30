@@ -4,9 +4,8 @@ import React, { useEffect, useState } from "react";
 import { BlurIn } from "@/components/blur";
 import { TextFade } from "@/components/FadeUp";
 import { ThreeDMarquee } from "@/components/ThreeDMarquee";
-import {GradualSpacing} from "@/components/ui/gradual-spacing";
+import { GradualSpacing } from "@/components/ui/gradual-spacing";
 import { motion } from "framer-motion";
-
 
 const Proshow = () => {
     const images = [
@@ -44,56 +43,73 @@ const Proshow = () => {
     ];
 
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [isHovering, setIsHovering] = useState(false);
 
-    // Update mouse position
     useEffect(() => {
         const handleMouseMove = (e) => {
             setMousePosition({ x: e.clientX, y: e.clientY });
         };
         document.addEventListener('mousemove', handleMouseMove);
-
-        return () => {
-            document.removeEventListener('mousemove', handleMouseMove);
-        };
+        return () => document.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
     return (
-        <div className="w-screen h-[100vh] relative overflow-hidden bg-black x">
+        <div className="w-full h-[100vh] relative overflow-hidden bg-black">
 
-            {/* Logo */}
-            <div className="absolute z-60   bottom-1/10 left-1/12 inset-0 flex flex-col items-start justify-center pointer-events-none space-y-4 delay-100">
-                <GradualSpacing text={'REVEL 25'}></GradualSpacing>
-                <TextFade direction="up" className="pt-0 pb-5 flex flex-col justify-center items-center space-y-2">
-                    <div className=" relative font-semibold top-3 left-2 tracking-widest prose-p:my-1 md:text-lg max-w-lg mx-auto text-balance dark:text-zinc-300 drop-shadow-2xl">
+            {/* Logo Section */}
+            <div
+                className="
+        absolute z-40
+         sm:top-1/4 bottom-[50vh]
+        left-1/2 sm:left-[5vw]
+        transform -translate-x-1/2 sm:translate-x-0
+        flex flex-col items-center sm:items-start justify-center
+        space-y-4 pointer-events-none
+        text-center sm:text-left
+        text-5xl
+    "
+            >
+                <GradualSpacing
+                    text="REVEL 25"
+                    className="
+            text-white
+            text-[clamp(2.5rem,10vw,6rem)]
+            font-extrabold
+            drop-shadow-xl
+            leading-tight
+        "
+                />
+                <TextFade direction="up" className="pt-0 pb-5">
+                    <div className="
+            text-zinc-300
+            text-[clamp(1.2rem,5vw,2rem)]
+            font-medium
+            tracking-wide
+            max-w-lg
+            drop-shadow-md
+        ">
                         coming soon...
                     </div>
                 </TextFade>
             </div>
-            {/*<div className="absolute bottom-0 h-1/2 w-full z-10 pointer-events-none bg-[linear-gradient(0deg,rgba(0,0,0,1)_28%,rgba(141,196,204,0)_100%)]" />*/}
-            <div className="absolute left-0 top-0 h-full w-[900px] z-10 pointer-events-none bg-[linear-gradient(90deg,rgba(0,0,0,1)_28%,rgba(141,196,204,0)_100%)]" />
 
 
 
-            {/* Render the marquee in the background */}
-            <div className="absolute inset-0 pointer-events-none z-50">
-                <div className="w-full h-full" style={{
-                    background: 'linear-gradient(to right, rgba(0,0,0) 0%, rgba(0,0,0,1) 0%,rgba(0,0,0,0.9) 10%, rgba(0,0,0,0) 80%)'
-                }} />
+            {/* Gradient overlays */}
+            <div className="absolute top-0 left-0 h-full w-full z-10 pointer-events-none">
+                <div className="absolute top-0 left-0 h-full sm:w-full bg-gradient-to-r from-black via-black/90 to-transparent" />
+                <div className="absolute bottom-0 sm:h-[30vh] h-full w-full bg-gradient-to-t from-black to-transparent" />
             </div>
 
-
-                {/* Render the marquee in the background */}
+            {/* Marquee Section */}
             <motion.div
                 initial={{ opacity: 0, y: 80 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.5 }}
+                viewport={{ once: false, amount: 0.4 }}
                 transition={{ duration: 1, ease: 'easeOut' }}
-                className="w-full h-full delay-0"
+                className="absolute inset-0 z-0"
             >
-                <ThreeDMarquee images={images} className="opacity-50" />
+                <ThreeDMarquee images={images} className="opacity-60" />
             </motion.div>
-
         </div>
     );
 };

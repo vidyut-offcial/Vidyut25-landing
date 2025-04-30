@@ -8,6 +8,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import remarkGfm from "remark-gfm";
 import NavBar from "@/components/NavBar";
 
+
 const mdxComponents = {
   h1: (props) => <h1 {...props} className="text-3xl font-bold my-4 text-primary" />,
   h2: (props) => <h2 {...props} className="text-2xl font-semibold my-3 text-primary" />,
@@ -160,30 +161,33 @@ function EchoContents() {
       <NavBar />
       
       <div className="mt-20 max-w-2xl w-full px-4">
-        <h1 className="text-6xl font-proxima text-center font-semibold mb-4">How can I help?</h1>
+        <h1 className="text-6xl font-proxima text-center font-semibold mb-4 mb-10">How can I help?</h1>
         
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 mb-8">
-          <div className="flex h-full items-center border border-border mt-2">
-            <input
-              type="text"
-              placeholder="Ask echo!"
-              className="bg-transparent p-2 flex-grow h-16 text-2xl px-8 focus:outline-none text-muted-foreground"
-              value={prompt}
-              onChange={(e) => setPrompt(e.target.value)}
-            />
-            <button
-              type="submit"
-              disabled={isProcessing || !prompt.trim()}
-              className={`h-16 w-24 flex items-center justify-center border-border border-l transition ${
-                isProcessing || !prompt.trim() 
-                  ? "bg-surface-alt cursor-not-allowed text-text-disabled" 
-                  : "bg-transparent text-foreground hover:bg-surface-alt"
-              }`}
-            >
-              {isProcessing ? <Loader className="animate-spin" /> : <SendHorizontal />}
-            </button>
-          </div>
-        </form>
+  <div className="flex items-center border border-border rounded-full overflow-hidden w-full bg-surface">
+    <input
+      type="text"
+      placeholder="Ask echo!"
+      className="bg-transparent px-6 py-4 text-base sm:text-xl flex-grow focus:outline-none text-muted-foreground"
+      value={prompt}
+      onChange={(e) => setPrompt(e.target.value)}
+    />
+    <button
+      type="submit"
+      disabled={isProcessing || !prompt.trim()}
+      className={`px-5 py-5 h-full flex items-center justify-center transition  ${
+        isProcessing || !prompt.trim()
+          ? "bg-surface-alt cursor-not-allowed text-text-disabled"
+          : "bg-transparent text-foreground hover:bg-surface-alt"
+      }`}
+    >
+      {isProcessing ? <Loader className="animate-spin" /> : <SendHorizontal />}
+    </button>
+  </div>
+</form>
+
+
+
         
         {submittedPrompt && (
           <div className="bg-background border-border border rounded-md overflow-hidden">
@@ -195,6 +199,8 @@ function EchoContents() {
           </div>
         )}
       </div>
+
+      
     </main>
   );
 }

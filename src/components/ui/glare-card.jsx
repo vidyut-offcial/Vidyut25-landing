@@ -4,9 +4,9 @@ import { cn } from "@/lib/utils";
 
 
 export const GlareCard = ({
-                              children,
-                              className,
-                          }) => {
+    children,
+    className,
+}) => {
     const isPointerInside = useRef(false);
     const refElement = useRef(null);
     const state = useRef({
@@ -28,7 +28,7 @@ export const GlareCard = ({
         "--radius": "20px",
         "--easing": "ease",
         "--transition": "var(--duration) var(--easing)",
-    } ;
+    };
 
     const backgroundStyle = {
         "--step": "5%",
@@ -57,8 +57,12 @@ export const GlareCard = ({
     return (
         <div
             style={containerStyle}
-            className="relative isolate [contain:layout_style] [perspective:600px] transition-transform duration-[var(--duration)] ease-[var(--easing)] delay-[var(--delay)] will-change-transform w-[320px] [aspect-ratio:17/21]"
+            className={cn(
+                "relative isolate [contain:layout_style] [perspective:600px] transition-transform duration-[var(--duration)] ease-[var(--easing)] delay-[var(--delay)] will-change-transform overflow-hidden rounded-[var(--radius)]",
+                className
+            )}
             ref={refElement}
+
             onPointerMove={(event) => {
                 const rotateFactor = 0.4;
                 const rect = event.currentTarget.getBoundingClientRect();

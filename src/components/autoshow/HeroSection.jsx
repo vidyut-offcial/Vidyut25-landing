@@ -84,18 +84,18 @@ const HeroSection = () => {
     const logoVariants = {
         hidden: { opacity: 0, scale: 0.8 },
         visible: {
-            opacity: 0.3, // Make it semi-transparent since it's in the background
+            opacity: 0.3,
             scale: 1,
             transition: {
                 duration: 1,
                 ease: [0.16, 0.77, 0.47, 0.97],
-                delay: 1.5 // Appears after other animations
+                delay: 1.5
             }
         }
     };
 
     return (
-        <div ref={ref} className="relative w-full h-[100vh] bg-black overflow-hidden">
+        <div ref={ref} className="relative w-full h-[100vh]  bg-black overflow-hidden">
             <motion.div
                 className="absolute inset-0 z-0"
                 style={{
@@ -107,14 +107,10 @@ const HeroSection = () => {
                 initial="hidden"
                 animate={controls}
                 variants={backgroundVariants}
-            >
-
-            </motion.div>
-
+            />
 
             <motion.div
                 className="absolute inset-0 flex items-center justify-center z-5 bottom-[300px]"
-
                 initial="hidden"
                 animate={controls}
                 variants={{
@@ -130,54 +126,44 @@ const HeroSection = () => {
                     }
                 }}
             >
-<span
-  className="font-frontage-bold  hover:text-transparent text-[300px] leading-none pointer-events-none select-none mix-blend-lighten transition-all duration-500 text-white"
->
-  VIDYUT
-</span>
-
-
+                <span
+                    className="font-frontage-bold hover:text-transparent text-[60px] sm:text-[150px] md:text-[200px] lg:text-[250px] xl:text-[300px] leading-none pointer-events-none select-none mix-blend-lighten transition-all duration-500 text-white"
+                >
+                    VIDYUT
+                </span>
             </motion.div>
 
             {/* Content container */}
-            <div className="relative z-20 h-full flex flex-col items-end justify-center px-8 md:px-16 lg:px-24 pt-[20%]">
+            <div className="relative z-20 h-full flex flex-col items-center justify-center px-6 sm:px-10 sm:items-end md:px-16 lg:px-24 pt-20 sm:pt-32 md:pt-48">
                 <motion.h1
-                    className="font-bold text-5xl md:text-7xl lg:text-8xl mb-8 relative group transition-all duration-500  text-right h-[80px]"
+                    className="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-8 relative group transition-all duration-500 text-right min-h-[60px] sm:min-h-[80px] md:min-h-[100px]"
                     variants={itemVariants}
                     initial="hidden"
                     animate={controls}
                 >
-                    {/* AUTO part */}
-                    <span
-                        className="bg-gradient-to-r from-white via-gray-300 to-gray-400 bg-clip-text text-transparent transition-all duration-500"
-                    >
+                    <span className="bg-gradient-to-r from-white via-gray-300 to-gray-400 bg-clip-text text-transparent transition-all duration-500">
                         Auto
                     </span>
-
-                    {/* SHOW part */}
-                    <span
-                        className="bg-gradient-to-r from-red-800 via-red-600 to-red-400 bg-clip-text text-transparent transition-all duration-500 ml-2"
-                    >
+                    <span className="bg-gradient-to-r from-red-800 via-red-600 to-red-400 bg-clip-text text-transparent transition-all duration-500 ml-2">
                         Show
                     </span>
                 </motion.h1>
 
                 <motion.div
-                    className="w-fit "
+                    className="w-fit flex flex-wrap gap-4"
                     variants={buttonVariants}
                     initial="hidden"
                     animate={controls}
                     whileHover="hover"
                     whileTap="tap"
                 >
-                    <button className="mt-4 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-8 py-4 rounded-[20px] text-lg font-semibold shadow-lg transition-all duration-300 mr-[10px]">
+                    <button className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-[20px] text-md sm:text-lg font-semibold shadow-lg transition-all duration-300">
                         Explore Vehicles
                     </button>
                 </motion.div>
             </div>
 
-
-            <div className="absolute bottom-0 top-9 left-1/2 transform -translate-x-1/2 w-11/12 md:w-full z-10">
+            <div className="absolute bottom-0 left-1/2 sm:top-1/8 transform -translate-x-1/2 w-[90%] sm:w-11/12 md:w-full z-10">
                 <motion.img
                     src="/images/CarBG.png"
                     alt="Car"
@@ -187,10 +173,9 @@ const HeroSection = () => {
                     variants={carVariants}
                 />
             </div>
+
             <div className="absolute bottom-0 h-36 w-full z-10 pointer-events-none bg-[linear-gradient(0deg,rgba(0,0,0,1)_28%,rgba(141,196,204,0)_100%)]" />
             <div className="absolute top-0 h-1/2 w-full z-10 pointer-events-none bg-[linear-gradient(180deg,rgba(0,0,0,0.5)_18%,rgba(141,196,204,0)_100%)]" />
-
-
         </div>
     );
 };

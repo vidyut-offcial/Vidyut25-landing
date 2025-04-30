@@ -63,18 +63,23 @@ export default function NavBar() {
   const handleLinkClick = (href, e) => {
     e.preventDefault();
     console.log(`Navigating to ${href}`);
-
+  
     if (menuOpen) setMenuOpen(false);
-
+  
     if (href.startsWith("#")) {
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
+      if (router.pathname !== "/") {
+        router.push(`/${href}`);
+      } else {
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
       }
     } else {
-        router.push(href);
+      router.push(href);
     }
   };
+  
 
   return (
     <nav 
@@ -213,7 +218,7 @@ export default function NavBar() {
           ))}
           <button 
             className="bg-gradient-to-r from-red-800/50 to-red-600/50 border border-red-500/30 px-6 py-3 rounded text-white mt-4 hover:from-red-700/70 hover:to-red-500/70 active:scale-95 transform transition-all duration-300 cursor-pointer"
-            onClick={() => router.push("/register")}
+            onClick={() => router.push("https://vidyut.ulsav.com")}
           >
             REGISTER NOW
           </button>
