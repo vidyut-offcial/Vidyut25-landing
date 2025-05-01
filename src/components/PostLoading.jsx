@@ -5,18 +5,6 @@ import TerminalStartup from "@/components/TerminalStarup";
 import Image from "next/image";
 import Logo from "../../public/images/logo_enhanced.png";
 
-function useIsMobile() {
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-        checkMobile();
-        window.addEventListener("resize", checkMobile);
-        return () => window.removeEventListener("resize", checkMobile);
-    }, []);
-    return isMobile;
-}
-
 const PostLoading = ({ setRevel }) => {
     const logoRef = useRef(null);
     const terminalRef = useRef(null);
@@ -24,10 +12,8 @@ const PostLoading = ({ setRevel }) => {
     const howlerTwoRef = useRef();
     const howlerThreeRef = useRef();
 
-    const [hasInteracted, setHasInteracted] = useState(false);
-    const [sequenceStarted, setSequenceStarted] = useState(false);
-    const [showEnterButton, setShowEnterButton] = useState(false);
-    const isMobile = useIsMobile();
+    const [hasStarted, setHasStarted] = useState(false);
+    const [showEnterButton, setShowEnterButton] = useState(true);
 
     const startFade = () => {
         setRevel(true);
@@ -89,8 +75,9 @@ const PostLoading = ({ setRevel }) => {
     };
 
     const startSequence = async () => {
-        if (sequenceStarted) return;
-        setSequenceStarted(true);
+        if (hasStarted) return;
+        setHasStarted(true);
+        setShowEnterButton(false);
         
         // Start thunder sound
         const { sound: thunderSound, id: thunderId } = await playSound(howlerOneRef);
@@ -104,22 +91,8 @@ const PostLoading = ({ setRevel }) => {
         const { sound: thirdSound, id: thirdId } = await playSound(howlerThreeRef);
     };
 
-    useEffect(() => {
-        // Check if we should show the enter button (mobile and no interaction yet)
-        setShowEnterButton(isMobile && !hasInteracted);
-        
-        // Start sequence automatically on desktop if not started
-        if (!isMobile && !sequenceStarted && !hasInteracted) {
-            setHasInteracted(true);
-            startSequence();
-        }
-    }, [isMobile, hasInteracted, sequenceStarted]);
-
     const handleStart = () => {
-        if (!sequenceStarted) {
-            setHasInteracted(true);
-            startSequence();
-        }
+        startSequence();
     };
 
     return (
