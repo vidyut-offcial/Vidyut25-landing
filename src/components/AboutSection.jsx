@@ -224,7 +224,7 @@ export default function AboutSection() {
           direction="up"
           className="pt-0 flex-col flex justify-center items-center " // reduced space
         >
-          <h2 className="text-xl text-center sm:text-4xl font-bold md:text-7xl md:leading-[0rem] prose-h2:my-0">
+          <h2 className="text-xl text-center sm:text-4xl font-bold md:text-4xl md:leading-[0rem] prose-h2:my-0">
             Echos of tomorrow
           </h2>
           <div className="mt-[1px] sm:mt-4 sm:font-frontage-bold font-mono">
