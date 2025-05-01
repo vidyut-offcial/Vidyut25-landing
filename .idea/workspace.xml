@@ -88,7 +88,7 @@
       <workItem from="1745984694631" duration="4449000" />
       <workItem from="1745995471310" duration="702000" />
       <workItem from="1746007022244" duration="28156000" />
-      <workItem from="1746092938690" duration="17974000" />
+      <workItem from="1746092938690" duration="19785000" />
     </task>
     <task id="LOCAL-00001" summary="cmmit">
       <option name="closed" value="true" />
@@ -314,7 +314,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746123670125</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="loading issue">
+      <option name="closed" value="true" />
+      <created>1746124877345</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1746124877345</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
