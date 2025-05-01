@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="proshow done">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/autoshow/HeroSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/autoshow/HeroSection.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="autoexpo" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,7 +85,7 @@
       <workItem from="1745984694631" duration="4449000" />
       <workItem from="1745995471310" duration="702000" />
       <workItem from="1746007022244" duration="28156000" />
-      <workItem from="1746092938690" duration="15011000" />
+      <workItem from="1746092938690" duration="15313000" />
     </task>
     <task id="LOCAL-00001" summary="cmmit">
       <option name="closed" value="true" />
@@ -282,7 +279,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746117040159</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="autoexpo">
+      <option name="closed" value="true" />
+      <created>1746121185270</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1746121185270</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,6 +313,7 @@
     <MESSAGE value="loading screen done but reloader not" />
     <MESSAGE value="loading" />
     <MESSAGE value="proshow done" />
-    <option name="LAST_COMMIT_MESSAGE" value="proshow done" />
+    <MESSAGE value="autoexpo" />
+    <option name="LAST_COMMIT_MESSAGE" value="autoexpo" />
   </component>
 </project>
