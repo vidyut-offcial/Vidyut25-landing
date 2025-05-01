@@ -30,6 +30,15 @@ const LazySwiperCoverflow = dynamic(() => import('@/components/workshop'), {
     loading: () => <div className="text-center p-4">Loading Workshops...</div>,
     ssr: false,
 });
+const LazyAboutSection = dynamic(() => import('@/components/AboutSection'), {
+        loading: () => <div className="text-center p-4">Loading AboutSection...</div>,
+        ssr: false,
+    });
+const LazyIdeaSection = dynamic(() => import('@/components/IdeaSection'), {
+        loading: () => <div className="text-center p-4">Loading IdeaSection...</div>,
+        ssr: false,
+    });
+
 
     const startReveal = () => {
         const tl = gsap.timeline();
@@ -123,11 +132,11 @@ const LazySwiperCoverflow = dynamic(() => import('@/components/workshop'), {
                     <NavBar />
 
                     <section id="about">
-                        <AboutSection />
+                        <LazyAboutSection />
                     </section>
 
                     <section id="ideas">
-                        <IdeaSection />
+                        <LazyIdeaSection />
                     </section>
 
                     <section id="proshow">
