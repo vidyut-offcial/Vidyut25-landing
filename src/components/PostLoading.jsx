@@ -134,10 +134,11 @@ const PostLoading = ({ setRevel }) => {
     }, []);
 
     useEffect(() => {
-        if (!hasStarted) {
+        if (!hasStarted && !isMobile) {
             startSequence();
         }
-    }, []);
+    }, [hasStarted, isMobile]);
+
 
     const startSequence = async () => {
         if (hasStarted) return;
@@ -213,6 +214,15 @@ const PostLoading = ({ setRevel }) => {
                 onLoad={() => console.log("Metal sound loaded")}
                 onLoadError={(id, err) => console.error("Metal load error", err)}
             />
+            {/* Mobile-only "Enter" button */}
+            {!hasStarted && (
+                <button
+                    onClick={startSequence}
+                    className="md:hidden z-40 fixed bottom-10 px-6 py-3 bg-white text-black font-bold rounded-full shadow-lg animate-bounce transition-all duration-300"
+                >
+                    Enter
+                </button>
+            )}
 
             <div ref={terminalRef} className="z-20 opacity-0">
                 <TerminalStartup />
