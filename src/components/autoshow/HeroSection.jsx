@@ -134,21 +134,20 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Content container */}
-            <div className="relative z-20 h-full flex flex-col items-center justify-center px-6 sm:px-10 sm:items-end md:px-16 lg:px-24 pt-28 sm:pt-40 md:pt-56">
+            <div className="relative z-20 h-full flex flex-col items-center justify-center px-6 sm:px-10 sm:items-end md:px-16 lg:px-24 pt-20 sm:pt-32 md:pt-48">
                 <motion.h1
-                    className="font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-8 relative group transition-all duration-500 text-center sm:text-right min-h-[60px] sm:min-h-[80px] md:min-h-[100px] leading-tight tracking-tight sm:mt-[150px]"
+                    className="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-8 relative group transition-all duration-500 text-right min-h-[60px] sm:min-h-[80px] md:min-h-[100px]"
                     variants={itemVariants}
                     initial="hidden"
                     animate={controls}
                 >
-                    <span className="text-white transition-all duration-500 group-hover:blur-[1px]">
+                    <span className="bg-gradient-to-r from-white via-gray-300 to-gray-400 bg-clip-text text-transparent transition-all duration-500">
                         Auto
                     </span>
-                    <span className="text-white transition-all duration-500 ml-3 group-hover:scale-105">
+                    <span className="bg-gradient-to-r from-red-800 via-red-600 to-red-400 bg-clip-text text-transparent transition-all duration-500 ml-2">
                         Expo
                     </span>
                 </motion.h1>
-
 
             </div>
 

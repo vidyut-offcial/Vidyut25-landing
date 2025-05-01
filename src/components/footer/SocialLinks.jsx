@@ -1,12 +1,13 @@
 import React from 'react';
-import { Twitter, Facebook, Instagram, Linkedin, Github, Youtube } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
+import { Twitter, Facebook, Instagram, Linkedin } from 'lucide-react';
 
 export const SocialLinks = () => {
   const socialLinks = [
-    { icon: <Twitter size={24} />, url: '#', label: 'Twitter' },
-    { icon: <Facebook size={24} />, url: '#', label: 'Facebook' },
-    { icon: <Instagram size={24} />, url: '#', label: 'Instagram' },
-    { icon: <Linkedin size={24} />, url: '#', label: 'LinkedIn' },
+    { icon: <FaWhatsapp size={24} />, url: 'https://www.whatsapp.com/channel/0029VaPtG6GL7UVYwg8BH32o', label: 'Whatsapp' },
+    { icon: <Facebook size={24} />, url: 'https://www.facebook.com/Vidyut.Multifest/', label: 'Facebook' },
+    { icon: <Instagram size={24} />, url: 'https://www.instagram.com/vidyutmultifest/', label: 'Instagram' },
+    { icon: <Linkedin size={24} />, url: 'https://www.linkedin.com/company/vidyut-amrita/', label: 'LinkedIn' },
   ];
 
   return (
@@ -16,6 +17,8 @@ export const SocialLinks = () => {
           key={index}
           href={link.url}
           aria-label={link.label}
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-gray-400 hover:text-white transform hover:scale-110 transition-all duration-300"
         >
           {link.icon}
