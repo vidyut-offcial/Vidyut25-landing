@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="loading screen done but reloader not">
-      <change afterPath="$PROJECT_DIR$/src/components/Ask-Echo.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/VidyutLogo.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/footer/FAQItem.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/footer/FAQSection.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/footer/Footer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/footer/FooterLinkSection.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/footer/SocialLinks.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AboutSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutSection.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TerminalStarup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TerminalStarup.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +34,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging test",
+    "git-widget-placeholder": "main",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "last_opened_file_path": "/home/devan/Desktop/projects/vidyut-last/public/sounds",
