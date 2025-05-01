@@ -11,9 +11,10 @@ const PostLoading = ({ setRevel }) => {
     const howlerOneRef = useRef();
     const howlerTwoRef = useRef();
     const howlerThreeRef = useRef();
-
     const [hasStarted, setHasStarted] = useState(false);
-    const [showEnterButton, setShowEnterButton] = useState(true);
+    const [showEnterButton, setShowEnterButton] = useState(false);
+    const tapTextRef = useRef(null);
+
 
     const startFade = () => {
         setRevel(true);
@@ -23,6 +24,7 @@ const PostLoading = ({ setRevel }) => {
             ease: "power2.out",
         });
     };
+    
 
     const fadeInThenOut = (
         sound,
@@ -56,7 +58,6 @@ const PostLoading = ({ setRevel }) => {
                     ease: "power2.out",
                 })
                 : Promise.resolve(),
-
             new Promise((resolve) => {
                 sound.fade(0, 1, fadeDuration, id);
                 setTimeout(resolve, fadeDuration);
@@ -74,20 +75,45 @@ const PostLoading = ({ setRevel }) => {
         });
     };
 
+    useEffect(() => {
+        const checkScreenSize = () => {
+            const isLargeScreen = window.matchMedia("(min-width: 1024px)").matches;
+            setShowEnterButton(!isLargeScreen);
+
+            if (isLargeScreen) {
+                startSequence();
+            }
+        };
+
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+
+        return () => {
+            window.removeEventListener('resize', checkScreenSize);
+        };
+    }, []);
+
     const startSequence = async () => {
         if (hasStarted) return;
         setHasStarted(true);
         setShowEnterButton(false);
-        
-        // Start thunder sound
+
+        // Start thunder sound and terminal animation
         const { sound: thunderSound, id: thunderId } = await playSound(howlerOneRef);
         await fadeInThenOut(thunderSound, thunderId, terminalRef.current, 2000, 10000);
 
         const { sound: secondSound, id: secondId } = await playSound(howlerTwoRef);
         await fadeInSecond(logoRef.current, secondSound, secondId, 2000);
-        
+
         await new Promise((resolve) => setTimeout(resolve, 3000));
-        
+        gsap.to(tapTextRef.current, {
+            opacity: 1,
+            duration: 1,
+            delay: 0.5,
+            ease: "power2.out",
+        });
+    
+
         const { sound: thirdSound, id: thirdId } = await playSound(howlerThreeRef);
     };
 
@@ -138,10 +164,10 @@ const PostLoading = ({ setRevel }) => {
 
             <div
                 ref={logoRef}
-                className="z-30 absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-1000"
+                className="z-30 absolute inset-0 flex flex-col items-center justify-center opacity-0 transition-opacity duration-1000"
             >
-                <button 
-                    className="flex items-center justify-center" 
+                <button
+                    className="flex items-center justify-center"
                     onClick={startFade}
                     aria-label="Continue"
                 >
@@ -153,7 +179,14 @@ const PostLoading = ({ setRevel }) => {
                         quality={100}
                     />
                 </button>
+                <p
+                    ref={tapTextRef}
+                    className="text-white text-xl mt-4 opacity-0 transition-opacity duration-1000"
+                >
+                    Tap to view
+                </p>
             </div>
+
         </div>
     );
 };

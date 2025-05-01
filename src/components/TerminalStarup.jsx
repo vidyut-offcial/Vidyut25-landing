@@ -41,7 +41,7 @@ export default function TerminalStartup() {
     }, [currentLineIndex]);
 
     return (
-        <div className=" font-frontage-bold p-6 mb-20 rounded-lg shadow-lg min-h-[70vh] flex items-center justify-center">
+        <div className=" sm:p-6 mb-20 rounded-lg shadow-lg min-h-[70vh] flex items-center justify-center">
             <AnimatePresence mode="wait">
                 <motion.div
                     key={currentLineIndex}
@@ -49,7 +49,11 @@ export default function TerminalStartup() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.3 }}
-                    className="text-white text-xl"
+                    className="text-white sm:text-xl text-center sm:font-frontage-bold font-mono tracking-widest whitespace-nowrap"
+                    style={{
+                        filter: "blur(0px)",
+                        textShadow: "0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.6)",
+                    }}
                 >
                     {startupLines[currentLineIndex]}
                 </motion.div>

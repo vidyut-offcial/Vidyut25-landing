@@ -2,11 +2,11 @@
 
 import { Suspense, useEffect, useState, useRef } from "react";
 import { Canvas, useLoader, useFrame, useThree } from "@react-three/fiber";
-import { Environment,Text } from "@react-three/drei";
+import { Environment, Text } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
 import LogoModel from "@/models/LogoModel";
-import {TextFade} from "@/components/FadeUp";
+import { TextFade } from "@/components/FadeUp";
 import { motion, AnimatePresence } from "framer-motion";
 
 const subtitleLines = [
@@ -51,20 +51,20 @@ export const AnimatedSubtitle = () => {
   }, []);
 
   return (
-      <div className="mt-6 min-h-[2rem] sm:min-h-[2.5rem] relative flex justify-center top-10 ">
-        <AnimatePresence mode="wait">
-          <motion.div
-              key={index}
-              variants={textVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="absolute text-zinc-300 text-[clamp(1rem,4vw,1.5rem)] font-medium tracking-wide text-center whitespace-nowrap"
-          >
-            {subtitleLines[index]}
-          </motion.div>
-        </AnimatePresence>
-      </div>
+    <div className="mt-6 min-h-[2rem] sm:min-h-[2.5rem] relative flex justify-center sm:top-10 ">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={index}
+          variants={textVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          className="absolute text-zinc-300 text-[clamp(1rem,4vw,1.5rem)]  text-center tracking-wide whitespace-nowrap  sm:whitespace-nowrap"
+        >
+          {subtitleLines[index]}
+        </motion.div>
+      </AnimatePresence>
+    </div>
   );
 };
 
@@ -208,29 +208,31 @@ export default function AboutSection() {
 
   return (
     <section
-    id="about-section"
-    ref={sectionRef}
-    className="relative top-0 opacity-0 translate-y-[100px] left-0 h-[50vh] sm:h-[100vh] xs:h-[60vh] w-screen overflow-hidden"
-  >
-  
-    <div
-      className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(to_top,black,transparent_40%),linear-gradient(to_bottom,black,transparent_40%),linear-gradient(to_left,black,transparent_20%),linear-gradient(to_right,black,transparent_20%)]"
-      style={{ mixBlendMode: 'multiply' }}
-    />
-  
-    {/* The text */}
-    <div className="absolute w-full z-10 bottom-[50px] sm:top-2/3 sm:mt-20 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center font-frontage-bold ">
-      <TextFade
-          direction="up"
-          className="pt-0  flex-col flex justify-center items-center space-y-0"
-      >
-        <h2 className="text-xl text-center sm:text-4xl font-bold  md:text-7xl md:leading-[0rem] prose-h2:my-0">
-          Echos of tomorrow
-        </h2>
-        <AnimatedSubtitle/>
+      id="about-section"
+      ref={sectionRef}
+      className="relative top-0 opacity-0 translate-y-[100px] left-0 h-[50vh] sm:h-[100vh] xs:h-[60vh] w-screen overflow-hidden"
+    >
 
-      </TextFade>
-    </div>
+      <div
+        className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(to_top,black,transparent_40%),linear-gradient(to_bottom,black,transparent_40%),linear-gradient(to_left,black,transparent_20%),linear-gradient(to_right,black,transparent_20%)]"
+        style={{ mixBlendMode: 'multiply' }}
+      />
+
+      {/* The text */}
+      <div className="absolute w-full z-10 bottom-[50px] sm:top-2/3 sm:mt-20 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center font-frontage-bold ">
+        <TextFade
+          direction="up"
+          className="pt-0 flex-col flex justify-center items-center " // reduced space
+        >
+          <h2 className="text-xl text-center sm:text-4xl font-bold md:text-7xl md:leading-[0rem] prose-h2:my-0">
+            Echos of tomorrow
+          </h2>
+          <div className="mt-[1px] sm:mt-4 sm:font-frontage-bold font-mono">
+          <AnimatedSubtitle />
+          </div>
+        </TextFade>
+
+      </div>
       <Canvas
         camera={{ position: [0, 0, 5], fov: 45 }}
         style={{
