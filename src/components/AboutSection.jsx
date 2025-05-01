@@ -225,7 +225,7 @@ export default function AboutSection() {
           className="pt-0 flex-col flex justify-center items-center " // reduced space
         >
           <h2 className="text-2xl text-center font-bold md:text-4xl sm:text-3xl lg:text-5xl xl:text-7xl md:leading-[0rem] prose-h2:my-0">
-            Echos of tomorrow
+            Echoes of tomorrow
           </h2>
           <div className="mt-[1px] sm:mt-4 sm:font-frontage-bold font-mono">
           <AnimatedSubtitle />
