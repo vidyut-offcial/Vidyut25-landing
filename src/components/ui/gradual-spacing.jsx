@@ -7,7 +7,7 @@ export function GradualSpacing({ text = 'Gradual Spacing' }) {
     const ref = React.useRef(null);
     const isInView = useInView(ref, { once: false });
     return (
-        <div className="flex space-x-1 justify-center">
+        <div className="flex space-x-1 justify-center font-nexa">
             <AnimatePresence>
                 {text.split('').map((char, i) => (
                     <motion.p
@@ -17,7 +17,7 @@ export function GradualSpacing({ text = 'Gradual Spacing' }) {
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
                         exit="hidden"
                         transition={{ duration: 0.5, delay: i * 0.1 }}
-                        className="text-xl text-center sm:text-4xl font-bold  md:text-9xl md:leading-[4rem] "
+                        className="text-6xl text-center sm:text-4xl font-bold  md:text-9xl md:leading-[4rem] "
                     >
                         {char === ' ' ? <span>&nbsp;</span> : char}
                     </motion.p>

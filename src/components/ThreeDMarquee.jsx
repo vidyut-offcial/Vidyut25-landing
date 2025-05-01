@@ -5,17 +5,17 @@ import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export const ThreeDMarquee = ({ images, className }) => {
-    const chunkSize = Math.ceil(images.length / 6);
-    const chunks = Array.from({ length: 6 }, (_, colIndex) => {
+    const chunkSize = Math.ceil(images.length / 16);
+    const chunks = Array.from({ length: 16 }, (_, colIndex) => {
         const start = colIndex * chunkSize;
         return images.slice(start, start + chunkSize);
     });
 
     return (
         <div className={cn("mx-auto block overflow-hidden rounded-2xl h-[700px] sm:h-[1000px]", className)}>
-            <div className="flex size-full items-center justify-center">
+            <div className="flex size-full items-center justify-center mt-20">
 
-                <div className="w-full sm:w-[1320px] md:w-[1920px] lg:w-[2320px] shrink-0 transform scale-95 sm:scale-75 lg:scale-100 mx-auto">
+                <div className="w-full sm:w-[1320px] md:w-[1920px] lg:w-[2320px] shrink-0  transform scale-75 sm:scale-55 lg:scale-85 mx-auto">
                     <div
                         className={`
                             relative 
@@ -24,6 +24,7 @@ export const ThreeDMarquee = ({ images, className }) => {
                             gap-4 sm:gap-8 lg:gap-12 
                             items-center justify-center 
                             w-full h-full
+                            left-1/8
                             [transform-style:preserve-3d]
                             transform
                             sm:[transform:rotateX(35deg)_rotateY(-19deg)_rotateZ(20deg)]

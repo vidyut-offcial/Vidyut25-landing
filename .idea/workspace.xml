@@ -5,8 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="loading">
+      <change afterPath="$PROJECT_DIR$/public/fonts/Nexa-Heavy.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/cake-bold.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo19.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/proshow/photo9.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PostLoading.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostLoading.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/proshow/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/proshow/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TerminalStarup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TerminalStarup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ThreeDMarquee.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ThreeDMarquee.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/gradual-spacing.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/gradual-spacing.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +63,7 @@
     "git-widget-placeholder": "main",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
-    "last_opened_file_path": "/home/devan/Desktop/projects/vidyut-last/public/sounds",
+    "last_opened_file_path": "/home/devan/Desktop/projects/vidyut-last/public/fonts",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -49,6 +75,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/fonts" />
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/public/sounds" />
     </key>
   </component>
@@ -86,6 +114,7 @@
       <workItem from="1745984694631" duration="4449000" />
       <workItem from="1745995471310" duration="702000" />
       <workItem from="1746007022244" duration="28156000" />
+      <workItem from="1746092938690" duration="13446000" />
     </task>
     <task id="LOCAL-00001" summary="cmmit">
       <option name="closed" value="true" />

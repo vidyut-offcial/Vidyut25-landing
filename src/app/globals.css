@@ -20,6 +20,9 @@
   --font-frontage-bulb: 'Frontage Bulb';
   --font-sf: 'SF Pro';
   --font-proxima: 'Proxima';
+  --font-cake: 'Cake';
+  --font-nexa: 'nexa';
+
 }
 
 @font-face {
@@ -63,6 +66,20 @@
   font-weight: 400;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Cake';
+  src: url('/fonts/cake-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'nexa';
+  src: url('/fonts/Nexa-Heavy.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -84,6 +101,9 @@
   --font-frontage-bulb: var(--font-frontage-bulb);
   --font-sf: var(--font-sf);
   --font-proxima: var(--font-proxima);
+  --font-cake: var(--font-cake);
+  --font-nexa: var(--font-nexa);
+
 
   --breakpoint-xs: 30rem;
 

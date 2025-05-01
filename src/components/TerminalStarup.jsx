@@ -8,6 +8,13 @@ const startupLines = [
     "Fetching neural substrates...",
     "Calibrating quantum cache...",
     "Verifying model integrity...",
+    "Deploying auto-scaling shards...",
+    "setting up pipelines...",
+    "Compiling temporal heuristics...",
+    "Activating recursive feedback loop...",
+    "Decrypting biosynthetic schema...",
+    "Injecting hyperspace credentials...",
+    "Cascading zero-trust firewalls...",
     "Spooling tensor cores...",
     "Establishing low-latency grid...",
     "Loading interdimensional drivers...",
@@ -35,7 +42,7 @@ export default function TerminalStartup() {
         if (currentLineIndex < startupLines.length - 1) {
             const timeout = setTimeout(() => {
                 setCurrentLineIndex((prev) => prev + 1);
-            }, 500); // Delay before switching to next line
+            }, 400); // Delay before switching to next line
             return () => clearTimeout(timeout);
         }
     }, [currentLineIndex]);

@@ -9,37 +9,43 @@ import { motion } from "framer-motion";
 
 const Proshow = () => {
     const images = [
-        "https://assets.aceternity.com/cloudinary_bkp/3d-card.png",
-        "https://assets.aceternity.com/animated-modal.png",
-        "https://assets.aceternity.com/animated-testimonials.webp",
-        "https://assets.aceternity.com/cloudinary_bkp/Tooltip_luwy44.png",
-        "https://assets.aceternity.com/github-globe.png",
-        "https://assets.aceternity.com/glare-card.png",
-        "https://assets.aceternity.com/layout-grid.png",
-        "https://assets.aceternity.com/flip-text.png",
-        "https://assets.aceternity.com/hero-highlight.png",
-        "https://assets.aceternity.com/carousel.webp",
-        "https://assets.aceternity.com/placeholders-and-vanish-input.png",
-        "https://assets.aceternity.com/shooting-stars-and-stars-background.png",
-        "https://assets.aceternity.com/signup-form.png",
-        "https://assets.aceternity.com/cloudinary_bkp/stars_sxle3d.png",
-        "https://assets.aceternity.com/spotlight-new.webp",
-        "https://assets.aceternity.com/cloudinary_bkp/Spotlight_ar5jpr.png",
-        "https://assets.aceternity.com/cloudinary_bkp/Parallax_Scroll_pzlatw_anfkh7.png",
-        "https://assets.aceternity.com/tabs.png",
-        "https://assets.aceternity.com/cloudinary_bkp/Tracing_Beam_npujte.png",
-        "https://assets.aceternity.com/cloudinary_bkp/typewriter-effect.png",
-        "https://assets.aceternity.com/glowing-effect.webp",
-        "https://assets.aceternity.com/hover-border-gradient.png",
-        "https://assets.aceternity.com/cloudinary_bkp/Infinite_Moving_Cards_evhzur.png",
-        "https://assets.aceternity.com/cloudinary_bkp/Lamp_hlq3ln.png",
-        "https://assets.aceternity.com/macbook-scroll.png",
-        "https://assets.aceternity.com/cloudinary_bkp/Meteors_fye3ys.png",
-        "https://assets.aceternity.com/cloudinary_bkp/Moving_Border_yn78lv.png",
-        "https://assets.aceternity.com/multi-step-loader.png",
-        "https://assets.aceternity.com/vortex.png",
-        "https://assets.aceternity.com/wobble-card.png",
-        "https://assets.aceternity.com/world-map.webp",
+        "/proshow/photo1.jpg",
+        "/proshow/photo2.jpg",
+        "/proshow/photo3.jpg",
+        "/proshow/photo4.jpg",
+        "/proshow/photo5.jpg",
+        "/proshow/photo12.jpg",
+        "/proshow/photo13.jpg",
+        "/proshow/photo14.jpg",
+        "/proshow/photo15.jpg",
+        "/proshow/photo16.jpg",
+        "/proshow/photo17.jpg",
+        "/proshow/photo18.jpg",
+        "/proshow/photo6.jpg",
+        "/proshow/photo7.jpg",
+        "/proshow/photo1.jpg",
+        "/proshow/photo2.jpg",
+        "/proshow/photo3.jpg",
+        "/proshow/photo4.jpg",
+        "/proshow/photo5.jpg",
+        "/proshow/photo8.jpg",
+        "/proshow/photo9.jpg",
+        "/proshow/photo10.jpg",
+        "/proshow/photo11.jpg",
+        "/proshow/photo19.jpg",
+        "/proshow/photo20.jpg",
+        "/proshow/photo1.jpg",
+        "/proshow/photo2.jpg",
+        "/proshow/photo3.jpg",
+        "/proshow/photo4.jpg",
+        "/proshow/photo5.jpg",
+        "/proshow/photo12.jpg",
+        "/proshow/photo13.jpg",
+        "/proshow/photo14.jpg",
+        "/proshow/photo15.jpg",
+        "/proshow/photo16.jpg",
+        "/proshow/photo17.jpg",
+        "/proshow/photo18.jpg",
     ];
 
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -54,50 +60,67 @@ const Proshow = () => {
 
     return (
         <div className="w-full h-[100vh] relative overflow-hidden bg-black">
-
             {/* Logo Section */}
             <div
                 className="
-        absolute z-40
-         sm:top-1/4 bottom-[50vh]
-        left-1/2 sm:left-[5vw]
-        transform -translate-x-1/2 sm:translate-x-0
-        flex flex-col items-center sm:items-start justify-center
-        space-y-4 pointer-events-none
-        text-center sm:text-left
-        text-5xl
-    "
+                    absolute z-40
+                    bottom-1/7
+                    sm:top-1/2 bottom-0 sm:bottom-[50vh]
+                    left-1/2 sm:left-[5vw]
+                    transform -translate-x-1/2 sm:translate-x-0
+                    flex flex-col items-center sm:items-start justify-center
+                    space-y-4 pointer-events-none
+                    text-center sm:text-left
+                    text-5xl
+                    sm:pb-20 sm:pt-0 pb-5 pt-10 sm:space-y-8
+                    sm:relative sm:z-40
+                    sm:opacity-100
+                "
             >
                 <GradualSpacing
-                    text="REVEL 25"
-                    className="
-            text-white
-            text-[clamp(2.5rem,10vw,6rem)]
-            font-extrabold
-            drop-shadow-xl
-            leading-tight
-        "
+                    text="Revel 25"
                 />
-                <TextFade direction="up" className="pt-0 pb-5">
+                <TextFade direction="up" className="pt-0">
                     <div className="
-            text-zinc-300
-            text-[clamp(1.2rem,5vw,2rem)]
-            font-medium
-            tracking-wide
-            max-w-lg
-            drop-shadow-md
-        ">
-                        coming soon...
+                        text-zinc-300
+                        text-[clamp(1rem,2vw,1.2rem)]
+                        font-medium
+                        tracking-wide
+                        mt-5.5
+                        max-w-5xl sm:max-w-3xl  /* Increased text width for mobile */
+                        drop-shadow-md
+                    ">
+                        Three nights of rhythm, revelry, and raw energy await you! Immerse yourself in a whirlwind of pulsating beats and pure excitement as Vidyut Revel '25 blurs the line between art and magic. This isn’t just an event—it’s an experience.
                     </div>
                 </TextFade>
+                <a
+                    href="https://vidyut.ulsav.com/e/revel"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                        inline-block
+                        bg-amber-400
+                        hover:bg-amber-500
+                        text-black
+                        font-semibold
+                        text-sm
+                        px-6
+                        py-3
+                        rounded-lg
+                        shadow-lg
+                        transition-all
+                        duration-300
+                        pointer-events-auto
+                    "
+                >
+                    Get your tickets now
+                </a>
             </div>
 
-
-
-            {/* Gradient overlays */}
+            {/* Gradient overlay for mobile view */}
             <div className="absolute top-0 left-0 h-full w-full z-10 pointer-events-none">
-                <div className="absolute top-0 left-0 h-full sm:w-full bg-gradient-to-r from-black via-black/90 to-transparent" />
-                <div className="absolute bottom-0 sm:h-[30vh] h-full w-full bg-gradient-to-t from-black to-transparent" />
+                <div className="absolute top-0 left-0 h-full w-1/2 sm:w-[150vh] bg-gradient-to-r from-black via-black/80 via-40% to-transparent to-90%" />
+                <div className="absolute bottom-0 sm:h-[60vh] h-1/2 w-full bg-gradient-to-t from-black to-transparent sm:hidden" />
             </div>
 
             {/* Marquee Section */}
