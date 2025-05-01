@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import ReactHowler from "react-howler";
 import TerminalStartup from "@/components/TerminalStarup";
 import Image from "next/image";
-import Logo from "../../public/images/logo.svg";
+import Logo from "../../public/images/logo_enhanced.png";
 
 function useIsMobile() {
     const [isMobile, setIsMobile] = useState(false);
@@ -176,12 +176,12 @@ const PostLoading = ({setRevel}) => {
                         onClick={startFade}
                 >
                     <Image
-                        className="w-[200px] sm:w-[240px] object-contain cursor-pointer"
+                        className="w-[80vw] max-w-[800px] h-auto object-contain cursor-pointer"
                         src={Logo}
                         alt="Vidyut Logo"
-                        width={206}
-                        height={206}
                         priority
+                        quality={100}
+                        sizes="(max-width: 768px) 80vw, 800px"
                     />
                 </button>
                 <p
