@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="logo" />
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="spelling">
+      <change beforePath="$PROJECT_DIR$/src/app/proshow/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/proshow/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostLoading.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostLoading.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,6 +89,7 @@
       <workItem from="1745995471310" duration="702000" />
       <workItem from="1746007022244" duration="28156000" />
       <workItem from="1746092938690" duration="20601000" />
+      <workItem from="1746127347398" duration="298000" />
     </task>
     <task id="LOCAL-00001" summary="cmmit">
       <option name="closed" value="true" />
@@ -335,14 +339,21 @@
       <option name="project" value="LOCAL" />
       <updated>1746127259918</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="spelling">
+      <option name="closed" value="true" />
+      <created>1746127478631</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1746127478631</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="cmmit" />
     <MESSAGE value="auto-show heading" />
     <MESSAGE value="Navbar-done" />
     <MESSAGE value="autoshow height issue" />
@@ -367,6 +378,7 @@
     <MESSAGE value="loading issue" />
     <MESSAGE value="post loading enter done" />
     <MESSAGE value="logo" />
-    <option name="LAST_COMMIT_MESSAGE" value="logo" />
+    <MESSAGE value="spelling" />
+    <option name="LAST_COMMIT_MESSAGE" value="spelling" />
   </component>
 </project>

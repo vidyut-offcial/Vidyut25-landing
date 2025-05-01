@@ -78,7 +78,7 @@ const Proshow = () => {
                 "
             >
                 <GradualSpacing
-                    text="Revel 25"
+                    text="Revel'25"
                 />
                 <TextFade direction="up" className="pt-0">
                     <div className="
