@@ -145,22 +145,10 @@ const HeroSection = () => {
                         Auto
                     </span>
                     <span className="bg-gradient-to-r from-red-800 via-red-600 to-red-400 bg-clip-text text-transparent transition-all duration-500 ml-2">
-                        Show
+                        Expo
                     </span>
                 </motion.h1>
 
-                <motion.div
-                    className="w-fit flex flex-wrap gap-4"
-                    variants={buttonVariants}
-                    initial="hidden"
-                    animate={controls}
-                    whileHover="hover"
-                    whileTap="tap"
-                >
-                    <button className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-[20px] text-md sm:text-lg font-semibold shadow-lg transition-all duration-300">
-                        Explore Vehicles
-                    </button>
-                </motion.div>
             </div>
 
             <div className="absolute bottom-0 left-1/2 sm:top-1/8 transform -translate-x-1/2 w-[90%] sm:w-11/12 md:w-full z-10">
