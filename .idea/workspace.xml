@@ -4,36 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="loading">
-      <change afterPath="$PROJECT_DIR$/public/fonts/Nexa-Heavy.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/cake-bold.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo13.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo14.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo15.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo16.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo17.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo18.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo19.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo20.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/proshow/photo9.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/proshow/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/proshow/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TerminalStarup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TerminalStarup.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ThreeDMarquee.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ThreeDMarquee.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/gradual-spacing.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/gradual-spacing.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="autoexpo" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +85,7 @@
       <workItem from="1745984694631" duration="4449000" />
       <workItem from="1745995471310" duration="702000" />
       <workItem from="1746007022244" duration="28156000" />
-      <workItem from="1746092938690" duration="13446000" />
+      <workItem from="1746092938690" duration="15313000" />
     </task>
     <task id="LOCAL-00001" summary="cmmit">
       <option name="closed" value="true" />
@@ -300,7 +271,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746073120857</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="proshow done">
+      <option name="closed" value="true" />
+      <created>1746117040159</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1746117040159</updated>
+    </task>
+    <task id="LOCAL-00025" summary="autoexpo">
+      <option name="closed" value="true" />
+      <created>1746121185270</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1746121185270</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,6 +312,8 @@
     <MESSAGE value="audio issue is still therer" />
     <MESSAGE value="loading screen done but reloader not" />
     <MESSAGE value="loading" />
-    <option name="LAST_COMMIT_MESSAGE" value="loading" />
+    <MESSAGE value="proshow done" />
+    <MESSAGE value="autoexpo" />
+    <option name="LAST_COMMIT_MESSAGE" value="autoexpo" />
   </component>
 </project>
