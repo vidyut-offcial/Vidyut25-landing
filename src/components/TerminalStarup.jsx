@@ -25,7 +25,7 @@ const startupLines = [
     "Assembling cognitive mesh...",
     "downloading 3d model...",
     "setting up scene",
-    "finishing up....👌"
+    "finishing up...."
 ];
 
 export default function TerminalStartup() {
