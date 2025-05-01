@@ -6,7 +6,7 @@ import NavBar from "@/components/NavBar";
 import AboutSection from "@/components/AboutSection";
 import IdeaSection from "@/components/IdeaSection";
 import FAQSection from "@/components/FAQSection";
-import Footer from "@/components/Footer";
+import Footer from "@/components/footer/Footer";
 import {useEffect, useRef, useState} from "react";
 import dynamic from "next/dynamic";
 import gsap from "gsap";
@@ -141,13 +141,6 @@ const LazySwiperCoverflow = dynamic(() => import('@/components/workshop'), {
                     <section id="workshop">
                         <LazySwiperCoverflow />
                     </section>
-
-                    <section id="faq">
-                        <FAQSection />
-                    </section>
-          {/* <section id="faq">
-            <FAQSection />
-          </section> */}
 
                     <Footer />
 

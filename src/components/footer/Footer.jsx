@@ -39,12 +39,9 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="mt-16 pt-8 border-t border-white/10 text-gray-400 text-sm flex flex-col sm:flex-row justify-between items-center">
-                    <p>© {new Date().getFullYear()} Vidyut2025. All rights reserved.</p>
-                    <div className="mt-4 sm:mt-0 flex space-x-6">
-                        <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-                    </div>
+                <div className="mt-16 pt-8 border-t border-white/10 text-gray-400 text-sm flex flex-col sm:flex-row justify-center items-center">
+                    <p>© Vidyut {new Date().getFullYear()}. All rights reserved.</p>
+    
                 </div>
             </div>
         </footer>

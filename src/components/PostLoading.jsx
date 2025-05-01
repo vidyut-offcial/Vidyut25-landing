@@ -1,9 +1,9 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import ReactHowler from "react-howler";
 import TerminalStartup from "@/components/TerminalStarup";
 import Image from "next/image";
-import Logo from "../../public/images/logo.svg";
+import Logo from "../../public/images/logo_enhanced.png";
 
 function useIsMobile() {
     const [isMobile, setIsMobile] = useState(false);
@@ -17,7 +17,7 @@ function useIsMobile() {
     return isMobile;
 }
 
-const PostLoading = ({setRevel}) => {
+const PostLoading = ({ setRevel }) => {
     const logoRef = useRef(null);
     const terminalRef = useRef(null);
     const howlerOneRef = useRef();
@@ -25,16 +25,19 @@ const PostLoading = ({setRevel}) => {
     const howlerThreeRef = useRef();
 
     const [hasInteracted, setHasInteracted] = useState(false);
+    const [sequenceStarted, setSequenceStarted] = useState(false);
+    const [showEnterButton, setShowEnterButton] = useState(false);
+    const isMobile = useIsMobile();
 
-    const startFade = ()=>{
-        console.log("start");
+    const startFade = () => {
         setRevel(true);
-        gsap.to(logoRef, {
+        gsap.to(logoRef.current, {
             opacity: 0,
             duration: 1,
             ease: "power2.out",
         });
-    }
+    };
+
     const fadeInThenOut = (
         sound,
         id,
@@ -65,7 +68,7 @@ const PostLoading = ({setRevel}) => {
                     opacity: 1,
                     duration: fadeDuration / 1000,
                     ease: "power2.out",
-                }).then()
+                })
                 : Promise.resolve(),
 
             new Promise((resolve) => {
@@ -86,58 +89,43 @@ const PostLoading = ({setRevel}) => {
     };
 
     const startSequence = async () => {
+        if (sequenceStarted) return;
+        setSequenceStarted(true);
+        
         // Start thunder sound
         const { sound: thunderSound, id: thunderId } = await playSound(howlerOneRef);
-        await fadeInThenOut(thunderSound, thunderId,terminalRef.current,2000, 10000); // 2s fade in, 10s hold, 2s fade out
+        await fadeInThenOut(thunderSound, thunderId, terminalRef.current, 2000, 10000);
 
         const { sound: secondSound, id: secondId } = await playSound(howlerTwoRef);
         await fadeInSecond(logoRef.current, secondSound, secondId, 2000);
+        
         await new Promise((resolve) => setTimeout(resolve, 3000));
-        const { sound: thridSound, id: thirdId } = await playSound(howlerThreeRef);
-
+        
+        const { sound: thirdSound, id: thirdId } = await playSound(howlerThreeRef);
     };
 
-    const isMobile = useIsMobile();
+    useEffect(() => {
+        // Check if we should show the enter button (mobile and no interaction yet)
+        setShowEnterButton(isMobile && !hasInteracted);
+        
+        // Start sequence automatically on desktop if not started
+        if (!isMobile && !sequenceStarted && !hasInteracted) {
+            setHasInteracted(true);
+            startSequence();
+        }
+    }, [isMobile, hasInteracted, sequenceStarted]);
 
-  useEffect(() => {
-
-    if (!isMobile) {
-      startSequence();
-    }
-  }, [isMobile]);
     const handleStart = () => {
-      setHasInteracted(true);
-        startSequence();
+        if (!sequenceStarted) {
+            setHasInteracted(true);
+            startSequence();
+        }
     };
-
-    // ------------------------------------------------------------------------>
-  // useEffect(() => {
-  //   const hasSeenLoading = sessionStorage.getItem("hasSeenLoadingScreen");
-  //
-  //   if (hasSeenLoading) {
-  //     // Skip animation
-  //     setRevel(true);
-  //   } else {
-  //     if (!isMobile) {
-  //       setHasInteracted(true);
-  //       startSequence().then(() => {
-  //         sessionStorage.setItem("hasSeenLoadingScreen", "true");
-  //       });
-  //     }
-  //   }
-  // }, [isMobile]);
-  //
-  // const handleStart = () => {
-  //   setHasInteracted(true);
-  //   startSequence().then(() => {
-  //     sessionStorage.setItem("hasSeenLoadingScreen", "true");
-  //   });
-  // };
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black overflow-hidden">
-            {!hasInteracted && isMobile && (
-                <div className="absolute inset-0 z-40 bg-black flex items-center justify-center">
+            {showEnterButton && (
+                <div className="absolute inset-0 z-50 bg-black flex items-center justify-center">
                     <button
                         onClick={handleStart}
                         className="text-white px-6 py-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition"
@@ -155,7 +143,6 @@ const PostLoading = ({setRevel}) => {
                 volume={1}
             />
 
-            {/* Second sound */}
             <ReactHowler
                 src="/sounds/rock.mp3"
                 playing={false}
@@ -163,6 +150,7 @@ const PostLoading = ({setRevel}) => {
                 ref={howlerTwoRef}
                 volume={1}
             />
+
             <ReactHowler
                 src="/sounds/metal.mp3"
                 playing={false}
@@ -170,27 +158,29 @@ const PostLoading = ({setRevel}) => {
                 ref={howlerThreeRef}
                 volume={1}
             />
+
             <div ref={terminalRef} className="z-20">
                 <TerminalStartup />
             </div>
+
             <div
                 ref={logoRef}
                 className="z-30 absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-1000"
             >
-                <button className="flex items-center justify-center"
-                        onClick={startFade}
+                <button 
+                    className="flex items-center justify-center" 
+                    onClick={startFade}
+                    aria-label="Continue"
                 >
                     <Image
-                        className="w-[200px] sm:w-[240px] object-contain cursor-pointer"
+                        className="w-[400px] sm:w-[800px] h-auto object-contain cursor-pointer"
                         src={Logo}
                         alt="Vidyut Logo"
-                        width={206}
-                        height={206}
                         priority
+                        quality={100}
                     />
                 </button>
             </div>
-
         </div>
     );
 };

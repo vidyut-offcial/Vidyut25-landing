@@ -19,7 +19,7 @@ export const AskEcho = () => {
   };
 
   return (
-    <div className="bg-gray-900 rounded-xl p-6 shadow-lg">
+    <div className="bg-black rounded-xl p-6 shadow-lg">
       <p className="text-gray-300 mb-4">
         Have a question? Ask Echo, our AI assistant, and get instant answers.
       </p>
@@ -29,12 +29,12 @@ export const AskEcho = () => {
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           placeholder="Ask anything..."
-          className="w-full bg-gray-800 text-white border border-gray-700 rounded-lg py-3 px-4 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+          className="w-full bg-gray-800 text-white border border-gray-700 rounded-lg py-3 px-4 pr-12 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent transition-all duration-300"
           required
         />
         <button
           type="submit"
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg transition-colors duration-300"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-600 hover:bg-gray-700 text-white p-2 rounded-lg transition-colors duration-300"
           aria-label="Send question"
         >
           <Send size={20} />
