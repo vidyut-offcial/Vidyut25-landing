@@ -12,7 +12,7 @@ const Autoshow = ()=>{
                 backgroundPosition: 'center',
                 height: '100vh',
                 width: '100vw',
-                transform: 'scaleX(-1)', // 🔄 Flip the container horizontally
+                transform: 'scaleX(-1)', 
             }}
         >
             <div className="absolute inset-0 z-0 pointer-events-none">
