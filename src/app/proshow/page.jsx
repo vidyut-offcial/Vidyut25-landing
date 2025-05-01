@@ -119,8 +119,9 @@ const Proshow = () => {
 
             {/* Gradient overlay for mobile view */}
             <div className="absolute top-0 left-0 h-full w-full z-10 pointer-events-none">
+                <div className="absolute top-0 sm:h-[20vh] h-1/4 w-full bg-gradient-to-b from-black to-transparent" />
                 <div className="absolute top-0 left-0 h-full w-1/2 sm:w-[150vh] bg-gradient-to-r from-black via-black/80 via-40% to-transparent to-90%" />
-                <div className="absolute bottom-0 sm:h-[60vh] h-1/2 w-full bg-gradient-to-t from-black to-transparent sm:hidden" />
+                <div className="absolute bottom-0 sm:h-[60vh] h-1/2 w-full bg-gradient-to-t from-black to-transparent " />
             </div>
 
             {/* Marquee Section */}
