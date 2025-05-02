@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="ci error fixed">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/cd.yml" afterDir="false" />
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="cd/cd error fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +90,7 @@
       <workItem from="1746007022244" duration="28156000" />
       <workItem from="1746092938690" duration="20601000" />
       <workItem from="1746127347398" duration="298000" />
-      <workItem from="1746181106971" duration="10021000" />
+      <workItem from="1746181106971" duration="10956000" />
     </task>
     <task id="LOCAL-00001" summary="cmmit">
       <option name="closed" value="true" />
@@ -404,15 +404,29 @@
       <option name="project" value="LOCAL" />
       <updated>1746197494626</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="cd addded and integrated">
+      <option name="closed" value="true" />
+      <created>1746208789247</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1746208789247</updated>
+    </task>
+    <task id="LOCAL-00041" summary="cd/cd error fixed">
+      <option name="closed" value="true" />
+      <created>1746209166651</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1746209166651</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="something" />
-    <MESSAGE value="beamline" />
     <MESSAGE value="lazy reload" />
     <MESSAGE value="beam vannu guys" />
     <MESSAGE value="oto show responsive aki!!!" />
@@ -436,6 +450,8 @@
     <MESSAGE value="dummy commit 3" />
     <MESSAGE value="dummy commit 4" />
     <MESSAGE value="ci error fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="ci error fixed" />
+    <MESSAGE value="cd addded and integrated" />
+    <MESSAGE value="cd/cd error fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="cd/cd error fixed" />
   </component>
 </project>
