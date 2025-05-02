@@ -23,4 +23,4 @@ jobs:
     - name: Build the Docker image
       run: docker build -t cicd-vidyut
     - name: Push to Dockerhub
-      run: docker push nandandev/cicd-vidyut
+      run: docker push nandandev/cicd-vidyut:latest
