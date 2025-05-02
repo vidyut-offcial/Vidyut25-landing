@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="changed port">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/cd.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/cd.yml" afterDir="false" />
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="retry-again-again">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,23 +90,7 @@
       <workItem from="1746007022244" duration="28156000" />
       <workItem from="1746092938690" duration="20601000" />
       <workItem from="1746127347398" duration="298000" />
-      <workItem from="1746181106971" duration="19743000" />
-    </task>
-    <task id="LOCAL-00001" summary="cmmit">
-      <option name="closed" value="true" />
-      <created>1745917214901</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1745917214901</updated>
-    </task>
-    <task id="LOCAL-00002" summary="cmmit">
-      <option name="closed" value="true" />
-      <created>1745917937718</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1745917937718</updated>
+      <workItem from="1746181106971" duration="20900000" />
     </task>
     <task id="LOCAL-00003" summary="auto-show heading">
       <option name="closed" value="true" />
@@ -485,15 +468,29 @@
       <option name="project" value="LOCAL" />
       <updated>1746217647047</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="retry">
+      <option name="closed" value="true" />
+      <created>1746222294529</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1746222294529</updated>
+    </task>
+    <task id="LOCAL-00051" summary="retry-again-again">
+      <option name="closed" value="true" />
+      <created>1746223452579</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1746223452579</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added text in about" />
-    <MESSAGE value="audio issue is still therer" />
     <MESSAGE value="loading screen done but reloader not" />
     <MESSAGE value="loading" />
     <MESSAGE value="proshow done" />
@@ -517,6 +514,8 @@
     <MESSAGE value="fixed types" />
     <MESSAGE value="test commit" />
     <MESSAGE value="changed port" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed port" />
+    <MESSAGE value="retry" />
+    <MESSAGE value="retry-again-again" />
+    <option name="LAST_COMMIT_MESSAGE" value="retry-again-again" />
   </component>
 </project>
