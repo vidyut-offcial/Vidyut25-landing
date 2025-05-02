@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="dummy commit for ci">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/docker-image.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/docker-image.yml" afterDir="false" />
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="ci error fixed">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/cd.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +90,7 @@
       <workItem from="1746007022244" duration="28156000" />
       <workItem from="1746092938690" duration="20601000" />
       <workItem from="1746127347398" duration="298000" />
-      <workItem from="1746181106971" duration="6550000" />
+      <workItem from="1746181106971" duration="10021000" />
     </task>
     <task id="LOCAL-00001" summary="cmmit">
       <option name="closed" value="true" />
@@ -379,16 +380,37 @@
       <option name="project" value="LOCAL" />
       <updated>1746196768231</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="dummy commit 3">
+      <option name="closed" value="true" />
+      <created>1746196860437</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1746196860437</updated>
+    </task>
+    <task id="LOCAL-00038" summary="dummy commit 4">
+      <option name="closed" value="true" />
+      <created>1746196989793</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1746196989793</updated>
+    </task>
+    <task id="LOCAL-00039" summary="ci error fixed">
+      <option name="closed" value="true" />
+      <created>1746197494626</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1746197494626</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="proshow height issue" />
-    <MESSAGE value="IDK" />
-    <MESSAGE value="workshop" />
     <MESSAGE value="something" />
     <MESSAGE value="beamline" />
     <MESSAGE value="lazy reload" />
@@ -411,6 +433,9 @@
     <MESSAGE value="dockerfile added" />
     <MESSAGE value="&#10;ci added" />
     <MESSAGE value="dummy commit for ci" />
-    <option name="LAST_COMMIT_MESSAGE" value="dummy commit for ci" />
+    <MESSAGE value="dummy commit 3" />
+    <MESSAGE value="dummy commit 4" />
+    <MESSAGE value="ci error fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="ci error fixed" />
   </component>
 </project>
