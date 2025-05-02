@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="cd/cd error fixed">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="fixed port" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,7 +87,7 @@
       <workItem from="1746007022244" duration="28156000" />
       <workItem from="1746092938690" duration="20601000" />
       <workItem from="1746127347398" duration="298000" />
-      <workItem from="1746181106971" duration="10956000" />
+      <workItem from="1746181106971" duration="11302000" />
     </task>
     <task id="LOCAL-00001" summary="cmmit">
       <option name="closed" value="true" />
@@ -420,14 +417,21 @@
       <option name="project" value="LOCAL" />
       <updated>1746209166651</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="fixed port">
+      <option name="closed" value="true" />
+      <created>1746209717240</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1746209717240</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="lazy reload" />
     <MESSAGE value="beam vannu guys" />
     <MESSAGE value="oto show responsive aki!!!" />
     <MESSAGE value="proshow responsive aki!!!" />
@@ -452,6 +456,7 @@
     <MESSAGE value="ci error fixed" />
     <MESSAGE value="cd addded and integrated" />
     <MESSAGE value="cd/cd error fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="cd/cd error fixed" />
+    <MESSAGE value="fixed port" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed port" />
   </component>
 </project>
