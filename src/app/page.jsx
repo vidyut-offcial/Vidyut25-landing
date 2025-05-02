@@ -108,7 +108,7 @@ const LazyIdeaSection = dynamic(() => import('@/components/IdeaSection'), {
     },[startRevel]);
 
 
-    // hai for docker test4
+    // hai for docker test5
     return (
         <>
             <ReactHowler
