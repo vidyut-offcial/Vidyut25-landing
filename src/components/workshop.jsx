@@ -53,7 +53,7 @@ const SwiperCoverflow = () => {
             </div>
 
             <div className="absolute top-16 sm:top-24 md:top-32 left-1/2 -translate-x-1/2 text-center z-20 space-y-6 sm:space-y-10">
-            <GradualSpacing text="Flagship Events" />
+                <GradualSpacing text="Flagship Events" />
                 <button
                     className="bg-slate-800 no-underline mt-10 mb-10 group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block"
                     onClick={() => router.push(domain)}
@@ -156,14 +156,15 @@ const SwiperCoverflow = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <button
-                            className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-6 sm:py-3 sm:px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
-                            onClick={() => {
-                                router.push(`${domain}${events[activeIndex].slug}`);
-                            }}
+                        <a
+                            href={`${domain}${events[activeIndex].slug}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-6 sm:py-3 sm:px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 inline-block text-center"
                         >
                             Register Now
-                        </button>
+                        </a>
+
                     </motion.div>
                 </div>
             </div>
