@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="retry-again-again">
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="ethe engilum onne work avenen pls pls pls">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.jsx" afterDir="false" />
     </list>
@@ -91,23 +91,7 @@
       <workItem from="1746092938690" duration="20601000" />
       <workItem from="1746127347398" duration="298000" />
       <workItem from="1746181106971" duration="20900000" />
-      <workItem from="1746248498496" duration="1522000" />
-    </task>
-    <task id="LOCAL-00004" summary="Navbar-done">
-      <option name="closed" value="true" />
-      <created>1745924444982</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1745924444982</updated>
-    </task>
-    <task id="LOCAL-00005" summary="autoshow height issue">
-      <option name="closed" value="true" />
-      <created>1745924476354</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1745924476354</updated>
+      <workItem from="1746248498496" duration="2195000" />
     </task>
     <task id="LOCAL-00006" summary="proshow height issue">
       <option name="closed" value="true" />
@@ -485,15 +469,29 @@
       <option name="project" value="LOCAL" />
       <updated>1746248520893</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="retry-again-pls-pls">
+      <option name="closed" value="true" />
+      <created>1746250648392</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1746250648392</updated>
+    </task>
+    <task id="LOCAL-00054" summary="ethe engilum onne work avenen pls pls pls">
+      <option name="closed" value="true" />
+      <created>1746251022962</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1746251022962</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="loading screen done but reloader not" />
-    <MESSAGE value="loading" />
     <MESSAGE value="proshow done" />
     <MESSAGE value="autoexpo" />
     <MESSAGE value="navbar" />
@@ -517,6 +515,8 @@
     <MESSAGE value="changed port" />
     <MESSAGE value="retry" />
     <MESSAGE value="retry-again-again" />
-    <option name="LAST_COMMIT_MESSAGE" value="retry-again-again" />
+    <MESSAGE value="retry-again-pls-pls" />
+    <MESSAGE value="ethe engilum onne work avenen pls pls pls" />
+    <option name="LAST_COMMIT_MESSAGE" value="ethe engilum onne work avenen pls pls pls" />
   </component>
 </project>

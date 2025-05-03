@@ -159,6 +159,7 @@ const LazyIdeaSection = dynamic(() => import('@/components/IdeaSection'), {
             </main>
         </>
     )
+    // test
 }
 
 export default Home
