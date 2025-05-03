@@ -157,7 +157,6 @@ const LazyIdeaSection = dynamic(() => import('@/components/IdeaSection'), {
 
                 </div>
             </main>
-
         </>
     )
 }
