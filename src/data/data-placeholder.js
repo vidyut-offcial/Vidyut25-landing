@@ -11,7 +11,7 @@ const eventData = [
   {
     title: "Inside NVIDIA: The Isaac SIM & Omniverse Workshop by IHub",
     description: "Experience the future of robotics with NVIDIA Isaac, ROS, and Jetson—where Edge AI, smart simulations, and real-world robot intelligence come to life!",
-    slug: "/e/nvidia-isaac-sim-omniverse-workshop-ihub",
+    slug: "/e/inside-nvidia-the-isaac-sim-omniverse-workshop",
     image: "/images/nvidia-final.png",
     category: "Workshops Flagship"
   },
@@ -32,28 +32,28 @@ const eventData = [
   {
     title: "Silicon to Circuits: Semiconductor Workshop by Qualcomm",
     description: "Unravel the journey of electronics from raw silicon to complex integrated circuits in this insightful workshop. Discover how semiconductors and chip design power modern tech and shape future innovations.",
-    slug: "/e/silicon-to-circuits-semiconductor-workshop-qualcomm",
+    slug: "/e/silicon-to-circuits-semiconductor-workshop",
     image: "/images/silicon-to-circuits.png",
     category: "Workshops Flagship"
   },
   {
     title: "Fly High: A Practical Drone Workshop by Garuda Aerospace",
     description: "Explore the fascinating world of drones and UAV technology! Learn about aerodynamics, flight control systems, navigation, and real-world applications of drones across various industries",
-    slug: "/e/fly-high-drone-workshop-garuda-aerospace",
+    slug: "/e/fly-high-a-practical-drone-workshop",
     image: "/images/fly-high-drone.png",
     category: "Workshops Flagship"
   },
   {
     title: "Hack the Future: Vidyut Hackathon by Amfoss",
     description: "A 36-hour national innovation marathon for B.Tech students across India, fostering creativity, collaboration, and tech-driven solutions to real-world challenges, ending with impactful project showcases.",
-    slug: "/e/hack-the-future-vidyut-hackathon-amfoss",
+    slug: "/e/hack-the-future-vidyut-hackathon",
     image: "/images/HacktheFutureVidyut.png",
     category: "Flagship Competitions"
   },
   {
     title: "TechTurf RoboSoccer National Competition",
     description: "A national robotics competition where student teams design and operate autonomous or remote-controlled wheeled robots in a fast-paced, soccer-style arena, promoting engineering skills, teamwork, and industry–academia collaboration.",
-    slug: "/e/techturf-robosoccer-national-competition",
+    slug: "/e/techturf-robo-soccer",
     image: "/images/TechTurfRoboSoccer.png",
     category: "Flagship Competitions"
   },
@@ -74,8 +74,8 @@ const eventData = [
   {
     title: "Drone Racing by Pro Kerala",
     description: "Navigate through an adrenaline-pumping obstacle course, testing your FPV drone piloting skills, precision, and reflexes. Compete against the best and prove your dominance in the skies—only the fastest and most skilled will claim victory!",
-    slug: "/e/drone-racing-pro-kerala",
-    image: "/images/anton.png",
+    slug: "/e/drone-racing",
+    image: "/images/drone_Racing.png",
     category: "Flagship Competitions"
   }
 ];

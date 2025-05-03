@@ -35,15 +35,15 @@ const SwiperCoverflow = () => {
 
     return (
         <div
-            className="relative w-screen h-screen transition-all duration-500 ease-in-out overflow-hidden py-20"
+            className="relative w-screen md:h-[1200px] transition-all duration-500 ease-in-out overflow-hidden py-[120px] sm:py-[140px] md:py-[200px] lg:py-[250px]
+"
             style={{
                 backgroundImage: `url(${encodeURI(backgroundImage)})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                height: '100vh',
-                width: '100vw'
             }}
         >
+
             <div className="absolute inset-0 pointer-events-none">
                 <div className="w-full h-full bg-black opacity-50 mix-blend-multiply" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-100" />
@@ -52,8 +52,8 @@ const SwiperCoverflow = () => {
                 <div className="absolute inset-0 bg-gradient-to-l from-black via-transparent to-transparent opacity-30" />
             </div>
 
-            <div className="absolute top-32 left-1/2 -translate-x-1/2 text-center z-20 sm:space-y-10">
-                <GradualSpacing text="Flagship Events" />
+            <div className="absolute top-16 sm:top-24 md:top-32 left-1/2 -translate-x-1/2 text-center z-20 space-y-6 sm:space-y-10">
+            <GradualSpacing text="Flagship Events" />
                 <button
                     className="bg-slate-800 no-underline mt-10 mb-10 group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block"
                     onClick={() => router.push(domain)}
@@ -84,8 +84,8 @@ const SwiperCoverflow = () => {
             </div>
 
             <div className="relative z-10 w-screen h-[600px] sm:h-screen">
-            <div className="absolute bottom-10 sm:bottom-30 left-1/2 -translate-x-1/2 w-full max-w-7xl px-5 sm:px-6 md:px-8">
-            <Swiper
+                <div className="absolute bottom-10 sm:bottom-30 left-1/2 -translate-x-1/2 w-full max-w-7xl px-5 sm:px-6 md:px-8">
+                    <Swiper
                         effect="coverflow"
                         grabCursor
                         centeredSlides
