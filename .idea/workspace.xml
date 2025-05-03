@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="ethe engilum onne work avenen pls pls pls">
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="ethe engilum onne work avenen pls pls pls pl spls">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,15 +90,8 @@
       <workItem from="1746092938690" duration="20601000" />
       <workItem from="1746127347398" duration="298000" />
       <workItem from="1746181106971" duration="20900000" />
-      <workItem from="1746248498496" duration="2195000" />
-    </task>
-    <task id="LOCAL-00006" summary="proshow height issue">
-      <option name="closed" value="true" />
-      <created>1745924502125</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1745924502125</updated>
+      <workItem from="1746248498496" duration="2492000" />
+      <workItem from="1746253134220" duration="609000" />
     </task>
     <task id="LOCAL-00007" summary="IDK">
       <option name="closed" value="true" />
@@ -485,14 +477,21 @@
       <option name="project" value="LOCAL" />
       <updated>1746251022962</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="ethe engilum onne work avenen pls pls pls pl spls">
+      <option name="closed" value="true" />
+      <created>1746251317842</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1746251317842</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="proshow done" />
     <MESSAGE value="autoexpo" />
     <MESSAGE value="navbar" />
     <MESSAGE value="proshow gradient" />
@@ -517,6 +516,7 @@
     <MESSAGE value="retry-again-again" />
     <MESSAGE value="retry-again-pls-pls" />
     <MESSAGE value="ethe engilum onne work avenen pls pls pls" />
-    <option name="LAST_COMMIT_MESSAGE" value="ethe engilum onne work avenen pls pls pls" />
+    <MESSAGE value="ethe engilum onne work avenen pls pls pls pl spls" />
+    <option name="LAST_COMMIT_MESSAGE" value="ethe engilum onne work avenen pls pls pls pl spls" />
   </component>
 </project>
