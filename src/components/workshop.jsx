@@ -160,7 +160,7 @@ const SwiperCoverflow = () => {
                             href={`${domain}${events[activeIndex].slug}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-6 sm:py-3 sm:px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 inline-block text-center"
+                            className="bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 px-6 sm:py-3 sm:px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 inline-block text-center"
                         >
                             Register Now
                         </a>
