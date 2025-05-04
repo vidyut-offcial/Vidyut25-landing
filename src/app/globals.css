@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* src/app/globals.css */
+
+/* Hide the bottom-left Next.js dev indicator */
+[data-nextjs-dev-overlay] {
+  display: none !important;
+}
+
+
 :root {
   --background: #000000;
   --surface-alt: #1a1a1a;
