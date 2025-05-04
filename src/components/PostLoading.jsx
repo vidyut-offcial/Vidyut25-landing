@@ -1,8 +1,10 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import ReactHowler from "react-howler";
 import TerminalStartup from "@/components/TerminalStarup";
 import Image from "next/image";
+import { PlayIcon } from "lucide-react";
+
 import Logo from "../../public/images/logo_enhanced.png";
 
 function useIsMobile() {
@@ -17,7 +19,7 @@ function useIsMobile() {
     return isMobile;
 }
 
-const PostLoading = ({setRevel}) => {
+const PostLoading = ({ setRevel }) => {
     const logoRef = useRef(null);
     const terminalRef = useRef(null);
     const howlerOneRef = useRef();
@@ -26,7 +28,7 @@ const PostLoading = ({setRevel}) => {
 
     const [hasInteracted, setHasInteracted] = useState(false);
 
-    const startFade = ()=>{
+    const startFade = () => {
         console.log("start");
         setRevel(true);
         gsap.to(logoRef, {
@@ -88,7 +90,7 @@ const PostLoading = ({setRevel}) => {
     const startSequence = async () => {
         // Start thunder sound
         const { sound: thunderSound, id: thunderId } = await playSound(howlerOneRef);
-        await fadeInThenOut(thunderSound, thunderId,terminalRef.current,2000, 10000); // 2s fade in, 10s hold, 2s fade out
+        await fadeInThenOut(thunderSound, thunderId, terminalRef.current, 2000, 10000); // 2s fade in, 10s hold, 2s fade out
 
         const { sound: secondSound, id: secondId } = await playSound(howlerTwoRef);
         await fadeInSecond(logoRef.current, secondSound, secondId, 2000);
@@ -99,48 +101,48 @@ const PostLoading = ({setRevel}) => {
 
     const isMobile = useIsMobile();
 
-  useEffect(() => {
+    useEffect(() => {
 
-    if (!isMobile) {
-      startSequence();
-    }
-  }, [isMobile]);
+        if (!isMobile) {
+            startSequence();
+        }
+    }, [isMobile]);
 
-  // useEffect(() => {
-  //   const hasSeenLoading = sessionStorage.getItem("hasSeenLoadingScreen");
-  //
-  //   if (hasSeenLoading) {
-  //     // Skip animation
-  //     setRevel(true);
-  //   } else {
-  //     if (!isMobile) {
-  //       setHasInteracted(true);
-  //       startSequence().then(() => {
-  //         sessionStorage.setItem("hasSeenLoadingScreen", "true");
-  //       });
-  //     }
-  //   }
-  // }, [isMobile]);
+    // useEffect(() => {
+    //   const hasSeenLoading = sessionStorage.getItem("hasSeenLoadingScreen");
+    //
+    //   if (hasSeenLoading) {
+    //     // Skip animation
+    //     setRevel(true);
+    //   } else {
+    //     if (!isMobile) {
+    //       setHasInteracted(true);
+    //       startSequence().then(() => {
+    //         sessionStorage.setItem("hasSeenLoadingScreen", "true");
+    //       });
+    //     }
+    //   }
+    // }, [isMobile]);
 
-  const handleStart = () => {
-    setHasInteracted(true);
-    startSequence().then(() => {
-      sessionStorage.setItem("hasSeenLoadingScreen", "true");
-    });
-  };
+    const handleStart = () => {
+        setHasInteracted(true);
+        startSequence().then(() => {
+            sessionStorage.setItem("hasSeenLoadingScreen", "true");
+        });
+    };
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black overflow-hidden">
             {!hasInteracted && isMobile && (
-                <div className="absolute inset-0 z-40 bg-black flex items-center justify-center">
-                    <button
-                        onClick={handleStart}
-                        className="text-white px-6 py-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition"
-                    >
-                        Enter
-                    </button>
+                <div
+                    onClick={handleStart}
+                    className="absolute inset-0 z-40 bg-black text-white flex items-center justify-center text-center cursor-pointer select-none"
+                >
+                    <div className="text-lg font-semibold animate-pulse">
+                    Touch the Darkness to Begin                    </div>
                 </div>
             )}
+
 
             <ReactHowler
                 src="/sounds/thunder.mp3"
@@ -173,7 +175,7 @@ const PostLoading = ({setRevel}) => {
                 className="z-30 absolute inset-0 flex flex-col items-center justify-center opacity-0 transition-opacity duration-1000"
             >
                 <button className="flex items-center justify-center"
-                        onClick={startFade}
+                    onClick={startFade}
                 >
                     <Image
                         className="w-[80vw] max-w-[800px] h-auto object-contain cursor-pointer"
