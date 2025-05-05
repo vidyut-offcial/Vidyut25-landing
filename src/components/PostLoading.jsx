@@ -29,7 +29,6 @@ const PostLoading = ({ setRevel }) => {
     const [hasInteracted, setHasInteracted] = useState(false);
 
     const startFade = () => {
-        console.log("start");
         setRevel(true);
         gsap.to(logoRef, {
             opacity: 0,

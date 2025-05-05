@@ -70,7 +70,6 @@ const MDXContent = ({ content }) => {
         setParsedResponse(mdxSource);
         setParseError(null);
       } catch (error) {
-        console.error("Error parsing MDX:", error);
         setParseError("Failed to parse markdown response");
       }
     };
@@ -140,7 +139,6 @@ function EchoContents() {
         setResponse(`Failed to fetch response: ${data.error || "Unknown error"}`);
       }
     } catch (error) {
-      console.error("Error fetching the answer:", error);
       setResponse(`Error fetching the answer: ${error.message}`);
     } finally {
       setPrompt("");

@@ -99,7 +99,6 @@ const LazyIdeaSection = dynamic(() => import('@/components/IdeaSection'), {
     };
 
     useEffect(() => {
-        console.log(startRevel)
         if (startRevel) {
             playSound(howlerRevealRef)
             startReveal()

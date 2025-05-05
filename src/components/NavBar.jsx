@@ -62,7 +62,6 @@ export default function NavBar() {
 
   const handleLinkClick = (href, e) => {
     e.preventDefault();
-    console.log(`Navigating to ${href}`);
   
     if (menuOpen) setMenuOpen(false);
   

@@ -14,7 +14,6 @@ const Billboard = ({ position, rotation = [0, 0, 0] }) => {
     // Apply texture to the correct material
     billboardModel.scene.traverse((child) => {
       if (child.isMesh) {
-        console.log(child.name, child.material);
         
         // Check if the child has the specific material we're looking for
         if (child.material && child.material.name === "Cube005_Material004_0") {
