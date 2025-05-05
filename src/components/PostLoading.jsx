@@ -102,11 +102,13 @@ const PostLoading = ({ setRevel }) => {
     const isMobile = useIsMobile();
 
     useEffect(() => {
-
-        if (!isMobile) {
-            startSequence();
+        if (!isMobile && hasInteracted) {
+            startSequence().then(() => {
+                sessionStorage.setItem("hasSeenLoadingScreen", "true");
+            });
         }
-    }, [isMobile]);
+    }, [isMobile, hasInteracted]);
+
 
     // useEffect(() => {
     //   const hasSeenLoading = sessionStorage.getItem("hasSeenLoadingScreen");
@@ -133,15 +135,17 @@ const PostLoading = ({ setRevel }) => {
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black overflow-hidden">
-            {!hasInteracted && isMobile && (
+            {!hasInteracted && !isMobile && (
                 <div
                     onClick={handleStart}
                     className="absolute inset-0 z-40 bg-black text-white flex items-center justify-center text-center cursor-pointer select-none"
                 >
                     <div className="text-lg font-semibold animate-pulse">
-                    Touch the Darkness to Begin                    </div>
+                        Click to Enter the Void
+                    </div>
                 </div>
             )}
+
 
 
             <ReactHowler

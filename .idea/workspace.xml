@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="audio tom s3 and proshow">
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo10.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo11.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo12.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo13.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo14.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo15.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo16.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo17.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo18.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo19.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo2.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo20.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo3.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo4.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo5.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo6.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo7.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo8.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pro_output/photo9.webp" afterDir="false" />
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="proshow img">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PostLoading.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostLoading.jsx" afterDir="false" />
     </list>
@@ -119,15 +99,7 @@
       <workItem from="1746419987571" duration="42000" />
       <workItem from="1746421795274" duration="6043000" />
       <workItem from="1746435930013" duration="6041000" />
-      <workItem from="1746442293485" duration="3377000" />
-    </task>
-    <task id="LOCAL-00019" summary="added text in about">
-      <option name="closed" value="true" />
-      <created>1745962420396</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1745962420396</updated>
+      <workItem from="1746442293485" duration="4169000" />
     </task>
     <task id="LOCAL-00020" summary="audio issue is still therer">
       <option name="closed" value="true" />
@@ -513,14 +485,21 @@
       <option name="project" value="LOCAL" />
       <updated>1746456806563</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="proshow img">
+      <option name="closed" value="true" />
+      <created>1746457639226</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1746457639226</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="&#10;ci added" />
     <MESSAGE value="dummy commit for ci" />
     <MESSAGE value="dummy commit 3" />
     <MESSAGE value="dummy commit 4" />
@@ -545,6 +524,7 @@
     <MESSAGE value="carshow optimized" />
     <MESSAGE value="audio tom s3" />
     <MESSAGE value="audio tom s3 and proshow" />
-    <option name="LAST_COMMIT_MESSAGE" value="audio tom s3 and proshow" />
+    <MESSAGE value="proshow img" />
+    <option name="LAST_COMMIT_MESSAGE" value="proshow img" />
   </component>
 </project>
