@@ -75,7 +75,7 @@ const eventData = [
     title: "Drone Racing by Pro Kerala",
     description: "Navigate through an adrenaline-pumping obstacle course, testing your FPV drone piloting skills, precision, and reflexes. Compete against the best and prove your dominance in the skies—only the fastest and most skilled will claim victory!",
     slug: "/e/drone-racing",
-    image: "/webp_output/drone_Racing.webp",
+    image: "/webp_output/droneracing.webp",
     category: "Flagship Competitions"
   }
 ];
