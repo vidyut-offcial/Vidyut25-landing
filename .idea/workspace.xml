@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="removed lazy loading">
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="carshow optimized">
+      <change afterPath="$PROJECT_DIR$/src/components/maintance.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/autoshow/HeroSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/autoshow/HeroSection.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/proshow/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/proshow/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostLoading.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostLoading.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,15 +102,8 @@
       <workItem from="1746253134220" duration="9821000" />
       <workItem from="1746419987571" duration="42000" />
       <workItem from="1746421795274" duration="6043000" />
-      <workItem from="1746435930013" duration="3333000" />
-    </task>
-    <task id="LOCAL-00015" summary="beam vannu guys">
-      <option name="closed" value="true" />
-      <created>1745957031500</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1745957031500</updated>
+      <workItem from="1746435930013" duration="6041000" />
+      <workItem from="1746442293485" duration="2249000" />
     </task>
     <task id="LOCAL-00016" summary="oto show responsive aki!!!">
       <option name="closed" value="true" />
@@ -492,14 +489,21 @@
       <option name="project" value="LOCAL" />
       <updated>1746438521965</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="carshow optimized">
+      <option name="closed" value="true" />
+      <created>1746439588847</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1746439588847</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="logo" />
     <MESSAGE value="spelling" />
     <MESSAGE value="dockerfile added" />
     <MESSAGE value="&#10;ci added" />
@@ -524,6 +528,7 @@
     <MESSAGE value="cd-runner error" />
     <MESSAGE value="img optimisation" />
     <MESSAGE value="removed lazy loading" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed lazy loading" />
+    <MESSAGE value="carshow optimized" />
+    <option name="LAST_COMMIT_MESSAGE" value="carshow optimized" />
   </component>
 </project>

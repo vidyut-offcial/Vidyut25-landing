@@ -145,8 +145,9 @@ const PostLoading = ({ setRevel }) => {
 
 
             <ReactHowler
-                src="/sounds/thunder.mp3"
+                src={"https://vidyut-assets.s3.ap-south-1.amazonaws.com/bgms/sounds/thunder.mp3"}
                 playing={false}
+                preload={true}
                 html5={true}
                 ref={howlerOneRef}
                 volume={1}
@@ -154,14 +155,15 @@ const PostLoading = ({ setRevel }) => {
 
             {/* Second sound */}
             <ReactHowler
-                src="/sounds/rock.mp3"
+                src="https://vidyut-assets.s3.ap-south-1.amazonaws.com/bgms/sounds/rock.mp3"
                 playing={false}
+                preload={true}
                 html5={true}
                 ref={howlerTwoRef}
                 volume={1}
             />
             <ReactHowler
-                src="/sounds/metal.mp3"
+                src="https://vidyut-assets.s3.ap-south-1.amazonaws.com/bgms/sounds/metal.mp3"
                 playing={false}
                 html5={true}
                 ref={howlerThreeRef}
