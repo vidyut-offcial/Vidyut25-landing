@@ -1,46 +1,39 @@
-# ---------- Base Stage ----------
-FROM node:18-alpine AS base
-RUN apk add --no-cache g++ make py3-pip libc6-compat
-WORKDIR /app
-COPY package*.json ./
-EXPOSE 3000
-
 # ---------- Builder Stage ----------
-FROM base AS builder
-COPY . .
-RUN npm ci
-RUN npm run build
+    FROM node:18-alpine AS builder
 
-# ---------- Production Stage ----------
-FROM node:18-alpine AS production
-
-# Setup non-root user
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S nextjs -u 1001
-
-WORKDIR /app
-ENV NODE_ENV=production
-
-# Install only production dependencies
-COPY package*.json ./
-RUN npm install --omit=dev
-
-# Copy built app from builder stage
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-
-USER nextjs
-EXPOSE 3000
-CMD ["npm", "start"]
-
-# ---------- Development Stage ----------
-FROM base AS dev
-
-ENV NODE_ENV=development
-
-COPY package*.json ./
-RUN npm install --legacy-peer-deps
-COPY . .
-
-CMD ["npm", "run", "dev"]
+    # Install build dependencies
+    RUN apk add --no-cache g++ make py3-pip libc6-compat
+    
+    WORKDIR /app
+    
+    # Install dependencies and build the app
+    COPY package*.json ./
+    RUN npm ci
+    
+    COPY . .
+    RUN npm run build
+    
+    # ---------- Production Stage ----------
+    FROM node:18-alpine AS production
+    
+    # Create a non-root user
+    RUN addgroup -g 1001 -S nodejs && \
+        adduser -S nextjs -u 1001
+    
+    WORKDIR /app
+    ENV NODE_ENV=production
+    
+    # Install only production dependencies
+    COPY package*.json ./
+    RUN npm install --omit=dev
+    
+    # Copy built app and required folders from builder stage
+    COPY --from=builder /app/public ./public
+    COPY --from=builder /app/.next ./.next
+    COPY --from=builder /app/node_modules ./node_modules
+    COPY --from=builder /app/package.json ./package.json
+    
+    USER nextjs
+    EXPOSE 3000
+    
+    CMD ["npm", "start"]
