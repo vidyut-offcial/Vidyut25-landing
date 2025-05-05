@@ -19,6 +19,17 @@ const SwiperCoverflow = () => {
     const [backgroundImage, setBackgroundImage] = useState('');
     const [activeIndex, setActiveIndex] = useState(0);
     const swiperRef = useRef(null);
+    const [hasSlid, setHasSlid] = useState(false);
+
+    useEffect(() => {
+        const midIndex = Math.floor(events.length / 2);
+        setBackgroundImage(events[midIndex].image); // Set on mount
+        setActiveIndex(midIndex);
+    }, []);
+    useEffect(() => {
+        const timer = setTimeout(() => setHasSlid(true), 8000); // 8 seconds
+        return () => clearTimeout(timer);
+    }, []);
 
     useEffect(() => {
         const observer = new ResizeObserver(() => {
@@ -32,6 +43,7 @@ const SwiperCoverflow = () => {
 
         return () => observer.disconnect();
     }, []);
+
 
     return (
         <div
@@ -104,7 +116,13 @@ const SwiperCoverflow = () => {
                         }}
                         initialSlide={Math.floor(events.length / 2)}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
-                        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                        onSlideChange={(swiper) => {
+                            const newIndex = swiper.realIndex;
+                            setActiveIndex(newIndex);
+                            setBackgroundImage(events[newIndex].image);
+                            if (!hasSlid) setHasSlid(true); // Hide the instruction after first interaction
+                        }}
+
                         coverflowEffect={{
                             rotate: 0,
                             stretch: 0,
@@ -144,10 +162,23 @@ const SwiperCoverflow = () => {
                                             <div className="absolute bottom-4 left-4 text-white font-bold text-lg z-10">{event.title}</div>
                                         </div>
                                     </GlareCard>
+
                                 </motion.div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
+                    {!hasSlid && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.5 }}
+                            className="mt-6 text-center text-white text-sm sm:text-base font-medium"
+                        >
+                            <span className="animate-bounce">&larr; Slide to explore &rarr;</span>
+                        </motion.div>
+                    )}
+
 
                     {/* Register button */}
                     <motion.div
