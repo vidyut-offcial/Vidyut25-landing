@@ -4,7 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="audio tom s3 and proshow" />
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="audio tom s3 and proshow">
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo1.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo10.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo11.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo12.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo13.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo14.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo15.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo16.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo17.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo18.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo19.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo20.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo3.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo4.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo5.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo6.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo7.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo8.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pro_output/photo9.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostLoading.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostLoading.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,15 +119,7 @@
       <workItem from="1746419987571" duration="42000" />
       <workItem from="1746421795274" duration="6043000" />
       <workItem from="1746435930013" duration="6041000" />
-      <workItem from="1746442293485" duration="2587000" />
-    </task>
-    <task id="LOCAL-00018" summary="loading set">
-      <option name="closed" value="true" />
-      <created>1745960850806</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1745960850806</updated>
+      <workItem from="1746442293485" duration="3377000" />
     </task>
     <task id="LOCAL-00019" summary="added text in about">
       <option name="closed" value="true" />
@@ -490,7 +505,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746456794422</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="audio tom s3 and proshow">
+      <option name="closed" value="true" />
+      <created>1746456806563</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1746456806563</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
