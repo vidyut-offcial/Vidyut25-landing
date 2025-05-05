@@ -154,7 +154,6 @@ const LazyIdeaSection = dynamic(() => import('@/components/IdeaSection'), {
                     </section>
 
                     <Footer />
-
                 </div>
             </main>
         </>
