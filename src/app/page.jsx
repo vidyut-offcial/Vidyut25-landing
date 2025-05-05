@@ -10,33 +10,16 @@ import dynamic from "next/dynamic";
 import gsap from "gsap";
 import PostLoading from "@/components/PostLoading";
 import ReactHowler from "react-howler";
+import Proshow from "@/app/proshow/page";
+import AutoshowSection from "@/components/autoshow/AutoshowSection";
+import SwiperCoverflow from "@/components/workshop";
+import IdeaSection from "@/components/IdeaSection";
+import AboutSection from "@/components/AboutSection";
 
 const Home = () => {
 
 const [startRevel, setStartRevel] = useState(false);
 const howlerRevealRef = useRef();
-
-const LazyProshow = dynamic(() => import('@/app/proshow/page'), {
-    loading: () => <div className="text-center p-4">Loading Proshow...</div>,
-    ssr: false,
-});
-const LazyAutoshowSection = dynamic(() => import('@/components/autoshow/AutoshowSection'), {
-    loading: () => <div className="text-center p-4">Loading Autoshow...</div>,
-    ssr: false,
-});
-const LazySwiperCoverflow = dynamic(() => import('@/components/workshop'), {
-    loading: () => <div className="text-center p-4">Loading Workshops...</div>,
-    ssr: false,
-});
-const LazyAboutSection = dynamic(() => import('@/components/AboutSection'), {
-        loading: () => <div className="text-center p-4">Loading AboutSection...</div>,
-        ssr: false,
-    });
-const LazyIdeaSection = dynamic(() => import('@/components/IdeaSection'), {
-        loading: () => <div className="text-center p-4">Loading IdeaSection...</div>,
-        ssr: false,
-    });
-
 
     const startReveal = () => {
         const tl = gsap.timeline();
@@ -132,23 +115,23 @@ const LazyIdeaSection = dynamic(() => import('@/components/IdeaSection'), {
                     <NavBar />
 
                     <section id="about">
-                        <LazyAboutSection />
+                        <AboutSection />
                     </section>
 
                     <section id="ideas">
-                        <LazyIdeaSection />
+                        <IdeaSection />
                     </section>
 
                     <section id="proshow">
-                        <LazyProshow />
+                        <Proshow />
                     </section>
 
                     <section id="autoshow">
-                        <LazyAutoshowSection />
+                        <AutoshowSection />
                     </section>
 
                     <section id="workshop">
-                        <LazySwiperCoverflow />
+                        <SwiperCoverflow />
                     </section>
 
                     <Footer />
