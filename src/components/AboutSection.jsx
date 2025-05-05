@@ -78,7 +78,7 @@ function TerrainVectorBackground() {
 
   useEffect(() => {
     const textureLoader = new THREE.TextureLoader();
-    textureLoader.load('/images/terrain.png', (loadedTexture) => {
+    textureLoader.load('/webp_output/terrain.webp', (loadedTexture) => {
       loadedTexture.wrapS = THREE.RepeatWrapping;
       loadedTexture.wrapT = THREE.RepeatWrapping;
       setTexture(loadedTexture);
@@ -251,9 +251,6 @@ export default function AboutSection() {
           color="#ffffff"
         />
 
-        <Suspense fallback={null}>
-          <TerrainVectorBackground />
-        </Suspense>
         <Suspense fallback={null}>
           <TerrainVectorBackground />
         </Suspense>
