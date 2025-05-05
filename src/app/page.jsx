@@ -3,13 +3,14 @@
 
 import HeroSection from "@/components/HeroSection";
 import NavBar from "@/components/NavBar";
-
+import AccreditationGrid from "@/components/Accredition";
 import Footer from "@/components/footer/Footer";
 import {useEffect, useRef, useState} from "react";
 import dynamic from "next/dynamic";
 import gsap from "gsap";
 import PostLoading from "@/components/PostLoading";
 import ReactHowler from "react-howler";
+import OrganizersGrid from "@/components/Organizers";
 
 const Home = () => {
 
@@ -150,7 +151,12 @@ const LazyIdeaSection = dynamic(() => import('@/components/IdeaSection'), {
                     <section id="workshop">
                         <LazySwiperCoverflow />
                     </section>
-
+                    <section>
+                        <OrganizersGrid />
+                    </section>
+                    <section>
+                    <AccreditationGrid />
+                    </section>
                     <Footer />
                 </div>
             </main>
