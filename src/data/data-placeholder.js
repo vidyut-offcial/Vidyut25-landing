@@ -5,77 +5,77 @@ const eventData = [
     title: "Innovative Vehicle Design Workshop by Mahindra-Campervan",
     description: "Explore next-gen vehicle design with Mahindra-Campervan through expert insights on modular vehicle architecture, off-road adaptability, and sustainable mobility.",
     slug: "/e/innovative-vehicle-design-workshop-by-mahindra-campervan",
-    image: "/images/mahindra-final.png",
+    image: "/webp_output/mahindra-final.webp",
     category: "Workshops Flagship"
   },
   {
     title: "Inside NVIDIA: The Isaac SIM & Omniverse Workshop by IHub",
     description: "Experience the future of robotics with NVIDIA Isaac, ROS, and Jetson—where Edge AI, smart simulations, and real-world robot intelligence come to life!",
     slug: "/e/inside-nvidia-the-isaac-sim-omniverse-workshop",
-    image: "/images/nvidia-final.png",
+    image: "/webp_output/nvidia-final.webp",
     category: "Workshops Flagship"
   },
   {
     title: "Qubits Unleashed: Quantum Computing Workshop",
     description: "Step into the quantum revolution! Explore qubits, superposition, and circuits — discover how quantum tech is powering the future of AI, cryptography, and much more!",
     slug: "/e/qubits-unleashed-quantum-computing-workshop",
-    image: "/images/quantum-computing.png",
+    image: "/webp_output/quantum-computing.webp",
     category: "Workshops Flagship"
   },
   {
     title: "Game On! Unity Development Workshop",
     description: "Unlock the realm of game development! Explore game design, physics, scripting, and interactive environments while gaining expert insights into industry trends and workflows.",
     slug: "/e/game-on-unity-development-workshop",
-    image: "/images/unity.png",
+    image: "/webp_output/unity.webp",
     category: "Workshops Flagship"
   },
   {
     title: "Silicon to Circuits: Semiconductor Workshop by Qualcomm",
     description: "Unravel the journey of electronics from raw silicon to complex integrated circuits in this insightful workshop. Discover how semiconductors and chip design power modern tech and shape future innovations.",
     slug: "/e/silicon-to-circuits-semiconductor-workshop",
-    image: "/images/silicon-to-circuits.png",
+    image: "/webp_output/silicon-to-circuits.webp",
     category: "Workshops Flagship"
   },
   {
     title: "Fly High: A Practical Drone Workshop by Garuda Aerospace",
     description: "Explore the fascinating world of drones and UAV technology! Learn about aerodynamics, flight control systems, navigation, and real-world applications of drones across various industries",
     slug: "/e/fly-high-a-practical-drone-workshop",
-    image: "/images/fly-high-drone.png",
+    image: "/webp_output/fly-high-drone.webp",
     category: "Workshops Flagship"
   },
   {
     title: "Hack the Future: Vidyut Hackathon by Amfoss",
     description: "A 36-hour national innovation marathon for B.Tech students across India, fostering creativity, collaboration, and tech-driven solutions to real-world challenges, ending with impactful project showcases.",
     slug: "/e/hack-the-future-vidyut-hackathon",
-    image: "/images/HacktheFutureVidyut.png",
+    image: "/webp_output/HacktheFutureVidyut.webp",
     category: "Flagship Competitions"
   },
   {
     title: "TechTurf RoboSoccer National Competition",
     description: "A national robotics competition where student teams design and operate autonomous or remote-controlled wheeled robots in a fast-paced, soccer-style arena, promoting engineering skills, teamwork, and industry–academia collaboration.",
     slug: "/e/techturf-robo-soccer",
-    image: "/images/TechTurfRoboSoccer.png",
+    image: "/webp_output/tech-turf-robo-soccer.webp",
     category: "Flagship Competitions"
   },
   {
     title: "War of the Bots",
     description: "Build and battle your custom robot in intense head-to-head combat. Test your bot's strength, strategy, and endurance in this ultimate showdown of engineering and innovation. Let the battle begin!",
     slug: "/e/war-of-the-bots",
-    image: "/images/WARR.jpg",
+    image: "/webp_output/warr.webp",
     category: "Flagship Competitions"
   },
   {
     title: "Mini Off-Road RC Challenge",
     description: "Gear up for the Mini Off-Road RC Challenge 2025! Design, build, and race your RC vehicle through rugged terrain packed with obstacles and sharp turns. Test your engineering skills and driving precision in this ultimate off-road showdown",
     slug: "/e/mini-off-road-rc-challenge",
-    image: "/images/rc.jpg",
+    image: "/webp_output/rc.webp",
     category: "Flagship Competitions"
   },
   {
     title: "Drone Racing by Pro Kerala",
     description: "Navigate through an adrenaline-pumping obstacle course, testing your FPV drone piloting skills, precision, and reflexes. Compete against the best and prove your dominance in the skies—only the fastest and most skilled will claim victory!",
     slug: "/e/drone-racing",
-    image: "/images/drone_Racing.png",
+    image: "/webp_output/drone_Racing.webp",
     category: "Flagship Competitions"
   }
 ];
