@@ -30,7 +30,7 @@
     COPY --from=builder /app/package.json ./package.json
     
     # Install only production dependencies
-    RUN npm install --omit=dev
+    RUN npm install --omit=dev --legacy-peer-deps
     
     USER nextjs
     EXPOSE 3000
