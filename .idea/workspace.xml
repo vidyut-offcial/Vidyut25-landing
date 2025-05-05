@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="proshow img">
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="WORJSHOP DONE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PostLoading.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostLoading.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/proshow/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/proshow/page.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,23 +99,7 @@
       <workItem from="1746419987571" duration="42000" />
       <workItem from="1746421795274" duration="6043000" />
       <workItem from="1746435930013" duration="6041000" />
-      <workItem from="1746442293485" duration="4169000" />
-    </task>
-    <task id="LOCAL-00020" summary="audio issue is still therer">
-      <option name="closed" value="true" />
-      <created>1745988153503</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1745988153503</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Merge branch 'main' of github.com:Exigent07/vidyut-last into test&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/app/page.jsx">
-      <option name="closed" value="true" />
-      <created>1746004623287</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1746004623287</updated>
+      <workItem from="1746442293485" duration="8330000" />
     </task>
     <task id="LOCAL-00022" summary="loading screen done but reloader not">
       <option name="closed" value="true" />
@@ -493,15 +477,29 @@
       <option name="project" value="LOCAL" />
       <updated>1746457639226</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="loading show">
+      <option name="closed" value="true" />
+      <created>1746458388057</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1746458388057</updated>
+    </task>
+    <task id="LOCAL-00070" summary="WORJSHOP DONE">
+      <option name="closed" value="true" />
+      <created>1746461003002</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1746461003002</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="dummy commit for ci" />
-    <MESSAGE value="dummy commit 3" />
     <MESSAGE value="dummy commit 4" />
     <MESSAGE value="ci error fixed" />
     <MESSAGE value="cd addded and integrated" />
@@ -525,6 +523,8 @@
     <MESSAGE value="audio tom s3" />
     <MESSAGE value="audio tom s3 and proshow" />
     <MESSAGE value="proshow img" />
-    <option name="LAST_COMMIT_MESSAGE" value="proshow img" />
+    <MESSAGE value="loading show" />
+    <MESSAGE value="WORJSHOP DONE" />
+    <option name="LAST_COMMIT_MESSAGE" value="WORJSHOP DONE" />
   </component>
 </project>
