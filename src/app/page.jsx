@@ -110,7 +110,7 @@ const LazyIdeaSection = dynamic(() => import('@/components/IdeaSection'), {
     return (
         <>
             <ReactHowler
-                src="/sounds/reveal.mp3"
+                src="https://vidyut-assets.s3.ap-south-1.amazonaws.com/bgms/sounds/reveal.mp3"
                 playing={false}
                 html5={true}
                 ref={howlerRevealRef}
