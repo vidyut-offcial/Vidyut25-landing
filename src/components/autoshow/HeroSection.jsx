@@ -153,7 +153,7 @@ const HeroSection = () => {
 
             <div className="absolute bottom-0 left-1/2 sm:top-1/8 transform -translate-x-1/2 w-[90%] sm:w-11/12 md:w-full z-10">
                 <motion.img
-                    src="/images/CarBG.png"
+                    src="/webp_output/CarBG.webp"
                     alt="Car"
                     className="w-full object-contain"
                     initial="hidden"
