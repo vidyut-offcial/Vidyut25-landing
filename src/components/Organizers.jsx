@@ -8,7 +8,7 @@ const organizers = [
     { imageSrc: '/logos/Devops.png' },
     { imageSrc: '/logos/nvidia.png' },
     { imageSrc: '/logos/pngwing.png' },
-    { imageSrc: '/logos/tbi.png' },
+    { imageSrc: '/logos/tbi_edit.png' },
     { imageSrc: '/logos/orofin.png' },
 ];
 
