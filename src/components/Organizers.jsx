@@ -27,11 +27,11 @@ const fadeInUp = {
 
 const OrganizersGrid = () => {
     return (
-        <section className="py-24 bg-black">
+        <section className="pt-20 pb-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <div className="flex items-center justify-center gap-2 mb-4">
-                        <h2 className="text-5xl font-bold text-white">Meet the Organizers</h2>
+                        <h2 className="text-5xl font-bold text-black">Meet the Organizers</h2>
                     </div>
                     <p className="text-lg text-gray-400 max-w-2xl mx-auto">
                         The brilliant minds and tireless hands that bring Vidyut '25 to life.

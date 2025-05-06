@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const accreditations = [
     { imageSrc: '/logos/accred/IEEE_logo.svg.png' },
     { imageSrc: '/logos/accred/Institution_of_Engineers_(India)_Logo.svg.png' },
-    { imageSrc: '/logos/accred/logo_footer_acm.png' },
+    { imageSrc: '/logos/accred/Acmblue.png' },
 ];
 
 const fadeInUp = {
@@ -22,10 +22,10 @@ const fadeInUp = {
 
 const AccreditationGrid = () => {
     return (
-        <section className="py-24 bg-black">
+        <section className="pb-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
-                    <h2 className="text-5xl font-bold text-white">Recognized & Accredited By</h2>
+                    <h2 className="text-5xl font-bold text-black">Recognized & Accredited By</h2>
                     <p className="text-lg text-gray-400 max-w-2xl mx-auto mt-4">
                         Vidyut '25 is backed by reputed national and international accreditations ensuring quality and excellence.
                     </p>
