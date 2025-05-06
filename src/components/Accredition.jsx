@@ -25,10 +25,8 @@ const AccreditationGrid = () => {
         <section className="pb-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
-                    <h2 className="text-5xl font-bold text-black">Recognized & Accredited By</h2>
-                    <p className="text-lg text-gray-400 max-w-2xl mx-auto mt-4">
-                        Vidyut '25 is backed by reputed national and international accreditations ensuring quality and excellence.
-                    </p>
+                    <h2 className="text-5xl font-bold text-black">Workshops and Competitions Recognized & Accredited By</h2>
+
                 </div>
 
                 {/* Desktop and Tablet Grid */}
