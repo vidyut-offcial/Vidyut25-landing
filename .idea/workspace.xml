@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="logo removed, asme,drdo">
-      <change afterPath="$PROJECT_DIR$/public/logos/tbi_black.png" afterDir="false" />
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="logos fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Organizers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Organizers.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,14 +103,6 @@
       <workItem from="1746435930013" duration="6041000" />
       <workItem from="1746442293485" duration="8330000" />
       <workItem from="1746505342987" duration="3665000" />
-    </task>
-    <task id="LOCAL-00023" summary="loading">
-      <option name="closed" value="true" />
-      <created>1746073120857</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1746073120857</updated>
     </task>
     <task id="LOCAL-00024" summary="proshow done">
       <option name="closed" value="true" />
@@ -498,14 +488,21 @@
       <option name="project" value="LOCAL" />
       <updated>1746505771502</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="logos fixed">
+      <option name="closed" value="true" />
+      <created>1746511578033</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1746511578033</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ci error fixed" />
     <MESSAGE value="cd addded and integrated" />
     <MESSAGE value="cd/cd error fixed" />
     <MESSAGE value="fixed port" />
@@ -530,6 +527,7 @@
     <MESSAGE value="loading show" />
     <MESSAGE value="WORJSHOP DONE" />
     <MESSAGE value="logo removed, asme,drdo" />
-    <option name="LAST_COMMIT_MESSAGE" value="logo removed, asme,drdo" />
+    <MESSAGE value="logos fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="logos fixed" />
   </component>
 </project>
