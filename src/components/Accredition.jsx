@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const accreditations = [
-    { imageSrc: '/logos/accred/asme_amritapuri_logo.jpeg' },
     { imageSrc: '/logos/accred/IEEE_logo.svg.png' },
     { imageSrc: '/logos/accred/Institution_of_Engineers_(India)_Logo.svg.png' },
     { imageSrc: '/logos/accred/logo_footer_acm.png' },

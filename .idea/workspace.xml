@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="WORJSHOP DONE">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/proshow/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/proshow/page.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="WORJSHOP DONE" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,6 +97,7 @@
       <workItem from="1746421795274" duration="6043000" />
       <workItem from="1746435930013" duration="6041000" />
       <workItem from="1746442293485" duration="8330000" />
+      <workItem from="1746505342987" duration="378000" />
     </task>
     <task id="LOCAL-00022" summary="loading screen done but reloader not">
       <option name="closed" value="true" />

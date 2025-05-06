@@ -6,7 +6,6 @@ const organizers = [
     { imageSrc: '/logos/campervan.png' },
     { imageSrc: '/logos/cisai.jpeg.jpg' },
     { imageSrc: '/logos/Devops.png' },
-    { imageSrc: '/logos/DRDO-logo.png' },
     { imageSrc: '/logos/nvidia.png' },
     { imageSrc: '/logos/pngwing.png' },
     { imageSrc: '/logos/tbi.png' },
