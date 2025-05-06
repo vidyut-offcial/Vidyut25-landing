@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="logos fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HeroSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HeroSection.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,14 +104,6 @@
       <workItem from="1746435930013" duration="6041000" />
       <workItem from="1746442293485" duration="8330000" />
       <workItem from="1746505342987" duration="3665000" />
-    </task>
-    <task id="LOCAL-00024" summary="proshow done">
-      <option name="closed" value="true" />
-      <created>1746117040159</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1746117040159</updated>
     </task>
     <task id="LOCAL-00025" summary="autoexpo">
       <option name="closed" value="true" />
@@ -496,7 +489,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746511578033</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="logos fixed">
+      <option name="closed" value="true" />
+      <created>1746516242956</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1746516242956</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

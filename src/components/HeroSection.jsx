@@ -89,11 +89,27 @@ export default function HeroSection({ onSectionChange }) {
           id="hero-comingsoon"
           className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-frontage-regular text-white tracking-widest"
         >
-          COMING SOON
+          See you on
         </p>
 
-        <div id="hero-countdown" className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl">
-          <Countdown targetDate={new Date(2025, 4, 23)} />
+        {/*<div id="hero-countdown" className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl">*/}
+        {/*  <Countdown targetDate={new Date(2025, 4, 23)} />*/}
+        {/*</div>*/}
+        <div id="hero-countdown" className="w-full  flex flex-col items-center justify-center max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl">
+          <p className="md:text-6xl font-nexa "
+             style={{
+               letterSpacing: "0.8rem",
+             }}
+
+          >
+            23 24 25
+          </p>
+          <p className="text-2xl font-nexa tracking-widest ml-3 mt-5"
+             style={{
+               letterSpacing: "1rem",
+             }}
+          >May 2025
+          </p>
         </div>
       </div>
     </section>
