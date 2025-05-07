@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="ios trigger">
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="logo added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,14 +104,7 @@
       <workItem from="1746442293485" duration="8330000" />
       <workItem from="1746505342987" duration="3665000" />
       <workItem from="1746593026622" duration="5195000" />
-    </task>
-    <task id="LOCAL-00029" summary="loading issue">
-      <option name="closed" value="true" />
-      <created>1746124877345</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1746124877345</updated>
+      <workItem from="1746599347853" duration="371000" />
     </task>
     <task id="LOCAL-00030" summary="post loading enter done">
       <option name="closed" value="true" />
@@ -497,14 +490,21 @@
       <option name="project" value="LOCAL" />
       <updated>1746597213419</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="logo added">
+      <option name="closed" value="true" />
+      <created>1746599418768</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1746599418769</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed types" />
     <MESSAGE value="test commit" />
     <MESSAGE value="changed port" />
     <MESSAGE value="retry" />
@@ -529,6 +529,7 @@
     <MESSAGE value="nandu fix" />
     <MESSAGE value="timer added again" />
     <MESSAGE value="ios trigger" />
-    <option name="LAST_COMMIT_MESSAGE" value="ios trigger" />
+    <MESSAGE value="logo added" />
+    <option name="LAST_COMMIT_MESSAGE" value="logo added" />
   </component>
 </project>
