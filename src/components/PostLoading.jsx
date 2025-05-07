@@ -100,13 +100,6 @@ const PostLoading = ({ setRevel }) => {
 
     const isMobile = useIsMobile();
 
-    useEffect(() => {
-        if (!isMobile && hasInteracted) {
-            startSequence().then(() => {
-                sessionStorage.setItem("hasSeenLoadingScreen", "true");
-            });
-        }
-    }, [isMobile, hasInteracted]);
 
 
     // useEffect(() => {
@@ -134,7 +127,8 @@ const PostLoading = ({ setRevel }) => {
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black overflow-hidden">
-            {!hasInteracted && !isMobile && (
+            {!hasInteracted && (
+
                 <div
                     onClick={handleStart}
                     className="absolute inset-0 z-40 bg-black text-white flex items-center justify-center text-center cursor-pointer select-none"

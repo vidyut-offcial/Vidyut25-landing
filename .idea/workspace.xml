@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="nandu fix">
+    <list default="true" id="1750feae-3c3c-4a1f-a71c-60bfee5c1399" name="Changes" comment="timer added again">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HeroSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HeroSection.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PostLoading.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostLoading.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,15 +104,7 @@
       <workItem from="1746435930013" duration="6041000" />
       <workItem from="1746442293485" duration="8330000" />
       <workItem from="1746505342987" duration="3665000" />
-      <workItem from="1746593026622" duration="2424000" />
-    </task>
-    <task id="LOCAL-00027" summary="proshow gradient">
-      <option name="closed" value="true" />
-      <created>1746121869181</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1746121869181</updated>
+      <workItem from="1746593026622" duration="3650000" />
     </task>
     <task id="LOCAL-00028" summary="loading issue">
       <option name="closed" value="true" />
@@ -498,14 +490,21 @@
       <option name="project" value="LOCAL" />
       <updated>1746518180923</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="timer added again">
+      <option name="closed" value="true" />
+      <created>1746595969474</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1746595969474</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed port" />
     <MESSAGE value="fixed" />
     <MESSAGE value="fixed types" />
     <MESSAGE value="test commit" />
@@ -530,6 +529,7 @@
     <MESSAGE value="logos fixed" />
     <MESSAGE value="landing page fix" />
     <MESSAGE value="nandu fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="nandu fix" />
+    <MESSAGE value="timer added again" />
+    <option name="LAST_COMMIT_MESSAGE" value="timer added again" />
   </component>
 </project>
