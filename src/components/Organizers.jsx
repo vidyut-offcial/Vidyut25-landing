@@ -9,7 +9,9 @@ const organizers = [
     { imageSrc: '/logos/nvidia.png' },
     { imageSrc: '/logos/pngwing.png' },
     { imageSrc: '/logos/tbi_edit.png' },
+    { imageSrc: '/logos/DRK_LOGO_DARK.png' },
     { imageSrc: '/logos/orofin.png' },
+
 ];
 
 const fadeInUp = {
