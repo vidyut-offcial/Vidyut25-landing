@@ -92,9 +92,7 @@ export default function HeroSection({ onSectionChange }) {
           See you on
         </p>
 
-        {/*<div id="hero-countdown" className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl">*/}
-        {/*  <Countdown targetDate={new Date(2025, 4, 23)} />*/}
-        {/*</div>*/}
+
         <div id="hero-countdown" className="w-full  flex flex-col items-center justify-center max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl">
           <p className="md:text-6xl font-nexa "
              style={{
@@ -110,6 +108,9 @@ export default function HeroSection({ onSectionChange }) {
              }}
           >May 2025
           </p>
+        </div>
+        <div id="hero-countdown" className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl">
+          <Countdown targetDate={new Date(2025, 4, 23)} />
         </div>
       </div>
     </section>
