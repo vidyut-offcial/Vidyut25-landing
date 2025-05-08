@@ -48,19 +48,16 @@ export default function HeroSection({ onSectionChange }) {
     <section
       id="hero-section"
       className="h-screen w-screen opacity-0 relative flex flex-col items-center justify-center py-8 overflow-hidden pointer-events-none"
-    > 
-      <BgVideoSection 
-        videoSrc={"/videos/asteroid.webm"} 
+    >
+      <BgVideoSection
+        videoSrc={"/videos/asteroid.webm"}
         nextSectionId={"about-section"}
         sectionIndex={0}
-        onSectionChange={onSectionChange}   
+        onSectionChange={onSectionChange}
       />
-      
-      <div className="flex flex-col items-center justify-center space-y-2 mb-16 sm:mb-24 md:mb-32">
-        <div 
-          className="flex items-center justify-center relative"
-          id="hero-title"
-        >
+
+      <div className="flex flex-col items-center justify-center gap-4 sm:gap-6 md:gap-8">
+        <div className="flex items-center justify-center relative" id="hero-title">
           <h2
             data-text="VIDYUT"
             className="glitch-off text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[160px] 2xl:text-[200px] tracking-widest font-frontage-bold z-10 text-white"
@@ -84,32 +81,24 @@ export default function HeroSection({ onSectionChange }) {
         </h3>
       </div>
 
-      <div className="flex flex-col items-center space-y-10 sm:space-y-14 md:space-y-16 lg:space-y-20 z-10 px-4">
+      <div className="flex flex-col items-center mt-8 sm:mt-12 md:mt-16 lg:mt-20 gap-6 sm:gap-8 md:gap-10 z-10 px-4">
         <p
           id="hero-comingsoon"
-          className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-frontage-regular text-white tracking-widest"
+          className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-frontage-regular text-white "
         >
           See you on
         </p>
 
-
-        <div id="hero-countdown" className="w-full  flex flex-col items-center justify-center max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl">
-          <p className="md:text-6xl font-nexa "
-             style={{
-               letterSpacing: "0.8rem",
-             }}
-
-          >
+        <div id="hero-countdown" className="flex flex-col items-center justify-center">
+          <p className="text-4xl sm:text-5xl md:text-6xl font-nexa tracking-[0.8rem]">
             23 24 25
           </p>
-          <p className="text-2xl font-nexa tracking-widest ml-3 mt-5"
-             style={{
-               letterSpacing: "1rem",
-             }}
-          >May 2025
+          <p className="text-xl sm:text-2xl font-nexa tracking-[1rem] mt-2 sm:mt-4 md:mt-5 ml-3">
+            May 2025
           </p>
         </div>
-        <div id="hero-countdown" className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl">
+
+        <div id="hero-countdown-timer" className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl">
           <Countdown targetDate={new Date(2025, 4, 23)} />
         </div>
       </div>
