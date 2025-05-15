@@ -12,7 +12,11 @@ const Proshow = () => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [backgroundImage, setBackgroundImage] = useState(null);
     const [selectedDay, setSelectedDay] = useState(null);
-
+    const ticketUrls = [
+        "https://vidyut.ulsav.com/e/revel-day-1",
+        "https://vidyut.ulsav.com/e/revel-day-2",
+        "https://vidyut.ulsav.com/e/revel-day-3",
+    ];
     const dayTitles = ["Day 1", "Day 2", "Day 3"];
     const dayDescriptions = [
         "A night of electrifying performances and unforgettable energy. Let the Revel begin!",
@@ -95,7 +99,7 @@ const Proshow = () => {
                         </div>
                     </TextFade>
                     <a
-                        href="https://vidyut.ulsav.com/e/revel"
+                        href={selectedDay !== null ? ticketUrls[selectedDay] : "https://vidyut.ulsav.com/e/revel"}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mt-6 inline-block bg-amber-400 hover:bg-amber-500 text-black font-semibold text-sm px-6 py-3 rounded-lg shadow-lg transition-all duration-300"
