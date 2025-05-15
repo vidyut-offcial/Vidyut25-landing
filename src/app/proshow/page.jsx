@@ -11,6 +11,14 @@ import Image from "next/image";
 const Proshow = () => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [backgroundImage, setBackgroundImage] = useState(null);
+    const [selectedDay, setSelectedDay] = useState(null);
+
+    const dayTitles = ["Day 1", "Day 2", "Day 3"];
+    const dayDescriptions = [
+        "A night of electrifying performances and unforgettable energy. Let the Revel begin!",
+        "The rhythm intensifies—immerse in soulful melodies and dynamic stage vibes.",
+        "The grand finale—where energy meets emotion. An explosive end to Revel ‘25!"
+    ];
 
     const marqueeImages = [
         "/pro_output/photo1.webp", "/pro_output/photo2.webp", "/pro_output/photo3.webp",
@@ -28,10 +36,9 @@ const Proshow = () => {
     ];
 
     const cardImages = [
+        "https://vidyut-assets.s3.ap-south-1.amazonaws.com/images/Untitled-2.png",
         "https://vidyut-assets.s3.ap-south-1.amazonaws.com/images/cherionite.jpg",
         "https://vidyut-assets.s3.ap-south-1.amazonaws.com/images/HARICHARAN.png",
-        "https://vidyut-assets.s3.ap-south-1.amazonaws.com/images/Untitled-2.png",
-        "https://vidyut-assets.s3.ap-south-1.amazonaws.com/images/Untitled-2.png"
     ];
 
     useEffect(() => {
@@ -43,9 +50,9 @@ const Proshow = () => {
     }, []);
 
     return (
-        <div className="w-full h-[100vh] relative overflow-hidden bg-black">
+        <div className="relative w-full h-screen overflow-hidden bg-black">
 
-            {/* Background Layer */}
+            {/* Background */}
             {backgroundImage ? (
                 <motion.div
                     className="absolute inset-0 z-0"
@@ -58,28 +65,33 @@ const Proshow = () => {
                         alt="Selected Background"
                         fill
                         priority
-                        className="object-cover w-full h-full"
+                        className="object-cover"
                     />
                 </motion.div>
             ) : (
                 <motion.div
+                    className="absolute inset-0 z-0"
                     initial={{ opacity: 0, y: 80 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, amount: 0.4 }}
                     transition={{ duration: 1, ease: 'easeOut' }}
-                    className="absolute inset-0 z-0"
                 >
                     <ThreeDMarquee images={marqueeImages} className="opacity-60" />
                 </motion.div>
             )}
 
-            {/* Text and CTA */}
-            <div className="absolute z-50 top-1/2 sm:left-[5vw] left-1/2 transform -translate-x-1/2 sm:translate-x-0 -translate-y-1/2 px-6 sm:px-0 w-full sm:w-auto">
-                <div className="rounded-xl max-w-xl pointer-events-auto">
-                    <GradualSpacing text="Revel'25" />
-                    <TextFade direction="up" className="pt-10">
-                        <div className="text-zinc-200 text-[clamp(1rem,2vw,0,8rem)] font-medium tracking-wide drop-shadow-xl">
-                            Three nights of rhythm, revelry, and raw energy await you! Immerse yourself in a whirlwind of pulsating beats and pure excitement as Vidyut Revel '25 blurs the line between art and magic. This isn’t just an event—it’s an experience.
+            {/* Title + Description */}
+            <div className="absolute z-50 top-1/2 sm:left-[5vw] left-1/2 transform -translate-y-1/2 -translate-x-1/2 sm:translate-x-0 px-6 sm:px-0 w-full sm:w-auto text-center sm:text-left">
+                <div className="rounded-xl max-w-2xl mx-auto sm:mx-0 pointer-events-auto">
+                    <GradualSpacing
+                        key={selectedDay}
+                        text={selectedDay !== null ? dayTitles[selectedDay] : "Revel'25"}
+                    />
+                    <TextFade direction="up" className="pt-6 sm:pt-10">
+                        <div className="text-zinc-200 text-[clamp(1rem,4vw,1.2rem)] font-medium tracking-wide drop-shadow-xl leading-snug sm:leading-relaxed">
+                            {selectedDay !== null
+                                ? dayDescriptions[selectedDay]
+                                : "Three nights of rhythm, revelry, and raw energy await you! Immerse yourself in a whirlwind of pulsating beats and pure excitement as Vidyut Revel '25 blurs the line between art and magic. This isn’t just an event—it’s an experience."}
                         </div>
                     </TextFade>
                     <a
@@ -102,7 +114,7 @@ const Proshow = () => {
 
             {/* Cards */}
             <motion.div
-                className="absolute bottom-5 w-full px-4 z-30 flex justify-end gap-4 flex-wrap"
+                className="absolute bottom-5 w-full px-4 z-30 flex justify-center sm:justify-end gap-4 flex-wrap"
                 initial={{ opacity: 0, y: 80 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.4 }}
@@ -111,17 +123,22 @@ const Proshow = () => {
                 {cardImages.map((src, index) => (
                     <motion.div
                         key={index}
-                        className="w-[160px] h-[80px] sm:w-[240px] sm:h-[120px] rounded-lg overflow-hidden shadow-lg bg-zinc-800 cursor-pointer"
-                        whileHover={{ scale: 1.1 }}
-                        onClick={() => setBackgroundImage(src)}
+                        className="relative w-[40vw] sm:w-[200px] aspect-[3/2] sm:aspect-[2/1] rounded-lg overflow-hidden shadow-lg bg-zinc-800 cursor-pointer"
+                        whileHover={{ scale: 1.05 }}
+                        onClick={() => {
+                            setBackgroundImage(src);
+                            setSelectedDay(index);
+                        }}
                     >
                         <Image
                             src={src}
-                            alt={`Card ${index}`}
-                            width={220}
-                            height={120}
-                            className="object-cover w-full h-full"
+                            alt={`Card ${index + 1}`}
+                            fill
+                            className="object-cover"
                         />
+                        <div className="absolute top-1 left-1 font-bold text-white text-xs sm:text-sm px-2 py-1 rounded bg-black/50">
+                            Day {index + 1}
+                        </div>
                     </motion.div>
                 ))}
             </motion.div>

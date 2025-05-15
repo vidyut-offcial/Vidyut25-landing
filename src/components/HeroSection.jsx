@@ -1,4 +1,5 @@
 "use client";
+import { motion } from 'framer-motion';
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
@@ -26,7 +27,22 @@ const Countdown = ({ targetDate }) => {
 
     return () => clearInterval(interval);
   }, [targetDate]);
-
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 1, // wait 1s after mount
+      },
+    },
+  };
+  
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+  
   return (
     <div className="grid grid-rows-2 grid-cols-2 md:flex flex-row justify-center items-center gap-6 xs:gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20 w-full">
       {Object.entries(timeLeft).map(([label, value]) => (
