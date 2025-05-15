@@ -8,7 +8,7 @@ export function GradualSpacing({ text = 'Gradual Spacing' }) {
     const isInView = useInView(ref, { once: false });
 
     return (
-        <div className="flex flex-wrap  sm:gap-2 w-full text-center">
+        <div className="flex flex-wrap sm:gap-2 w-full justify-center text-center sm:ml-[-100px] sm:ml-0">
             <AnimatePresence>
                 {text.split('').map((char, i) => (
                     <motion.span
