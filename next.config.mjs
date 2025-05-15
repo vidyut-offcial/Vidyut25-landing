@@ -2,9 +2,12 @@
 const nextConfig = {
   output: 'standalone',
   images: {
-    domains: ['images.unsplash.com'],
+    domains: [
+      'images.unsplash.com',
+      'vidyut-assets.s3.ap-south-1.amazonaws.com',
+    ],
   },
-  devIndicators: false, 
+  devIndicators: false,
 };
 
 export default nextConfig;
